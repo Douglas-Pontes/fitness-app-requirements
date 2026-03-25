@@ -1,48 +1,73 @@
 # FitnessApp — Documento de Requisitos
 
-Repositório de especificação completa do FitnessApp: app mobile e web para alunos de musculação.
+Repositorio de especificacao completa do FitnessApp: app mobile e web para alunos de musculacao.
 
 ---
 
-## Como Usar Este Repositório
+## Como Usar Este Repositorio
 
-### Pré-requisitos
+### Pre-requisitos
 - VS Code
-- Extensão recomendada: **Markdown All in One** (para preview dos `.md`)
-- Claude Code (plano Pro recomendado para usar Projects com contexto persistente)
+- Extensao recomendada: **Markdown All in One** (para preview dos `.md`)
+- **Claude Code** (plano Pro recomendado)
 
-### Setup no Claude Code
+### Setup
 
 1. Abra esta pasta no VS Code
-2. Abra o Claude Code e crie um **novo Project**
-3. Adicione este repositório como contexto do projeto
-4. O Claude vai ler automaticamente o `CLAUDE.md` e já entenderá o contexto completo
+2. Abra o Claude Code — ele lera automaticamente o `CLAUDE.md` e ja entendera o contexto
+3. Use os **custom commands** (descritos abaixo) para conduzir o trabalho
 
 ---
 
-## Fluxo de Trabalho
+## Custom Commands (Slash Commands)
+
+Estes comandos sao invocados diretamente no Claude Code digitando `/` + nome:
+
+| Comando | O que faz | Exemplo de uso |
+|---|---|---|
+| `/mapear-tela` | Documenta uma nova tela do zero (entrevista interativa) | `/mapear-tela Cadastro` |
+| `/revisar-tela` | Revisa tela existente e completa pendencias | `/revisar-tela docs/screens/auth/login.md` |
+| `/mapear-fluxo` | Mapeia fluxo de navegacao de um modulo | `/mapear-fluxo Treinos` |
+| `/mapear-modulo` | Mapeia modulo completo (fluxo + todas as telas) | `/mapear-modulo Avaliacoes` |
+| `/entrevistar-cliente` | Processa respostas/anotacoes do cliente | `/entrevistar-cliente reuniao sobre treinos` |
+| `/validar-consistencia` | Checa inconsistencias entre documentos | `/validar-consistencia` ou `/validar-consistencia Treinos` |
+| `/gerar-resumo` | Gera resumo executivo ou briefing | `/gerar-resumo cliente` ou `/gerar-resumo lovable` |
+| `/estimar-complexidade` | Estima complexidade de desenvolvimento | `/estimar-complexidade` |
+| `/status` | Ve progresso atual do documento | `/status` |
+
+> Os prompts manuais em `prompts/` continuam disponiveis como referencia, mas os custom commands acima sao a forma recomendada de trabalhar.
+
+---
+
+## Fluxo de Trabalho Recomendado
 
 ```
-1. Reunião/entrevista com o cliente
-        ↓ usar: prompts/entrevistar-cliente.md
-        
-2. Mapear fluxo de navegação do módulo
-        ↓ usar: prompts/mapear-fluxo.md
-        
-3. Documentar cada tela do módulo
-        ↓ usar: prompts/mapear-tela.md
-        
-4. Revisar e completar telas com pendências
-        ↓ usar: prompts/revisar-tela.md
-        
-5. Validar consistência entre as telas
-        ↓ usar: prompts/validar-consistencia.md
-        
-6. Gerar resumo para apresentação ou próxima etapa
-        ↓ usar: prompts/gerar-resumo.md
-        
-7. Estimar complexidade / planejar implementação
-        ↓ usar: prompts/estimar-complexidade.md
+1. Entrevista/reuniao com o cliente
+        ↓ usar: /entrevistar-cliente
+
+2. Definir o que entra no MVP
+        ↓ editar: docs/06-mvp.md
+
+3. Mapear fluxo de navegacao do modulo
+        ↓ usar: /mapear-fluxo [modulo]
+
+4. Documentar cada tela do modulo
+        ↓ usar: /mapear-tela [tela]
+        ↓ (ou /mapear-modulo para fazer tudo de uma vez)
+
+5. Revisar e completar telas com pendencias
+        ↓ usar: /revisar-tela [arquivo]
+
+6. Validar consistencia entre as telas
+        ↓ usar: /validar-consistencia
+
+7. Checar progresso
+        ↓ usar: /status
+
+8. Gerar entregaveis
+        ↓ usar: /gerar-resumo cliente  (para o cliente)
+        ↓ usar: /gerar-resumo dev      (para o time)
+        ↓ usar: /gerar-resumo lovable  (para iniciar o dev)
 ```
 
 ---
@@ -51,25 +76,29 @@ Repositório de especificação completa do FitnessApp: app mobile e web para al
 
 ```
 fitness-app-requirements/
+├── CLAUDE.md                           ← Contexto lido automaticamente pelo Claude Code
 ├── .claude/
-│   └── CLAUDE.md                    ← Contexto lido automaticamente pelo Claude Code
-├── prompts/
-│   ├── mapear-tela.md               ← Documentar nova tela do zero
-│   ├── revisar-tela.md              ← Completar tela com pendências
-│   ├── mapear-fluxo.md              ← Mapear fluxo de navegação
-│   ├── entrevistar-cliente.md       ← Conduzir/processar entrevista
-│   ├── gerar-resumo.md              ← Gerar resumo executivo
-│   ├── validar-consistencia.md      ← Checar inconsistências
-│   └── estimar-complexidade.md      ← Estimar complexidade e planejar dev
+│   └── commands/                       ← Custom commands (slash commands)
+│       ├── mapear-tela.md
+│       ├── revisar-tela.md
+│       ├── mapear-fluxo.md
+│       ├── mapear-modulo.md
+│       ├── entrevistar-cliente.md
+│       ├── validar-consistencia.md
+│       ├── gerar-resumo.md
+│       ├── estimar-complexidade.md
+│       └── status.md
+├── prompts/                            ← Prompts manuais (referencia)
 ├── docs/
-│   ├── 00-template-tela.md          ← Template padrão para novas telas
-│   ├── 01-visao-geral.md            ← Visão geral + índice de progresso
-│   ├── 02-personas.md               ← Personas e jornadas do usuário
-│   ├── 03-fluxos-de-navegacao.md    ← Mapa de navegação entre telas
-│   ├── 04-design-system.md          ← Cores, fontes, componentes base
-│   └── screens/
+│   ├── 00-template-tela.md             ← Template padrao para novas telas
+│   ├── 01-visao-geral.md              ← Indice mestre + status de cada tela
+│   ├── 02-personas.md                 ← Personas e jornadas do usuario
+│   ├── 03-fluxos-de-navegacao.md      ← Mapa de navegacao entre telas
+│   ├── 04-design-system.md            ← Cores, fontes, componentes base
+│   ├── 06-mvp.md                      ← Definicao do MVP vs futuro
+│   └── screens/                       ← Uma pasta por modulo, um .md por tela
 │       ├── auth/
-│       │   └── login.md             ← Exemplo de tela preenchida ✅
+│       │   └── login.md               ← Exemplo preenchido ✅
 │       ├── onboarding/
 │       ├── dashboard/
 │       ├── treinos/
@@ -79,23 +108,24 @@ fitness-app-requirements/
 │       ├── perfil/
 │       └── configuracoes/
 └── assets/
-    └── wireframes/                  ← Rascunhos e imagens de referência
+    └── wireframes/                     ← Rascunhos e imagens de referencia
 ```
 
 ---
 
 ## Status do Projeto
 
-Consulte `docs/01-visao-geral.md` para o índice completo e status de cada tela.
+Consulte `docs/01-visao-geral.md` para o indice completo e status de cada tela.
+Ou use `/status` no Claude Code para um resumo rapido.
 
 **Legenda:**
-- 🔴 NÃO INICIADO
-- 🟡 EM ANDAMENTO  
-- 🟠 PENDENTE REVISÃO
-- 🟢 CONCLUÍDO
+- 🔴 NAO INICIADO
+- 🟡 EM ANDAMENTO
+- 🟠 PENDENTE REVISAO
+- 🟢 CONCLUIDO
 
 ---
 
 ## Tela de Exemplo
 
-O arquivo `docs/screens/auth/login.md` está preenchido como **exemplo de referência** do nível de detalhe esperado para todas as telas.
+O arquivo `docs/screens/auth/login.md` esta preenchido como **exemplo de referencia** do nivel de detalhe esperado para todas as telas.

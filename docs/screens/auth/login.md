@@ -1,7 +1,7 @@
 # Tela: Login
 
-> **Exemplo de tela preenchida** para servir de referência de qualidade.
-> Use esta tela como modelo de nível de detalhe esperado.
+> **Exemplo de tela preenchida** para servir de referencia de qualidade.
+> Use esta tela como modelo de nivel de detalhe esperado.
 
 ---
 
@@ -9,83 +9,84 @@
 | Campo | Valor |
 |---|---|
 | **Nome da tela** | Login |
-| **Módulo** | Autenticação |
-| **Status** | 🟠 PENDENTE REVISÃO |
-| **Última atualização** | — |
+| **Modulo** | Autenticacao |
+| **Prioridade** | 🔵 MVP |
+| **Status** | 🟠 PENDENTE REVISAO |
+| **Ultima atualizacao** | — |
 
 ---
 
 ## 1. Objetivo da Tela
-Permitir que um usuário já cadastrado acesse sua conta no app. É a tela de entrada para usuários que já realizaram o cadastro anteriormente.
+Permitir que um usuario ja cadastrado acesse sua conta no app. E a tela de entrada para usuarios que ja realizaram o cadastro anteriormente.
 
 ---
 
-## 2. Quem Acessa / Pré-condições
-- **Usuário:** Qualquer visitante (não autenticado)
-- **Pré-condições:**
-  - Usuário deve ter uma conta cadastrada
-  - App aberto pela primeira vez ou sessão expirada
-- **Permissões especiais:** Nenhuma
+## 2. Quem Acessa / Pre-condicoes
+- **Usuario:** Qualquer visitante (nao autenticado)
+- **Pre-condicoes:**
+  - Usuario deve ter uma conta cadastrada
+  - App aberto pela primeira vez ou sessao expirada
+- **Permissoes especiais:** Nenhuma
 
 ---
 
 ## 3. Layout e Componentes Visuais
 
-### 3.1 Header / Cabeçalho
-- Sem botão de voltar (tela raiz do fluxo de auth)
+### 3.1 Header / Cabecalho
+- Sem botao de voltar (tela raiz do fluxo de auth)
 - Logo do app centralizada no topo
-- Sem título de página
+- Sem titulo de pagina
 
 ### 3.2 Corpo Principal
 
-**Seção 1 — Boas-vindas**
+**Secao 1 — Boas-vindas**
 - Texto: "Bem-vindo de volta!"
 - Subtexto: "Entre na sua conta para continuar"
 
-**Seção 2 — Formulário**
+**Secao 2 — Formulario**
 - Campo: E-mail
 - Campo: Senha
-- Link: "Esqueci minha senha" (alinhado à direita, abaixo do campo de senha)
+- Link: "Esqueci minha senha" (alinhado a direita, abaixo do campo de senha)
 
-**Seção 3 — Ação Principal**
-- Botão primário: "Entrar"
+**Secao 3 — Acao Principal**
+- Botao primario: "Entrar"
 
-**Seção 4 — Divisor**
-- Linha divisória com texto "ou" centralizado
+**Secao 4 — Divisor**
+- Linha divisoria com texto "ou" centralizado
 
-**Seção 5 — Login Social** *(⚠️ PENDENTE: confirmar se haverá)*
-- Botão "Continuar com Google"
-- Botão "Continuar com Apple" *(apenas iOS)*
+**Secao 5 — Login Social** *(⚠️ PENDENTE: confirmar se havera)*
+- Botao "Continuar com Google"
+- Botao "Continuar com Apple" *(apenas iOS)*
 
-### 3.3 Footer / Rodapé
-- Texto: "Não tem uma conta?"
+### 3.3 Footer / Rodape
+- Texto: "Nao tem uma conta?"
 - Link: "Cadastre-se" → navega para tela de Cadastro
 - Fixo na parte inferior da tela, acima do teclado
 
 ---
 
-## 4. Campos e Formulários
+## 4. Campos e Formularios
 
-| # | Nome do Campo | Tipo | Obrigatório | Placeholder | Validação | Mensagem de Erro |
+| # | Nome do Campo | Tipo | Obrigatorio | Placeholder | Validacao | Mensagem de Erro |
 |---|---|---|---|---|---|---|
-| 1 | E-mail | Email | Sim | "seu@email.com" | Formato de e-mail válido | "Digite um e-mail válido" |
-| 2 | Senha | Password | Sim | "Sua senha" | Mínimo 8 caracteres | "A senha deve ter ao menos 8 caracteres" |
+| 1 | E-mail | Email | Sim | "seu@email.com" | Formato de e-mail valido | "Digite um e-mail valido" |
+| 2 | Senha | Password | Sim | "Sua senha" | Minimo 8 caracteres | "A senha deve ter ao menos 8 caracteres" |
 
 ### Regras de Preenchimento
-- Campo de senha com botão de mostrar/ocultar (ícone de olho)
+- Campo de senha com botao de mostrar/ocultar (icone de olho)
 - E-mail deve ser convertido para lowercase antes de enviar
 - Ambos os campos perdem o foco ao clicar fora (dismiss keyboard no mobile)
 
 ---
 
-## 5. Botões e Ações
+## 5. Botoes e Acoes
 
-| # | Componente | Label / Ícone | Posição | Estado Inicial | Ação ao Clicar |
+| # | Componente | Label / Icone | Posicao | Estado Inicial | Acao ao Clicar |
 |---|---|---|---|---|---|
-| 1 | Botão primário | "Entrar" | Abaixo do formulário | Habilitado | Valida campos → chama API → navega para Dashboard |
+| 1 | Botao primario | "Entrar" | Abaixo do formulario | Habilitado | Valida campos → autentica → navega para Dashboard |
 | 2 | Link texto | "Esqueci minha senha" | Abaixo do campo senha | Ativo | Navega para Recuperar Senha |
-| 3 | Botão secundario | "Continuar com Google" | Seção social | Ativo | Inicia OAuth Google |
-| 4 | Botão secundario | "Continuar com Apple" | Seção social (iOS only) | Ativo | Inicia Sign In with Apple |
+| 3 | Botao secundario | "Continuar com Google" | Secao social | Ativo | Inicia OAuth Google |
+| 4 | Botao secundario | "Continuar com Apple" | Secao social (iOS only) | Ativo | Inicia Sign In with Apple |
 | 5 | Link texto | "Cadastre-se" | Footer | Ativo | Navega para Cadastro |
 
 ---
@@ -94,36 +95,39 @@ Permitir que um usuário já cadastrado acesse sua conta no app. É a tela de en
 
 ### 6.1 Estado Inicial / Vazio
 - Campos em branco
-- Botão "Entrar" habilitado (validação acontece ao submeter, não em tempo real)
-- ⚠️ PENDENTE: Discutir se o botão deve ficar desabilitado até o formulário ser preenchido
+- Botao "Entrar" habilitado (validacao acontece ao submeter, nao em tempo real)
+- ⚠️ PENDENTE: Discutir se o botao deve ficar desabilitado ate o formulario ser preenchido
 
 ### 6.2 Estado de Carregamento (Loading)
-- Ao clicar "Entrar": spinner substitui o texto do botão + botão desabilitado
+- Ao clicar "Entrar": spinner substitui o texto do botao + botao desabilitado
 - Campos ficam desabilitados durante o loading
-- Duração: até resposta da API
+- Duracao: ate resposta da API
 
 ### 6.3 Estado de Erro
-- **Campos inválidos:** Borda vermelha + mensagem abaixo do campo específico
+- **Campos invalidos:** Borda vermelha + mensagem abaixo do campo especifico
 - **Credenciais incorretas:** Toast vermelho no topo "E-mail ou senha incorretos"
-- **Sem conexão:** Toast "Sem conexão com a internet. Verifique sua rede."
+- **Sem conexao:** Toast "Sem conexao com a internet. Verifique sua rede."
 - **Erro do servidor (5xx):** Toast "Erro no servidor. Tente novamente em instantes."
 
 ### 6.4 Estado de Sucesso
 - Toast verde discreto: "Login realizado com sucesso!"
 - Redirect imediato para o Dashboard
 
+### 6.5 Estado Desabilitado / Bloqueado
+- N/A — Tela de login nao tem estado bloqueado
+
 ---
 
-## 7. Fluxo de Navegação
+## 7. Fluxo de Navegacao
 
-### De onde o usuário chega nesta tela
+### De onde o usuario chega nesta tela
 | Origem | Gatilho |
 |---|---|
-| Splash Screen | Usuário não possui sessão ativa |
-| Tela de Cadastro | Clica em "Já tenho conta" |
-| Tela Recuperar Senha | Após redefinir senha com sucesso |
+| Splash Screen | Usuario nao possui sessao ativa |
+| Tela de Cadastro | Clica em "Ja tenho conta" |
+| Tela Recuperar Senha | Apos redefinir senha com sucesso |
 
-### Para onde o usuário pode ir desta tela
+### Para onde o usuario pode ir desta tela
 | Destino | Gatilho |
 |---|---|
 | Dashboard | Login bem-sucedido |
@@ -132,14 +136,38 @@ Permitir que um usuário já cadastrado acesse sua conta no app. É a tela de en
 
 ---
 
-## 8. Regras de Negócio 
-- RN01: Definir política de tentativas falhas (bloqueio temporário?)
-- RN02: Opção de login com Apple só aparece em dispositivos iOS
+## 8. Regras de Negocio
+- RN01: ⚠️ PENDENTE — Definir politica de tentativas falhas (bloqueio temporario? captcha?)
+- RN02: Opcao de login com Apple so aparece em dispositivos iOS
+- RN03: Token JWT expira em ⚠️ PENDENTE (sugestao: 7 dias com refresh token de 30 dias)
+- RN04: ⚠️ PENDENTE — "Manter conectado" (remember me) sera uma opcao?
 
 ---
 
-## 9. Histórico de Alterações
+## 9. Responsividade (Mobile vs Web)
 
-| Data | Autor | Descrição |
+| Aspecto | Mobile | Web |
 |---|---|---|
-| — | — | Criação inicial como exemplo de referência |
+| Layout | Tela cheia, formulario centralizado verticalmente | Card centralizado, max-width 480px, fundo com cor/pattern |
+| Login social | Google + Apple (iOS) | Apenas Google |
+| Teclado | Formulario sobe ao abrir teclado virtual | N/A |
+| Logo | Menor, acima do titulo | Maior, com mais espaco |
+
+---
+
+## 10. Acessibilidade
+
+- Labels acessiveis nos campos de e-mail e senha (`aria-label` / `accessibilityLabel`)
+- Botao de mostrar/ocultar senha com label descritivo ("Mostrar senha" / "Ocultar senha")
+- Contraste minimo WCAG 2.1 AA para textos e botoes
+- Tab order: E-mail → Senha → Entrar → Esqueci senha → Login social → Cadastre-se
+- Toast de erro anunciado por screen reader (`aria-live="assertive"`)
+
+---
+
+## 11. Historico de Alteracoes
+
+| Data | Autor | Descricao |
+|---|---|---|
+| — | — | Criacao inicial como exemplo de referencia |
+| — | Opus 4.6 | Adicionadas secoes: Dados/Entidades, Responsividade, Acessibilidade, Prioridade MVP |

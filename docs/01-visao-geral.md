@@ -42,13 +42,26 @@
 
 ---
 
+## Documentos do Projeto
+
+| Documento | Descrição |
+|---|---|
+| `00-template-tela.md` | Template padrão para documentar telas |
+| `01-visao-geral.md` | Este arquivo — índice mestre |
+| `02-personas.md` | Personas e jornadas do usuário |
+| `03-fluxos-de-navegacao.md` | Mapa de navegação entre telas |
+| `04-design-system.md` | Cores, fontes, componentes base |
+| `06-mvp.md` | Definição do MVP vs futuro |
+
+---
+
 ## Índice de Telas e Status
 
 ### 🔐 Autenticação
 | Tela | Arquivo | Status |
 |---|---|---|
 | Splash Screen | `screens/auth/splash.md` | 🔴 NÃO INICIADO |
-| Login | `screens/auth/login.md` | 🔴 NÃO INICIADO |
+| Login | `screens/auth/login.md` | 🟠 PENDENTE REVISÃO |
 | Cadastro | `screens/auth/cadastro.md` | 🔴 NÃO INICIADO |
 | Recuperar Senha | `screens/auth/recuperar-senha.md` | 🔴 NÃO INICIADO |
 | Redefinir Senha | `screens/auth/redefinir-senha.md` | 🔴 NÃO INICIADO |
@@ -116,10 +129,11 @@
 
 ## Progresso Geral
 
-- Total de telas mapeadas: 0 / 28
+- Total de telas mapeadas: 1 / 28
 - Concluídas: 0
 - Em andamento: 0
-- Pendentes: 28
+- Pendente revisão: 1 (Login)
+- Não iniciadas: 27
 
 ---
 

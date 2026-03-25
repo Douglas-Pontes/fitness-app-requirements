@@ -1,7 +1,8 @@
-# Template de Tela — [NOME DA TELA]
+# Tela: [NOME DA TELA]
 
-> **Instruções:** Copie este arquivo para a pasta correspondente, renomeie e preencha todos os campos.
-> Campos marcados com ⚠️ PENDENTE precisam ser resolvidos antes de considerar a tela como concluída.
+> **Instrucoes:** Copie este arquivo para a pasta correspondente, renomeie e preencha todos os campos.
+> Campos marcados com ⚠️ PENDENTE precisam ser resolvidos antes de considerar a tela como concluida.
+> Se uma secao nao se aplica a esta tela, escreva "N/A" — nao deixe vazio.
 
 ---
 
@@ -9,135 +10,157 @@
 | Campo | Valor |
 |---|---|
 | **Nome da tela** | |
-| **Módulo** | ex: Autenticação, Treinos |
-| **Status** | 🔴 NÃO INICIADO |
-| **Última atualização** | |
+| **Modulo** | ex: Autenticacao, Treinos |
+| **Prioridade** | 🔵 MVP / 🟣 Pos-MVP / ⚪ Futuro |
+| **Status** | 🔴 NAO INICIADO |
+| **Ultima atualizacao** | |
 
 ---
 
 ## 1. Objetivo da Tela
-> O que o usuário consegue fazer nesta tela? Qual problema ela resolve?
+> O que o usuario consegue fazer nesta tela? Qual problema ela resolve?
 
-_Descrever em 2-3 frases o propósito desta tela._
+_Descrever em 2-3 frases o proposito desta tela._
 
 ---
 
-## 2. Quem Acessa / Pré-condições
-> Quem pode ver esta tela? Quais condições precisam ser verdadeiras?
+## 2. Quem Acessa / Pre-condicoes
+> Quem pode ver esta tela? Quais condicoes precisam ser verdadeiras?
 
-- **Usuário:** ex: Aluno autenticado / Visitante / Qualquer usuário
-- **Pré-condições:**
-  - ex: Usuário deve estar logado
+- **Usuario:** ex: Aluno autenticado / Visitante / Qualquer usuario
+- **Pre-condicoes:**
+  - ex: Usuario deve estar logado
   - ex: Deve ter ao menos uma rotina cadastrada
-- **Permissões especiais:** ex: Nenhuma / Plano Premium
+- **Permissoes especiais:** ex: Nenhuma / Plano Premium
 
 ---
 
 ## 3. Layout e Componentes Visuais
 > Descreva a estrutura visual da tela de cima para baixo.
 
-### 3.1 Header / Cabeçalho
-- Conteúdo: ex: Botão voltar + Título "Login" + ícone de ajuda
-- Comportamento: ex: Fixo no topo / Scroll junto com conteúdo
+### 3.1 Header / Cabecalho
+- Conteudo: ex: Botao voltar + Titulo "Login" + icone de ajuda
+- Comportamento: ex: Fixo no topo / Scroll junto com conteudo
 
 ### 3.2 Corpo Principal
-> Descrever seções da tela, na ordem que aparecem
+> Descrever secoes da tela, na ordem que aparecem
 
-**Seção 1 — [Nome]**
-- Componente: ex: Card, Lista, Formulário, Carrossel
-- Conteúdo: ex: Lista de exercícios com nome, grupo muscular e imagem
+**Secao 1 — [Nome]**
+- Componente: ex: Card, Lista, Formulario, Carrossel
+- Conteudo: ex: Lista de exercicios com nome, grupo muscular e imagem
 - Comportamento: ex: Scroll vertical infinito
 
-**Seção 2 — [Nome]**
+**Secao 2 — [Nome]**
 - ...
 
-### 3.3 Footer / Rodapé
-- Conteúdo: ex: Barra de navegação inferior / Botão de ação flutuante (FAB)
+### 3.3 Footer / Rodape
+- Conteudo: ex: Barra de navegacao inferior / Botao de acao flutuante (FAB)
 - Comportamento: ex: Fixo na parte inferior
 
 ---
 
-## 4. Campos e Formulários
+## 4. Campos e Formularios
 
 > Preencher apenas se a tela tiver campos de entrada (inputs, selects, etc.)
+> Se nao houver formularios, escreva "N/A — Tela sem formularios"
 
-| # | Nome do Campo | Tipo | Obrigatório | Placeholder | Validação | Mensagem de Erro |
+| # | Nome do Campo | Tipo | Obrigatorio | Placeholder | Validacao | Mensagem de Erro |
 |---|---|---|---|---|---|---|
-| 1 | ex: E-mail | Text / Email | Sim | "seu@email.com" | Formato de e-mail válido | "Digite um e-mail válido" |
-| 2 | ex: Senha | Password | Sim | "Sua senha" | Mínimo 8 caracteres | "Senha deve ter ao menos 8 caracteres" |
-| 3 | | | | | | |
+| 1 | ex: E-mail | Text / Email | Sim | "seu@email.com" | Formato de e-mail valido | "Digite um e-mail valido" |
+| 2 | ex: Senha | Password | Sim | "Sua senha" | Minimo 8 caracteres | "Senha deve ter ao menos 8 caracteres" |
 
 ### Regras de Preenchimento
-- ex: O campo "Peso" deve aceitar apenas números decimais com vírgula
+- ex: O campo "Peso" deve aceitar apenas numeros decimais com virgula
 - ex: O campo "Data" deve bloquear datas futuras
 
 ---
 
-## 5. Botões e Ações
+## 5. Botoes e Acoes
 
-| # | Componente | Label / Ícone | Posição | Estado Inicial | Ação ao Clicar |
+| # | Componente | Label / Icone | Posicao | Estado Inicial | Acao ao Clicar |
 |---|---|---|---|---|---|
-| 1 | Botão primário | "Entrar" | Centro inferior | Desabilitado até formulário válido | Chama API de login → navega para Dashboard |
+| 1 | Botao primario | "Entrar" | Centro inferior | Desabilitado ate formulario valido | Chama API de login → navega para Dashboard |
 | 2 | Link | "Esqueci minha senha" | Abaixo do campo senha | Ativo | Navega para tela Recuperar Senha |
-| 3 | Botão secundário | "Criar conta" | Rodapé | Ativo | Navega para tela Cadastro |
 
 ---
 
 ## 6. Estados da Tela
 
 ### 6.1 Estado Inicial / Vazio
-> O que o usuário vê quando abre a tela pela primeira vez ou não há dados?
-- ex: Campos em branco, botão "Entrar" desabilitado
-- ex: Ilustração + mensagem "Você ainda não tem treinos. Crie o primeiro!"
+> O que o usuario ve quando abre a tela pela primeira vez ou nao ha dados?
+- ex: Campos em branco, botao "Entrar" desabilitado
+- ex: Ilustracao + mensagem "Voce ainda nao tem treinos. Crie o primeiro!"
 
 ### 6.2 Estado de Carregamento (Loading)
-> O que aparece enquanto uma ação está sendo processada?
-- ex: Spinner sobre o botão "Entrar", botão desabilitado durante a requisição
-- ex: Skeleton loader nas seções de conteúdo
+> O que aparece enquanto uma acao esta sendo processada?
+- ex: Spinner sobre o botao "Entrar", botao desabilitado durante a requisicao
+- ex: Skeleton loader nas secoes de conteudo
 
 ### 6.3 Estado de Erro
-> Como os erros são exibidos?
+> Como os erros sao exibidos?
 - **Erro de campo:** ex: Borda vermelha + mensagem abaixo do campo
-- **Erro de rede:** ex: Toast na parte superior "Sem conexão. Tente novamente."
+- **Erro de rede:** ex: Toast na parte superior "Sem conexao. Tente novamente."
 - **Erro da API:** ex: Toast "E-mail ou senha incorretos"
 
 ### 6.4 Estado de Sucesso
-> O que acontece após uma ação bem-sucedida?
-- ex: Toast "Login realizado com sucesso!" + redirect automático em 1s
+> O que acontece apos uma acao bem-sucedida?
+- ex: Toast "Login realizado com sucesso!" + redirect automatico em 1s
 
-### 6.5 Estado Desabilitado / Bloqueado *(se aplicável)*
-- ex: Tela bloqueada para usuários do plano gratuito com banner de upgrade
+### 6.5 Estado Desabilitado / Bloqueado *(se aplicavel)*
+- ex: Tela bloqueada para usuarios do plano gratuito com banner de upgrade
 
 ---
 
-## 7. Fluxo de Navegação
+## 7. Fluxo de Navegacao
 
-### De onde o usuário chega nesta tela
+### De onde o usuario chega nesta tela
 | Origem | Gatilho |
 |---|---|
-| ex: Tela de Splash | Usuário não está autenticado |
-| ex: Tela de Cadastro | Clica em "Já tenho conta" |
+| ex: Tela de Splash | Usuario nao esta autenticado |
+| ex: Tela de Cadastro | Clica em "Ja tenho conta" |
 
-### Para onde o usuário pode ir desta tela
+### Para onde o usuario pode ir desta tela
 | Destino | Gatilho |
 |---|---|
 | ex: Dashboard | Login bem-sucedido |
 | ex: Recuperar Senha | Clica em "Esqueci minha senha" |
-| ex: Cadastro | Clica em "Criar conta" |
 
 ---
 
-## 8. Regras de Negócio
-> Regras específicas que impactam o comportamento desta tela.
+## 8. Regras de Negocio
+> Regras especificas que impactam o comportamento desta tela.
 
-- RN01: ex: Após 3 tentativas de login incorretas, exibir captcha
-- RN02: ex: Token de sessão expira em 30 dias
-- RN03: ...
+- RN01: ex: Apos 3 tentativas de login incorretas, exibir captcha
+- RN02: ex: Token de sessao expira em 30 dias
 
 ---
 
-## 9. Histórico de Alterações
+## 9. Responsividade (Mobile vs Web)
+> Diferencas de comportamento ou layout entre plataformas.
 
-| Data | Autor | Descrição |
+| Aspecto | Mobile | Web |
 |---|---|---|
-| | | Criação inicial do documento |
+| ex: Login social | Google + Apple | Apenas Google |
+| ex: Layout | Tela cheia | Card centralizado max-width 480px |
+| ex: Teclado | Formulario sobe ao abrir teclado | N/A |
+
+> Se nao houver diferencas, escreva "Comportamento identico em ambas as plataformas"
+
+---
+
+## 10. Acessibilidade
+> Consideracoes de acessibilidade para esta tela.
+
+- Labels acessiveis em todos os campos de formulario
+- Contraste de cores conforme WCAG 2.1 AA
+- Navegacao por teclado (tab order logica)
+- Textos alternativos em imagens e icones decorativos
+- _(Adicionar consideracoes especificas da tela)_
+
+---
+
+## 11. Historico de Alteracoes
+
+| Data | Autor | Descricao |
+|---|---|---|
+| | | Criacao inicial do documento |

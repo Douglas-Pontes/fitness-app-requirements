@@ -88,9 +88,48 @@
 
 ---
 
+## Fluxo 3 — Perfil do Aluno
+
+```
+[Meu Perfil]  ← Tab Bar (ícone Perfil)
+    │
+    ├── Toque na foto → [Modal: Atualizar Foto]
+    │       ↓
+    │   Câmera / Galeria → foto salva → [Meu Perfil]
+    │
+    ├── Card "Dados Pessoais" → [Editar Perfil]
+    │       │
+    │       ├── Salvar com sucesso → [Meu Perfil]
+    │       └── Voltar (sem salvar) → alerta "Descartar?" → [Meu Perfil]
+    │
+    ├── Card "Avaliações" → [Lista de Avaliações]
+    │       │
+    │       ├── Nova Avaliação → seletor de tipo
+    │       │       ├── "Avaliação Completa" → [Nova Avaliação Completa]
+    │       │       └── "Anamnese" → [Nova Anamnese]
+    │       │
+    │       ├── Toque em avaliação existente → [Detalhe da Avaliação]
+    │       │       └── Exibe último valor de cada campo registrado
+    │       │
+    │       ├── "Comparar" → [Comparar Avaliações]
+    │       │       └── Usuário seleciona 2 avaliações → exibe comparação lado a lado
+    │       │
+    │       └── "Ver evolução" → [Evolução / Gráficos]
+    │               └── Gráficos das últimas 4–5 avaliações
+    │
+    └── Card "Minha Dieta" (Pós-MVP) → [Minha Dieta]
+            │
+            └── "Ver histórico" → [Histórico de Dietas]
+```
+
+> ⚠️ Fluxo do Personal Trainer (como acessa o perfil do aluno) ainda não mapeado — aguarda decisão sobre vínculo PT-Aluno.
+
+---
+
 ## ⚠️ Pontos Pendentes de Definição
 
 - Haverá deep link por notificação push? (ex: lembrete de treino)
 - Como funciona a navegação entre tabs durante um treino ativo?
 - Haverá onboarding de feature (tooltips) além do onboarding inicial?
-- 
+- Como Personal Trainer navega para o perfil de um aluno vinculado?
+- Como Nutricionista acessa o app para cadastrar dietas?

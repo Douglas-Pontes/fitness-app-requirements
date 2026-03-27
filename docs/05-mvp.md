@@ -64,10 +64,21 @@ O MVP deve permitir que um aluno de musculacao:
 | Catalogo de Exercicios | Buscar exercicios ao montar rotina |
 | Detalhe do Exercicio | Ver como executar o exercicio |
 
+#### Avaliações
+| Tela | Justificativa |
+|---|---|
+| Lista de Avaliações | Hub do módulo; acesso ao histórico |
+| Nova Avaliação Completa | Registro de medidas, dobras, bioimpedância e fotos — tudo em uma avaliação |
+| Nova Anamnese | Tipo separado de avaliação com campos de histórico de saúde |
+| Detalhe da Avaliação | Ver resultado completo de uma avaliação; exibe último valor de cada campo |
+| Comparar Avaliações | Usuário escolhe 2 avaliações para comparar lado a lado |
+| Evolução / Gráficos | Gráficos comparativos das últimas 4–5 avaliações |
+
 #### Perfil
 | Tela | Justificativa |
 |---|---|
-| Meu Perfil | Ver seus dados |
+| Meu Perfil | Hub do perfil — acesso a dados, avaliações e dieta |
+| Editar Perfil | Preencher/editar dados pessoais e físicos |
 
 ---
 
@@ -80,12 +91,9 @@ O MVP deve permitir que um aluno de musculacao:
 | Treinos | Detalhe do Treino (historico) | Ver detalhes de um treino passado — pode vir depois do basico |
 | Rotinas | Editar Rotina | No MVP o usuario cria, mas para editar pode recriar |
 | Exercicios | Busca de Exercicios | No MVP, busca pode ser integrada no catalogo sem tela separada |
-| Avaliacoes | Lista de Avaliacoes | Modulo inteiro fica pos-MVP |
-| Avaliacoes | Nova Avaliacao | Modulo inteiro fica pos-MVP |
-| Avaliacoes | Detalhe da Avaliacao | Modulo inteiro fica pos-MVP |
-| Avaliacoes | Evolucao / Graficos | Modulo inteiro fica pos-MVP |
-| Perfil | Editar Perfil | No MVP, editar pode ser via re-onboarding |
 | Perfil | Minhas Metas | Feature de engajamento — pos-MVP |
+| Dieta | Minha Dieta | Nutricionista cadastra dieta; aluno/PT visualizam. Depende de role de Nutricionista. |
+| Dieta | Historico de Dietas | Ver dietas anteriores cadastradas pelo nutricionista |
 
 ---
 
@@ -94,7 +102,8 @@ O MVP deve permitir que um aluno de musculacao:
 | Feature | Descricao | Depende de |
 |---|---|---|
 | Login Social (Google/Apple) | OAuth com provedores | Decisao do cliente |
-| Role de Personal Trainer | Painel do PT, vincular alunos | Decisao do modelo de negocio |
+| Painel do Personal Trainer | Visao geral dos alunos, historico, agendamento | Role de PT confirmado — telas a mapear |
+| Painel do Nutricionista | Cadastro e gestao de dietas por aluno | Role de Nutricionista confirmado — telas a mapear |
 | Modo Offline | Treinar sem internet, sync depois | Arquitetura de sync |
 | Notificacoes Push | Lembrete de treino, motivacao | Infra de push notifications |
 | Tema Escuro | Dark mode | Design system finalizado |
@@ -109,10 +118,10 @@ O MVP deve permitir que um aluno de musculacao:
 
 | Categoria | Telas |
 |---|---|
-| 🔵 MVP | 15 telas |
-| 🟣 Pos-MVP | 10 telas |
-| ⚪ Futuro | Features avulsas |
-| **Total mapeado** | **25+ telas** |
+| 🔵 MVP | 22 telas |
+| 🟣 Pos-MVP | 7 telas |
+| ⚪ Futuro | Features avulsas (inclui paineis de PT e Nutricionista) |
+| **Total mapeado** | **32+ telas** |
 
 ---
 

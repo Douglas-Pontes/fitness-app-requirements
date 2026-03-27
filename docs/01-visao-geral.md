@@ -37,7 +37,8 @@
 | Tipo | Descrição | Acesso |
 |---|---|---|
 | Aluno | Praticante de musculação | App completo |
-| ⚠️ | Definir se haverá Personal Trainer | ⚠️ |
+| Personal Trainer | Profissional vinculado ao aluno — visualiza perfil e avaliações, realiza avaliações | ✅ Confirmado (2026-03-27) |
+| Nutricionista | Profissional vinculado ao aluno — cadastra dietas; aluno e PT apenas visualizam | ✅ Confirmado (2026-03-27) |
 | ⚠️ | Definir se haverá Admin/Academia | ⚠️ |
 
 ---
@@ -108,16 +109,24 @@
 | Tela | Arquivo | Status |
 |---|---|---|
 | Lista de Avaliações | `screens/avaliacoes/lista-avaliacoes.md` | 🔴 NÃO INICIADO |
-| Nova Avaliação | `screens/avaliacoes/nova-avaliacao.md` | 🔴 NÃO INICIADO |
+| Nova Avaliação Completa | `screens/avaliacoes/nova-avaliacao-completa.md` | 🔴 NÃO INICIADO |
+| Nova Anamnese | `screens/avaliacoes/nova-anamnese.md` | 🔴 NÃO INICIADO |
 | Detalhe da Avaliação | `screens/avaliacoes/detalhe-avaliacao.md` | 🔴 NÃO INICIADO |
+| Comparar Avaliações | `screens/avaliacoes/comparar-avaliacoes.md` | 🔴 NÃO INICIADO |
 | Evolução / Gráficos | `screens/avaliacoes/evolucao.md` | 🔴 NÃO INICIADO |
 
 ### 👤 Perfil
 | Tela | Arquivo | Status |
 |---|---|---|
-| Meu Perfil | `screens/perfil/meu-perfil.md` | 🔴 NÃO INICIADO |
-| Editar Perfil | `screens/perfil/editar-perfil.md` | 🔴 NÃO INICIADO |
+| Meu Perfil | `screens/perfil/meu-perfil.md` | 🟡 EM ANDAMENTO |
+| Editar Perfil | `screens/perfil/editar-perfil.md` | 🟡 EM ANDAMENTO |
 | Minhas Metas | `screens/perfil/minhas-metas.md` | 🔴 NÃO INICIADO |
+
+### 🥗 Dieta *(Pós-MVP)*
+| Tela | Arquivo | Status |
+|---|---|---|
+| Minha Dieta | `screens/dieta/minha-dieta.md` | 🔴 NÃO INICIADO |
+| Histórico de Dietas | `screens/dieta/historico-dietas.md` | 🔴 NÃO INICIADO |
 
 ### ⚙️ Configurações
 | Tela | Arquivo | Status |
@@ -129,11 +138,11 @@
 
 ## Progresso Geral
 
-- Total de telas mapeadas: 1 / 28
+- Total de telas mapeadas: 3 / 32
 - Concluídas: 0
-- Em andamento: 0
+- Em andamento: 2 (Meu Perfil, Editar Perfil)
 - Pendente revisão: 1 (Login)
-- Não iniciadas: 27
+- Não iniciadas: 29
 
 ---
 
@@ -142,7 +151,12 @@
 | # | Decisão | Impacto | Responsável | Prazo |
 |---|---|---|---|---|
 | 1 | Login social (Google/Apple)? | Auth + Cadastro | ⚠️ | ⚠️ |
-| 2 | Haverá role de Personal Trainer? | Toda a arquitetura | ⚠️ | ⚠️ |
+| ~~2~~ | ~~Haverá role de Personal Trainer?~~ | ✅ **RESOLVIDO** — Sim, PT é um role. Visualiza perfil e avaliações, realiza avaliações do aluno. | Douglas | 2026-03-27 |
 | 3 | App tem modo offline? | Treino em andamento | ⚠️ | ⚠️ |
 | 4 | Vídeos de exercícios ou só fotos? | Exercícios + Storage | ⚠️ | ⚠️ |
 | 5 | Plano gratuito x pago? Quais limites? | Modelo de negócio | ⚠️ | ⚠️ |
+| 6 | Como PT se vincula ao aluno? | Auth + Arquitetura de roles | ⚠️ | ⚠️ |
+| 7 | Como Nutricionista se vincula ao aluno? | Auth + Módulo Dieta | ⚠️ | ⚠️ |
+| 8 | PT e Nutricionista têm login próprio no app? | Arquitetura de auth | ⚠️ | ⚠️ |
+| 9 | Quais campos compõem a Anamnese? | Tela Nova Anamnese | ⚠️ | ⚠️ |
+| 10 | Avaliação Completa: todos os campos em uma única tela/sessão ou por etapas? | UX de Avaliações | ⚠️ | ⚠️ |

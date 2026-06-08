@@ -254,6 +254,23 @@ E sugere a ordem em que as coisas devem ser implementadas.
 
 ---
 
+### /visualizar-tela
+
+**O que faz:** Gera um mockup visual (uma página HTML) de uma tela que você já documentou, para você **ver** como ela ficaria — usando as cores, fontes e estilo da marca Vela.
+
+**Quando usar:** Depois de documentar uma tela com `/mapear-tela`, quando quiser conferir visualmente se o que foi descrito faz sentido. É só para conferência — **não** é o app de verdade, **não** vira código de produção.
+
+**Como usar:**
+```
+/visualizar-tela docs/screens/perfil/meu-perfil.md
+```
+
+(Informe o caminho do arquivo da tela)
+
+**O que acontece:** O Claude lê o documento da tela e a identidade da marca, e gera um arquivo `.html` em `mockups/[modulo]/[nome-da-tela].html`. O mockup mostra a tela dentro de um **frame de celular** e, ao lado, os principais estados descritos no doc (vazia, carregando, erro, sucesso). Para visualizar, é só abrir o arquivo `.html` no navegador (duplo clique).
+
+---
+
 ## Fluxo de trabalho — passo a passo do dia a dia
 
 ### Sessão típica de trabalho
@@ -335,3 +352,4 @@ E sugere a ordem em que as coisas devem ser implementadas.
 | `/validar-consistencia` | Checar erros entre documentos | A cada 5-10 telas documentadas |
 | `/gerar-resumo` | Criar resumos para diferentes públicos | Antes de entregas |
 | `/estimar-complexidade` | Estimar esforço de desenvolvimento | Antes de iniciar o dev |
+| `/visualizar-tela` | Gerar mockup HTML de uma tela para conferência visual | Após documentar uma tela |

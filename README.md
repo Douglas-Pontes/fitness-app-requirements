@@ -33,6 +33,7 @@ Estes comandos sao invocados diretamente no Claude Code digitando `/` + nome:
 | `/validar-consistencia` | Checa inconsistencias entre documentos | `/validar-consistencia` ou `/validar-consistencia Treinos` |
 | `/gerar-resumo` | Gera resumo executivo ou briefing | `/gerar-resumo cliente` ou `/gerar-resumo lovable` |
 | `/estimar-complexidade` | Estima complexidade de desenvolvimento | `/estimar-complexidade` |
+| `/visualizar-tela` | Gera mockup HTML (Tailwind) de uma tela para conferencia visual | `/visualizar-tela docs/screens/perfil/meu-perfil.md` |
 | `/status` | Ve progresso atual do documento | `/status` |
 
 > Os prompts manuais em `prompts/` continuam disponiveis como referencia, mas os custom commands acima sao a forma recomendada de trabalhar.
@@ -46,7 +47,7 @@ Estes comandos sao invocados diretamente no Claude Code digitando `/` + nome:
         ↓ usar: /entrevistar-cliente
 
 2. Definir o que entra no MVP
-        ↓ editar: docs/06-mvp.md
+        ↓ editar: docs/05-mvp.md
 
 3. Mapear fluxo de navegacao do modulo
         ↓ usar: /mapear-fluxo [modulo]
@@ -87,18 +88,20 @@ fitness-app-requirements/
 │       ├── validar-consistencia.md
 │       ├── gerar-resumo.md
 │       ├── estimar-complexidade.md
-│       └── status.md
+│       ├── status.md
+│       └── visualizar-tela.md
 ├── prompts/                            ← Prompts manuais (referencia)
+├── mockups/                            ← Mockups HTML (Tailwind) gerados por /visualizar-tela
 ├── docs/
 │   ├── 00-template-tela.md             ← Template padrao para novas telas
 │   ├── 01-visao-geral.md              ← Indice mestre + status de cada tela
 │   ├── 02-personas.md                 ← Personas e jornadas do usuario
 │   ├── 03-fluxos-de-navegacao.md      ← Mapa de navegacao entre telas
-│   ├── 04-design-system.md            ← Cores, fontes, componentes base
-│   ├── 06-mvp.md                      ← Definicao do MVP vs futuro
+│   ├── 04-identidade-de-marca.md      ← Marca Vela: conceito, paleta, logo, categorias
+│   ├── 05-mvp.md                      ← Definicao do MVP vs futuro
+│   ├── guia-de-uso.md                 ← Guia de uso dos comandos do projeto
 │   └── screens/                       ← Uma pasta por modulo, um .md por tela
 │       ├── auth/
-│       │   └── login.md               ← Exemplo preenchido ✅
 │       ├── onboarding/
 │       ├── dashboard/
 │       ├── treinos/
@@ -108,7 +111,7 @@ fitness-app-requirements/
 │       ├── perfil/
 │       └── configuracoes/
 └── assets/
-    └── wireframes/                     ← Rascunhos e imagens de referencia
+    └── identidade/                     ← Logos da marca (vela. / .track / .performance)
 ```
 
 ---
@@ -124,8 +127,4 @@ Ou use `/status` no Claude Code para um resumo rapido.
 - 🟠 PENDENTE REVISAO
 - 🟢 CONCLUIDO
 
----
-
-## Tela de Exemplo
-
-O arquivo `docs/screens/auth/login.md` esta preenchido como **exemplo de referencia** do nivel de detalhe esperado para todas as telas.
+> O nivel de detalhe esperado para cada tela esta definido no template `docs/00-template-tela.md`.

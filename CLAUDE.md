@@ -96,4 +96,5 @@ Use `/` seguido do nome do comando no Claude Code:
 - `/gerar-resumo` — Gerar resumo executivo ou briefing tecnico
 - `/estimar-complexidade` — Estimar complexidade e planejar implementacao
 - `/mapear-modulo` — Mapear um modulo inteiro (fluxo + todas as telas)
+- `/visualizar-tela` — Gerar um mockup HTML+CSS (Tailwind) de uma tela para conferencia visual
 - `/status` — Ver progresso atual do documento de requisitos

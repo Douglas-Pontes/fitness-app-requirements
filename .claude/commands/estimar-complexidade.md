@@ -1,4 +1,4 @@
-Analise e estime a complexidade de desenvolvimento do FitnessApp.
+Analise e estime a complexidade de desenvolvimento do Vela.
 
 **Escopo:** $ARGUMENTS
 (Se vazio, estimar projeto completo. Se informado tela/modulo, estimar apenas ele.)

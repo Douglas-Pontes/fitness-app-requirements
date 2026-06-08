@@ -6,7 +6,7 @@
 ---
 
 ```
-Vamos documentar uma nova tela do FitnessApp seguindo nosso padrão de requisitos.
+Vamos documentar uma nova tela do Vela seguindo nosso padrão de requisitos.
 
 **Tela a documentar:** [NOME DA TELA]
 **Módulo:** [ex: Autenticação / Treinos / Rotinas / Avaliações / Perfil]

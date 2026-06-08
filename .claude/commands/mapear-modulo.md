@@ -1,4 +1,4 @@
-Vamos mapear um modulo COMPLETO do FitnessApp — fluxo + todas as telas.
+Vamos mapear um modulo COMPLETO do Vela — fluxo + todas as telas.
 
 **Modulo:** $ARGUMENTS
 

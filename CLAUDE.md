@@ -1,12 +1,24 @@
-# FitnessApp — Contexto do Projeto
+# Vela — Contexto do Projeto
 
 ## O Que Este Repositorio E
 
-Este repositorio contem o **documento de requisitos completo** de um app de musculacao (mobile + web). Aqui nao tem codigo — apenas documentacao de requisitos em Markdown. O objetivo e mapear **todas as telas, campos, comportamentos, fluxos e regras de negocio** antes de iniciar o desenvolvimento.
+Este repositorio contem o **documento de requisitos completo** do **Vela**, um app de musculacao (mobile + web). Aqui nao tem codigo — apenas documentacao de requisitos em Markdown. O objetivo e mapear **todas as telas, campos, comportamentos, fluxos e regras de negocio** antes de iniciar o desenvolvimento.
 
 O documento sera usado como entrada para:
 1. **Lovable** — gerar a base do projeto (arquitetura, layout, rotas)
 2. **Claude Code** — construir as features do app a partir dos requisitos detalhados
+
+## Identidade da Marca
+
+O produto se chama **Vela** — *o ponto onde a evolucao comeca*. A marca representa **direcao aplicada ao treino**: transformar esforco em progresso real. O logotipo termina em ponto (`vela.`), simbolo do inicio da jornada.
+
+O produto tem duas categorias (trilhas), ambas usando o ponto como elemento da marca:
+- **`.track`** — evolucao fisica, estetica e consistencia (hipertrofia, emagrecimento, estilo de vida).
+- **`.performance`** — atletas/esportes: forca, potencia, resistencia, velocidade, prevencao de lesao.
+
+Paleta-assinatura: **verde-limao neon** (`#CCF24D` aprox.) + **azuis** (marinho/claro/ardosia), estilo minimalista de alto contraste, tipografia geometrica em caixa baixa.
+
+> Detalhes completos em `docs/04-identidade-de-marca.md`. Logos em `assets/identidade/`.
 
 ## Idioma e Estilo
 
@@ -23,8 +35,9 @@ docs/
   01-visao-geral.md        ← Indice mestre com status de todas as telas
   02-personas.md           ← Personas e jornadas do usuario
   03-fluxos-de-navegacao.md ← Mapa de navegacao entre telas
-  04-design-system.md      ← Cores, fontes, componentes base
-  06-mvp.md                ← Definicao do que entra no MVP vs futuro
+  04-identidade-de-marca.md ← Marca Vela: conceito, paleta, logo, categorias
+  05-mvp.md                ← Definicao do que entra no MVP vs futuro
+  guia-de-uso.md           ← Guia de uso dos comandos do projeto
   screens/                 ← Uma pasta por modulo, um .md por tela
     auth/
     onboarding/
@@ -64,6 +77,7 @@ docs/
 ## Regras Importantes
 
 - **Nunca** gerar conteudo de tela sem seguir o template em `00-template-tela.md`
+- **Sempre** respeitar a identidade da marca **Vela** (paleta, tom, conceito do ponto e nomenclatura das categorias `.track`/`.performance`) definida em `04-identidade-de-marca.md` ao gerar/mapear telas, fluxos e resumos
 - **Sempre** atualizar o indice em `01-visao-geral.md` ao criar/modificar telas
 - **Sempre** verificar se o fluxo de navegacao e bidirecional (se A vai pra B, B deve listar A como origem)
 - Quando o usuario disser algo ambiguo, **perguntar antes de assumir** — requisitos errados custam caro

@@ -6,7 +6,7 @@
 ---
 
 ```
-Vamos mapear o fluxo de navegação do módulo [NOME DO MÓDULO] do FitnessApp.
+Vamos mapear o fluxo de navegação do módulo [NOME DO MÓDULO] do Vela.
 
 Contexto do módulo: [DESCREVA BREVEMENTE O QUE O MÓDULO FAZ]
 

@@ -1,19 +1,24 @@
-# Visão Geral do Produto
+# Visão Geral do Produto — Vela
+
+> Identidade completa da marca em [`04-identidade-de-marca.md`](04-identidade-de-marca.md).
 
 ## Resumo
-> ⚠️ PENDENTE: Preencher com o cliente
+**Vela** é um app de musculação (mobile + web) cuja proposta é ser *o ponto onde a evolução começa* — **direção aplicada ao treino**. Em vez de ser apenas um catálogo de treinos, o Vela é uma **plataforma de evolução física** estruturada em duas trilhas: **`.track`** (evolução física, estética e consistência) e **`.performance`** (desempenho atlético para esportes).
 
 ---
 
 ## Proposta de Valor
 > Qual dor este app resolve? Por que um aluno usaria este app e não outro?
 
-⚠️ PENDENTE: Definir com o cliente
+Muita gente treina sem saber para onde está indo. O Vela resolve isso oferecendo **direção e acompanhamento estruturados**, transformando esforço em **progresso real**. O usuário escolhe o caminho que combina com seu objetivo — `.track` para evoluir no físico/estética ou `.performance` para melhorar o desempenho na sua modalidade — e acompanha sua evolução de forma clara e contínua.
 
 ---
 
 ## Diferenciais
-- ⚠️ PENDENTE
+- **Duas trilhas claras de evolução** — `.track` (físico/estética/consistência) e `.performance` (desempenho atlético), em vez de um único formato genérico.
+- **Posicionamento entre genérico e atleta** — treino personalizado e estruturado, sem a limitação dos apps focados só em alto rendimento nem a superficialidade dos catálogos prontos.
+- **Foco em direção e acompanhamento** — não só "o que treinar", mas para onde se está evoluindo.
+- **Identidade forte e memorável** — marca minimalista, ciência aplicada ao treino, evolução contínua.
 
 ---
 
@@ -49,8 +54,8 @@
 | `01-visao-geral.md` | Este arquivo — índice mestre |
 | `02-personas.md` | Personas e jornadas do usuário |
 | `03-fluxos-de-navegacao.md` | Mapa de navegação entre telas |
-| `04-design-system.md` | Cores, fontes, componentes base |
-| `06-mvp.md` | Definição do MVP vs futuro |
+| `04-identidade-de-marca.md` | Marca Vela: conceito, paleta, logo, categorias |
+| `05-mvp.md` | Definição do MVP vs futuro |
 
 ---
 

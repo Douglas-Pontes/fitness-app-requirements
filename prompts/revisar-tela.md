@@ -6,7 +6,7 @@
 ---
 
 ```
-Preciso revisar e completar o documento da seguinte tela do FitnessApp:
+Preciso revisar e completar o documento da seguinte tela do Vela:
 
 **Arquivo:** [CAMINHO DO ARQUIVO, ex: docs/screens/auth/login.md]
 

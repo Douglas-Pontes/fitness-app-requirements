@@ -1,4 +1,4 @@
-Vou processar informacoes do cliente sobre o FitnessApp.
+Vou processar informacoes do cliente sobre o Vela.
 
 **Contexto:** $ARGUMENTS
 

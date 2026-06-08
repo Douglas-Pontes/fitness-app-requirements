@@ -1,8 +1,8 @@
-# Guia de Uso — Documento de Requisitos do FitnessApp
+# Guia de Uso — Documento de Requisitos do Vela
 
 ## Para quem é este guia
 
-Este guia ensina como usar o ambiente de trabalho do projeto FitnessApp para montar o documento de requisitos. Você não precisa saber programar — tudo é feito por conversa com o Claude (uma inteligência artificial que vai te guiar).
+Este guia ensina como usar o ambiente de trabalho do projeto Vela para montar o documento de requisitos. Você não precisa saber programar — tudo é feito por conversa com o Claude (uma inteligência artificial que vai te guiar).
 
 ---
 
@@ -33,8 +33,8 @@ docs/
 ├── 01-visao-geral.md        ← Índice de TODAS as telas e o status de cada uma
 ├── 02-personas.md           ← Quem são os usuários do app
 ├── 03-fluxos-de-navegacao.md ← Mapa de como o usuário navega entre telas
-├── 04-design-system.md      ← Cores, fontes, botões — visual do app
-├── 06-mvp.md                ← O que entra na primeira versão vs futuro
+├── 04-identidade-de-marca.md ← Marca Vela: conceito, paleta, logo, categorias
+├── 05-mvp.md                ← O que entra na primeira versão vs futuro
 └── screens/                 ← Pasta com todas as telas documentadas
     ├── auth/                ← Telas de login, cadastro, etc.
     ├── perfil/              ← Telas do perfil do aluno

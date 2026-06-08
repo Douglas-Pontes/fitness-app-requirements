@@ -8,7 +8,7 @@
 ## Variante A — Entrevista Geral (início de projeto)
 
 ```
-Vou te passar as respostas do meu cliente sobre o FitnessApp. Me ajude a:
+Vou te passar as respostas do meu cliente sobre o Vela. Me ajude a:
 1. Identificar os requisitos claros a partir das respostas
 2. Identificar ambiguidades e o que ainda precisa ser esclarecido
 3. Sugerir as próximas perguntas para aprofundar o entendimento
@@ -25,7 +25,7 @@ Aqui estão as respostas do cliente:
 ## Variante B — Roteiro de Entrevista por Módulo
 
 ```
-Preciso preparar uma entrevista com meu cliente sobre o módulo de [NOME DO MÓDULO] do FitnessApp.
+Preciso preparar uma entrevista com meu cliente sobre o módulo de [NOME DO MÓDULO] do Vela.
 
 Me gere um roteiro de perguntas para a entrevista cobrindo:
 

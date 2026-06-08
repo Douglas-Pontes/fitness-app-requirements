@@ -29,7 +29,7 @@ Gere uma tabela com:
 ## Variante B — Estimativa do Projeto Completo
 
 ```
-Com base em todos os documentos de requisitos do FitnessApp, gere uma estimativa de complexidade para o projeto completo.
+Com base em todos os documentos de requisitos do Vela, gere uma estimativa de complexidade para o projeto completo.
 
 Organize por módulo:
 1. Classifique cada tela: 🟢 Simples | 🟡 Média | 🔴 Complexa
@@ -48,7 +48,7 @@ Formato de saída: lista ordenada de módulos com justificativa, não uma estima
 ## Variante C — Plano de Implementação para Lovable
 
 ```
-Com base no documento de requisitos do FitnessApp, me ajude a criar o melhor prompt inicial para o Lovable.
+Com base no documento de requisitos do Vela, me ajude a criar o melhor prompt inicial para o Lovable.
 
 O prompt do Lovable deve:
 1. Descrever a arquitetura de navegação principal (tab bar + stacks)

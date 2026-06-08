@@ -1,4 +1,4 @@
-Gere um resumo do documento de requisitos do FitnessApp.
+Gere um resumo do documento de requisitos do Vela.
 
 **Tipo de resumo:** $ARGUMENTS
 (Opcoes: "cliente", "dev", "status", "lovable")

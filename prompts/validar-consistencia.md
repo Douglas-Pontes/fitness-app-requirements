@@ -8,7 +8,7 @@
 ## Variante A — Validação Completa
 
 ```
-Analise todos os documentos de requisitos do FitnessApp e identifique inconsistências.
+Analise todos os documentos de requisitos do Vela e identifique inconsistências.
 
 Verifique especificamente:
 
@@ -32,7 +32,7 @@ Gere um relatório organizado por tipo de problema, com referência ao arquivo e
 ## Variante B — Validação de um Módulo Específico
 
 ```
-Valide a consistência interna do módulo [NOME DO MÓDULO] do FitnessApp.
+Valide a consistência interna do módulo [NOME DO MÓDULO] do Vela.
 
 Leia todos os arquivos em `docs/screens/[modulo]/` e verifique:
 1. Todas as telas do módulo estão documentadas conforme o índice em `01-visao-geral.md`?

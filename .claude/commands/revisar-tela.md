@@ -1,4 +1,4 @@
-Preciso revisar e completar o documento de uma tela do FitnessApp.
+Preciso revisar e completar o documento de uma tela do Vela.
 
 **Arquivo:** $ARGUMENTS
 

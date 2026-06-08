@@ -1,4 +1,4 @@
-Vamos documentar uma nova tela do FitnessApp.
+Vamos documentar uma nova tela do Vela.
 
 **Tela:** $ARGUMENTS
 

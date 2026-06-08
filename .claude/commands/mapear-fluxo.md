@@ -1,4 +1,4 @@
-Vamos mapear o fluxo de navegacao de um modulo do FitnessApp.
+Vamos mapear o fluxo de navegacao de um modulo do Vela.
 
 **Modulo:** $ARGUMENTS
 

@@ -8,7 +8,7 @@
 ## Variante A — Resumo Executivo para o Cliente
 
 ```
-Com base em todos os documentos de requisitos do projeto FitnessApp, gere um resumo executivo para apresentar ao cliente.
+Com base em todos os documentos de requisitos do projeto Vela, gere um resumo executivo para apresentar ao cliente.
 
 O resumo deve:
 - Ter no máximo 2 páginas (formato de leitura rápida)
@@ -28,7 +28,7 @@ Formato: Markdown limpo, adequado para converter em PDF ou apresentação.
 ## Variante B — Briefing para Desenvolvedor
 
 ```
-Com base nos documentos de requisitos do FitnessApp, gere um briefing técnico para um desenvolvedor que vai começar a trabalhar no projeto.
+Com base nos documentos de requisitos do Vela, gere um briefing técnico para um desenvolvedor que vai começar a trabalhar no projeto.
 
 Inclua:
 1. Arquitetura de telas (lista completa com rotas sugeridas)
@@ -46,7 +46,7 @@ Seja técnico e direto — este é para um desenvolvedor, não para o cliente.
 ## Variante C — Status Report de Progresso
 
 ```
-Leia os documentos de requisitos do FitnessApp e gere um status report do andamento da documentação.
+Leia os documentos de requisitos do Vela e gere um status report do andamento da documentação.
 
 Inclua:
 - Total de telas: [X] documentadas / [Y] total

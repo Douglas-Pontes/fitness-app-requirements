@@ -1,4 +1,4 @@
-Gere um status rapido do progresso do documento de requisitos do FitnessApp.
+Gere um status rapido do progresso do documento de requisitos do Vela.
 
 Leia `docs/01-visao-geral.md` e todos os arquivos em `docs/screens/` e reporte:
 

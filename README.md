@@ -1,6 +1,6 @@
-# FitnessApp — Documento de Requisitos
+# Vela — Documento de Requisitos
 
-Repositorio de especificacao completa do FitnessApp: app mobile e web para alunos de musculacao.
+Repositorio de especificacao completa do Vela: app mobile e web para alunos de musculacao.
 
 ---
 

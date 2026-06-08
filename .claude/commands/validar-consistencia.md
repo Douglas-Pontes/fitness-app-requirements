@@ -1,4 +1,4 @@
-Analise todos os documentos de requisitos do FitnessApp e identifique inconsistencias.
+Analise todos os documentos de requisitos do Vela e identifique inconsistencias.
 
 **Escopo:** $ARGUMENTS
 (Se vazio, validar TUDO. Se informado um modulo, validar apenas ele.)

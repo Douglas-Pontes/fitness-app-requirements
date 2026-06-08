@@ -37,9 +37,7 @@
 | Tipo | Descrição | Acesso |
 |---|---|---|
 | Aluno | Praticante de musculação | App completo |
-| Personal Trainer | Profissional vinculado ao aluno — visualiza perfil e avaliações, realiza avaliações | ✅ Confirmado (2026-03-27) |
-| Nutricionista | Profissional vinculado ao aluno — cadastra dietas; aluno e PT apenas visualizam | ✅ Confirmado (2026-03-27) |
-| ⚠️ | Definir se haverá Admin/Academia | ⚠️ |
+| ⚠️ | Definir demais perfis (Personal Trainer, Nutricionista, Admin/Academia?) | ⚠️ |
 
 ---
 
@@ -62,7 +60,7 @@
 | Tela | Arquivo | Status |
 |---|---|---|
 | Splash Screen | `screens/auth/splash.md` | 🔴 NÃO INICIADO |
-| Login | `screens/auth/login.md` | 🟠 PENDENTE REVISÃO |
+| Login | `screens/auth/login.md` | 🔴 NÃO INICIADO |
 | Cadastro | `screens/auth/cadastro.md` | 🔴 NÃO INICIADO |
 | Recuperar Senha | `screens/auth/recuperar-senha.md` | 🔴 NÃO INICIADO |
 | Redefinir Senha | `screens/auth/redefinir-senha.md` | 🔴 NÃO INICIADO |
@@ -118,8 +116,8 @@
 ### 👤 Perfil
 | Tela | Arquivo | Status |
 |---|---|---|
-| Meu Perfil | `screens/perfil/meu-perfil.md` | 🟡 EM ANDAMENTO |
-| Editar Perfil | `screens/perfil/editar-perfil.md` | 🟡 EM ANDAMENTO |
+| Meu Perfil | `screens/perfil/meu-perfil.md` | 🔴 NÃO INICIADO |
+| Editar Perfil | `screens/perfil/editar-perfil.md` | 🔴 NÃO INICIADO |
 | Minhas Metas | `screens/perfil/minhas-metas.md` | 🔴 NÃO INICIADO |
 
 ### 🥗 Dieta *(Pós-MVP)*
@@ -138,11 +136,11 @@
 
 ## Progresso Geral
 
-- Total de telas mapeadas: 3 / 32
+- Total de telas mapeadas: 0 / 32
 - Concluídas: 0
-- Em andamento: 2 (Meu Perfil, Editar Perfil)
-- Pendente revisão: 1 (Login)
-- Não iniciadas: 29
+- Em andamento: 0
+- Pendente revisão: 0
+- Não iniciadas: 32
 
 ---
 
@@ -150,13 +148,4 @@
 
 | # | Decisão | Impacto | Responsável | Prazo |
 |---|---|---|---|---|
-| 1 | Login social (Google/Apple)? | Auth + Cadastro | ⚠️ | ⚠️ |
-| ~~2~~ | ~~Haverá role de Personal Trainer?~~ | ✅ **RESOLVIDO** — Sim, PT é um role. Visualiza perfil e avaliações, realiza avaliações do aluno. | Douglas | 2026-03-27 |
-| 3 | App tem modo offline? | Treino em andamento | ⚠️ | ⚠️ |
-| 4 | Vídeos de exercícios ou só fotos? | Exercícios + Storage | ⚠️ | ⚠️ |
-| 5 | Plano gratuito x pago? Quais limites? | Modelo de negócio | ⚠️ | ⚠️ |
-| 6 | Como PT se vincula ao aluno? | Auth + Arquitetura de roles | ⚠️ | ⚠️ |
-| 7 | Como Nutricionista se vincula ao aluno? | Auth + Módulo Dieta | ⚠️ | ⚠️ |
-| 8 | PT e Nutricionista têm login próprio no app? | Arquitetura de auth | ⚠️ | ⚠️ |
-| 9 | Quais campos compõem a Anamnese? | Tela Nova Anamnese | ⚠️ | ⚠️ |
-| 10 | Avaliação Completa: todos os campos em uma única tela/sessão ou por etapas? | UX de Avaliações | ⚠️ | ⚠️ |
+| — | ⚠️ Nenhuma decisão registrada ainda | — | — | — |

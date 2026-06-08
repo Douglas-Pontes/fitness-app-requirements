@@ -21,8 +21,7 @@ Antes de gerar o documento, me faça as perguntas necessárias para preencher co
 6. **Estados:** Como fica a tela quando está vazia? Carregando? Com erro? Com sucesso? Sem conexão?
 7. **Navegação:** De onde o usuário chega nesta tela? Para onde pode ir a partir dela?
 8. **Regras de negócio:** Tem alguma regra especial? Limites, condições, restrições?
-9. **APIs/integrações:** Quais dados a tela busca ou envia? Tem algum endpoint específico?
-10. **Notas técnicas:** Alguma atenção especial para o desenvolvedor?
+9. **Notas técnicas:** Alguma atenção especial para o desenvolvedor?
 
 Faça as perguntas em blocos, não todas de uma vez. Após coletar as respostas, gere o arquivo `.md` completo seguindo exatamente o template em `docs/00-template-tela.md`.
 

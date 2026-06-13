@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vela — Editar Perfil (mockup)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          lime: '#CCF24D',        // verde-limao neon — cor-assinatura / destaque
+          navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+          track: '#A8DAEC',       // azul-claro — categoria .track
+          performance: '#4B5F79', // azul-ardosia — categoria .performance
+        },
+        fontFamily: { sans: ['Poppins', 'system-ui', 'sans-serif'] },
+      } }
+    }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .frame { width: 390px; }
+    .skel { background: linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 37%,#e5e7eb 63%); background-size: 400% 100%; animation: shimmer 1.4s infinite; }
+    @keyframes shimmer { 0% { background-position: 100% 0 } 100% { background-position: -100% 0 } }
+    .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #94a3b8; margin-bottom: 4px; display:block; }
+    .inp { width:100%; border:1px solid #e2e8f0; border-radius:12px; padding:10px 12px; font-size:14px; color:#0E4C86; background:#fff; }
+    .inp:focus { outline:none; border-color:#CCF24D; box-shadow:0 0 0 3px rgba(204,242,77,.35); }
+    .ro { background:#f1f5f9; color:#94a3b8; }
+    .sel { display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
+  </style>
+</head>
+<body class="bg-slate-100 text-navy">
+
+  <!-- Banner de aviso -->
+  <div class="sticky top-0 z-50 bg-navy text-white text-sm px-4 py-2 text-center">
+    Mockup visual — nao e codigo de producao. Gerado a partir de
+    <code class="text-lime">docs/screens/perfil/editar-perfil.md</code>.
+  </div>
+
+  <header class="max-w-6xl mx-auto px-6 pt-8 pb-2">
+    <div class="flex items-baseline gap-3">
+      <span class="text-3xl font-semibold lowercase tracking-tight">vela<span class="text-lime">.</span></span>
+      <span class="text-slate-400 text-sm">— Editar Perfil</span>
+    </div>
+    <p class="text-slate-400 text-xs mt-1">Estados lado a lado para conferencia visual</p>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap gap-8 items-start justify-center">
+
+    <!-- ============ FRAME: PRINCIPAL ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">principal</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-y-auto">
+
+          <!-- Header fixo -->
+          <div class="sticky top-0 bg-white/95 backdrop-blur z-10 px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button aria-label="Cancelar" class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+
+          <!-- Secao 1 — Foto (obrigatoria) com icone sobreposto -->
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <button class="relative" aria-label="Editar foto">
+              <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+              <span class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-lime grid place-items-center text-navy text-sm shadow ring-2 ring-white">✎</span>
+            </button>
+            <p class="text-[11px] text-slate-400 mt-2">Foto obrigatoria</p>
+          </div>
+
+          <!-- Secao 2 — Dados editaveis -->
+          <div class="px-5 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Dados</p>
+
+            <div><label class="lbl">Nome completo *</label><input class="inp" value="Mariana Souza" placeholder="Seu nome completo" /></div>
+            <div><label class="lbl">WhatsApp *</label><input class="inp" value="+55 (11) 90000-0000" placeholder="+55 (11) 90000-0000" /></div>
+            <div>
+              <label class="lbl">Pais *</label>
+              <div class="inp sel"><span class="flex items-center gap-2">🇧🇷 Brasil</span><span class="text-slate-400">▾</span></div>
+            </div>
+            <div><label class="lbl">Data de nascimento *</label><input class="inp" value="12/03/1995" placeholder="DD/MM/AAAA" /></div>
+            <div>
+              <label class="lbl">Sexo *</label>
+              <div class="inp sel"><span>Feminino</span><span class="text-slate-400">▾</span></div>
+            </div>
+            <div><label class="lbl">@ instagram</label><input class="inp" placeholder="@seuinstagram" value="@mari.souza" /></div>
+            <div>
+              <label class="lbl">@ aluno.vela *</label>
+              <input class="inp" value="@marianasouza" placeholder="@seuusuario" />
+              <p class="text-[11px] text-slate-400 mt-1">Apenas letras minusculas e numeros</p>
+            </div>
+          </div>
+
+          <!-- Secao 3 — Somente leitura -->
+          <div class="px-5 mt-6 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Somente leitura</p>
+            <div><label class="lbl">E-mail 🔒</label><input class="inp ro" value="mariana@email.com" disabled /></div>
+            <div><label class="lbl">@ treinador.vela 🔒</label><input class="inp ro" value="@coach.felipe" disabled /></div>
+            <div><label class="lbl">Objetivo 🔒</label><input class="inp ro" value="Hipertrofia" disabled /></div>
+          </div>
+
+          <div class="h-6"></div>
+
+          <!-- Footer Salvar -->
+          <div class="sticky bottom-0 bg-white/95 backdrop-blur border-t border-slate-100 p-4">
+            <button class="w-full py-3 rounded-full bg-slate-200 text-slate-400 font-medium cursor-not-allowed">Salvar</button>
+            <p class="text-center text-[11px] text-slate-400 mt-1">Desabilitado ate haver alteracao valida</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: OPCOES DA FOTO (icone de lapis) ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">opcoes da foto (lapis)</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden relative">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <button class="relative" aria-label="Editar foto">
+              <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+              <span class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-lime grid place-items-center text-navy text-sm shadow ring-2 ring-white">✎</span>
+            </button>
+            <p class="text-[11px] text-slate-400 mt-2">Foto obrigatoria</p>
+          </div>
+          <div class="px-5 opacity-30 pointer-events-none">
+            <div class="h-10 rounded-xl bg-slate-100 mb-4"></div>
+            <div class="h-10 rounded-xl bg-slate-100"></div>
+          </div>
+        </div>
+        <!-- overlay + action sheet -->
+        <div class="absolute inset-0 bg-black/40 flex items-end">
+          <div class="w-full bg-white rounded-t-3xl p-4 pb-7">
+            <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+            <button class="w-full text-left px-4 py-4 rounded-xl font-medium hover:bg-slate-50 flex items-center gap-3"><span>📷</span> Tirar foto</button>
+            <button class="w-full text-left px-4 py-4 rounded-xl font-medium hover:bg-slate-50 flex items-center gap-3"><span>🖼️</span> Escolher foto</button>
+            <button class="w-full text-center px-4 py-4 mt-2 rounded-xl font-medium text-slate-500 bg-slate-100">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: SELETOR ABERTO (Sexo / Pais) ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">seletor (dropdown Sexo)</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden relative">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <div class="relative">
+              <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+              <span class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-lime grid place-items-center text-navy text-sm shadow ring-2 ring-white">✎</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">Foto obrigatoria</p>
+          </div>
+          <div class="px-5 space-y-4">
+            <div><label class="lbl">Data de nascimento *</label><input class="inp" value="12/03/1995" /></div>
+            <div>
+              <label class="lbl">Sexo *</label>
+              <div class="inp sel" style="border-color:#CCF24D;box-shadow:0 0 0 3px rgba(204,242,77,.35)"><span>Feminino</span><span class="text-slate-400">▴</span></div>
+              <div class="mt-1 rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+                <div class="px-4 py-2.5 text-sm bg-lime/30 text-navy font-medium">Feminino</div>
+                <div class="px-4 py-2.5 text-sm hover:bg-slate-50">Masculino</div>
+                <div class="px-4 py-2.5 text-sm hover:bg-slate-50">Nao Informar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: ERRO DE VALIDACAO ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">erro de validacao</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-y-auto">
+          <div class="sticky top-0 bg-white/95 backdrop-blur z-10 px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+            <p class="text-[11px] text-slate-400 mt-2">Foto de perfil · obrigatoria</p>
+          </div>
+          <div class="px-5 space-y-4">
+            <div>
+              <label class="lbl">Nome completo *</label>
+              <input class="inp" style="border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.2)" value="Mariana123" />
+              <p class="text-xs text-red-600 mt-1">Digite seu nome usando apenas letras</p>
+            </div>
+            <div>
+              <label class="lbl">Data de nascimento *</label>
+              <input class="inp" style="border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.2)" value="32/13/2030" />
+              <p class="text-xs text-red-600 mt-1">Digite uma data valida no formato DD/MM/AAAA</p>
+            </div>
+            <div>
+              <label class="lbl">@ aluno.vela *</label>
+              <input class="inp" style="border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.2)" value="@marianasouza" />
+              <p class="text-xs text-red-600 mt-1">Esse @ ja esta em uso</p>
+            </div>
+          </div>
+          <div class="px-5 mt-4 text-[11px] text-slate-400">… demais campos …</div>
+          <div class="h-44"></div>
+          <div class="sticky bottom-0 bg-white/95 backdrop-blur border-t border-slate-100 p-4">
+            <button class="w-full py-3 rounded-full bg-lime text-navy font-semibold">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: LOADING ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">loading (skeleton)</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <div class="skel w-24 h-24 rounded-full"></div>
+            <div class="skel w-32 h-3 rounded mt-3"></div>
+          </div>
+          <div class="px-5 space-y-5">
+            <div><div class="skel h-3 w-24 rounded mb-2"></div><div class="skel h-10 w-full rounded-xl"></div></div>
+            <div><div class="skel h-3 w-20 rounded mb-2"></div><div class="skel h-10 w-full rounded-xl"></div></div>
+            <div><div class="skel h-3 w-16 rounded mb-2"></div><div class="skel h-10 w-full rounded-xl"></div></div>
+            <div><div class="skel h-3 w-28 rounded mb-2"></div><div class="skel h-10 w-full rounded-xl"></div></div>
+            <div><div class="skel h-3 w-20 rounded mb-2"></div><div class="skel h-10 w-full rounded-xl"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: SALVANDO ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">salvando (loading do botao)</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-y-auto">
+          <div class="sticky top-0 bg-white/95 backdrop-blur z-10 px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-300">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5 opacity-60">
+            <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+          </div>
+          <div class="px-5 space-y-4 opacity-60 pointer-events-none">
+            <div><label class="lbl">Nome completo *</label><input class="inp" value="Mariana Souza Lima" disabled /></div>
+            <div><label class="lbl">WhatsApp *</label><input class="inp" value="+55 (11) 98888-1234" disabled /></div>
+            <div><label class="lbl">@ aluno.vela *</label><input class="inp" value="@marianalima" disabled /></div>
+          </div>
+          <div class="h-72"></div>
+          <div class="sticky bottom-0 bg-white/95 backdrop-blur border-t border-slate-100 p-4">
+            <button class="w-full py-3 rounded-full bg-lime/70 text-navy font-semibold flex items-center justify-center gap-2" disabled>
+              <span class="w-4 h-4 border-2 border-navy/40 border-t-navy rounded-full animate-spin"></span>
+              Salvando…
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: SUCESSO ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">sucesso</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-hidden relative">
+          <div class="absolute top-3 left-4 right-4 bg-lime text-navy text-sm font-medium px-4 py-2.5 rounded-xl shadow z-10">
+            Perfil atualizado com sucesso!
+          </div>
+          <div class="px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="h-[600px] flex flex-col items-center justify-center text-center px-8">
+            <div class="w-16 h-16 rounded-full bg-lime grid place-items-center text-2xl text-navy mb-3">✓</div>
+            <p class="font-medium">Redirecionando para Meu Perfil…</p>
+            <p class="text-sm text-slate-400 mt-1">Dados atualizados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: DESCARTAR ALTERACOES ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">alerta de descarte</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden relative">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+          <div class="flex flex-col items-center pt-6 pb-5 opacity-30">
+            <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+          </div>
+          <div class="px-5 space-y-4 opacity-30">
+            <div class="h-10 rounded-xl bg-slate-100"></div>
+            <div class="h-10 rounded-xl bg-slate-100"></div>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black/40 grid place-items-center px-6">
+          <div class="bg-white rounded-2xl p-6 w-full text-center">
+            <p class="text-lg font-semibold">Descartar alteracoes?</p>
+            <p class="text-sm text-slate-400 mt-1">Voce tem alteracoes nao salvas que serao perdidas.</p>
+            <div class="mt-6 flex flex-col gap-2">
+              <button class="bg-red-600 text-white font-medium py-3 rounded-full">Descartar</button>
+              <button class="bg-slate-100 text-slate-600 font-medium py-3 rounded-full">Continuar editando</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-center text-xs text-slate-400">
+    Dados exibidos sao fictícios, apenas para conferencia visual. Paleta e tipografia conforme
+    <code>docs/04-identidade-de-marca.md</code>.
+  </footer>
+
+</body>
+</html>

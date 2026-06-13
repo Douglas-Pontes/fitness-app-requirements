@@ -7,7 +7,7 @@ Antes de gerar qualquer coisa, conduza uma entrevista comigo em **3 blocos de pe
 **Bloco 1 — Contexto e Proposito**
 - Qual o objetivo desta tela? O que o usuario consegue fazer aqui?
 - Quem acessa? Precisa estar logado? Alguma pre-condicao?
-- Esta tela faz parte do MVP? (consulte docs/06-mvp.md)
+- Esta tela faz parte do MVP? (consulte docs/05-mvp.md)
 
 **Bloco 2 — Interface e Interacao**
 - Quais elementos visuais aparecem? (header, secoes, cards, listas, formularios)

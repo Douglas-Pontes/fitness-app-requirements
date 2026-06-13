@@ -8,7 +8,7 @@ Este comando conduz o mapeamento completo de um modulo em uma unica sessao. O pr
 Me pergunte:
 - Qual o proposito deste modulo?
 - Quais acoes o usuario realiza aqui?
-- Este modulo faz parte do MVP? (consulte `docs/06-mvp.md`)
+- Este modulo faz parte do MVP? (consulte `docs/05-mvp.md`)
 
 ## Fase 2 — Fluxo de Navegacao
 Me pergunte sobre:

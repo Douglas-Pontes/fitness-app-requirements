@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vela — Meu Perfil (mockup)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          lime: '#CCF24D',        // verde-limao neon — cor-assinatura / destaque
+          navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+          track: '#A8DAEC',       // azul-claro — categoria .track
+          performance: '#4B5F79', // azul-ardosia — categoria .performance
+        },
+        fontFamily: { sans: ['Poppins', 'system-ui', 'sans-serif'] },
+      } }
+    }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .frame { width: 390px; }
+    .skel { background: linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 37%,#e5e7eb 63%); background-size: 400% 100%; animation: shimmer 1.4s infinite; }
+    @keyframes shimmer { 0% { background-position: 100% 0 } 100% { background-position: -100% 0 } }
+  </style>
+</head>
+<body class="bg-slate-100 text-navy">
+
+  <!-- Banner de aviso -->
+  <div class="sticky top-0 z-50 bg-navy text-white text-sm px-4 py-2 text-center">
+    Mockup visual — nao e codigo de producao. Gerado a partir de
+    <code class="text-lime">docs/screens/perfil/meu-perfil.md</code>.
+  </div>
+
+  <header class="max-w-6xl mx-auto px-6 pt-8 pb-2">
+    <div class="flex items-baseline gap-3">
+      <span class="text-3xl font-semibold lowercase tracking-tight">vela<span class="text-lime">.</span></span>
+      <span class="text-slate-400 text-sm">— Meu Perfil</span>
+    </div>
+    <p class="text-slate-400 text-xs mt-1">Estados lado a lado para conferencia visual</p>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap gap-8 items-start justify-center">
+
+    <!-- ============ FRAME: PRINCIPAL ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">principal</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-y-auto">
+
+          <!-- Header fixo -->
+          <div class="sticky top-0 bg-white/95 backdrop-blur z-10 px-5 py-4 flex items-center justify-between border-b border-slate-100">
+            <h1 class="text-lg font-semibold lowercase">meu perfil<span class="text-lime">.</span></h1>
+            <div class="flex items-center gap-3">
+              <button class="text-xs font-medium text-navy bg-lime px-3 py-1.5 rounded-full">Editar perfil</button>
+              <button aria-label="Configuracoes" class="w-9 h-9 grid place-items-center rounded-full bg-slate-100 text-slate-600">⚙</button>
+            </div>
+          </div>
+
+          <!-- Secao 1 — Foto e identificacao (cabecalho do perfil) -->
+          <div class="flex flex-col items-center pt-7 pb-6">
+            <div class="w-24 h-24 rounded-full shadow-inner overflow-hidden" aria-label="Foto de perfil de Mariana Souza" style="background:radial-gradient(circle at 50% 38%, #fcd9c4 0 28%, #e8a87c 28% 60%, #4B5F79 60% 100%)"></div>
+            <p class="mt-3 text-xl font-semibold">Mariana Souza</p>
+            <p class="text-sm text-performance flex items-center gap-1.5">@marianasouza <span class="text-base leading-none" title="Brasil">🇧🇷</span></p>
+            <p class="mt-1 text-sm text-navy font-medium">Hipertrofia</p>
+          </div>
+
+          <!-- Secao 2 — Dados pessoais -->
+          <div class="px-5">
+            <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Dados pessoais</p>
+            <div class="rounded-2xl border border-slate-100 divide-y divide-slate-100">
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">Nome completo</span><span class="font-medium">Mariana Souza</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">E-mail</span><span class="font-medium">mariana@email.com</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">WhatsApp</span><span class="font-medium">(11) 99999-0000</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">Data de nascimento</span><span class="font-medium">12/03/1995</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">Sexo</span><span class="font-medium">Feminino</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">@ instagram</span><span class="font-medium">@mari.souza</span></div>
+              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">@ treinador.vela</span><span class="font-medium text-performance">@coach.felipe</span></div>
+            </div>
+          </div>
+
+          <!-- Secao 3 — Sair (centralizado) -->
+          <div class="px-5 mt-8 flex justify-center">
+            <button class="px-8 py-3 rounded-full border border-red-200 text-red-600 font-medium">Sair</button>
+          </div>
+
+          <div class="h-24"></div>
+
+          <!-- Footer / bottom nav -->
+          <div class="sticky bottom-0 bg-white border-t border-slate-100 grid grid-cols-4 text-[10px] text-slate-400">
+            <div class="py-3 flex flex-col items-center gap-1"><span>🏠</span>Home</div>
+            <div class="py-3 flex flex-col items-center gap-1"><span>🏋️</span>Treinos</div>
+            <div class="py-3 flex flex-col items-center gap-1"><span>📊</span>Avaliacoes</div>
+            <div class="py-3 flex flex-col items-center gap-1 text-navy font-medium"><span>👤</span>Perfil</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: LOADING ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">loading (skeleton)</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h1 class="text-lg font-semibold lowercase">meu perfil<span class="text-lime">.</span></h1>
+            <div class="flex items-center gap-3">
+              <div class="skel w-20 h-7 rounded-full"></div>
+              <div class="skel w-9 h-9 rounded-full"></div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center pt-7 pb-6">
+            <div class="skel w-24 h-24 rounded-full"></div>
+            <div class="skel w-40 h-5 rounded mt-4"></div>
+            <div class="skel w-28 h-4 rounded mt-2"></div>
+            <div class="skel w-20 h-4 rounded mt-2"></div>
+          </div>
+          <div class="px-5 space-y-3">
+            <div class="skel h-3 w-28 rounded"></div>
+            <div class="rounded-2xl border border-slate-100 divide-y divide-slate-100">
+              <div class="px-4 py-3.5 flex justify-between"><div class="skel h-3 w-24 rounded"></div><div class="skel h-3 w-20 rounded"></div></div>
+              <div class="px-4 py-3.5 flex justify-between"><div class="skel h-3 w-20 rounded"></div><div class="skel h-3 w-28 rounded"></div></div>
+              <div class="px-4 py-3.5 flex justify-between"><div class="skel h-3 w-28 rounded"></div><div class="skel h-3 w-16 rounded"></div></div>
+              <div class="px-4 py-3.5 flex justify-between"><div class="skel h-3 w-24 rounded"></div><div class="skel h-3 w-24 rounded"></div></div>
+              <div class="px-4 py-3.5 flex justify-between"><div class="skel h-3 w-20 rounded"></div><div class="skel h-3 w-20 rounded"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: ERRO ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">erro ao carregar</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-hidden relative">
+          <!-- toast -->
+          <div class="absolute top-3 left-4 right-4 bg-red-600 text-white text-sm px-4 py-2.5 rounded-xl shadow z-10">
+            Sem conexao. Tente novamente.
+          </div>
+          <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h1 class="text-lg font-semibold lowercase">meu perfil<span class="text-lime">.</span></h1>
+            <button class="w-9 h-9 grid place-items-center rounded-full bg-slate-100 text-slate-600">⚙</button>
+          </div>
+          <div class="h-[600px] flex flex-col items-center justify-center text-center px-8">
+            <div class="w-16 h-16 rounded-full bg-red-50 grid place-items-center text-2xl mb-4">⚠️</div>
+            <p class="font-medium">Nao foi possivel carregar seu perfil</p>
+            <p class="text-sm text-slate-400 mt-1">Verifique sua conexao e tente novamente.</p>
+            <button class="mt-5 bg-lime text-navy font-medium px-6 py-2.5 rounded-full">Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME: MODAL SAIR ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">confirmacao "Sair"</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden relative">
+        <div class="h-[780px] overflow-hidden">
+          <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h1 class="text-lg font-semibold lowercase">meu perfil<span class="text-lime">.</span></h1>
+            <button class="w-9 h-9 grid place-items-center rounded-full bg-slate-100 text-slate-600">⚙</button>
+          </div>
+          <div class="flex flex-col items-center pt-7 pb-6 opacity-30">
+            <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+            <p class="mt-3 text-xl font-semibold">Mariana Souza</p>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black/40 grid place-items-center px-6">
+          <div class="bg-white rounded-2xl p-6 w-full text-center">
+            <p class="text-lg font-semibold">Deseja sair?</p>
+            <p class="text-sm text-slate-400 mt-1">Voce precisara entrar novamente para acessar sua conta.</p>
+            <div class="mt-6 flex flex-col gap-2">
+              <button class="bg-red-600 text-white font-medium py-3 rounded-full">Sim, quero sair</button>
+              <button class="bg-slate-100 text-slate-600 font-medium py-3 rounded-full">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-center text-xs text-slate-400">
+    Dados exibidos sao fictícios, apenas para conferencia visual. Paleta e tipografia conforme
+    <code>docs/04-identidade-de-marca.md</code>.
+  </footer>
+
+</body>
+</html>

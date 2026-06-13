@@ -14,7 +14,7 @@ Leia `docs/01-visao-geral.md` e todos os arquivos em `docs/screens/` e reporte:
 3. **Pendencias criticas:** decisoes em aberto que bloqueiam o avanço (da tabela em `01-visao-geral.md`)
 
 4. **Sugestao:** proximas 3 telas a documentar, priorizando:
-   - Telas do MVP primeiro (`docs/06-mvp.md`)
+   - Telas do MVP primeiro (`docs/05-mvp.md`)
    - Telas do fluxo principal (treino do dia)
    - Telas que desbloqueiam outras
 

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Análise das Avaliações (VELA-2004) · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — cor-assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sora: ['Sora', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Sora', sans-serif; }
+  .device { width: 390px; border-radius: 2.5rem; box-shadow: 0 12px 40px rgba(14,76,134,.18), 0 2px 8px rgba(0,0,0,.06); }
+  .device-screen { height: 800px; border-radius: 2rem; }
+  .scroll::-webkit-scrollbar { width: 0; height: 0; }
+  .notch { width: 130px; height: 26px; border-radius: 0 0 1rem 1rem; }
+  .skeleton { background: linear-gradient(90deg,#e9eef3 25%,#f3f6f9 37%,#e9eef3 63%); background-size:400% 100%; animation: sk 1.4s ease infinite; }
+  @keyframes sk { 0%{background-position:100% 50%} 100%{background-position:0 50%} }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+<!-- Banner de aviso -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm px-4 py-2 font-light tracking-wide">
+  <span class="font-semibold text-lime">mockup visual</span> — não é código de produção. Gerado a partir de
+  <code class="bg-white/10 px-1.5 py-0.5 rounded">docs/screens/avaliacoes/analise-avaliacoes.md</code>
+</div>
+
+<header class="max-w-7xl mx-auto px-6 pt-8 pb-2">
+  <div class="flex items-end gap-3">
+    <span class="inline-flex items-center bg-lime text-navy font-700 text-2xl px-3 py-1 rounded-lg lowercase tracking-tight">vela.</span>
+    <div class="pb-1">
+      <h1 class="text-lg font-600 lowercase tracking-tight text-navy">análise das avaliações</h1>
+      <p class="text-xs text-slate-500">VELA-2004 · módulo Avaliações · conferência visual (mobile) · somente leitura</p>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap gap-8 items-start justify-center">
+
+  <!-- ============================================================= -->
+  <!-- FRAME 1 — PRINCIPAL · VISÃO GRÁFICOS (ALUNO) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-navy bg-lime px-3 py-1 rounded-full">principal · gráficos</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <!-- Toggle de visao da aba: Lista | Analise -->
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+          <!-- Toggle de visao interna: Graficos | Comparar -->
+          <div class="mt-2 flex gap-2 text-xs font-500">
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy font-600">Gráficos</button>
+            <button class="px-3 py-1.5 rounded-full border border-navy/15 text-slate-500">Comparar</button>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-4 pb-24 space-y-4">
+
+          <!-- A1 — Seletor de metrica -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy text-xs font-600">Peso ▾</button>
+            <span class="text-[11px] text-slate-400">métrica em análise</span>
+          </div>
+
+          <!-- A2 — Resumo da metrica -->
+          <div class="flex gap-3">
+            <div class="flex-1 bg-white rounded-xl border border-slate-100 px-3 py-3">
+              <p class="text-[10px] uppercase tracking-widest text-slate-400">atual</p>
+              <p class="text-2xl font-600 text-navy leading-tight">78<span class="text-sm font-400 text-slate-400"> kg</span></p>
+              <p class="text-[11px] text-slate-400">10/06/2026</p>
+            </div>
+            <div class="flex-1 bg-white rounded-xl border border-slate-100 px-3 py-3">
+              <p class="text-[10px] uppercase tracking-widest text-slate-400">variação total</p>
+              <p class="text-2xl font-600 text-emerald-600 leading-tight flex items-center gap-1">▼ 4<span class="text-sm font-400 text-slate-400"> kg</span></p>
+              <p class="text-[11px] text-slate-400">desde 12/01/2026 · -4,9%</p>
+            </div>
+          </div>
+
+          <!-- A3 — Grafico de linha -->
+          <div class="bg-white rounded-xl border border-slate-100 px-3 py-3">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-500 text-slate-600">evolução · Peso (kg)</p>
+            </div>
+            <svg viewBox="0 0 320 160" class="w-full h-40">
+              <!-- grade -->
+              <line x1="34" y1="20" x2="34" y2="135" stroke="#e9eef3" stroke-width="1"/>
+              <line x1="34" y1="135" x2="312" y2="135" stroke="#e9eef3" stroke-width="1"/>
+              <!-- labels eixo Y -->
+              <text x="6" y="28" font-size="9" fill="#94a3b8">84</text>
+              <text x="6" y="80" font-size="9" fill="#94a3b8">80</text>
+              <text x="6" y="132" font-size="9" fill="#94a3b8">76</text>
+              <!-- linha -->
+              <polyline fill="none" stroke="#0E4C86" stroke-width="2.5"
+                points="60,30 120,52 180,70 240,96 300,108" />
+              <!-- pontos (quadradinhos clicaveis → abrem a avaliacao) -->
+              <g fill="#CCF24D" stroke="#0E4C86" stroke-width="2" style="cursor:pointer">
+                <rect x="55" y="25" width="9" height="9" rx="1.5"/>
+                <rect x="115" y="47" width="9" height="9" rx="1.5"/>
+                <rect x="175" y="65" width="9" height="9" rx="1.5"/>
+                <rect x="235" y="91" width="9" height="9" rx="1.5"/>
+                <rect x="294" y="102" width="11" height="11" rx="1.5"/>
+              </g>
+              <!-- tooltip exemplo no ultimo ponto -->
+              <g>
+                <rect x="252" y="74" width="58" height="24" rx="5" fill="#0E4C86"/>
+                <text x="281" y="84" font-size="8" fill="#CCF24D" text-anchor="middle">78 kg</text>
+                <text x="281" y="93" font-size="7" fill="#fff" text-anchor="middle">10/06</text>
+              </g>
+              <!-- labels eixo X -->
+              <text x="60" y="150" font-size="8" fill="#94a3b8" text-anchor="middle">jan</text>
+              <text x="120" y="150" font-size="8" fill="#94a3b8" text-anchor="middle">fev</text>
+              <text x="180" y="150" font-size="8" fill="#94a3b8" text-anchor="middle">mar</text>
+              <text x="240" y="150" font-size="8" fill="#94a3b8" text-anchor="middle">mai</text>
+              <text x="300" y="150" font-size="8" fill="#94a3b8" text-anchor="middle">jun</text>
+            </svg>
+            <!-- Seletor de periodo -->
+            <div class="mt-3 flex flex-wrap gap-2 text-[11px] font-500">
+              <button class="px-3 py-1 rounded-full border border-navy/15 text-slate-500">3 meses</button>
+              <button class="px-3 py-1 rounded-full border border-navy/15 text-slate-500">6 meses</button>
+              <button class="px-3 py-1 rounded-full border border-navy/15 text-slate-500">1 ano</button>
+              <button class="px-3 py-1 rounded-full bg-lime/30 border border-lime text-navy font-600">Tudo</button>
+              <button class="px-3 py-1 rounded-full border border-navy/15 text-slate-500">Personalizado ▾</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tab bar inferior -->
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-6 py-2 flex justify-between text-[10px] text-slate-400">
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">🏠</span>Início</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">💪</span>Treinos</div>
+          <div class="flex flex-col items-center gap-0.5 text-navy font-600"><span class="text-base">📊</span>Avaliações</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">👤</span>Perfil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 1b — PAINEL PERÍODO PERSONALIZADO (GRÁFICOS) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-navy bg-lime px-3 py-1 rounded-full">painel · período personalizado</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- conteudo esmaecido ao fundo -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100 opacity-40">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+        </div>
+        <div class="flex-1 bg-black/20"></div>
+
+        <!-- bottom sheet -->
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-4 pb-6 shadow-2xl">
+          <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+          <p class="text-sm font-600 text-navy mb-4">Período personalizado</p>
+          <div class="flex gap-3">
+            <div class="flex-1">
+              <label class="text-[10px] uppercase tracking-widest text-slate-400">início</label>
+              <div class="mt-1 border border-navy/20 rounded-lg px-3 py-2 text-sm text-slate-600 flex items-center justify-between">
+                <span>01/01/2026</span><span class="text-slate-300">📅</span>
+              </div>
+            </div>
+            <div class="flex-1">
+              <label class="text-[10px] uppercase tracking-widest text-slate-400">fim</label>
+              <div class="mt-1 border border-navy/20 rounded-lg px-3 py-2 text-sm text-slate-600 flex items-center justify-between">
+                <span>10/06/2026</span><span class="text-slate-300">📅</span>
+              </div>
+            </div>
+          </div>
+          <button class="mt-5 w-full py-2.5 rounded-lg bg-lime text-navy text-sm font-600">Aplicar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 2 — VISÃO COMPARAR (TREINADOR) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-navy bg-track px-3 py-1 rounded-full">comparar · treinador</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <div>
+              <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+              <p class="text-[11px] text-slate-400">de @ana.vela</p>
+            </div>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+          <div class="mt-2 flex gap-2 text-xs font-500">
+            <button class="px-3 py-1.5 rounded-full border border-navy/15 text-slate-500">Gráficos</button>
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy font-600">Comparar</button>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-4 pb-24 space-y-4">
+
+          <!-- B1 — Selecao de tipo + avaliacoes -->
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">tipo</p>
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy text-xs font-600">Antropométrica ▾</button>
+          </div>
+
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">avaliações a comparar</p>
+            <button class="w-full px-3 py-2.5 rounded-xl border border-navy/20 text-navy text-sm font-500 flex items-center justify-between">
+              <span>Selecionar avaliações</span>
+              <span class="text-xs text-slate-400">2 selecionadas ›</span>
+            </button>
+          </div>
+
+          <!-- B2 — Tabela comparativa -->
+          <div class="bg-white rounded-xl border border-slate-100 overflow-x-auto scroll">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-slate-100 text-slate-500">
+                  <th class="text-left font-500 px-3 py-2">campo</th>
+                  <th class="font-600 px-3 py-2 text-navy underline decoration-dotted cursor-pointer">12/01</th>
+                  <th class="font-600 px-3 py-2 text-navy underline decoration-dotted cursor-pointer">10/06</th>
+                  <th class="font-500 px-3 py-2">var.</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-600">
+                <tr class="border-b border-slate-50">
+                  <td class="px-3 py-2 text-slate-500">Peso</td>
+                  <td class="px-3 py-2 text-center">82 kg</td>
+                  <td class="px-3 py-2 text-center">78 kg</td>
+                  <td class="px-3 py-2 text-center text-emerald-600 font-500">▼ 4</td>
+                </tr>
+                <tr class="border-b border-slate-50">
+                  <td class="px-3 py-2 text-slate-500">% gordura</td>
+                  <td class="px-3 py-2 text-center">24%</td>
+                  <td class="px-3 py-2 text-center">21%</td>
+                  <td class="px-3 py-2 text-center text-emerald-600 font-500">▼ 3</td>
+                </tr>
+                <tr class="border-b border-slate-50">
+                  <td class="px-3 py-2 text-slate-500">Cintura</td>
+                  <td class="px-3 py-2 text-center">88 cm</td>
+                  <td class="px-3 py-2 text-center">84 cm</td>
+                  <td class="px-3 py-2 text-center text-emerald-600 font-500">▼ 4</td>
+                </tr>
+                <tr class="border-b border-slate-50">
+                  <td class="px-3 py-2 text-slate-500">Quadril</td>
+                  <td class="px-3 py-2 text-center">102 cm</td>
+                  <td class="px-3 py-2 text-center">102 cm</td>
+                  <td class="px-3 py-2 text-center text-slate-400 font-500">＝</td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 text-slate-500">Massa magra</td>
+                  <td class="px-3 py-2 text-center">62 kg</td>
+                  <td class="px-3 py-2 text-center text-slate-300">—</td>
+                  <td class="px-3 py-2 text-center text-slate-300">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-6 py-2 flex justify-between text-[10px] text-slate-400">
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">🏠</span>Início</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">💪</span>Treinos</div>
+          <div class="flex flex-col items-center gap-0.5 text-navy font-600"><span class="text-base">📊</span>Avaliações</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">👤</span>Perfil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 2b — PAINEL SELECIONAR AVALIAÇÕES (COMPARAR) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-navy bg-track px-3 py-1 rounded-full">painel · selecionar avaliações</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- conteudo esmaecido ao fundo -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100 opacity-40">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+        </div>
+        <div class="flex-1 bg-black/20"></div>
+
+        <!-- bottom sheet -->
+        <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-4 pb-6 shadow-2xl max-h-[70%] flex flex-col">
+          <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+          <p class="text-sm font-600 text-navy">Selecionar avaliações</p>
+          <p class="text-[11px] text-slate-400 mb-3">Antropométrica · 5 mais recentes</p>
+          <div class="space-y-2 overflow-y-auto scroll">
+            <label class="bg-white rounded-xl border border-lime px-3 py-2.5 flex items-center gap-3">
+              <input type="checkbox" checked class="accent-navy">
+              <span class="text-lg" style="color:#CCF24D">📏</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-500 text-slate-700 leading-tight">Antropométrica</p>
+                <p class="text-[11px] text-slate-400">10/06/2026 · @ze.personal</p>
+              </div>
+            </label>
+            <label class="bg-white rounded-xl border border-slate-100 px-3 py-2.5 flex items-center gap-3">
+              <input type="checkbox" class="accent-navy">
+              <span class="text-lg" style="color:#CCF24D">📏</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-500 text-slate-700 leading-tight">Antropométrica</p>
+                <p class="text-[11px] text-slate-400">02/05/2026 · @ze.personal</p>
+              </div>
+            </label>
+            <label class="bg-white rounded-xl border border-slate-100 px-3 py-2.5 flex items-center gap-3">
+              <input type="checkbox" class="accent-navy">
+              <span class="text-lg" style="color:#CCF24D">📏</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-500 text-slate-700 leading-tight">Antropométrica</p>
+                <p class="text-[11px] text-slate-400">18/03/2026 · @ze.personal</p>
+              </div>
+            </label>
+            <label class="bg-white rounded-xl border border-slate-100 px-3 py-2.5 flex items-center gap-3">
+              <input type="checkbox" class="accent-navy">
+              <span class="text-lg" style="color:#CCF24D">📏</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-500 text-slate-700 leading-tight">Antropométrica</p>
+                <p class="text-[11px] text-slate-400">12/02/2026 · @ze.personal</p>
+              </div>
+            </label>
+            <label class="bg-white rounded-xl border border-lime px-3 py-2.5 flex items-center gap-3">
+              <input type="checkbox" checked class="accent-navy">
+              <span class="text-lg" style="color:#CCF24D">📏</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-500 text-slate-700 leading-tight">Antropométrica</p>
+                <p class="text-[11px] text-slate-400">12/01/2026 · @ze.personal</p>
+              </div>
+            </label>
+          </div>
+          <button class="mt-4 w-full py-2.5 rounded-lg bg-lime text-navy text-sm font-600">Aplicar (2)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 3 — ESTADO VAZIO (SEM AVALIAÇÕES) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">vazio · sem avaliações</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center text-center px-8 gap-3">
+          <span class="text-5xl">📈</span>
+          <p class="text-sm text-slate-600 font-500">Ainda não há avaliações para mostrar a evolução.</p>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-6 py-2 flex justify-between text-[10px] text-slate-400">
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">🏠</span>Início</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">💪</span>Treinos</div>
+          <div class="flex flex-col items-center gap-0.5 text-navy font-600"><span class="text-base">📊</span>Avaliações</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">👤</span>Perfil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 4 — DADOS INSUFICIENTES (GRÁFICOS · 1 MEDIÇÃO) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">dados insuficientes</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+          <div class="mt-2 flex gap-2 text-xs font-500">
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy font-600">Gráficos</button>
+            <button class="px-3 py-1.5 rounded-full border border-navy/15 text-slate-500">Comparar</button>
+          </div>
+        </div>
+        <div class="px-4 py-4 space-y-4">
+          <div class="flex items-center gap-2">
+            <button class="px-3 py-1.5 rounded-full bg-lime/30 border border-lime text-navy text-xs font-600">% de gordura ▾</button>
+          </div>
+          <div class="bg-white rounded-xl border border-dashed border-slate-300 px-6 py-10 flex flex-col items-center text-center gap-2">
+            <span class="text-3xl">📉</span>
+            <p class="text-sm text-slate-600 font-500">Registre ao menos 2 avaliações para ver sua evolução.</p>
+          </div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-6 py-2 flex justify-between text-[10px] text-slate-400">
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">🏠</span>Início</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">💪</span>Treinos</div>
+          <div class="flex flex-col items-center gap-0.5 text-navy font-600"><span class="text-base">📊</span>Avaliações</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">👤</span>Perfil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 5 — LOADING -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">loading</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+        </div>
+        <div class="px-4 py-4 space-y-4">
+          <div class="skeleton h-8 w-28 rounded-full"></div>
+          <div class="flex gap-3">
+            <div class="skeleton h-20 flex-1 rounded-xl"></div>
+            <div class="skeleton h-20 flex-1 rounded-xl"></div>
+          </div>
+          <div class="skeleton h-48 w-full rounded-xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 6 — ERRO -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">erro</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <!-- toast de rede -->
+        <div class="absolute top-8 inset-x-4 z-30 bg-navy text-white text-xs rounded-lg px-3 py-2 text-center shadow-lg">Sem conexão. Tente novamente.</div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-xl leading-none">‹</button>
+            <h2 class="text-xl font-600 lowercase tracking-tight text-navy">análise</h2>
+          </div>
+          <div class="mt-3 flex bg-slate-100 rounded-lg p-0.5 text-xs font-500">
+            <button class="flex-1 rounded-md py-1.5 text-slate-500">Lista</button>
+            <button class="flex-1 rounded-md py-1.5 bg-lime text-navy font-600">Análise</button>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center text-center px-8 gap-3">
+          <span class="text-4xl">⚠️</span>
+          <p class="text-sm text-slate-600 font-500">Não foi possível carregar a análise.</p>
+          <button class="px-4 py-2 rounded-lg bg-lime text-navy text-sm font-600">Tentar novamente</button>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-6 py-2 flex justify-between text-[10px] text-slate-400">
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">🏠</span>Início</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">💪</span>Treinos</div>
+          <div class="flex flex-col items-center gap-0.5 text-navy font-600"><span class="text-base">📊</span>Avaliações</div>
+          <div class="flex flex-col items-center gap-0.5"><span class="text-base">👤</span>Perfil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

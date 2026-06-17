@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Visualizar Avaliação (VELA-2002) · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — cor-assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sora: ['Sora', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Sora', sans-serif; }
+  .device { width: 390px; border-radius: 2.5rem; box-shadow: 0 12px 40px rgba(14,76,134,.18), 0 2px 8px rgba(0,0,0,.06); }
+  .device-screen { height: 800px; border-radius: 2rem; }
+  .scroll::-webkit-scrollbar { width: 0; height: 0; }
+  .notch { width: 130px; height: 26px; border-radius: 0 0 1rem 1rem; }
+  .skeleton { background: linear-gradient(90deg,#e9eef3 25%,#f3f6f9 37%,#e9eef3 63%); background-size:400% 100%; animation: sk 1.4s ease infinite; }
+  @keyframes sk { 0%{background-position:100% 50%} 100%{background-position:0 50%} }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+<!-- Banner de aviso -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm px-4 py-2 font-light tracking-wide">
+  <span class="font-semibold text-lime">mockup visual</span> — não é código de produção. Gerado a partir de
+  <code class="bg-white/10 px-1.5 py-0.5 rounded">docs/screens/avaliacoes/visualizar-avaliacao.md</code>
+</div>
+
+<header class="max-w-7xl mx-auto px-6 pt-8 pb-2">
+  <div class="flex items-end gap-3">
+    <span class="inline-flex items-center bg-lime text-navy font-700 text-2xl px-3 py-1 rounded-lg lowercase tracking-tight">vela.</span>
+    <div class="pb-1">
+      <h1 class="text-lg font-600 lowercase tracking-tight text-navy">visualizar avaliação</h1>
+      <p class="text-xs text-slate-500">VELA-2002 · módulo Avaliações · conferência visual (mobile) · tipo-exemplo: Antropométrica</p>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap gap-8 items-start justify-center">
+
+  <!-- ============================================================= -->
+  <!-- FRAME 1 — PRINCIPAL · TREINADOR · CONCLUÍDA -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-navy bg-lime px-3 py-1 rounded-full">principal · treinador · concluída</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header (3.1) -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-2xl leading-none">‹</button>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-base" style="color:#CCF24D">📏</span>
+                <h2 class="text-base font-600 text-navy leading-tight truncate">Antropométrica</h2>
+              </div>
+              <p class="text-[11px] text-slate-400">12/06/2026 · <span class="inline-flex items-center gap-1"><span class="text-navy">●</span>Concluída</span></p>
+              <p class="text-[11px] text-navy font-500 truncate">Ana Vela · @ana.vela</p>
+            </div>
+            <!-- alterar (Revisar, pois Concluída) + menu ⋮ (Excluir) -->
+            <button class="w-8 h-8 rounded-lg border border-navy/20 text-navy flex items-center justify-center text-sm" title="Revisar">✎</button>
+            <button class="w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center text-lg" title="Mais ações">⋮</button>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-3 pb-28 space-y-3">
+
+          <!-- Secao 0 — Cabecalho da avaliacao + resumo-chave -->
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[11px] text-slate-400">Registrada por <span class="font-500 text-slate-600">@ze.personal</span></p>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <div class="rounded-lg bg-lime/15 border border-lime/50 px-3 py-2">
+                <p class="text-[10px] uppercase tracking-wide text-slate-500">% de gordura</p>
+                <p class="text-lg font-700 text-navy leading-none mt-0.5">18,2<span class="text-xs font-400">%</span></p>
+                <p class="text-[10px] text-emerald-600 mt-1">▼ 1,1 pp (-5,7%)</p>
+              </div>
+              <div class="rounded-lg bg-slate-50 border border-slate-100 px-3 py-2">
+                <p class="text-[10px] uppercase tracking-wide text-slate-500">Peso</p>
+                <p class="text-lg font-700 text-navy leading-none mt-0.5">78,4<span class="text-xs font-400"> kg</span></p>
+                <p class="text-[10px] text-emerald-600 mt-1">▼ 0,9 kg (-1,1%)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secao 1 — Medidas (somente leitura, com variacao) -->
+          <div class="bg-white rounded-xl border border-slate-100 overflow-hidden">
+            <p class="px-3 pt-3 pb-1 text-[10px] uppercase tracking-widest text-slate-400">Medidas corporais</p>
+            <div class="divide-y divide-slate-50">
+              <!-- linha: rotulo + valor + variacao seta+delta+% -->
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Altura</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">1,78 m</span>
+                  <p class="text-[10px] text-slate-400">= sem variação</p>
+                </div>
+              </div>
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Cintura</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">84 cm</span>
+                  <p class="text-[10px] text-emerald-600">▼ 1 cm (-1,2%)</p>
+                </div>
+              </div>
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Quadril</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">98 cm</span>
+                  <p class="text-[10px] text-emerald-600">▼ 1 cm (-1,0%)</p>
+                </div>
+              </div>
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Braço (relaxado)</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">36 cm</span>
+                  <p class="text-[10px] text-rose-500">▲ 0,5 cm (+1,4%)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secao calculados -->
+          <div class="bg-white rounded-xl border border-slate-100 overflow-hidden">
+            <p class="px-3 pt-3 pb-1 text-[10px] uppercase tracking-widest text-slate-400">Resultados calculados</p>
+            <div class="divide-y divide-slate-50">
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">IMC</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">24,7</span>
+                  <p class="text-[10px] text-emerald-600">▼ 0,3 (-1,2%)</p>
+                </div>
+              </div>
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">RCQ (cintura/quadril)</span>
+                <div class="text-right">
+                  <span class="text-sm font-500 text-slate-800">0,86</span>
+                  <p class="text-[10px] text-slate-400">= sem variação</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secao Fotos -->
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">Fotos</p>
+            <div class="grid grid-cols-4 gap-2">
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                <span class="text-lg">🖼️</span><span class="text-[9px] mt-0.5">Frente</span>
+              </div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                <span class="text-lg">🖼️</span><span class="text-[9px] mt-0.5">Costas</span>
+              </div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                <span class="text-lg">🖼️</span><span class="text-[9px] mt-0.5">Perfil E</span>
+              </div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex flex-col items-center justify-center text-slate-400">
+                <span class="text-lg">🖼️</span><span class="text-[9px] mt-0.5">Perfil D</span>
+              </div>
+            </div>
+            <p class="text-[10px] text-slate-400 mt-2">Toque na foto para ampliar.</p>
+          </div>
+
+          <!-- Secao Observacoes -->
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Observações</p>
+            <p class="text-sm text-slate-600 leading-snug">Boa redução de cintura no ciclo. Manter foco em hipertrofia de membros superiores.</p>
+          </div>
+        </div>
+
+        <!-- Footer (3.3) — Treinador: Revisar + Ver evolução -->
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-4 py-3 flex gap-2">
+          <button class="flex-1 text-sm font-600 rounded-xl py-2.5 border border-navy/20 text-navy">Ver evolução</button>
+          <button class="flex-1 text-sm font-600 rounded-xl py-2.5 bg-lime text-navy">Revisar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 2 — ALUNO · SOLICITADA (aguardando preenchimento) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-600 bg-slate-200 px-3 py-1 rounded-full">aluno · solicitada (aguardando)</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header — Aluno: só voltar (sem ✎ / ⋮) -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-2xl leading-none">‹</button>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-base" style="color:#CCF24D">📏</span>
+                <h2 class="text-base font-600 text-navy leading-tight truncate">Antropométrica</h2>
+              </div>
+              <p class="text-[11px] text-slate-400">solicitada em 16/06/2026 · <span class="inline-flex items-center gap-1"><span style="color:#CCF24D">●</span>Solicitada</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-3 pb-28">
+          <!-- Secao 0 — sem dados ainda -->
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[11px] text-slate-400">Liberada por <span class="font-500 text-slate-600">@ze.personal</span></p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Prazo: 23/06/2026</p>
+          </div>
+
+          <!-- estado aguardando -->
+          <div class="mt-3 bg-white rounded-xl border border-dashed border-lime/70 p-6 flex flex-col items-center text-center">
+            <span class="text-3xl">📝</span>
+            <p class="mt-3 text-sm font-600 text-navy">Aguardando preenchimento</p>
+            <p class="mt-1 text-xs text-slate-500 leading-snug">Seu treinador liberou esta avaliação para você preencher. Toque em “Preencher” para começar.</p>
+          </div>
+        </div>
+
+        <!-- Footer — Aluno (Solicitada): Preencher -->
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-4 py-3">
+          <button class="w-full text-sm font-600 rounded-xl py-3 bg-lime text-navy">Preencher</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 3 — TREINADOR · EXPIRADA (com Reabrir) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-white bg-performance px-3 py-1 rounded-full">treinador · expirada</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header — Treinador/Expirada: ⋮ (Excluir) + Reabrir -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-2xl leading-none">‹</button>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-base" style="color:#CCF24D">📏</span>
+                <h2 class="text-base font-600 text-navy leading-tight truncate">Antropométrica</h2>
+              </div>
+              <p class="text-[11px] text-slate-400">solicitada em 02/06/2026 · <span class="inline-flex items-center gap-1"><span class="text-rose-500">●</span>Expirada</span></p>
+            </div>
+            <button class="w-8 h-8 rounded-lg text-slate-400 flex items-center justify-center text-lg" title="Mais ações">⋮</button>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-3 pb-28 space-y-3">
+          <div class="bg-white rounded-xl border border-slate-100 p-3 space-y-0.5">
+            <p class="text-[11px] text-slate-400">Liberada por <span class="font-500 text-slate-600">@ze.personal</span></p>
+            <p class="text-[11px] text-slate-400">Aluno: <span class="font-500 text-navy">Ana Vela · @ana.vela</span></p>
+            <p class="text-[11px] text-slate-400">Prazo encerrado em 09/06/2026</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-100 p-6 flex flex-col items-center text-center">
+            <span class="text-3xl">⏰</span>
+            <p class="mt-3 text-sm font-600 text-navy">Prazo encerrado sem preenchimento</p>
+            <p class="mt-1 text-xs text-slate-500 leading-snug">O aluno não iniciou esta avaliação dentro do prazo. Reabra para liberar novamente (com novo prazo, se quiser).</p>
+          </div>
+        </div>
+
+        <!-- Footer — Treinador (Expirada): Reabrir -->
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-4 py-3">
+          <button class="w-full text-sm font-600 rounded-xl py-3 bg-lime text-navy">Reabrir</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FRAME 4 — ALUNO · CONCLUÍDA (somente leitura) -->
+  <!-- ============================================================= -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-600 bg-slate-200 px-3 py-1 rounded-full">aluno · concluída (leitura)</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+
+        <!-- Header — Aluno: sem ✎ / ⋮ -->
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-2xl leading-none">‹</button>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="text-base" style="color:#CCF24D">📏</span>
+                <h2 class="text-base font-600 text-navy leading-tight truncate">Antropométrica</h2>
+              </div>
+              <p class="text-[11px] text-slate-400">12/06/2026 · <span class="inline-flex items-center gap-1"><span class="text-navy">●</span>Concluída</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll overflow-y-auto flex-1 px-4 py-3 pb-28 space-y-3">
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[11px] text-slate-400">Registrada por <span class="font-500 text-slate-600">@ze.personal</span></p>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <div class="rounded-lg bg-lime/15 border border-lime/50 px-3 py-2">
+                <p class="text-[10px] uppercase tracking-wide text-slate-500">% de gordura</p>
+                <p class="text-lg font-700 text-navy leading-none mt-0.5">18,2<span class="text-xs font-400">%</span></p>
+                <p class="text-[10px] text-emerald-600 mt-1">▼ 1,1 pp (-5,7%)</p>
+              </div>
+              <div class="rounded-lg bg-slate-50 border border-slate-100 px-3 py-2">
+                <p class="text-[10px] uppercase tracking-wide text-slate-500">Peso</p>
+                <p class="text-lg font-700 text-navy leading-none mt-0.5">78,4<span class="text-xs font-400"> kg</span></p>
+                <p class="text-[10px] text-emerald-600 mt-1">▼ 0,9 kg (-1,1%)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-100 overflow-hidden">
+            <p class="px-3 pt-3 pb-1 text-[10px] uppercase tracking-widest text-slate-400">Medidas corporais</p>
+            <div class="divide-y divide-slate-50">
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Cintura</span>
+                <div class="text-right"><span class="text-sm font-500 text-slate-800">84 cm</span><p class="text-[10px] text-emerald-600">▼ 1 cm (-1,2%)</p></div>
+              </div>
+              <div class="px-3 py-2.5 flex items-center justify-between">
+                <span class="text-sm text-slate-600">Quadril</span>
+                <div class="text-right"><span class="text-sm font-500 text-slate-800">98 cm</span><p class="text-[10px] text-emerald-600">▼ 1 cm (-1,0%)</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-100 p-3">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-2">Fotos</p>
+            <div class="grid grid-cols-4 gap-2">
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex items-center justify-center text-slate-300 text-lg">🖼️</div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex items-center justify-center text-slate-300 text-lg">🖼️</div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex items-center justify-center text-slate-300 text-lg">🖼️</div>
+              <div class="aspect-[3/4] rounded-lg bg-slate-100 flex items-center justify-center text-slate-300 text-lg">🖼️</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer — Aluno (Concluída): apenas Ver evolução (sem editar/excluir) -->
+        <div class="absolute bottom-0 inset-x-0 bg-white border-t border-slate-100 px-4 py-3">
+          <button class="w-full text-sm font-600 rounded-xl py-3 border border-navy/20 text-navy">Ver evolução</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- ESTADOS-CHAVE (Secao 6) -->
+  <!-- ============================================================= -->
+
+  <!-- 6.2 Loading -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-slate-500 bg-slate-200 px-3 py-1 rounded-full">estado · carregando</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-300 text-2xl leading-none">‹</button>
+            <div class="flex-1 space-y-1.5">
+              <div class="skeleton h-3.5 w-32 rounded"></div>
+              <div class="skeleton h-2.5 w-24 rounded"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 px-4 py-3 space-y-3">
+          <div class="skeleton h-20 rounded-xl"></div>
+          <div class="skeleton h-32 rounded-xl"></div>
+          <div class="skeleton h-24 rounded-xl"></div>
+          <div class="skeleton h-24 rounded-xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.3 Erro -->
+  <section class="flex flex-col items-center gap-3">
+    <span class="text-xs font-600 uppercase tracking-widest text-rose-600 bg-rose-100 px-3 py-1 rounded-full">estado · erro</span>
+    <div class="device bg-white p-2">
+      <div class="device-screen bg-slate-50 overflow-hidden relative flex flex-col">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 notch bg-white z-20"></div>
+        <div class="px-5 pt-9 pb-3 bg-white border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <button class="text-slate-400 text-2xl leading-none">‹</button>
+            <h2 class="text-base font-600 text-navy">Avaliação</h2>
+          </div>
+        </div>
+        <div class="flex-1 px-6 flex flex-col items-center justify-center text-center">
+          <span class="text-4xl">⚠️</span>
+          <p class="mt-3 text-sm font-600 text-navy">Não foi possível carregar</p>
+          <p class="mt-1 text-xs text-slate-500">Verifique sua conexão e tente novamente.</p>
+          <button class="mt-4 text-sm font-600 rounded-xl py-2.5 px-6 bg-lime text-navy">Tentar novamente</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="max-w-7xl mx-auto px-6 pb-10 pt-2 text-[11px] text-slate-400 leading-relaxed">
+  <p>Notas do mockup — fidelidade ao doc VELA-2002:</p>
+  <ul class="list-disc pl-5 mt-1 space-y-0.5">
+    <li>Tela <strong>somente leitura</strong> (RN01); variação por campo = <strong>seta + delta + %</strong>, sem depender só de cor (RN03 / acessibilidade).</li>
+    <li><strong>Treinador</strong>: botão alterar = “Revisar” em Concluída (✎ no header), menu ⋮ (Excluir) sempre, “Reabrir” em Expirada (RN08), “Ver evolução” → VELA-2004 (RN10).</li>
+    <li><strong>Aluno</strong>: sem ✎/⋮; “Preencher” só em Solicitada; em Concluída só leitura + “Ver evolução”.</li>
+    <li>Toque em foto amplia (RN07). Resumo-chave (% gordura, peso) em destaque na Concluída (Seção 0).</li>
+  </ul>
+</footer>
+
+</body>
+</html>

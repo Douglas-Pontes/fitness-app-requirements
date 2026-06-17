@@ -26,6 +26,11 @@
     .frame { width: 390px; }
     .skel { background: linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 37%,#e5e7eb 63%); background-size: 400% 100%; animation: shimmer 1.4s infinite; }
     @keyframes shimmer { 0% { background-position: 100% 0 } 100% { background-position: -100% 0 } }
+    .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #94a3b8; margin-bottom: 4px; display:block; }
+    .inp { width:100%; border:1px solid #e2e8f0; border-radius:12px; padding:10px 12px; font-size:14px; color:#0E4C86; background:#fff; }
+    .inp:focus { outline:none; border-color:#CCF24D; box-shadow:0 0 0 3px rgba(204,242,77,.35); }
+    .ro { background:#f1f5f9; color:#94a3b8; }
+    .sel { display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
   </style>
 </head>
 <body class="bg-slate-100 text-navy">
@@ -73,7 +78,6 @@
           <div class="px-5">
             <p class="text-xs uppercase tracking-widest text-slate-400 mb-2">Dados pessoais</p>
             <div class="rounded-2xl border border-slate-100 divide-y divide-slate-100">
-              <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">Nome completo</span><span class="font-medium">Mariana Souza</span></div>
               <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">E-mail</span><span class="font-medium">mariana@email.com</span></div>
               <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">WhatsApp</span><span class="font-medium">(11) 99999-0000</span></div>
               <div class="flex justify-between px-4 py-3 text-sm"><span class="text-slate-500">Data de nascimento</span><span class="font-medium">12/03/1995</span></div>
@@ -100,6 +104,69 @@
 
         </div>
       </div>
+    </section>
+
+    <!-- ============ FRAME: AO CLICAR EM "EDITAR PERFIL" (destino) ============ -->
+    <section>
+      <p class="text-center text-xs uppercase tracking-widest text-slate-400 mb-2">ao clicar em "Editar perfil" → Editar Perfil</p>
+      <div class="frame bg-white rounded-[2.2rem] shadow-xl border-8 border-slate-900 overflow-hidden">
+        <div class="h-[780px] overflow-y-auto">
+
+          <!-- Header fixo (voltar/cancelar) -->
+          <div class="sticky top-0 bg-white/95 backdrop-blur z-10 px-5 py-4 flex items-center gap-3 border-b border-slate-100">
+            <button aria-label="Cancelar" class="text-xl text-slate-500">←</button>
+            <h1 class="text-lg font-semibold">Editar Perfil</h1>
+          </div>
+
+          <!-- Foto (obrigatoria) com icone de lapis -->
+          <div class="flex flex-col items-center pt-6 pb-5">
+            <button class="relative" aria-label="Editar foto">
+              <div class="w-24 h-24 rounded-full shadow-inner overflow-hidden" aria-label="Foto de perfil de Mariana Souza" style="background:radial-gradient(circle at 50% 38%, #fcd9c4 0 28%, #e8a87c 28% 60%, #4B5F79 60% 100%)"></div>
+              <span class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-lime grid place-items-center text-navy text-sm shadow ring-2 ring-white">✎</span>
+            </button>
+            <p class="text-[11px] text-slate-400 mt-2">Foto obrigatoria</p>
+          </div>
+
+          <!-- Dados editaveis -->
+          <div class="px-5 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Dados</p>
+            <div><label class="lbl">Nome completo *</label><input class="inp" value="Mariana Souza" /></div>
+            <div><label class="lbl">WhatsApp *</label><input class="inp" value="+55 (11) 90000-0000" /></div>
+            <div>
+              <label class="lbl">Pais *</label>
+              <div class="inp sel"><span class="flex items-center gap-2">🇧🇷 Brasil</span><span class="text-slate-400">▾</span></div>
+            </div>
+            <div><label class="lbl">Data de nascimento *</label><input class="inp" value="12/03/1995" placeholder="DD/MM/AAAA" /></div>
+            <div>
+              <label class="lbl">Sexo *</label>
+              <div class="inp sel"><span>Feminino</span><span class="text-slate-400">▾</span></div>
+            </div>
+            <div><label class="lbl">@ instagram</label><input class="inp" value="@mari.souza" /></div>
+            <div>
+              <label class="lbl">@ aluno.vela *</label>
+              <input class="inp" value="@marianasouza" />
+              <p class="text-[11px] text-slate-400 mt-1">Apenas letras minusculas e numeros</p>
+            </div>
+          </div>
+
+          <!-- Somente leitura -->
+          <div class="px-5 mt-6 space-y-4">
+            <p class="text-xs uppercase tracking-widest text-slate-400">Somente leitura</p>
+            <div><label class="lbl">E-mail 🔒</label><input class="inp ro" value="mariana@email.com" disabled /></div>
+            <div><label class="lbl">@ treinador.vela 🔒</label><input class="inp ro" value="@coach.felipe" disabled /></div>
+            <div><label class="lbl">Objetivo 🔒</label><input class="inp ro" value="Hipertrofia" disabled /></div>
+          </div>
+
+          <div class="h-6"></div>
+
+          <!-- Footer Salvar -->
+          <div class="sticky bottom-0 bg-white/95 backdrop-blur border-t border-slate-100 p-4">
+            <button class="w-full py-3 rounded-full bg-slate-200 text-slate-400 font-medium cursor-not-allowed">Salvar</button>
+          </div>
+
+        </div>
+      </div>
+      <p class="text-center text-[11px] text-slate-400 mt-2 max-w-[390px]">Tela completa documentada em <code>editar-perfil.md</code> / <code>editar-perfil.html</code></p>
     </section>
 
     <!-- ============ FRAME: LOADING ============ -->
@@ -167,7 +234,7 @@
             <button class="w-9 h-9 grid place-items-center rounded-full bg-slate-100 text-slate-600">⚙</button>
           </div>
           <div class="flex flex-col items-center pt-7 pb-6 opacity-30">
-            <div class="w-24 h-24 rounded-full bg-track grid place-items-center text-3xl font-semibold text-navy">MS</div>
+            <div class="w-24 h-24 rounded-full shadow-inner overflow-hidden" aria-label="Foto de perfil de Mariana Souza" style="background:radial-gradient(circle at 50% 38%, #fcd9c4 0 28%, #e8a87c 28% 60%, #4B5F79 60% 100%)"></div>
             <p class="mt-3 text-xl font-semibold">Mariana Souza</p>
           </div>
         </div>

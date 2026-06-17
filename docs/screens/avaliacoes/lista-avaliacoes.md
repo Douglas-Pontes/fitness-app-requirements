@@ -10,14 +10,14 @@
 | **Codigo** | VELA-2001 |
 | **Prioridade** | 🔵 MVP |
 | **Status** | 🟢 CONCLUIDO |
-| **Ultima atualizacao** | 2026-06-10 |
+| **Ultima atualizacao** | 2026-06-16 |
 
 ---
 
 ## 1. Objetivo da Tela
 > O que o usuario consegue fazer nesta tela? Qual problema ela resolve?
 
-Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia e outros tipos futuros). Exibe todas as avaliacoes do Aluno **ordenadas por data** (mais recente primeiro), com **cards finos e neutros** (tipo e status indicados por **icone colorido**) e um **status** por card (Solicitada / Em andamento / Concluida / Expirada). E uma **lista unica** (sem secoes): os **pendentes do Aluno aparecem primeiro** e os demais por data. Permite **filtrar por periodo, status e tipo** (botoes que abrem painel) e **visualizar** qualquer avaliacao (`[VELA-2002]`). As acoes de criar/editar/excluir/liberar sao do **Treinador**; o **Aluno** apenas **visualiza** e **preenche** avaliacoes que o Treinador liberou para ele (enquanto estiverem pendentes). Quando o Treinador **libera** uma avaliacao, o Aluno **recebe uma notificacao** e a avaliacao vai para o **topo da lista** como pendencia a responder (com contador na propria aba). As permissoes completas estao na Secao 8.
+Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia e outros tipos futuros). Exibe todas as avaliacoes do Aluno **ordenadas por data** (mais recente primeiro), com **cards finos e neutros** (tipo e status indicados por **icone colorido**) e um **status** por card (Solicitada / Em andamento / Concluida / Expirada). A lista e **agrupada em tres secoes** (nesta ordem): **Pendentes**, **Expiradas** e **Anteriores** — cada uma ordenada por data (mais recente primeiro). Permite **filtrar por periodo, status e tipo** (botoes que abrem painel) e **visualizar** qualquer avaliacao (`[VELA-2002]`). As acoes de criar/editar/excluir/liberar sao do **Treinador**; o **Aluno** apenas **visualiza** e **preenche** avaliacoes que o Treinador liberou para ele (enquanto estiverem pendentes). Quando o Treinador **libera** uma avaliacao, o Aluno **recebe uma notificacao** e a avaliacao vai para o **topo da lista** como pendencia a responder (com contador na propria aba). As permissoes completas estao na Secao 8.
 
 ---
 
@@ -38,11 +38,11 @@ Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometri
 > Descreva a estrutura visual da tela de cima para baixo.
 
 ### 3.1 Header / Cabecalho
-- Conteudo: Botao voltar (quando aberta a partir do perfil) + Titulo **"Avaliacoes"**. Quando um Treinador abre o perfil de um Aluno, exibir abaixo do titulo o nome/@ do Aluno em contexto (ex: "Avaliacoes de @ana.vela").
-- Comportamento: Fixo no topo.
+- Conteudo: Botao voltar (quando aberta a partir do perfil) + Titulo **"Avaliacoes"**. Quando um Treinador abre o perfil de um Aluno, exibir abaixo do titulo o nome/@ do Aluno em contexto (ex: "Avaliacoes de @ana.vela"). Logo abaixo, o **seletor de visao da aba** (toggle/segmented control): **Lista | Analise** — alterna entre esta tela (Lista `[VELA-2001]`) e a **Analise das Avaliacoes `[VELA-2004]`**.
+- Comportamento: Fixo no topo. A posicao **Lista** abre selecionada por padrao ao entrar na aba. Aba ativa do toggle destacada com o **verde-limao neon** da marca (mesmo tratamento dos filtros ativos), mantendo o visual minimalista de alto contraste.
 
 ### 3.2 Corpo Principal
-> Descrever secoes da tela, na ordem que aparecem. A tela segue a ordem: **filtros → lista unica de cards** (sem secoes/abas separadas).
+> Descrever secoes da tela, na ordem que aparecem. A tela segue a ordem: **filtros → lista de cards agrupada em secoes** (Pendentes / Expiradas / Anteriores).
 
 **Secao 1 — Filtros (botoes)**
 - Componente: Barra com **botoes de filtro** que abrem um **painel/bottom sheet** ao toque (em vez de uma fileira longa de chips). Sao **tres** botoes, na ordem:
@@ -54,12 +54,14 @@ Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometri
   - Cada botao mostra o valor selecionado quando ativo (ex: "Periodo: 3 meses", "Status: 2") e fica destacado com o **verde-limao neon** da marca; ao confirmar a selecao no painel, a lista e refiltrada imediatamente.
   - Os tres filtros sao combinaveis (E logico).
 
-**Secao 2 — Lista unica de avaliacoes**
-- Componente: Lista vertical de **cards finos** (compactos), **sem separacao em secoes**.
-- Ordenacao (RN01/RN12):
-  - **Pendentes primeiro** — avaliacoes pendentes do Aluno (**Solicitada** + **Em andamento** iniciada por ele) aparecem no **topo** da lista.
-  - **Demais em ordem cronologica decrescente** (mais recente primeiro) logo abaixo.
-  - Nao ha bloco/banner destacado separado; o realce dos pendentes vem apenas da **posicao** (topo) e do **icone de status**.
+**Secao 2 — Lista agrupada em secoes**
+- Componente: Lista vertical de **cards finos** (compactos), **agrupada em tres secoes** com titulo discreto, nesta ordem: **Pendentes**, **Expiradas**, **Anteriores**.
+- Agrupamento e ordenacao (RN01/RN12):
+  - **Pendentes** — **Solicitada** + **Em andamento** (iniciada pelo Aluno). Aparece **primeiro** (topo).
+  - **Expiradas** — avaliacoes **Expirada**. Vem em seguida.
+  - **Anteriores** — avaliacoes **Concluida** (historico).
+  - Dentro de cada secao, ordem **cronologica decrescente** (mais recente primeiro).
+  - Os titulos das secoes sao **discretos** (texto pequeno/uppercase), mantendo o visual minimalista; secoes **vazias nao aparecem**.
 - Conteudo de cada card (enxuto — **somente** estes itens):
   - **Tipo** — **icone + rotulo** (ex: "Antropometrica"). O icone tem cor propria do tipo, mas **nao tinge o card**.
   - **Data** — data da avaliacao (Concluida) ou de solicitacao/liberacao (demais), formato dd/mm/aaaa.
@@ -67,8 +69,8 @@ Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometri
   - **Status** — representado por um **icone colorido** (uma cor por status) + rotulo curto: **Solicitada**, **Em andamento**, **Concluida**, **Expirada**. O icone de status **nao altera a cor do card** (card permanece neutro).
   - > **Nao** exibir no card: resumo/metricas (peso, % G, etc.), texto de prazo nem descricoes longas — essas informacoes aparecem apenas ao abrir **Visualizar** `[VELA-2002]` ou **Preencher** `[VELA-2003]`.
   - **Botoes de acao no card** (variam por papel e status; ver Secao 5):
-    - **Aluno:** **Visualizar** sempre; **Preencher/Continuar** apenas se liberada a ele e com status Solicitada ou Em andamento (iniciada por ele). Nunca Editar/Excluir.
-    - **Treinador:** **Editar** (Solicitada/Em andamento) ou **Revisar** (Concluida), **Visualizar** e, no menu **⋮**, **Excluir** (e **Liberar para o aluno preencher**, quando aplicavel).
+    - **Aluno:** **Visualizar** sempre; **Preencher/Continuar** apenas se liberada a ele e com status Solicitada ou Em andamento (iniciada por ele); **Solicitar reabertura** em cards **Expirada** (RN16). Nunca Editar/Excluir.
+    - **Treinador:** **Editar** (Solicitada/Em andamento), **Revisar** (Concluida) ou **Reabrir** (Expirada → volta a Solicitada, RN14); **Visualizar** e, no menu **⋮**, **Excluir** (e **Liberar para o aluno preencher**, quando aplicavel).
 - Comportamento:
   - Scroll vertical; paginacao/scroll infinito quando houver muitas avaliacoes.
   - Card **neutro e fino**, mantendo a identidade Vela (alto contraste, minimalista); a distincao visual vem do **icone de tipo** (colorido) e do **icone de status** (colorido), nunca do fundo do card.
@@ -92,7 +94,7 @@ Tela de **lista unica para todos os tipos de avaliacao** (Anamnese, Antropometri
 > As cores sao referencias da paleta-assinatura Vela (ver `04-identidade-de-marca.md`). O objetivo e que tipo e status sejam reconheciveis pelo **icone colorido**, mantendo o **card neutro**.
 
 ### 3.3 Footer / Rodape
-- Conteudo: **Botao de acao flutuante (FAB)** "Nova avaliacao" (icone +) — **somente para o Treinador**. Ao tocar, abre o **seletor de tipo** (bottom sheet) com: Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia. Apos escolher o tipo, navega para o formulario `[VELA-2003]` no modo de criacao, onde o Treinador pode **preencher na hora** ou **liberar para o Aluno preencher** (status Solicitada), opcionalmente definindo um **prazo** de preenchimento.
+- Conteudo: **Botao de acao flutuante (FAB)** "Nova avaliacao" (icone **+** = criar) — **somente para o Treinador**. E a **entrada global** de criacao: ao tocar, abre o **seletor de tipo** (bottom sheet) com Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia. Apos escolher o tipo, navega para `[VELA-2003]` no modo de criacao, onde o Treinador **seleciona o aluno por busca** (Secao 0 do formulario), pode **preencher na hora** ou **liberar para o Aluno preencher** (status Solicitada), com **prazo** opcional. *(Quando a criacao parte do **perfil de um aluno** — ver RN15 — o aluno ja vem travado no formulario.)*
 - Comportamento: FAB fixo no canto inferior, **exibido apenas para o Treinador** (o Aluno nao ve o FAB — ele nao cria avaliacoes). Quando a tela e aberta no contexto da Tab Bar, a barra de navegacao inferior permanece visivel com a aba "Avaliacoes/Evolucao" ativa.
 - **Badge na aba (apenas Aluno):** a aba "Avaliacoes/Evolucao" da Tab Bar exibe um **contador** com o numero de avaliacoes pendentes do Aluno (**Solicitadas** + **Em andamento** nao enviadas). O badge **nao** conta avaliacoes **Expiradas** nem **Concluidas**, e zera quando nao houver mais pendencias.
 
@@ -124,10 +126,12 @@ Esta tela nao possui formulario de cadastro. Os unicos controles de entrada sao 
 
 | # | Componente | Label / Icone | Posicao | Visivel para | Acao ao Clicar |
 |---|---|---|---|---|---|
-| 1 | FAB | "Nova avaliacao" (+) | Inferior direito | **Treinador** | Abre bottom sheet de selecao de tipo → navega para `[VELA-2003]` em modo criacao (preencher na hora ou liberar para o Aluno) |
+| 1 | FAB | "Nova avaliacao" (icone **+**) | Inferior direito | **Treinador** | **Entrada global** → bottom sheet de tipo → `[VELA-2003]` em modo criacao, com **selecao do aluno por busca** (preencher na hora ou liberar para o Aluno) |
 | 2 | Botao no card | "Preencher" / "Continuar" | Dentro do card | **Aluno**, se status = **Solicitada** ou **Em andamento** (iniciada por ele) | Navega para `[VELA-2003]` em modo **preenchimento** (Aluno preenche/continua a avaliacao liberada). **Nao** aparece em Concluida nem Expirada |
 | 3 | Botao no card | "Editar" / "Revisar" (icone lapis) | Dentro do card | **Treinador** | Navega para `[VELA-2003]` com os campos **ja preenchidos**. Rotulo **"Editar"** em Solicitada/Em andamento e **"Revisar"** em Concluida (edita no lugar, continua Concluida — RN06) |
 | 4 | Botao no card | "Visualizar" (icone olho) | Dentro do card | **Ambos** | Navega para **Visualizar Avaliacao** `[VELA-2002]` |
+| 4b | Botao no card | "Solicitar reabertura" | Dentro do card | **Aluno**, em cards **Expirada** | Dispara **notificacao ao Treinador** pedindo reabertura (nao reabre nem muda status — RN16). Mostra feedback "Reabertura solicitada" |
+| 4c | Botao no card | "Reabrir" | Dentro do card | **Treinador**, em cards **Expirada** | Reabre a avaliacao → volta ao status **Solicitada** (com novo prazo opcional) e dispara notificacao ao Aluno (RN14) |
 | 5 | Menu de acoes | "⋮" | Canto superior direito do card | **Treinador** | Abre menu com **Excluir** e, quando aplicavel, **Liberar para o aluno preencher** |
 | 6 | Botoes de filtro | "Periodo" / "Status" / "Tipo" | Topo (Secao 1) | Ambos | Cada um abre um painel/bottom sheet; ao confirmar, refiltra a lista |
 
@@ -161,7 +165,7 @@ Esta tela nao possui formulario de cadastro. Os unicos controles de entrada sao 
 ### 6.5 Estado Desabilitado / Bloqueado *(se aplicavel)*
 - Para o **Aluno**, o **FAB fica oculto** (nao cria avaliacoes); nos cards, nunca aparecem "Editar"/"Excluir" — apenas "Visualizar" e, se aplicavel, "Preencher".
 - Avaliacao ja **Concluida** nao exibe "Preencher" para o Aluno (apos enviar, trava para ele).
-- Avaliacao **Expirada** nao exibe "Preencher" para o Aluno — ele so volta a poder preencher se o profissional reabrir/reativar (novo prazo).
+- Avaliacao **Expirada** nao exibe "Preencher" para o Aluno — em vez disso, exibe **"Solicitar reabertura"** (RN16), que apenas notifica o treinador; ele so volta a poder preencher se o profissional reabrir/reativar (novo prazo).
 
 ---
 
@@ -182,13 +186,14 @@ Esta tela nao possui formulario de cadastro. Os unicos controles de entrada sao 
 | Cadastro/Edicao de Avaliacao `[VELA-2003]` (edicao) | Treinador toca em "Editar" em um card |
 | Cadastro/Edicao de Avaliacao `[VELA-2003]` (preenchimento) | Aluno toca em "Preencher"/"Continuar" em um card Solicitada ou Em andamento (iniciada por ele) |
 | Visualizar Avaliacao `[VELA-2002]` | Qualquer um toca em "Visualizar" em um card |
+| Analise das Avaliacoes `[VELA-2004]` | Toca em **"Analise"** no toggle Lista/Analise do topo da aba |
 
 ---
 
 ## 8. Regras de Negocio
 > Regras especificas que impactam o comportamento desta tela.
 
-- **RN01:** A lista reune **todos os tipos** de avaliacao em uma **unica visao, sem secoes separadas**. Ordenacao: **pendentes do Aluno primeiro** (topo) e os **demais por data decrescente** (mais recente primeiro). Ver RN12.
+- **RN01:** A lista reune **todos os tipos** de avaliacao, **agrupados em tres secoes** (nesta ordem): **Pendentes** (Solicitada + Em andamento iniciada pelo Aluno), **Expiradas** (Expirada) e **Anteriores** (Concluida). Dentro de cada secao, ordem **cronologica decrescente** (mais recente primeiro). Titulos de secao discretos; secoes vazias nao aparecem. Ver RN12.
 - **RN02:** A distincao visual de **tipo** e de **status** vem do **icone colorido** (uma cor por tipo e uma por status); o **card permanece neutro** — nenhuma cor tinge o fundo/borda do card. O card e **fino/compacto**.
 - **RN03:** Ha **tres filtros**, cada um como **botao que abre um painel/bottom sheet**: **Periodo** (presets Este mes / Este ano / Tudo + Personalizado), **Status** (multiselecao) e **Tipo** (multiselecao). A tela **inicia sem filtro aplicado** (Tudo / todos os status / todos os tipos); a lista so e refiltrada **apos confirmar** a selecao no painel. Os tres sao combinaveis (E logico). Os filtros afetam a lista inteira (inclusive os pendentes do topo).
 - **RN04 (Papel do Treinador):** Somente o **Treinador** pode **criar**, **editar/revisar** e **excluir** avaliacoes do Aluno vinculado. Ele tambem pode **liberar/solicitar** uma avaliacao para o Aluno preencher. A acao de alterar chama-se **"Editar"** em **Solicitada/Em andamento** e **"Revisar"** em **Concluida** (edita no lugar, continua Concluida); como alternativa para a Concluida, ele pode **excluir e recriar** (ver RN06).
@@ -200,12 +205,18 @@ Esta tela nao possui formulario de cadastro. Os unicos controles de entrada sao 
   - **Concluida** — preenchida e enviada/finalizada.
   - **Expirada** — passou do **prazo** definido pelo profissional sem ser concluida (ver RN13).
 - **RN08 (Exclusao):** A exclusao e **exclusiva do profissional/Treinador** — o **Aluno nunca exclui** (nem as proprias avaliacoes preenchidas). Exige **modal de confirmacao** e e **definitiva** — o app **nao tem lixeira** nem "desfazer".
-- **RN09 (Acoes por papel/status):** O FAB e os botoes "Editar"/"Revisar"/"Excluir" aparecem **somente para o Treinador**; o botao de alterar e rotulado **"Editar"** em **Solicitada/Em andamento** e **"Revisar"** em **Concluida** (RN06) — em ambos os casos leva ao formulario `[VELA-2003]`; "Excluir" (menu ⋮) aparece para o Treinador em qualquer status. "Preencher"/"Continuar" aparece **somente para o Aluno** em cards **Solicitada** ou **Em andamento** liberados a ele; "Visualizar" esta sempre disponivel para ambos.
+- **RN09 (Acoes por papel/status):** O FAB e os botoes "Editar"/"Revisar"/"Excluir" aparecem **somente para o Treinador**; o botao de alterar e rotulado **"Editar"** em **Solicitada/Em andamento** e **"Revisar"** em **Concluida** (RN06) — em ambos os casos leva ao formulario `[VELA-2003]`; em cards **Expirada**, o Treinador ve **"Reabrir"** (volta a Solicitada — RN14). "Excluir" (menu ⋮) aparece para o Treinador em qualquer status. "Preencher"/"Continuar" aparece **somente para o Aluno** em cards **Solicitada** ou **Em andamento** liberados a ele; **"Solicitar reabertura"** aparece **somente para o Aluno** em cards **Expirada** (RN16); "Visualizar" esta sempre disponivel para ambos.
 - **RN10 (Conteudo enxuto do card):** O card exibe **somente**: **tipo** (icone + rotulo), **data**, **@ do profissional** (quem fez) e **status** (icone colorido + rotulo). **Nao** exibe resumo/metricas (peso, % G, etc.) nem texto de prazo — esses dados aparecem apenas ao abrir **Visualizar** `[VELA-2002]` ou **Preencher** `[VELA-2003]`.
-- **RN11 (Notificacoes por mudanca de status):** O Aluno e **notificado** (push + in-app) nas mudancas de status da avaliacao: **Solicitada** (liberada/reaberta para ele), **Em andamento** (apenas quando **o profissional** inicia o rascunho — quando o **proprio Aluno** comeca a preencher **nao** ha notificacao, pois e acao dele), **Concluida** (preenchida/enviada) e **Expirada** (prazo vencido pela rotina automatica — RN13). Ao tocar na notificacao de uma avaliacao pendente, o Aluno e levado a esta lista `[VELA-2001]` (ou direto ao preenchimento `[VELA-2003]` da avaliacao). *(Preferencias de push respeitam a tela de Notificacoes.)*
-- **RN12 (Pendencias no topo — Aluno):** Avaliacoes pendentes do Aluno (**Solicitadas** + **Em andamento** iniciadas por ele) aparecem **primeiro na lista** (topo), antes das demais (ordenadas por data). **Nao** ha bloco/banner separado — o realce vem da posicao e do icone de status. Os filtros afetam a lista (inclusive os pendentes). Independentemente do filtro, essas pendencias contam para o **badge** da aba; saem do topo e do contador quando ficam **Concluidas** ou **Expiradas**.
+- **RN11 (Notificacoes por mudanca de status):** O Aluno e **notificado** (push + in-app) nas mudancas de status da avaliacao: **Solicitada** (liberada/reaberta para ele), **Em andamento** (apenas quando **o profissional** inicia o rascunho — quando o **proprio Aluno** comeca a preencher **nao** ha notificacao, pois e acao dele), **Concluida** (preenchida/enviada) e **Expirada** (prazo vencido pela rotina automatica — RN13).
+  - **Deep link (definido):** ao tocar na notificacao, o Aluno e levado a **esta lista `[VELA-2001]`** com o item **no topo** (pendencias primeiro); dali ele toca em "Preencher". **Nao** abre direto o formulario.
+  - **Opt-out (definido):** o aviso **in-app** (sino/badge/contador) **sempre** aparece e **nao** pode ser desativado; apenas o **push** do celular pode ser desligado nas preferencias de notificacao. Garante que o Aluno nao perca a pendencia solicitada pelo treinador.
+  - **Copy proposto (ajustavel ao mapear Notificacoes):** *Liberada* → titulo "Nova avaliacao 📋" / corpo "Seu treinador liberou uma avaliacao para voce preencher. Toque para comecar."; *Reaberta* → "Avaliacao reaberta" / "Seu treinador reabriu uma avaliacao para voce preencher." (+ "Novo prazo: DD/MM" quando houver); *Prazo venceu* → "Prazo encerrado ⏰" / "O prazo para preencher sua avaliacao venceu. Fale com seu treinador para reabrir."
+  - *(Detalhamento completo — central in-app, agrupamento, demais tipos do app — fica na futura tela de Notificacoes; ver decisao #13.)*
+- **RN12 (Secao Pendentes — Aluno):** As avaliacoes pendentes do Aluno (**Solicitadas** + **Em andamento** iniciadas por ele) ficam na secao **Pendentes**, que e a **primeira** da lista. O realce vem do **agrupamento** (secao no topo) e do **icone de status**. Os filtros afetam a lista (inclusive a secao Pendentes). Independentemente do filtro, essas pendencias contam para o **badge** da aba; saem da secao Pendentes e do contador quando ficam **Concluidas** (vao para **Anteriores**) ou **Expiradas** (vao para **Expiradas**).
 - **RN13 (Prazo e expiracao):** Ao liberar/solicitar uma avaliacao, o profissional pode definir um **prazo (data limite)** de preenchimento — campo **opcional**. No vencimento, uma **rotina no backend** expira **automaticamente** apenas as avaliacoes que ainda estao **Solicitada** (nao iniciadas pelo Aluno): o status vira **Expirada**, o Aluno **perde a acao de preencher** e o item sai das pendencias. Uma avaliacao que o Aluno **ja comecou a preencher** (status **Em andamento** iniciado por ele) **nao expira** — fica **protegida** ate ele concluir, para nao perder o que foi preenchido. Sem prazo definido, a avaliacao **nunca expira**.
-- **RN14 (Reabrir avaliacao expirada):** Uma avaliacao **Expirada** so volta a ser preenchivel pelo Aluno se o **profissional/Treinador a reabrir/reativar** (definindo novo prazo, se desejar), retornando ao status **Solicitada**. O Aluno nao reabre por conta propria. A reabertura volta ao status Solicitada e dispara a notificacao correspondente (RN11), e a avaliacao volta a aparecer entre os pendentes (topo) e no badge.
+- **RN15 (Pontos de entrada da criacao — Treinador):** A criacao de avaliacao parte de um **icone "+"** disponivel **somente para o Treinador**, em dois lugares: (a) **aqui, na Lista de Avaliacoes** (FAB) — **entrada global**: leva ao `[VELA-2003]` onde o Treinador **seleciona o aluno por busca**; (b) na tela de **Perfil do Aluno** (a mapear) — leva ao `[VELA-2003]` com o **aluno ja travado** no contexto. O **Aluno** nunca ve o "+" em nenhum dos dois.
+- **RN14 (Reabrir avaliacao expirada):** Uma avaliacao **Expirada** so volta a ser preenchivel pelo Aluno se o **profissional/Treinador a reabrir/reativar** (definindo novo prazo, se desejar), retornando ao status **Solicitada**. O Aluno nao reabre por conta propria — no maximo **solicita** a reabertura (RN16). A reabertura volta ao status Solicitada e dispara a notificacao correspondente (RN11), e a avaliacao volta a aparecer entre os pendentes (topo) e no badge.
+- **RN16 (Solicitar reabertura — Aluno):** Em avaliacao **Expirada**, o Aluno ve o botao **"Solicitar reabertura"**. Ele **nao** reabre a avaliacao — apenas **dispara uma notificacao ao Treinador** (ex: "@ana.vela solicitou a reabertura da Antropometrica de 12/03/2026"). **Nao** cria status novo (a avaliacao continua **Expirada**). Apos tocar, o botao da um feedback leve ("Reabertura solicitada") para evitar pedidos repetidos. Quem decide reabrir continua sendo **somente o Treinador** (RN14); ele pode reabrir ou ignorar. Essa notificacao **ao Treinador** e desativavel apenas no **push** (in-app sempre), seguindo o padrao da RN11.
 
 ---
 
@@ -249,3 +260,8 @@ Esta tela nao possui formulario de cadastro. Os unicos controles de entrada sao 
 | 2026-06-10 | Equipe Vela | Refinamento de UI/UX pos-mockup: (1) **lista unica** sem secoes — removido o bloco destacado "Para preencher"; pendentes apenas vao para o **topo** + badge mantido (RN01/RN12); (2) **filtros** viram **3 botoes** (Periodo/Status/Tipo) que abrem painel — Tipo mantido (RN03, Secao 4); (3) **card enxuto e fino**: so **tipo, data, quem fez e status** — removidos resumo/metricas e prazo do card (RN10); (4) **tipo e status por icone colorido**, **card neutro** (nenhuma cor tinge o card) — RN02 |
 | 2026-06-12 | Equipe Vela | (decisao #14 — opcao A) **Avaliacao Concluida e imutavel para todos**: nem o Treinador edita; correcao apenas via **excluir + recriar**. Botao "Editar" deixa de aparecer em cards Concluidos. Atualizadas RN04, RN06, RN09, Secao 3.2 e botao "Editar" da Secao 5 |
 | 2026-06-12 | Equipe Vela | Ajuste da decisao #14: **Treinador ganha a acao "Revisar"** em cards **Concluida** (edita no lugar, continua Concluida, **sem versionamento**); **excluir + recriar** segue disponivel. O **Aluno continua travado** na Concluida. Botao do card passa a ser **"Editar" (Solicitada/Em andamento)** ou **"Revisar" (Concluida)**. Atualizadas RN04, RN06, RN09, Secao 3.2 e botao da Secao 5 |
+| 2026-06-12 | Equipe Vela | Pontos de entrada da criacao definidos (decisao #16): o **FAB "+"** desta lista e a **entrada global** (Treinador seleciona o aluno por busca no `[VELA-2003]`); a tela de **Perfil do Aluno** (a mapear) tera **seu proprio "+"** com o aluno travado. Atualizados Secao 3.3, Secao 5 (FAB) e nova **RN15** |
+| 2026-06-12 | Equipe Vela | Notificacao de avaliacao detalhada (decisao #13): **deep link → abre esta lista** (item no topo, nao o formulario direto); **opt-out → in-app sempre, push desativavel**; **copy proposto** para liberada/reaberta/prazo-vencido. Atualizada RN11. Tela de Notificacoes completa fica para depois |
+| 2026-06-12 | Equipe Vela | (decisao #17) Avaliacao **Expirada** ganha botao **"Solicitar reabertura"** para o Aluno (versao leve): apenas **notifica o Treinador**, sem novo status; quem reabre continua sendo so o Treinador (RN14). Nova **RN16**; atualizados Secao 3.2, Secao 5 (botao 4b), Secao 6.5 e RN09 |
+| 2026-06-12 | Equipe Vela | **Reintroducao de secoes na lista** (reverte a "lista unica" de 10/06): a lista passa a ser **agrupada em Pendentes / Expiradas / Anteriores** (cada uma por data desc; secoes vazias somem). Atualizados Secao 1, 3.2 (Secao 2), RN01 e RN12. Adicionado botao **"Reabrir"** (Treinador, Expirada — Secao 5 4c, RN09/3.2) e corrigido o card Concluida do Treinador para **"Revisar"**. Aplicado no mockup (frames aluno + treinador) |
+| 2026-06-16 | Equipe Vela | (decisao #18) Adicionado **toggle Lista/Analise** no topo da aba "Avaliacoes" (Secao 3.1): alterna entre esta Lista `[VELA-2001]` e a **Analise das Avaliacoes `[VELA-2004]`**, que passa a constar como destino na Secao 7. Mockup atualizado (frames aluno + treinador) |

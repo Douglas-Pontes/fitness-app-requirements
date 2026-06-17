@@ -71,8 +71,7 @@ O MVP deve permitir que um aluno de musculacao:
 | Nova Avaliação Completa | Registro de medidas, dobras, bioimpedância e fotos — tudo em uma avaliação |
 | Nova Anamnese | Tipo separado de avaliação com campos de histórico de saúde |
 | Detalhe da Avaliação | Ver resultado completo de uma avaliação; exibe último valor de cada campo |
-| Comparar Avaliações | Usuário escolhe 2 avaliações para comparar lado a lado |
-| Evolução / Gráficos | Gráficos comparativos das últimas 4–5 avaliações |
+| Análise das Avaliações `[VELA-2004]` | Hub com duas visões: **Gráficos** (uma métrica por vez, linha + resumo, últimas 4–5 avaliações) e **Comparar** (avaliações do mesmo tipo lado a lado). Consolida as antigas "Comparar Avaliações" e "Evolução / Gráficos" |
 
 #### Perfil
 | Tela | Justificativa |

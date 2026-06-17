@@ -43,7 +43,7 @@
     <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
   </div>
   <h1 class="mt-4 text-xl font-medium text-slate-700">Cadastro / Edição de Avaliação <span class="text-slate-400 text-sm">[VELA-2003]</span></h1>
-  <p class="text-sm text-slate-500 mt-1">Formulário único e dinâmico — estados-chave (Seção 6) lado a lado</p>
+  <p class="text-sm text-slate-500 mt-1">Formulário único e dinâmico — modos (criar / liberar / preencher / revisar) e estados-chave (Seção 6) lado a lado</p>
 </header>
 
 <main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
@@ -61,11 +61,26 @@
       </div>
 
       <div class="phone-scroll px-4 py-4 space-y-5">
-        <!-- Secao 0 — cabecalho (criar: tela nova, sem card de status) -->
+        <!-- Secao 0 — inicio da criacao (aberto pelo perfil: aluno travado) -->
         <div class="space-y-3">
+          <div>
+            <label class="block text-[11px] text-slate-500 mb-1">Aluno</label>
+            <div class="flex items-center gap-2 border border-slate-200 rounded-lg px-3 py-2 bg-slate-50">
+              <div class="w-6 h-6 rounded-full bg-track flex items-center justify-center text-[10px] text-navy font-medium">AS</div>
+              <span class="text-sm">Ana Souza <span class="text-slate-400">@ana.vela</span></span>
+              <span class="ml-auto text-[11px] text-slate-400">🔒</span>
+            </div>
+          </div>
           <div class="flex items-center gap-2 text-xs">
             <span class="w-2.5 h-2.5 rounded-full bg-lime"></span>
             <span class="font-medium">Antropométrica</span>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-500 mb-1">Quem vai preencher?</label>
+            <div class="flex gap-2">
+              <button class="flex-1 text-sm py-2 rounded-lg bg-navy text-white font-medium">Treinador</button>
+              <button class="flex-1 text-sm py-2 rounded-lg border border-slate-200 text-slate-600">Aluno</button>
+            </div>
           </div>
           <div>
             <label class="block text-[11px] text-slate-500 mb-1">Data da avaliação *</label>
@@ -87,7 +102,7 @@
                 <input type="text" inputmode="decimal" placeholder="84,5" class="flex-1 text-sm outline-none" />
                 <span class="text-xs text-slate-400">kg</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1">Última: 83,0 kg — 12/03/2026 <span class="text-emerald-600 font-medium">▲ +1,5 kg</span></p>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 83,0 kg</p>
             </div>
             <!-- Altura -->
             <div>
@@ -96,7 +111,7 @@
                 <input type="text" inputmode="decimal" placeholder="178" class="flex-1 text-sm outline-none" />
                 <span class="text-xs text-slate-400">cm</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1">Sugerido: 178 cm — perfil (digite p/ confirmar)</p>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 178 cm</p>
             </div>
             <!-- IMC calculado -->
             <div>
@@ -105,6 +120,7 @@
                 <input type="text" value="—" readonly class="flex-1 text-sm outline-none bg-transparent text-slate-400" />
                 <span class="text-xs text-slate-400">kg/m²</span>
               </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 26,2 kg/m²</p>
             </div>
           </div>
         </div>
@@ -117,12 +133,12 @@
           </div>
           <div class="space-y-3">
             <div>
-              <label class="block text-[11px] text-slate-500 mb-1">Cintura <span class="text-amber-500">(recomendado)</span></label>
+              <label class="block text-[11px] text-slate-500 mb-1">Cintura</label>
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
                 <input type="text" inputmode="decimal" placeholder="—" class="flex-1 text-sm outline-none" />
                 <span class="text-xs text-slate-400">cm</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1">Última: 82,0 cm — 12/03/2026</p>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 82,0 cm</p>
             </div>
             <div>
               <label class="block text-[11px] text-slate-500 mb-1">Braço direito contraído</label>
@@ -130,7 +146,7 @@
                 <input type="text" inputmode="decimal" placeholder="—" class="flex-1 text-sm outline-none" />
                 <span class="text-xs text-slate-400">cm</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1">Sem medição anterior</p>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
             </div>
           </div>
         </div>
@@ -153,13 +169,78 @@
         </div>
       </div>
 
-      <!-- footer -->
+      <!-- footer (quem preenche = treinador → concluir) -->
       <div class="border-t border-slate-100 p-3 space-y-2 bg-white">
         <button class="w-full bg-lime text-navy text-sm font-semibold py-3 rounded-xl">concluir</button>
-        <div class="flex gap-2">
-          <button class="flex-1 border border-slate-300 text-slate-600 text-sm py-2.5 rounded-xl">salvar rascunho</button>
-          <button class="flex-1 border border-navy text-navy text-sm py-2.5 rounded-xl">liberar p/ aluno</button>
+        <button class="w-full border border-slate-300 text-slate-600 text-sm py-2.5 rounded-xl">salvar rascunho</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 1B — CRIAR → LIBERAR P/ ALUNO (TREINADOR) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">criar → liberar p/ aluno (treinador)</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">✕</button>
+          <h2 class="text-base font-medium lowercase-brand">nova antropométrica</h2>
         </div>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5">
+        <!-- Secao 0 — entrada global: busca de aluno -->
+        <div class="space-y-3">
+          <div>
+            <label class="block text-[11px] text-slate-500 mb-1">Aluno *</label>
+            <div class="flex items-center gap-2 border border-navy rounded-lg px-3 py-2 bg-white">
+              <span class="text-slate-400 text-sm">🔍</span>
+              <input type="text" value="ana" class="flex-1 text-sm outline-none" />
+            </div>
+            <!-- sugestoes da busca -->
+            <div class="mt-1 border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="flex items-center gap-2 px-3 py-2 bg-lime/20">
+                <div class="w-6 h-6 rounded-full bg-track flex items-center justify-center text-[10px] text-navy font-medium">AS</div>
+                <span class="text-sm">Ana Souza <span class="text-slate-400">@ana.vela</span></span>
+              </div>
+              <div class="flex items-center gap-2 px-3 py-2 border-t border-slate-100">
+                <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-500 font-medium">AC</div>
+                <span class="text-sm">Ana Costa <span class="text-slate-400">@ana.costa</span></span>
+              </div>
+            </div>
+            <p class="text-[10px] text-slate-400 mt-1">busca entre os alunos cadastrados — selecione um</p>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="w-2.5 h-2.5 rounded-full bg-lime"></span>
+            <span class="font-medium">Antropométrica</span>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-500 mb-1">Quem vai preencher?</label>
+            <div class="flex gap-2">
+              <button class="flex-1 text-sm py-2 rounded-lg border border-slate-200 text-slate-600">Treinador</button>
+              <button class="flex-1 text-sm py-2 rounded-lg bg-navy text-white font-medium">Aluno</button>
+            </div>
+          </div>
+          <!-- condicional: vai ter prazo? -->
+          <div class="rounded-lg border border-slate-100 bg-slate-50 p-3 space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Vai ter prazo para preencher?</label>
+              <div class="flex gap-2">
+                <button class="flex-1 text-sm py-1.5 rounded-lg bg-lime text-navy font-medium">Sim</button>
+                <button class="flex-1 text-sm py-1.5 rounded-lg border border-slate-200 text-slate-600">Não</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Prazo (data limite)</label>
+              <input type="date" value="2026-06-20" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- footer (quem preenche = aluno → liberar) -->
+      <div class="border-t border-slate-100 p-3 space-y-2 bg-white">
+        <button class="w-full bg-lime text-navy text-sm font-semibold py-3 rounded-xl">liberar para o aluno preencher</button>
+        <button class="w-full border border-slate-300 text-slate-600 text-sm py-2.5 rounded-xl">salvar rascunho</button>
       </div>
     </div>
   </section>
@@ -176,13 +257,11 @@
       </div>
 
       <div class="phone-scroll px-4 py-4 space-y-5">
-        <div class="rounded-xl bg-slate-50 border border-slate-100 p-3">
+        <div>
           <div class="flex items-center gap-2 text-xs">
             <span class="w-2.5 h-2.5 rounded-full bg-navy"></span>
             <span class="font-medium">Anamnese</span>
-            <span class="ml-auto text-[10px] bg-lime text-navy px-2 py-0.5 rounded-full font-medium">Solicitada</span>
           </div>
-          <p class="text-[11px] text-slate-400 mt-2">Liberada por <span class="text-navy">@ze.personal</span> · prazo 20/06/2026</p>
         </div>
 
         <!-- Grupo 1 -->
@@ -257,13 +336,11 @@
         </div>
       </div>
       <div class="phone-scroll px-4 py-4 space-y-5">
-        <div class="rounded-xl bg-slate-50 border border-slate-100 p-3">
+        <div>
           <div class="flex items-center gap-2 text-xs">
             <span class="w-2.5 h-2.5 rounded-full bg-track"></span>
             <span class="font-medium">Dobras Cutâneas</span>
-            <span class="ml-auto text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Concluída</span>
           </div>
-          <p class="text-[11px] text-slate-400 mt-2">Editando no lugar — sobrescreve sem versionamento (RN13)</p>
         </div>
 
         <div>
@@ -281,13 +358,14 @@
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
                 <input type="text" value="12,0" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
               </div>
-              <p class="text-[11px] text-slate-400 mt-1">Última: 13,5 mm — 12/03/2026 <span class="text-emerald-600 font-medium">▼ -1,5 mm</span></p>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 13,5 mm</p>
             </div>
             <div>
               <label class="block text-[11px] text-slate-500 mb-1">Abdominal</label>
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
                 <input type="text" value="18,0" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
               </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 17,0 mm</p>
             </div>
           </div>
         </div>
@@ -301,12 +379,14 @@
               <div class="flex items-center border border-dashed border-slate-200 rounded-lg px-3 py-2 bg-slate-50">
                 <input type="text" value="30,0" readonly class="flex-1 text-sm bg-transparent text-slate-500" /><span class="text-xs text-slate-400">mm</span>
               </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 31,5 mm</p>
             </div>
             <div>
               <label class="block text-[11px] text-slate-500 mb-1">% de gordura</label>
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
                 <input type="text" placeholder="preencher" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">%</span>
               </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 16,2 %</p>
             </div>
           </div>
         </div>
@@ -376,7 +456,7 @@
           <div class="flex items-center border border-amber-400 rounded-lg px-3 py-2 bg-white">
             <input type="text" value="350" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">kg</span>
           </div>
-          <p class="text-[11px] text-amber-600 mt-1">⚠️ Valor fora do esperado, confira (não bloqueia o salvamento)</p>
+          <p class="text-[11px] text-amber-600 mt-1">⚠️ Valor fora do esperado, confira</p>
         </div>
         <div>
           <label class="block text-[11px] text-slate-500 mb-1">% de gordura corporal *</label>
@@ -387,7 +467,6 @@
       </div>
       <div class="border-t border-slate-100 p-3 bg-white">
         <button class="w-full bg-lime/40 text-navy/40 text-sm font-semibold py-3 rounded-xl cursor-not-allowed">concluir</button>
-        <p class="text-center text-[10px] text-slate-400 mt-1">desabilitado até a Data e os obrigatórios válidos</p>
       </div>
     </div>
   </section>

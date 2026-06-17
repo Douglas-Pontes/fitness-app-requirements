@@ -8,8 +8,8 @@
 | **Nome da tela** | Meu Perfil |
 | **Modulo** | Perfil |
 | **Prioridade** | 🔵 MVP |
-| **Status** | 🟡 EM ANDAMENTO |
-| **Ultima atualizacao** | 2026-06-08 |
+| **Status** | 🟢 CONCLUIDO |
+| **Ultima atualizacao** | 2026-06-17 |
 
 ---
 
@@ -53,7 +53,6 @@ Esta tela e o hub do perfil do Aluno. Permite que o Aluno **visualize seus dados
 **Secao 2 — Dados Pessoais**
 - Componente: Lista de campos (somente leitura)
 - Conteudo:
-  - Nome completo
   - E-mail
   - WhatsApp
   - Data de nascimento
@@ -169,8 +168,8 @@ N/A — Tela sem formularios. Todos os campos sao exibidos em modo somente leitu
 - Texto alternativo na foto de perfil (ex: "Foto de perfil de [Nome]").
 - Contraste de cores conforme WCAG 2.1 AA.
 - Navegacao por teclado (tab order logica) no web.
-- Area de toque adequada para o avatar e itens de menu no mobile.
-- Feedback de sucesso/erro (toasts) tambem anunciado por leitores de tela.
+- Area de toque adequada para os botoes no mobile.
+- Mensagens de erro (toasts) tambem anunciadas por leitores de tela.
 
 ---
 
@@ -188,3 +187,5 @@ N/A — Tela sem formularios. Todos os campos sao exibidos em modo somente leitu
 | 2026-06-08 | Equipe FitnessApp | Reintroduzida a regra de iniciais do nome quando nao ha foto, agora como regra global RG01 (sem placeholder/foto generica); referenciada na Secao 1 e RN03 |
 | 2026-06-08 | Equipe FitnessApp | Limpeza: removidas as mencoes/referencias repetidas a iniciais (Secao 1 e RN proprio); comportamento mantido apenas na regra global RG01; RNs renumeradas |
 | 2026-06-08 | Equipe FitnessApp | Removida definitivamente a opcao de perfil sem foto/iniciais: foto e obrigatoria desde o cadastro, perfil sempre tem foto. Excluida a regra global RG01 |
+| 2026-06-17 | Equipe Vela | Revisao final: status -> CONCLUIDO; data de atualizacao atualizada; acessibilidade limpa (removidas mencoes a "menu" e a feedback de "sucesso" inexistentes nesta tela) |
+| 2026-06-17 | Equipe Vela | Removido o "Nome completo" duplicado dos Dados Pessoais (mantido apenas no cabecalho), seguindo o padrao de evitar duplicidade |

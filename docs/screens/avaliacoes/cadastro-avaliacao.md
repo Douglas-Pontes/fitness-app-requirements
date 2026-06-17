@@ -17,7 +17,7 @@
 ## 1. Objetivo da Tela
 > O que o usuario consegue fazer nesta tela? Qual problema ela resolve?
 
-Formulario **unico e dinamico** para **criar/editar** (Treinador) ou **preencher** (Aluno) uma avaliacao. O **mesmo** formulario serve aos tres modos: em **Editar** abre com os campos **ja preenchidos**; em **Preencher** o Aluno completa uma avaliacao que o Treinador **liberou** (status Solicitada). O conjunto de campos exibido **muda conforme o tipo** (Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia). Para os campos numericos de medida, exibe **abaixo de cada campo a ultima medicao registrada** daquele mesmo campo (valor + data + variacao), para acompanhar a evolucao enquanto preenche.
+Formulario **unico e dinamico** para **criar/editar** (Treinador) ou **preencher** (Aluno) uma avaliacao. O **mesmo** formulario serve aos tres modos: em **Editar** abre com os campos **ja preenchidos**; em **Preencher** o Aluno completa uma avaliacao que o Treinador **liberou** (status Solicitada). O conjunto de campos exibido **muda conforme o tipo** (Anamnese, Antropometrica, Dobras Cutaneas, Bioimpedancia). Para os campos numericos de medida, exibe **abaixo de cada campo a ultima medicao registrada** daquele mesmo campo — **somente o valor**, no formato `Ultima: XXXXX` (sem data nem variacao).
 
 **Modos da tela:**
 - **Criar (Treinador):** novo registro. O Treinador pode **salvar rascunho** (status **Em andamento**, retoma depois), **concluir** (salva como **Concluida**) ou **liberar para o Aluno preencher** (salva como **Solicitada**, em branco/parcial, opcionalmente com **prazo**).
@@ -48,21 +48,26 @@ Formulario **unico e dinamico** para **criar/editar** (Treinador) ou **preencher
 > Descreva a estrutura visual da tela de cima para baixo.
 
 ### 3.1 Header / Cabecalho
-- Conteudo: Botao voltar/fechar (X) + Titulo dinamico conforme o modo: **"Nova [Tipo]"** (criar), **"Editar [Tipo]"** (editar Solicitada/Em andamento), **"Revisar [Tipo]"** (Treinador corrigindo uma Concluida) ou **"Preencher [Tipo]"** (Aluno preenchendo) — ex: "Nova Antropometrica", "Revisar Dobras Cutaneas", "Preencher Anamnese". Acao primaria a direita: **"Concluir"** (Treinador) ou **"Enviar"** (Aluno preenchendo) — ambas levam a avaliacao a **Concluida**. Acao secundaria **"Salvar rascunho"** (status **Em andamento**) disponivel para ambos quando o preenchimento ainda nao foi finalizado. Para diferenciar: primaria com destaque (verde-limao neon), secundaria como contorno/ghost.
+- Conteudo: Botao voltar/fechar (X) + Titulo dinamico conforme o modo: **"Nova [Tipo]"** (criar), **"Editar [Tipo]"** (editar Solicitada/Em andamento), **"Revisar [Tipo]"** (Treinador corrigindo uma Concluida) ou **"Preencher [Tipo]"** (Aluno preenchendo) — ex: "Nova Antropometrica", "Revisar Dobras Cutaneas", "Preencher Anamnese". As acoes ficam no **rodape** (nao no header). A **acao primaria** depende do modo/escolha: **Treinador preenchendo → "Concluir"**; **Treinador liberando (quem preenche = Aluno) → "Liberar para o aluno preencher"** (status **Solicitada**); **Aluno preenchendo → "Enviar"**. Acao secundaria **"Salvar rascunho"** (status **Em andamento**) disponivel quando o preenchimento ainda nao foi finalizado. Para diferenciar: primaria com destaque (verde-limao neon), secundaria como contorno/ghost.
 - Comportamento: Fixo no topo. Acao primaria desabilitada ate o formulario estar valido. Ao tocar voltar/X com alteracoes nao salvas, exibir alerta "Descartar alteracoes?".
 
 ### 3.2 Corpo Principal
 > Descrever secoes da tela, na ordem que aparecem
 
-**Secao 0 — Cabecalho da avaliacao (comum a todos os tipos)**
-- Componente: Bloco fixo no topo do formulario.
-- Conteudo: **Tipo** (somente leitura, definido na criacao) + **Data da avaliacao** (editavel) + **status** (Solicitada / Em andamento / Concluida / Expirada) + indicacao de **quem liberou/registrou** (somente leitura) + **Prazo de preenchimento** (somente leitura aqui; definido na acao "Liberar", quando houver).
-- Comportamento: O tipo nao muda apos a criacao. A data nao pode ser futura. No modo **Preencher**, o Aluno nao altera tipo/data de solicitacao nem o prazo — apenas completa os campos.
+**Secao 0 — Inicio / cabecalho da avaliacao**
+- Componente: Bloco no topo do formulario.
+- **Conteudo na CRIACAO (Treinador), nesta ordem:**
+  1. **Aluno** — **1º campo**. Quando o formulario e aberto **pelo perfil do aluno** (via `[VELA-2001]`): vem **pre-preenchido e travado** (somente leitura — nome + @), e o treinador so segue para o prazo. Quando aberto pela tela **"Criar avaliacao"** (global, sem aluno no contexto): e um **campo de busca** — o treinador **digita o nome**, o app **busca entre os alunos cadastrados/vinculados** e exibe sugestoes (nome + @); ao **selecionar**, fixa o aluno e traz o **@**.
+  2. **Tipo** — somente leitura (definido na criacao).
+  3. **Quem vai preencher esta avaliacao** — seletor **Treinador** ou **Aluno**. Se **Aluno**, aparece **"Vai ter prazo para preencher?"** (Sim / Nao); se **Sim**, exibe o campo **Prazo (data limite)**.
+  4. **Data da avaliacao** — editavel; nao pode ser futura.
+- **Conteudo em EDITAR / REVISAR / PREENCHER / CONTINUAR:** apenas **Tipo** + **Data** — os campos de configuracao (aluno, quem preenche, prazo) **nao** sao reapresentados (ja foram definidos na criacao), e **status / autor / prazo** permanecem na lista `[VELA-2001]`, sem repetir aqui (RN15).
+- Comportamento: O tipo nao muda apos a criacao. A escolha **"quem vai preencher"** define a **acao primaria** do rodape: **Treinador → "Concluir"**; **Aluno → "Liberar para o aluno preencher"** (status **Solicitada**, com o prazo definido aqui). No modo **Preencher**, o Aluno nao altera esses campos — apenas completa as medidas.
 
 **Secao 1..N — Campos do tipo selecionado**
 - Componente: Formulario seccionado (grupos colapsaveis para tipos longos, ex: Antropometrica com varios perimetros).
 - Conteudo: Os campos especificos do tipo (ver Secoes 4.A–4.D).
-- Comportamento: **Abaixo de cada campo numerico de medida**, exibir o componente **"Ultima medicao"** (ver Secao 4 — Regra global da "ultima medicao"). Campos calculados (IMC, soma de dobras, % de gordura) sao **somente leitura** e atualizam em tempo real.
+- Comportamento: **Abaixo de cada campo numerico — inclusive os calculados** (IMC, soma de dobras, % de gordura) — exibir o componente **"Ultima medicao"** (ver Secao 4 — Regra global da "ultima medicao"). Os campos calculados sao **somente leitura** e atualizam em tempo real, mas tambem mostram a sua "ultima".
 
 **Secao Fotos (quando aplicavel ao tipo)**
 - Componente: Galeria de upload (camera/galeria).
@@ -83,26 +88,27 @@ Formulario **unico e dinamico** para **criar/editar** (Treinador) ou **preencher
 ### Regra global — Componente "Ultima medicao" (sob cada campo)
 A "ultima medicao" considera **apenas avaliacoes do mesmo tipo**: o Peso de uma **Antropometrica** compara com a ultima **Antropometrica**, o % de gordura de uma **Bioimpedancia** com a ultima **Bioimpedancia**, e assim por diante — **nao** mistura tipos diferentes, mesmo quando o campo (ex: Peso, % de gordura) existe em mais de um tipo.
 
-Para **todo campo numerico de medida**, exibir logo abaixo do input:
-- **Ultimo valor registrado** daquele mesmo campo + **data** da avaliacao de origem.
-- **Variacao** em relacao a esse ultimo valor (delta absoluto e/ou %), com indicador visual (▲ subiu / ▼ desceu / = igual).
-- Exemplo: campo "Braco direito contraido" → abaixo: *"Ultima: 38,5 cm — 12/03/2026 (▲ +0,5 cm)"*.
-- Se nao houver medicao anterior para aquele campo: exibir *"Sem medicao anterior"*.
-- Em **modo edicao**, a "ultima medicao" considera a avaliacao **anterior** a que esta sendo editada (nao a propria).
-- Para campos nao numericos (selects/textos da Anamnese), exibir, quando util, a **resposta anterior** de forma discreta ("Anterior: Hipertrofia").
+Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma de dobras, % de gordura, densidade, massa gorda/magra). Exibir logo abaixo do input **apenas o valor**, no formato fixo:
+- **`Ultima: XXXXX`** — o ultimo valor registrado daquele mesmo campo (com a unidade). **Sem data e sem variacao/delta** — somente o valor. *Qualquer informacao alem disso (data, ▲/▼, %) nao aparece na tela.*
+- Exemplo: campo "Braco direito contraido" → abaixo: *"Ultima: 38,5 cm"*.
+- Se nao houver registro anterior para aquele campo: exibir *"Sem dados anterior"*.
+- Em **modo edicao/revisao/preenchimento**, a "ultima medicao" considera a avaliacao **anterior** a atual (nao a propria).
+- Campos **nao numericos** (selects/textos da **Anamnese**) **nao** exibem resposta anterior no formulario — a Anamnese e questionario de entrada (e o PAR-Q deve ser respondido do zero, sem induzir). A comparacao historica da Anamnese, quando util, fica na Visualizar `[VELA-2002]` / evolucao.
 
 ### Regras de Preenchimento (gerais)
+- **Aluno (criacao):** obrigatorio. Na entrada global, so aceita um aluno **selecionado da busca** (entre os cadastrados/vinculados) — texto livre sem selecao nao e valido. Aberto pelo perfil, vem travado.
+- **Prazo:** so existe quando "quem vai preencher = Aluno" e "Vai ter prazo? = Sim"; quando presente, deve ser uma data **futura** (a partir de hoje).
 - **Data da avaliacao:** obrigatoria; nao pode ser futura.
 - Campos numericos aceitam **decimais com virgula** (ex: 84,5) e unidade fixa exibida (cm, kg, mm, %, kcal).
 - Campos **calculados** (IMC, RCQ, soma de dobras, densidade, % de gordura, massa gorda/magra) sao preenchidos automaticamente e **nao** sao editaveis.
-- **Heranca de Peso / Altura / Idade (RN12):** quando um campo "pode herdar do perfil ou da ultima antropometrica", o sistema apenas **sugere** o valor de forma visivel (ex: "Sugerido: 84,5 kg — ultima antropometrica"); **nao preenche automaticamente** o campo. O usuario **digita/confirma** o valor que vale para esta avaliacao.
+- **Peso / Altura / Idade (RN12):** **nao** ha rotulo "Sugerido" separado. Como qualquer outro campo, exibem o apoio padrao **`Ultima: XXXXX`** (ultima avaliacao do mesmo tipo) ou **"Sem dados anterior"** (RN03). O input **nao** e preenchido automaticamente — o usuario **digita/confirma** o valor desta avaliacao.
 - Validacao de faixa plausivel por campo (ex: peso 20–300 kg; perimetros 0–200 cm; dobras 1–80 mm; % de gordura 1–70%) com **aviso suave** quando fora da faixa. O aviso **nao bloqueia** o salvamento — apenas chama a atencao; o avaliador pode confirmar e salvar um valor fora da faixa (caso real/raro). O bloqueio de salvar fica restrito aos campos **obrigatorios** e a **Data** (nao futura).
 - A acao primaria (**"Concluir"** / **"Enviar"**) so habilita com a **Data** preenchida e ao menos um campo de medida do tipo informado (Anamnese: obrigatorios o PAR-Q completo + Objetivo principal). **"Salvar rascunho"** nao exige validacao completa.
 
 ---
 
 ### 4.A — Campos: ANAMNESE
-> Questionario inicial de saude, objetivos e prontidao para atividade fisica. Tipicamente **sem** "ultima medicao" numerica; quando refeita, pode exibir a resposta anterior.
+> Questionario inicial de saude, objetivos e prontidao para atividade fisica. **Sem** "ultima medicao" / "Anterior" no formulario — campos qualitativos sao respondidos do zero (ver Regra global da Secao 4). A comparacao com respostas anteriores, se util, fica na Visualizar `[VELA-2002]`.
 
 **Grupo 1 — Objetivo e perfil de treino**
 | # | Nome do Campo | Tipo | Obrigatorio | Observacao |
@@ -167,9 +173,9 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 | 4 | Pescoco | Nao |
 | 5 | Ombro | Nao |
 | 6 | Torax / Peito | Nao |
-| 7 | Cintura | Recomendado |
+| 7 | Cintura | Nao |
 | 8 | Abdomen | Nao |
-| 9 | Quadril | Recomendado |
+| 9 | Quadril | Nao |
 | 10 | Braco direito relaxado | Nao |
 | 11 | Braco direito contraido | Nao |
 | 12 | Braco esquerdo relaxado | Nao |
@@ -268,14 +274,15 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 
 | # | Componente | Label / Icone | Posicao | Visivel para | Acao ao Clicar |
 |---|---|---|---|---|---|
-| 1 | Botao primario | "Concluir" | Header/Footer | Treinador (criar/editar/revisar) | Valida → salva como **Concluida** → retorna para `[VELA-2001]` com toast |
-| 2 | Botao secundario | "Salvar rascunho" | Footer | Treinador e Aluno (preenchimento incompleto) | Salva o que houver **sem validacao final** → status vira **Em andamento** → retorna para `[VELA-2001]` (card mostra "Continuar") |
-| 3 | Botao secundario | "Liberar para o aluno preencher" | Footer (modo criar) | Treinador | Abre opcao de **Prazo (opcional)** → salva como **Solicitada** (em branco/parcial) → **dispara notificacao push + in-app** ao Aluno e coloca a avaliacao no **topo** da lista → retorna para `[VELA-2001]` |
-| 4 | Campo (na acao Liberar) | "Prazo de preenchimento" (data, opcional) | Sheet/dialogo de Liberar | Treinador | Define ate quando o Aluno deve preencher; se vencer sem envio, status vira **Expirada** |
-| 5 | Botao primario | "Enviar" | Header/Footer | Aluno (modo preencher) | Valida → envia → status vira **Concluida** e **trava para o Aluno** → retorna para `[VELA-2001]` |
-| 6 | Botao/Icone | Voltar / Fechar (X) | Header (esquerda) | Ambos | Se houver alteracoes nao salvas, abre alerta "Descartar alteracoes?"; senao volta |
-| 7 | Botao | Adicionar/remover foto | Secao Fotos | Conforme modo | Abre camera/galeria; gerencia miniaturas |
-| 8 | Toggle de grupo | Expandir/colapsar secao | Cabecalho de cada grupo | Ambos | Mostra/oculta o grupo de campos |
+| 1 | Campo (Secao 0, criar) | "Aluno" (busca) | Topo do formulario | Treinador | Travado (nome + @) quando aberto pelo perfil do aluno; **campo de busca** entre alunos cadastrados quando aberto pela tela global "Criar avaliacao" — ao selecionar, fixa o aluno e traz o **@** |
+| 2 | Campo (Secao 0, criar) | "Quem vai preencher" (Treinador / Aluno) | Topo do formulario | Treinador | Define a acao primaria do rodape. Se **Aluno**, revela "Vai ter prazo?" (Sim/Nao) e, se Sim, o campo **Prazo (data limite)** |
+| 3 | Botao primario | "Concluir" | Footer | Treinador, quando **quem preenche = Treinador** (criar/editar/revisar) | Valida → salva como **Concluida** → retorna para `[VELA-2001]` com toast |
+| 4 | Botao primario | "Liberar para o aluno preencher" | Footer | Treinador, quando **quem preenche = Aluno** (modo criar) | Salva como **Solicitada** (em branco/parcial), com o **prazo** definido na Secao 0 → **dispara notificacao push + in-app** ao Aluno e coloca a avaliacao no **topo** da lista → retorna para `[VELA-2001]` |
+| 5 | Botao secundario | "Salvar rascunho" | Footer | Treinador e Aluno (preenchimento incompleto) | Salva o que houver **sem validacao final** → status vira **Em andamento** → retorna para `[VELA-2001]` (card mostra "Continuar") |
+| 6 | Botao primario | "Enviar" | Footer | Aluno (modo preencher) | Valida → envia → status vira **Concluida** e **trava para o Aluno** → retorna para `[VELA-2001]` |
+| 7 | Botao/Icone | Voltar / Fechar (X) | Header (esquerda) | Ambos | Se houver alteracoes nao salvas, abre alerta "Descartar alteracoes?"; senao volta |
+| 8 | Botao | Adicionar/remover foto | Secao Fotos | Conforme modo | Abre camera/galeria; gerencia miniaturas |
+| 9 | Toggle de grupo | Expandir/colapsar secao | Cabecalho de cada grupo | Ambos | Mostra/oculta o grupo de campos |
 
 > **Excluir** nao fica nesta tela — a exclusao e exclusiva do **Treinador** e acontece na lista `[VELA-2001]` ou na visualizacao `[VELA-2002]` (menu ⋮), sempre definitiva e com confirmacao.
 
@@ -284,7 +291,7 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 ## 6. Estados da Tela
 
 ### 6.1 Estado Inicial / Vazio
-- **Criacao (Treinador):** formulario do tipo escolhido com campos vazios; "Data" pre-preenchida com a data atual (editavel); cada campo numerico mostra "Ultima medicao" (ou "Sem medicao anterior").
+- **Criacao (Treinador):** primeiro a **Secao 0** — **Aluno** (travado se aberto pelo perfil; busca se entrada global), **Tipo** (leitura), **Quem vai preencher** (Treinador/Aluno; se Aluno, "Vai ter prazo?" → data) e **Data**. Em seguida, os campos do tipo escolhido vazios; cada campo numerico (inclusive calculados) mostra "Ultima: XXXXX" (ou "Sem dados anterior"). A acao primaria do rodape reflete a escolha de "quem preenche" ("Concluir" ou "Liberar para o aluno preencher").
 - **Edicao (Treinador):** campos **pre-preenchidos** com os valores da avaliacao; "Ultima medicao" referente a avaliacao **anterior**.
 - **Preencher (Aluno):** formulario do tipo da avaliacao Solicitada, com eventuais campos ja pre-preenchidos pelo Treinador; o Aluno completa o restante. O Aluno pode **editar livremente** todos os campos, **inclusive os que o Treinador pre-preencheu** (nenhum campo fica travado no modo Preencher — ver RN05f). "Ultima medicao" referente a avaliacao anterior do mesmo campo.
 - **Continuar (rascunho "Em andamento"):** reabre uma avaliacao salva como rascunho (pelo Treinador ou pelo Aluno) com os campos parcialmente preenchidos, para completar e enviar/salvar.
@@ -317,7 +324,8 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 ### De onde o usuario chega nesta tela
 | Origem | Gatilho |
 |---|---|
-| Lista de Avaliacoes `[VELA-2001]` | Treinador toca no FAB "Nova avaliacao" e escolhe o tipo (criar) |
+| Lista de Avaliacoes `[VELA-2001]` | Treinador toca no **FAB "+"** (entrada **global**) e escolhe o tipo → **seleciona o aluno por busca** na Secao 0 |
+| Perfil do Aluno (a mapear) | Treinador toca no **"+"** dentro do perfil de um aluno → criar com o **aluno ja travado** no contexto (ver decisao #16) |
 | Lista de Avaliacoes `[VELA-2001]` | Treinador toca em "Editar" em um card (editar) |
 | Lista de Avaliacoes `[VELA-2001]` | Aluno toca em "Preencher" em um card Solicitada (preencher) |
 | Lista de Avaliacoes `[VELA-2001]` | Aluno ou Treinador toca em "Continuar" em um card **Em andamento** (retoma rascunho) |
@@ -335,12 +343,12 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 
 - **RN01:** O **mesmo** formulario serve para **criar/editar** (Treinador) e **preencher** (Aluno); em editar/preencher abre **preenchido** com o que ja existir.
 - **RN02:** O conjunto de campos e **dinamico por tipo** (Secoes 4.A–4.D). O **tipo** e definido na criacao e nao muda depois.
-- **RN03 (Ultima medicao):** Abaixo de cada campo numerico de medida, exibir o **ultimo valor registrado** daquele campo + **data** + **variacao**, considerando **apenas avaliacoes do mesmo tipo** (campos iguais em tipos diferentes — ex: Peso, % de gordura — nao se misturam). Em edicao/revisao/preenchimento, considerar a avaliacao **anterior** a atual.
+- **RN03 (Ultima medicao):** Abaixo de **todos** os campos numericos — **inclusive os calculados** (IMC, soma de dobras, % de gordura, etc.) —, exibir **apenas** `Ultima: XXXXX` — o ultimo valor registrado daquele campo (com unidade), considerando **apenas avaliacoes do mesmo tipo** (campos iguais em tipos diferentes — ex: Peso, % de gordura — nao se misturam). **Sem data e sem variacao/delta.** Em edicao/revisao/preenchimento, considerar a avaliacao **anterior** a atual; sem registro anterior, exibir **"Sem dados anterior"**.
 - **RN04:** Campos **calculados** (IMC, RCQ, soma de dobras, densidade, % de gordura, massa gorda/magra) sao automaticos e somente leitura, recalculando em tempo real.
 - **RN05 (Permissoes):** **Criar/editar/revisar** = somente **Treinador**. Em **Solicitada/Em andamento** a acao e **"Editar"**; em **Concluida** e **"Revisar"** (edita no lugar). **Preencher** = somente o **Aluno** destinatario, em avaliacao **Solicitada**. Apos a avaliacao virar **Concluida**, ela **trava para o Aluno** (so o Treinador revisa/exclui — ver RN13). Acessos indevidos sao redirecionados a Visualizar `[VELA-2002]`.
 - **RN05b (Liberar):** Ao criar, o Treinador pode **concluir** (status Concluida), **salvar rascunho** (Em andamento) ou **liberar** (Solicitada) para o Aluno preencher. A acao **"Liberar para o aluno preencher" existe somente no modo criacao** — um rascunho ja salvo como **Em andamento** pelo Treinador **nao** pode ser liberado depois (so pode ser concluido ou continuado por ele).
 - **RN05c (Rascunho / Em andamento):** Tanto o Treinador quanto o Aluno podem **salvar rascunho** de um preenchimento incompleto. O rascunho fica com status **Em andamento** (sem validacao final) e pode ser retomado depois pela acao **"Continuar"** na lista `[VELA-2001]`. So o **envio/conclusao** aplica a validacao completa.
-- **RN05d (Prazo / Expirada):** Ao liberar, o Treinador pode definir um **prazo de preenchimento (opcional)**. Se o prazo vencer sem que o Aluno envie, a avaliacao passa a status **Expirada**. Sem prazo definido, a avaliacao permanece pendente por tempo indeterminado. Uma avaliacao **Expirada trava para o Aluno** — ele **nao** consegue mais preencher; **somente o Treinador reabre/reenvia** (a avaliacao volta ao status **Solicitada**, com novo prazo opcional, e dispara nova notificacao). Ver `[VELA-2001]` RN13/RN14.
+- **RN05d (Prazo / Expirada):** O **prazo de preenchimento (opcional)** e definido **na criacao**, na Secao 0, via "Vai ter prazo?" (Sim/Nao) → data limite (RN16). Se o prazo vencer sem que o Aluno envie, a avaliacao passa a status **Expirada**. Sem prazo definido, a avaliacao permanece pendente por tempo indeterminado. Uma avaliacao **Expirada trava para o Aluno** — ele **nao** consegue mais preencher; **somente o Treinador reabre/reenvia** (a avaliacao volta ao status **Solicitada**, com novo prazo opcional, e dispara nova notificacao). Ver `[VELA-2001]` RN13/RN14.
 - **RN05f (Edicao no modo Preencher):** No modo **Preencher/Continuar**, o Aluno pode **editar todos os campos do formulario, inclusive os valores que o Treinador deixou pre-preenchidos** ao liberar. Nenhum campo fica travado para o Aluno durante o preenchimento (a trava so ocorre **apos o envio**, quando a avaliacao vira Concluida — RN05).
 - **RN05e (Notificacao ao liberar):** Ao liberar (status Solicitada), o sistema **dispara notificacao push + in-app** ao Aluno e a avaliacao vai para o **topo** da lista `[VELA-2001]` como pendencia, alimentando o contador da aba (detalhamento do push na tela de Notificacoes — decisao #13 do indice).
 - **RN06:** A **Data** e obrigatoria e nao pode ser futura.
@@ -349,7 +357,9 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 - **RN09 (Dobras):** Em **Pollock 3/7**, a formula de % de gordura segue **Jackson & Pollock** + **Siri**, variando por **sexo** e **idade**, e os resultados sao **calculados/somente leitura**; o conjunto de dobras exibido depende do **protocolo** escolhido. No protocolo **"Outro"** nao ha equacao padrao: % de gordura, densidade, massa gorda e massa magra ficam **em branco e editaveis** para preenchimento **manual** do Treinador (apenas a soma das dobras e automatica).
 - **RN10:** Fotos sao opcionais; o anexo de **laudo** da Bioimpedancia tambem e opcional.
 - **RN11:** Ao voltar com alteracoes nao salvas, exigir confirmacao ("Descartar alteracoes?").
-- **RN12 (Heranca de Peso/Altura/Idade):** Campos que "podem herdar do perfil ou da ultima antropometrica" sao apenas **sugeridos** de forma visivel (ex: "Sugerido: 84,5 kg — ultima antropometrica); o sistema **nao** preenche o campo automaticamente. O usuario digita/confirma o valor desta avaliacao.
+- **RN12 (Peso/Altura/Idade):** Esses campos seguem o mesmo padrao dos demais: o apoio sob o campo e **`Ultima: XXXXX`** (ultima avaliacao do mesmo tipo) ou **"Sem dados anterior"** — **nao** ha rotulo "Sugerido" separado. O input **nao** e preenchido automaticamente; o usuario digita/confirma o valor desta avaliacao.
+- **RN15 (Formulario sem repetir a lista):** O formulario exibe **somente a avaliacao em edicao naquele momento** — **tipo** + **data** + campos do tipo. Informacoes de contexto/colecao (**status**, **quem liberou/registrou**, comparacao entre avaliacoes anteriores) **nao** aparecem no formulario; elas vivem na **lista** `[VELA-2001]` (e na visualizacao `[VELA-2002]`), evitando duplicidade. **Excecoes:** (a) o componente **"ultima medicao"** sob cada campo (RN03); (b) os campos de **configuracao da criacao** (aluno, quem vai preencher, prazo), que aparecem **apenas no momento de criar** e depois deixam de ser reapresentados (RN16).
+- **RN16 (Inicio da criacao — aluno, responsavel e prazo):** Ao **criar**, os primeiros campos sao, nesta ordem: (1) **Aluno** — **pre-preenchido e travado** quando o formulario e aberto pelo perfil do aluno (via `[VELA-2001]`), ou **campo de busca** entre os alunos cadastrados/vinculados (digita o nome → seleciona → traz o **@**) quando aberto pela tela global "Criar avaliacao"; (2) **Quem vai preencher** — **Treinador** ou **Aluno**; se **Aluno**, pergunta **"Vai ter prazo para preencher?"** (Sim/Nao) e, se Sim, **data limite (prazo)**. A escolha define a acao primaria do rodape: **Treinador → "Concluir"**; **Aluno → "Liberar para o aluno preencher"** (status **Solicitada**, com o prazo definido aqui). Esses campos so aparecem na **criacao**.
 - **RN14 (Registros independentes):** Cada avaliacao — inclusive a **Anamnese** — e um **registro novo e datado**. "Refazer" uma Anamnese (ou qualquer tipo) **cria um novo registro**, sem sobrescrever o anterior; o historico de versoes do mesmo tipo fica disponivel para comparacao ("ultima medicao"/evolucao). Nao existe "atualizar a Anamnese existente" — a unica forma de alterar um registro ja salvo e via Editar/Revisar do proprio registro.
 - **RN13 (Revisar Concluida — exclusivo do Treinador):** Uma avaliacao **Concluida** fica **travada para o Aluno** (ele nunca edita/revisa). O **Treinador** pode corrigi-la de duas formas, ambas disponiveis: (1) **Revisar** — abre a avaliacao preenchida, corrige e salva **no lugar**; ela **continua Concluida** e os valores sao **sobrescritos sem versionamento/historico**; ou (2) **excluir e recriar** (exclusao definitiva, na lista `[VELA-2001]` ou na visualizacao `[VELA-2002]`). Em **Solicitada/Em andamento** a acao de alterar chama-se "Editar"; em **Concluida**, "Revisar".
 
@@ -373,7 +383,7 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 > Consideracoes de acessibilidade para esta tela.
 
 - Labels associadas a todos os campos e com unidade explicita (cm, kg, mm, %, kcal).
-- "Ultima medicao" e variacao anunciadas por leitores de tela ("Ultima medicao 38,5 cm em 12 de marco, aumentou 0,5 cm"); a variacao nao depende apenas de cor (usar setas/sinais + texto).
+- "Ultima medicao" anunciada por leitores de tela apenas com o valor ("Ultima 38,5 cm"), sem data nem variacao (conforme RN03).
 - Mensagens de erro associadas ao campo (aria-describedby) e foco levado ao primeiro campo invalido ao tentar salvar.
 - Campos numericos com teclado numerico e passo adequado; area de toque confortavel no mobile.
 - Contraste WCAG 2.1 AA; navegacao por teclado/tab order logica no web; alerta "Descartar alteracoes?" com foco gerenciado.
@@ -391,4 +401,9 @@ Para **todo campo numerico de medida**, exibir logo abaixo do input:
 | 2026-06-12 | Equipe Vela | (#1 RESOLVIDO — opcao A) **Avaliacao Concluida e imutavel para todos** (nem o Treinador edita); correcao apenas via **excluir + recriar**. Atualizadas Secao 1 (modo Editar), Secao 2 (permissoes), RN05 e nova **RN13**. Propagado para `[VELA-2001]` e `[VELA-2002]` e decisao #9/#14 do indice. Status → 🟢 CONCLUIDO |
 | 2026-06-12 | Equipe Vela | Ajuste da decisao #14: cliente optou por **dar ao Treinador a acao "Revisar"** na Concluida — edita **no lugar** (continua Concluida, **sem versionamento**); **excluir + recriar** segue disponivel em paralelo. O **Aluno continua travado** na Concluida. Adicionado modo/titulo **"Revisar [Tipo]"** (Secao 3.1); atualizadas Secao 1, Secao 2, RN05 e RN13. Propagado para `[VELA-2001]`/`[VELA-2002]` e decisao #9/#14 |
 | 2026-06-12 | Equipe Vela | Tres definicoes de comportamento: (1) **"ultima medicao" so compara avaliacoes do mesmo tipo** (campos iguais em tipos diferentes, ex: Peso/% gordura, nao se misturam) — Regra global da Secao 4 e RN03; (2) **validacao de faixa so avisa, nao bloqueia** o salvamento (bloqueio fica nos obrigatorios + Data) — Regras de Preenchimento e RN07; (3) **limites tecnicos de fotos** (quantidade/formato/tamanho) adiados — decisao #15 do indice |
+| 2026-06-12 | Equipe Vela | Alinhamento com `[VELA-2001]` (pos-mockup): o **formulario nao repete dados da lista** — a Secao 0 passa a exibir **somente tipo + data** (sem status, quem liberou/registrou nem prazo, que ficam na lista). Atualizada Secao 3.2 e nova **RN15** |
+| 2026-06-12 | Equipe Vela | (1) **"Ultima medicao" simplificada** na tela: passa a exibir **apenas** `Ultima: XXXXX` (so o valor) — **removidas data e variacao/▲▼** (RN03, Regra global da Secao 4, Secao 1, Acessibilidade); (2) removido o rotulo **"(recomendado)"** dos campos (Cintura/Quadril viram obrigatorio = Nao na Secao 4.B). Aplicado tambem no mockup |
+| 2026-06-12 | Equipe Vela | Uniformizacao da "ultima medicao": (1) aparece em **TODOS os campos numericos, inclusive os calculados** (IMC, soma, % de gordura); (2) **fim do rotulo "Sugerido"** — Peso/Altura/Idade passam a usar o mesmo "Ultima: XXXXX" (RN12 reescrita); (3) mensagem de ausencia padronizada para **"Sem dados anterior"** (antes "Sem medicao anterior"). Atualizados Secao 1, 3.2, 4 (regra global), 6.1, RN03/RN12. Aplicado no mockup |
+| 2026-06-12 | Equipe Vela | Definido (opcao a): **Anamnese nao exibe "Anterior"** no formulario — campos qualitativos respondidos do zero (PAR-Q sem inducao); comparacao historica fica na Visualizar `[VELA-2002]`. Atualizadas Regra global (Secao 4) e Secao 4.A. "Ultima"/"Sem dados anterior" segue valendo so para campos **numericos** |
+| 2026-06-12 | Equipe Vela | **Inicio da criacao** redesenhado (Secao 0): primeiros campos = **Aluno** (travado se aberto pelo perfil; **busca** entre cadastrados se entrada global, traz o @) + **Quem vai preencher** (Treinador/Aluno) e, se Aluno, **"Vai ter prazo?"** → data. A escolha define a acao primaria do rodape: **Treinador → "Concluir"**, **Aluno → "Liberar para o aluno preencher"**. Atualizadas Secoes 3.1, 3.2, 4, 5, 6.1, 7; novas **RN16**, ajustes em RN05d/RN15. Entrada global registrada como decisao #16 do indice |
 | 2026-06-12 | Equipe Vela | (1) **Anamnese/registros sao independentes e datados** (refazer cria novo registro, nao sobrescreve) — nova RN14; (2) **protocolo "Outro" das Dobras**: sem equacao padrao, % de gordura/densidade/massa gorda/magra ficam **em branco e editaveis** para preenchimento manual do Treinador (so a soma das dobras e automatica) — Secao 4.C e RN09; (3) **acao final do Treinador renomeada de "Salvar" para "Concluir"** (mantendo "Enviar" do Aluno e "Salvar rascunho" para ambos) — modelo de 2 botoes distintos em vez de modal; atualizadas Secoes 3.1, 3.3, 4, 5, 6.2, 6.4, 9 e RN05b |

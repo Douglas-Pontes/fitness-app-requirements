@@ -37,6 +37,7 @@ _Descrever em 2-3 frases o proposito desta tela._
 
 ## 3. Layout e Componentes Visuais
 > Descreva a estrutura visual da tela de cima para baixo.
+> **Copy de UI vs. nota interna:** so descreva como texto **na tela** as informacoes **necessarias ao usuario** (alertas, "ultima medicao", erros/validacao, ajuda que orienta a acao). Explicacoes de comportamento, racional de design e referencias a RNs sao **notas internas** — ficam neste documento (ex: nas Regras de Negocio), **nunca** na tela nem nos mockups.
 
 ### 3.1 Header / Cabecalho
 - Conteudo: ex: Botao voltar + Titulo "Login" + icone de ajuda

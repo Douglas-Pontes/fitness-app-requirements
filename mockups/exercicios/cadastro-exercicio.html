@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Cadastro / Edição de Exercício · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .phone { width: 390px; }
+  .phone-scroll { height: 760px; overflow-y: auto; }
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+  .lowercase-brand { text-transform: lowercase; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+<!-- BANNER DE AVISO -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm py-2 px-4">
+  ⚠️ Mockup visual — não é código de produção. Gerado a partir de <code class="bg-white/15 px-1 rounded">docs/screens/exercicios/cadastro-exercicio.md</code>
+</div>
+
+<header class="text-center py-8 px-4">
+  <div class="text-3xl font-semibold tracking-tight lowercase-brand">
+    <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
+  </div>
+  <h1 class="mt-4 text-xl font-medium text-slate-700">Cadastro / Edição de Exercício <span class="text-slate-400 text-sm">[VELA-3003]</span></h1>
+  <p class="text-sm text-slate-500 mt-1">Tela única, formulário contínuo (blocos A–D como subtítulos) — principal, criação, erro, desativar, inativo e reativar</p>
+</header>
+
+<main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
+
+  <!-- ============ FRAME 1 — PRINCIPAL: EDIÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">principal — edição</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <!-- header -->
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar exercício</h2>
+        </div>
+        <button class="text-xs font-medium text-navy">salvar</button>
+      </div>
+
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+
+        <!-- Toggle Ativo/Inativo (só edição) -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do exercício</p>
+            <p class="text-[11px] text-slate-400">Ativo · disponível para novas rotinas</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-navy">Ativo</span>
+            <div class="w-10 h-6 bg-lime rounded-full relative">
+              <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO A — Identificação -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Nome do exercício *</label>
+          <input type="text" value="Supino reto com barra" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white outline-none focus:border-navy" />
+        </div>
+
+        <!-- BLOCO B — Classificação -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Classificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Grupo muscular primário *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white"><option>Peito</option></select>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Grupos musculares secundários</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Tríceps <span class="text-slate-400">✕</span></span>
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Ombro <span class="text-slate-400">✕</span></span>
+                <span class="text-[11px] border border-dashed border-slate-300 text-slate-400 px-2 py-1 rounded-full">+ adicionar</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Categoria</label>
+                <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white"><option>Hipertrofia</option></select>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Nível *</label>
+                <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white"><option>Intermediário</option></select>
+              </div>
+            </div>
+            <!-- Equipamentos complementares: campo único -->
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Equipamentos complementares</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Band <span class="text-slate-400">✕</span></span>
+                <button class="text-[11px] text-navy font-medium border border-navy/30 px-2 py-1 rounded-full">+ adicionar</button>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">(ex: band, step, entre outros)</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Trilha Vela</label>
+              <div class="flex gap-2">
+                <span class="text-[11px] font-medium bg-track text-navy px-3 py-1.5 rounded-lg lowercase-brand">.track ✓</span>
+                <span class="text-[11px] font-medium bg-slate-100 text-slate-400 px-3 py-1.5 rounded-lg lowercase-brand">.performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO C — Mídia -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Mídia</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Vídeo de execução *</label>
+              <div class="flex gap-2 mb-2">
+                <button class="flex-1 text-xs py-2 rounded-lg bg-navy text-white font-medium">buscar na base</button>
+                <button class="flex-1 text-xs py-2 rounded-lg border border-slate-200 text-slate-600">colar link YouTube</button>
+              </div>
+              <div class="rounded-lg overflow-hidden bg-slate-900 aspect-video flex items-center justify-center relative">
+                <div class="w-12 h-12 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xl">▶</div>
+                <span class="absolute bottom-1.5 left-2 text-[10px] text-white/70">pré-visualização · supino reto (base de vídeos)</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Imagem de capa</label>
+              <div class="border border-dashed border-slate-300 rounded-lg px-3 py-4 text-center text-slate-400 text-xs">
+                <p>↑ adicionar imagem</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO D — Orientação (2 campos) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Orientação ao aluno</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Instruções de execução</label>
+              <textarea rows="3" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Descreva o passo a passo da execução">Deite no banco, pegada pouco mais aberta que os ombros, desça a barra controlando até o peito e empurre.</textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Observações gerais</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Observações gerais sobre o exercício"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Excluir -->
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir exercício</button>
+      </div>
+
+      <!-- footer fixo -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar exercício</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 2 — VAZIO: CRIAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-300 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">vazio — criação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">novo exercício</h2>
+        </div>
+        <span class="text-xs font-medium text-slate-300">salvar</span>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Nome do exercício *</label>
+          <input type="text" placeholder="Ex: Supino reto com barra" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" />
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Classificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Grupo muscular primário *</label>
+          <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white text-slate-400"><option>Selecione o grupo principal</option></select>
+          <div class="grid grid-cols-2 gap-2 mt-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Categoria</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white text-slate-400"><option>Selecione</option></select>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Nível *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white text-slate-400"><option>Selecione</option></select>
+            </div>
+          </div>
+          <div class="mt-3">
+            <label class="block text-[11px] text-slate-500 mb-1">Equipamentos complementares</label>
+            <button class="text-[11px] text-navy font-medium border border-navy/30 px-2 py-1 rounded-full">+ adicionar</button>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Mídia</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Vídeo de execução *</label>
+          <div class="flex gap-2">
+            <button class="flex-1 text-xs py-2 rounded-lg border border-slate-200 text-slate-600">buscar na base</button>
+            <button class="flex-1 text-xs py-2 rounded-lg border border-slate-200 text-slate-600">colar link YouTube</button>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Orientação ao aluno</h3>
+          <textarea rows="2" placeholder="Descreva o passo a passo da execução" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400"></textarea>
+        </div>
+        <p class="text-[11px] text-slate-400 text-center pt-1">Preencha os campos obrigatórios (*) para salvar</p>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-slate-200 text-slate-400 font-medium text-sm rounded-lg py-3 cursor-not-allowed">salvar exercício</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3 — ERRO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">erro — validação + api</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">novo exercício</h2>
+        </div>
+        <button class="text-xs font-medium text-navy">salvar</button>
+      </div>
+      <!-- toast erro api -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-rose-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg text-center">
+        Não foi possível salvar o exercício. Tente novamente.
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Nome do exercício *</label>
+          <input type="text" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50" />
+          <p class="text-[11px] text-rose-600 mt-1">Informe o nome do exercício</p>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Classificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Grupo muscular primário *</label>
+          <select class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50 text-slate-400"><option>Selecione o grupo principal</option></select>
+          <p class="text-[11px] text-rose-600 mt-1">Selecione o grupo muscular primário</p>
+        </div>
+        <div class="bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 text-[11px] text-amber-800">
+          ⓘ Já existe um exercício com esse nome neste nível
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar exercício</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4 — DESATIVAR: MENSAGEM ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">desativar — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar exercício</h2>
+        </div>
+        <button class="text-xs font-medium text-navy">salvar</button>
+      </div>
+      <!-- form ao fundo (esmaecido) -->
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do exercício</p>
+            <p class="text-[11px] text-slate-400">Desativando…</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativo</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative">
+              <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Supino reto com barra" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet de confirmação -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Desativar exercício?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">Exercícios inativos continuam nas rotinas atuais, mas não podem ser adicionados a novas.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-navy text-white font-medium">Desativar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 5 — INATIVO: EXERCÍCIO DESATIVADO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-500 text-white text-xs font-medium px-3 py-1 rounded-full">inativo — exercício desativado</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar exercício</h2>
+          <span class="text-[10px] font-semibold text-slate-600 bg-slate-200 px-2 py-0.5 rounded-full uppercase tracking-wide">Inativo</span>
+        </div>
+        <button class="text-xs font-medium text-navy">salvar</button>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <!-- Toggle off -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do exercício</p>
+            <p class="text-[11px] text-slate-400">Inativo · indisponível para novas rotinas; continua nas atuais</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativo</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative">
+              <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+        <!-- dados preservados (todos os campos seguem preenchidos) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <label class="block text-[11px] text-slate-500 mb-1">Nome do exercício *</label>
+          <input type="text" value="Supino reto com barra" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Classificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Grupo muscular primário *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white"><option>Peito</option></select>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Grupos musculares secundários</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Tríceps <span class="text-slate-400">✕</span></span>
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Ombro <span class="text-slate-400">✕</span></span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Categoria</label>
+                <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white"><option>Hipertrofia</option></select>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Nível *</label>
+                <select class="w-full text-sm border border-slate-200 rounded-lg px-2 py-2 bg-white"><option>Intermediário</option></select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Equipamentos complementares</label>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-track/40 text-navy px-2 py-1 rounded-full flex items-center gap-1">Band <span class="text-slate-400">✕</span></span>
+                <button class="text-[11px] text-navy font-medium border border-navy/30 px-2 py-1 rounded-full">+ adicionar</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Trilha Vela</label>
+              <div class="flex gap-2">
+                <span class="text-[11px] font-medium bg-track text-navy px-3 py-1.5 rounded-lg lowercase-brand">.track ✓</span>
+                <span class="text-[11px] font-medium bg-slate-100 text-slate-400 px-3 py-1.5 rounded-lg lowercase-brand">.performance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Mídia</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Vídeo de execução *</label>
+              <div class="rounded-lg overflow-hidden bg-slate-900 aspect-video flex items-center justify-center relative">
+                <div class="w-12 h-12 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xl">▶</div>
+                <span class="absolute bottom-1.5 left-2 text-[10px] text-white/70">pré-visualização · supino reto</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Imagem de capa</label>
+              <div class="border border-dashed border-slate-300 rounded-lg px-3 py-4 text-center text-slate-400 text-xs">↑ adicionar imagem</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Orientação ao aluno</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Instruções de execução</label>
+              <textarea rows="3" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white">Deite no banco, pegada pouco mais aberta que os ombros, desça a barra controlando até o peito e empurre.</textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Observações gerais</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar exercício</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 6 — REATIVAR: ALERTA DE REVISÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">reativar — revisar antes</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar exercício</h2>
+          <span class="text-[10px] font-semibold text-slate-600 bg-slate-200 px-2 py-0.5 rounded-full uppercase tracking-wide">Inativo</span>
+        </div>
+        <button class="text-xs font-medium text-navy">salvar</button>
+      </div>
+      <!-- form ao fundo (esmaecido) -->
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do exercício</p>
+            <p class="text-[11px] text-slate-400">Reativando…</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-navy">Ativo</span>
+            <div class="w-10 h-6 bg-lime rounded-full relative">
+              <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Supino reto com barra" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet de revisão -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Revise antes de reativar</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">As informações voltam como estavam quando o exercício foi desativado. Confira se ainda estão corretas antes de ativá-lo.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-lime text-navy font-medium">Ativar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
+  <p>Tela única em fluxo contínuo — blocos A–D apenas como subtítulos (sem accordion). Espelha as seções 3–6 do documento.</p>
+  <p>Equipamentos complementares = campo único (só o não óbvio, sugere usados + digitar) · vídeo de execução obrigatório (base do app ou YouTube) · orientação em 2 campos · sem áudio no exercício · sem acervo global de exercícios.</p>
+</div>
+
+</body>
+</html>

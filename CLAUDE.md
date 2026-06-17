@@ -80,8 +80,11 @@ docs/
 - **Sempre** respeitar a identidade da marca **Vela** (paleta, tom, conceito do ponto e nomenclatura das categorias `.track`/`.performance`) definida em `04-identidade-de-marca.md` ao gerar/mapear telas, fluxos e resumos
 - **Sempre** atualizar o indice em `01-visao-geral.md` ao criar/modificar telas
 - **Sempre** verificar se o fluxo de navegacao e bidirecional (se A vai pra B, B deve listar A como origem)
+- **Separar copy de UI de nota interna** — Toda informacao **necessaria ao usuario** aparece **na tela** (ex: alerta do PAR-Q, "ultima medicao" da avaliacao anterior, mensagens de erro/validacao, textos de ajuda que orientam a acao). Ja explicacoes/justificativas **internas** (regras de comportamento, decisoes de design, racional do tipo "o treinador pode deixar em branco...", referencias a RNs) ficam **somente nos documentos** (`docs/`) e **nunca** sao renderizadas na tela nem nos mockups. Em caso de duvida se um texto e copy de UI ou nota interna, **perguntar**.
 - Quando o usuario disser algo ambiguo, **perguntar antes de assumir** — requisitos errados custam caro
 - Priorizar perguntas **objetivas com opcoes** (ex: "O botao deve ficar desabilitado ate preencher? Sim/Nao")
+- **Sempre marcar a opcao recomendada:** em **toda** pergunta com opcoes (em qualquer processo ou tela, inclusive na ferramenta de perguntas), adicionar **`(recomendado)`** ao final do rotulo da opcao que voce julgar ser a melhor e coloca-la **como a primeira** da lista. Sempre existe uma recomendada.
+- **Manter o mockup em sincronia com o doc:** sempre que alterar o **comportamento visivel** de uma tela que **ja possui** mockup em `mockups/...` (layout, campos, copy de UI, botoes, estados), **atualizar o `.html` correspondente na MESMA tarefa**, espelhando o documento — sem precisar o usuario pedir. Mudancas **puramente internas** (notas, RNs sem reflexo visual) **nao** exigem atualizar o mockup. Para telas **sem** mockup, **nao** gerar automaticamente — isso so via `/visualizar-tela` quando solicitado. Ao final, avisar que o mockup foi atualizado e lembrar do hard refresh (Cmd+Shift+R).
 - Ao identificar uma decisao em aberto, adicionar na tabela "Decisoes em Aberto" do `01-visao-geral.md`
 
 ## Custom Commands Disponiveis

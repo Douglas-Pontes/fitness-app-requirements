@@ -9,8 +9,10 @@
 | **Modulo** | Exercícios |
 | **Codigo** | VELA-3001 |
 | **Prioridade** | 🔵 MVP |
-| **Status** | 🟡 EM ANDAMENTO |
-| **Ultima atualizacao** | 2026-06-17 |
+| **Status** | 🟠 PENDENTE REVISAO |
+| **Ultima atualizacao** | 2026-06-18 |
+
+> **Pendência ativa:** o **visual do bottom-sheet "Incluir em rotina"** (Seção 3, Secao 4) ficou para revisar **após o mapeamento das telas de Rotina**. O restante da tela está concluído.
 
 ---
 
@@ -44,18 +46,29 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 ### 3.2 Corpo Principal
 
 **Secao 1 — Filtros**
-- Componente: Linha de filtros (chips/botões) abaixo da busca.
-- Conteudo: Filtro por **Grupo muscular** (peito, costas, ombro, braço, perna, etc.) e por **Categoria** (hipertrofia, força, alongamento, etc.).
-- Comportamento: Toque abre o seletor de opções; filtros são combináveis e refletem na contagem de resultados.
+- Componente: Três **botões dropdown** abaixo da busca — **"Grupo muscular ▾"**, **"Categoria ▾"** e **"Nível ▾"** — numa fileira com **scroll horizontal** (os filtros rolam lateralmente quando não cabem).
+- Conteudo: Grupo muscular (peito, costas, ombro, braço, perna, etc.), Categoria (hipertrofia, força, alongamento, etc.) e Nível (iniciante, intermediário, avançado).
+- Comportamento: Tocar no botão abre um **seletor em bottom-sheet** com as opções. Filtros são combináveis entre si e com a busca; o botão indica quando há filtro ativo.
 
-**Secao 2 — Lista de exercícios**
-- Componente: Lista vertical de **cards finos**, ordenada **alfabeticamente (A→Z)** por padrão.
+**Secao 2 — Contador de resultados**
+- Componente: Linha de texto discreta acima da lista (ex: **"12 exercícios"**).
+- Comportamento: Reflete o total filtrado — com busca/filtro ativo, mostra o número de resultados correspondentes.
+
+**Secao 3 — Lista de exercícios**
+- Componente: Lista vertical de **cards finos**, ordenada **alfabeticamente (A→Z)** por padrão, em **lista corrida** (sem cabeçalhos de letra).
 - Conteudo de cada card:
   - **Thumbnail** com **ícone de play** (capa do exercício ou frame do vídeo)
   - **Nome** do exercício
-  - **Grupo muscular primário**
+  - **Grupo muscular primário** · **Categoria** · **Nível** — em uma linha de metadados; categoria e nível só aparecem quando preenchidos (separador "·" entre eles)
+  - **Ícone ⋮** (menu de ações) no canto — só para o Treinador
   - Quando aplicável, etiqueta **"Inativo"**
-- Comportamento: Scroll vertical. Tocar no card abre a Visualização `[VELA-3002]`. Tocar no **ícone de play** aciona o **atalho de vídeo** — modal/lightbox por cima da lista (ver Seção 5). Exercícios **inativos** aparecem com a etiqueta "Inativo"; continuam visíveis e abríveis, mas não podem ser adicionados a novas rotinas.
+- Comportamento: Scroll vertical. Tocar no card abre a Visualização `[VELA-3002]`. Tocar no **ícone de play** aciona o **atalho de vídeo** — modal/lightbox por cima da lista (ver Seção 5). Tocar no **ícone ⋮** abre o menu de ações (Incluir em rotina / Editar / Ativar-Desativar / Excluir). Exercícios **inativos** aparecem com a etiqueta "Inativo"; continuam visíveis e abríveis, mas não podem ser adicionados a novas rotinas.
+
+**Secao 4 — Bottom-sheet "Incluir em rotina"** (acionado pelo menu ⋮)
+- ⚠️ PENDENTE — **visual a revisar após mapear as telas de Rotina.** O comportamento está definido; o layout final do bottom-sheet (como exibir cada rotina: nome, trilha `.track`/`.performance`, nº de exercícios, status do rascunho) será revisitado quando o módulo de Rotinas existir, para espelhar a estrutura real de uma rotina.
+- Componente: Overlay inferior (bottom-sheet) com a **lista de rotinas em rascunho/em construção** do Treinador, cada uma com **checkbox** (seleção múltipla), e botão **"Adicionar"**.
+- Conteudo: Nome de cada rotina; rotinas que **já contêm** o exercício aparecem **marcadas e desabilitadas** com o rótulo **"Já na rotina"**.
+- Comportamento: Treinador marca uma ou mais rotinas e confirma; o exercício entra em cada rotina com **prescrição vazia**. O bottom-sheet exibe a mensagem de apoio **"Entre na rotina para finalizar."**. Ao concluir, toast **"Adicionado a N rotina(s) — entre na rotina para finalizar"**. Se não houver rotina em rascunho, exibir estado vazio orientando a criar uma rotina primeiro.
 
 ### 3.3 Footer / Rodape
 - Conteudo: **FAB "+"** ("Novo exercício") — visível apenas para o Treinador.
@@ -82,8 +95,10 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 | 1 | Card do exercício | (área do card) | Lista | Ativo | Abre Visualizar Exercício `[VELA-3002]` |
 | 2 | Ícone de play | ▶ sobre a thumbnail | Card | Ativo (se houver vídeo) | Abre o **atalho de vídeo** — modal/lightbox com o player do YouTube **por cima da lista**; fecha e volta para a mesma posição |
 | 3 | FAB | "+" / "Novo exercício" | Rodapé | Visível só p/ Treinador | Abre Cadastro `[VELA-3003]` em modo criação |
-| 4 | Botão de filtro | "Grupo muscular" / "Categoria" | Linha de filtros | Ativo | Abre seletor de opções e aplica filtro |
-| 5 | Ação do item (Treinador) | "Editar" / "Ativar/Desativar" / "Excluir" | Menu do card | Conforme permissão | Editar → `[VELA-3003]`; Ativar/Desativar → alterna disponibilidade (com aviso ao desativar); Excluir → modal de confirmação (**só se não estiver em uso**) |
+| 4 | Botão dropdown de filtro | "Grupo muscular ▾" / "Categoria ▾" / "Nível ▾" | Linha de filtros (scroll horizontal) | Ativo | Abre **seletor em bottom-sheet** e aplica filtro; indica filtro ativo |
+| 5 | Ícone de menu | ⋮ | Canto do card | Visível só p/ Treinador | Abre menu de ações do card |
+| 6 | Ação do item (Treinador) | "Incluir em rotina" / "Editar" / "Ativar/Desativar" / "Excluir" | Menu ⋮ do card | Conforme permissão | **Incluir em rotina** → abre bottom-sheet de rotinas (ver #7); Editar → `[VELA-3003]`; Ativar/Desativar → alterna disponibilidade (com aviso ao desativar); Excluir → modal de confirmação (**só se não estiver em uso**) |
+| 7 | Bottom-sheet "Incluir em rotina" | Lista de rotinas (rascunho) com checkbox + botão "Adicionar" | Overlay inferior | — | Treinador marca **uma ou mais** rotinas e confirma; o exercício é adicionado a cada uma com **prescrição vazia** (séries/reps/carga ajustados depois na Rotina). Toast "Adicionado a N rotina(s) — entre na rotina para finalizar" |
 
 ---
 
@@ -103,6 +118,8 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 ### 6.4 Estado de Sucesso
 - Após criar/editar um exercício, retorno à lista com toast e item destacado/no topo.
 - Após excluir, toast "Exercício excluído" e remoção do card.
+- Após **incluir em rotina(s)**, toast "Adicionado a N rotina(s) — entre na rotina para finalizar" e fechamento do bottom-sheet.
+- **Bottom-sheet sem rotinas em rascunho:** estado vazio "Você não tem rotinas em construção" + orientação para criar uma rotina antes.
 
 ### 6.5 Estado Desabilitado / Bloqueado
 - Para o **Aluno** (consulta futura), o FAB "+" e as ações de editar/excluir não aparecem.
@@ -114,7 +131,8 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 ### De onde o usuario chega nesta tela
 | Origem | Gatilho |
 |---|---|
-| ⚠️ PENDENTE — ponto de entrada | Ainda não definido. Acessos previstos: (1) ao **montar/editar uma Rotina** (selecionar exercícios); (2) por **aba/menu do Treinador** (depende do painel do Treinador, ainda não mapeado) |
+| Aba/menu do Treinador | Item de navegação principal do Treinador — abre a Lista como hub do módulo de Exercícios (dependência: painel/menu do Treinador ainda não mapeado) |
+| Montagem/edição de Rotina | Treinador entra para **selecionar exercícios** ao montar/editar uma rotina (tela em "modo seleção") |
 | Cadastro de Exercício `[VELA-3003]` | Após salvar/voltar |
 | Visualizar Exercício `[VELA-3002]` | Botão voltar |
 
@@ -132,14 +150,20 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 
 - RN01: A lista contém apenas os **exercícios criados pelo Treinador** logado (não há acervo global de exercícios).
 - RN02: A busca é **normalizada** (sem acentos, minúsculas) e aparece **sempre aberta**.
-- RN03: Filtros de **grupo muscular** e **categoria** são combináveis com a busca.
-- RN04: O card exibe **thumbnail + play**, **nome** e **grupo muscular primário** (decisão do cliente — sem categoria/equipamento/trilha no card).
+- RN03: Filtros de **grupo muscular**, **categoria** e **nível** são combináveis entre si e com a busca.
+- RN04: O card exibe **thumbnail + play**, **nome** e uma linha de metadados com **grupo muscular primário · categoria · nível**. Categoria e nível só aparecem **quando preenchidos**; o grupo muscular primário é sempre exibido. Equipamento e trilha **não** entram no card.
 - RN05: O atalho de vídeo abre o vídeo em **modal/lightbox por cima da lista**, sem perder a posição/contexto (confirmado).
-- RN09: Ordenação padrão **alfabética (A→Z)**.
-- RN10: **Ativar/Desativar**: exercício **desativado** continua nas rotinas que já o usam, mas **não pode ser adicionado a novas**; aparece com etiqueta "Inativo" na lista. Ao desativar, exibir mensagem explicando esse comportamento. **Os dados do exercício são preservados** ao desativar e voltam ao reativar. Ao **reativar**, exibir alerta pedindo para **revisar o exercício**.
-- RN11: **Excluir só é permitido se o exercício não estiver em uso por nenhuma rotina.** Se estiver em uso, a exclusão fica indisponível e o caminho é **Desativar**.
-- RN06: Apenas **Treinador** vê o FAB "+" e as ações de editar/excluir. Todo exercício é do próprio Treinador.
-- RN07: Exclusão é **definitiva** e sempre confirmada por modal.
+- RN06: Ordenação padrão **alfabética (A→Z)**.
+- RN07: **Ativar/Desativar**: exercício **desativado** continua nas rotinas que já o usam, mas **não pode ser adicionado a novas**; aparece com etiqueta "Inativo" na lista. Ao desativar, exibir mensagem explicando esse comportamento. **Os dados do exercício são preservados** ao desativar e voltam ao reativar. Ao **reativar**, exibir alerta pedindo para **revisar o exercício**.
+- RN08: **Excluir só é permitido se o exercício não estiver em uso por nenhuma rotina.** Se estiver em uso, a exclusão fica indisponível e o caminho é **Desativar**.
+- RN09: Apenas **Treinador** vê o FAB "+" e as ações de editar/excluir. Todo exercício é do próprio Treinador.
+- RN10: Exclusão é **definitiva** e sempre confirmada por modal.
+- RN11: Ao chegar pela **montagem/edição de Rotina**, a tela opera em **modo seleção** (foco em escolher exercícios); o acesso pela **aba/menu do Treinador** opera em modo de gestão (criar/editar/excluir). _O layout do modo seleção será detalhado (e ganhará frame no mockup) quando a tela de Rotina for mapeada._
+- RN12: Acima da lista é exibido um **contador de resultados** ("X exercícios") que reflete o total filtrado pela busca/filtros.
+- RN13: **Incluir em rotina** (atalho do menu ⋮): permite ao Treinador adicionar o exercício a **uma ou mais rotinas** sem sair da lista nem abrir a tela de Rotina. O exercício entra com **prescrição vazia** (séries/reps/carga editados depois na Rotina). _Contrapartida na tela de Rotina (a mapear): quando a rotina tiver exercícios entrados por este atalho, exibir aviso obrigando a **revisar antes de salvar/enviar ao aluno** — ver decisão #29 no `01-visao-geral.md`._
+- RN14: Só aparecem no seletor as **rotinas em rascunho/em construção** do Treinador — rotinas já finalizadas/em uso pelo aluno não são elegíveis.
+- RN15: Rotina que **já contém** o exercício aparece **desabilitada** no seletor ("Já na rotina") — não é possível duplicar o mesmo exercício na mesma rotina por este atalho.
+- RN16: A ação **"Incluir em rotina" não fica disponível para exercícios Inativos** (coerente com RN07 — inativo não pode entrar em novas rotinas).
 
 ---
 
@@ -167,3 +191,10 @@ Tela onde o **Treinador** consulta o **seu acervo de exercícios** (os que ele c
 | Data | Autor | Descricao |
 |---|---|---|
 | 2026-06-17 | Equipe Vela | Criação inicial do documento (lista de exercícios — visão do Treinador); substitui o antigo "Catálogo de Exercícios" |
+| 2026-06-18 | Equipe Vela | Definidos pontos de entrada (aba/menu do Treinador + montagem/edição de Rotina, modo seleção); RNs renumeradas em sequência; status → 🟢 CONCLUIDO |
+| 2026-06-18 | Equipe Vela | Decisões visuais p/ mockup: ações do card via ícone ⋮; filtros como botões dropdown → bottom-sheet; lista corrida A→Z; contador de resultados (RN12); rodapé só com FAB. Frame de "modo seleção" adiado até mapear Rotina |
+| 2026-06-18 | Equipe Vela | Novo atalho "Incluir em rotina" no menu ⋮ (RN13–RN16): adiciona o exercício a uma ou mais rotinas em rascunho, com prescrição vazia, sem abrir a tela de Rotina |
+| 2026-06-18 | Equipe Vela | Mensagem de finalizar no toast ("entre na rotina para finalizar"). Visual do bottom-sheet "Incluir em rotina" marcado como ⚠️ PENDENTE — revisar após mapear Rotinas; status → 🟠 PENDENTE REVISAO |
+| 2026-06-18 | Equipe Vela | Card passa a exibir **categoria** e **nível** (quando preenchidos) ao lado do grupo muscular, na linha de metadados (RN04 atualizada — antes era só grupo muscular) |
+| 2026-06-18 | Equipe Vela | Adicionado **filtro por Nível** (3º dropdown); fileira de filtros com scroll horizontal (RN03 atualizada) |
+| 2026-06-18 | Equipe Vela | Mensagem do bottom-sheet "Incluir em rotina" ajustada para "Entre na rotina para finalizar."; criada decisão #29 (aviso de revisão na tela de Rotina para exercícios com prescrição vazia) |

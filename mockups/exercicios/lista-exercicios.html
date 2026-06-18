@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Lista de Exercícios · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .phone { width: 390px; }
+  .phone-scroll { height: 760px; overflow-y: auto; }
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .lowercase-brand { text-transform: lowercase; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+<!-- BANNER DE AVISO -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm py-2 px-4">
+  ⚠️ Mockup visual — não é código de produção. Gerado a partir de <code class="bg-white/15 px-1 rounded">docs/screens/exercicios/lista-exercicios.md</code>
+</div>
+
+<header class="text-center py-8 px-4">
+  <div class="text-3xl font-semibold tracking-tight lowercase-brand">
+    <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
+  </div>
+  <h1 class="mt-4 text-xl font-medium text-slate-700">Lista de Exercícios <span class="text-slate-400 text-sm">[VELA-3001]</span></h1>
+  <p class="text-sm text-slate-500 mt-1">Hub do módulo de Exercícios (visão do Treinador) — principal, vazio, sem resultados, menu de ações, atalho de vídeo, seletor de filtro e item inativo</p>
+</header>
+
+<main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
+
+  <!-- ============ FRAME 1 — PRINCIPAL: LISTA CHEIA ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">principal — lista cheia</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+
+      <!-- header: título + busca + filtros -->
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <!-- busca sempre aberta -->
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <!-- filtros dropdown -->
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+
+      <div class="phone-scroll px-4 py-3 pb-28">
+        <!-- contador -->
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+
+        <div class="space-y-2">
+          <!-- card -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Agachamento livre</p>
+              <p class="text-[11px] text-slate-400 truncate">Perna · Hipertrofia · Intermediário</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <!-- card -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Crucifixo com halteres</p>
+              <p class="text-[11px] text-slate-400 truncate">Peito · Hipertrofia · Iniciante</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <!-- card inativo -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900/80 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-slate-400/90 flex items-center justify-center text-white text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5">
+                <p class="text-sm font-medium text-slate-500 truncate">Leg press 45°</p>
+                <span class="text-[9px] font-semibold text-slate-500 bg-slate-200 px-1.5 py-0.5 rounded-full uppercase tracking-wide shrink-0">Inativo</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate">Perna · Força · Avançado</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <!-- card: só grupo muscular (categoria/nível não preenchidos) -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Puxada na frente</p>
+              <p class="text-[11px] text-slate-400 truncate">Costas</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <!-- card -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Rosca direta com barra</p>
+              <p class="text-[11px] text-slate-400 truncate">Braço · Hipertrofia · Intermediário</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <!-- card -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center relative shrink-0 overflow-hidden">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Supino reto com barra</p>
+              <p class="text-[11px] text-slate-400 truncate">Peito · Força · Intermediário</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAB -->
+      <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 2 — VAZIO: TREINADOR SEM EXERCÍCIOS ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-300 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">vazio — sem exercícios</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll flex flex-col items-center justify-center text-center px-8 pb-28">
+        <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-3xl text-slate-300 mb-4">🏋️</div>
+        <p class="text-sm font-medium text-slate-600 mb-1">Você ainda não criou exercícios.</p>
+        <p class="text-xs text-slate-400">Toque em + para começar.</p>
+      </div>
+      <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3 — SEM RESULTADOS: BUSCA/FILTRO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">sem resultados — busca/filtro</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" value="afundo" class="flex-1 bg-transparent text-sm outline-none text-slate-700" />
+          <span class="text-slate-400 text-xs">✕</span>
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-navy bg-track/40 border border-track rounded-full px-3 py-1.5">Perna ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 pb-28">
+        <p class="text-[11px] text-slate-400 mb-2">0 exercícios</p>
+        <div class="flex flex-col items-center justify-center text-center px-6 pt-16">
+          <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-2xl text-slate-300 mb-4">⌕</div>
+          <p class="text-sm font-medium text-slate-600 mb-1">Nenhum exercício encontrado</p>
+          <p class="text-xs text-slate-400 mb-4">Tente outro termo ou limpe os filtros.</p>
+          <button class="text-xs font-medium text-navy border border-navy/30 rounded-lg px-4 py-2">Limpar filtros</button>
+        </div>
+      </div>
+      <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3B — BUSCA COM RESULTADO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">busca — com resultado</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" value="supino" class="flex-1 bg-transparent text-sm outline-none text-slate-700" />
+          <span class="text-slate-400 text-xs">✕</span>
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 pb-28">
+        <p class="text-[11px] text-slate-400 mb-2">2 exercícios</p>
+        <div class="space-y-2">
+          <!-- resultado: trecho casado destacado -->
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate"><span class="bg-lime/50 rounded">Supino</span> reto com barra</p>
+              <p class="text-[11px] text-slate-400 truncate">Peito · Força · Intermediário</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate"><span class="bg-lime/50 rounded">Supino</span> inclinado com halteres</p>
+              <p class="text-[11px] text-slate-400 truncate">Peito · Hipertrofia · Iniciante</p>
+            </div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+        </div>
+        <p class="text-[10px] text-slate-300 text-center mt-4">busca normalizada · "supino", "Supino" ou "SUPINO" retornam o mesmo</p>
+      </div>
+      <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4 — MENU DE AÇÕES ⋮ ABERTO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">menu de ações — ⋮</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 pb-28 opacity-60 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-800 truncate">Agachamento livre</p>
+              <p class="text-[11px] text-slate-400">Perna · Hipertrofia · Intermediário</p>
+            </div>
+            <button class="text-navy text-lg leading-none px-1">⋮</button>
+          </div>
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/30"></div>
+      <!-- menu de ações (popover sobre o card) -->
+      <div class="absolute top-44 right-4 w-44 bg-white rounded-xl shadow-2xl border border-slate-100 py-1 z-30">
+        <p class="px-3 pt-1.5 pb-1 text-[10px] uppercase tracking-wide text-slate-400">Agachamento livre</p>
+        <button class="w-full text-left text-sm text-navy font-medium px-3 py-2 hover:bg-slate-50">Incluir em rotina</button>
+        <button class="w-full text-left text-sm text-slate-700 px-3 py-2 hover:bg-slate-50">Editar</button>
+        <button class="w-full text-left text-sm text-slate-700 px-3 py-2 hover:bg-slate-50">Desativar</button>
+        <button class="w-full text-left text-sm text-rose-600 px-3 py-2 hover:bg-rose-50">Excluir</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4B — INCLUIR EM ROTINA (BOTTOM-SHEET) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">incluir em rotina — bottom-sheet</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 opacity-40 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Incluir em rotina</h3>
+        <p class="text-[11px] text-slate-400 mb-4">Agachamento livre · escolha uma ou mais rotinas em construção</p>
+        <div class="space-y-1">
+          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Hipertrofia · Semana A</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <label class="flex items-center justify-between py-2.5 text-sm text-slate-700 border-b border-slate-50"><span>Full body · iniciante</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Inferiores · força</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <!-- já contém o exercício: desabilitada -->
+          <label class="flex items-center justify-between py-2.5 text-sm text-slate-300 cursor-not-allowed">
+            <span>Push/Pull · avançado</span>
+            <span class="text-[10px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">Já na rotina</span>
+          </label>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-3 text-center">Entre na rotina para finalizar.</p>
+        <div class="flex gap-2 mt-3">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-lime text-navy font-medium">Adicionar a 2 rotinas</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4C — SUCESSO: ADICIONADO (TOAST) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — adicionado à rotina</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 pb-28">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+              <div class="w-7 h-7 rounded-full bg-lime/90 flex items-center justify-center text-navy text-xs">▶</div>
+            </div>
+            <div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-800 truncate">Agachamento livre</p><p class="text-[11px] text-slate-400">Perna · Hipertrofia · Intermediário</p></div>
+            <button class="text-slate-400 text-lg leading-none px-1">⋮</button>
+          </div>
+        </div>
+      </div>
+      <!-- toast de sucesso -->
+      <div class="absolute bottom-24 inset-x-4 z-30 bg-navy text-white text-xs rounded-lg px-3 py-2.5 shadow-lg flex items-center gap-2">
+        <span class="text-lime">✓</span>
+        <span>Adicionado a 2 rotinas — entre na rotina para finalizar</span>
+      </div>
+      <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 5 — ATALHO DE VÍDEO (MODAL/LIGHTBOX) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">atalho de vídeo — modal</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 pb-28 opacity-40 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-2.5 py-2">
+            <div class="w-14 h-14 rounded-lg bg-slate-900 shrink-0"></div>
+            <div class="flex-1"><p class="text-sm font-medium text-slate-800">Agachamento livre</p><p class="text-[11px] text-slate-400">Perna · Hipertrofia · Intermediário</p></div>
+            <span class="text-slate-400 text-lg px-1">⋮</span>
+          </div>
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/70 flex items-center justify-center px-4">
+        <div class="w-full">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs text-white/80 lowercase-brand">agachamento livre</p>
+            <button class="text-white/80 text-lg leading-none">✕</button>
+          </div>
+          <div class="rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center relative">
+            <div class="w-14 h-14 rounded-full bg-lime/90 flex items-center justify-center text-navy text-2xl">▶</div>
+            <span class="absolute bottom-2 left-2.5 text-[10px] text-white/60">player do YouTube · vídeo de execução</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 6 — SELETOR DE FILTRO (BOTTOM-SHEET) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">seletor de filtro — bottom-sheet</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-navy bg-track/40 border border-track rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 opacity-40 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-medium text-slate-800">Grupo muscular</h3>
+          <button class="text-xs font-medium text-slate-400">Limpar</button>
+        </div>
+        <div class="space-y-1">
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Peito</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-navy font-medium"><span>Perna</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Costas</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Ombro</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Braço</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+        </div>
+        <button class="w-full mt-4 bg-lime text-navy font-medium text-sm rounded-lg py-3">Aplicar filtro</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 7 — SELETOR DE FILTRO: CATEGORIA (BOTTOM-SHEET) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">seletor de filtro — categoria</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-navy bg-track/40 border border-track rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 opacity-40 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-medium text-slate-800">Categoria</h3>
+          <button class="text-xs font-medium text-slate-400">Limpar</button>
+        </div>
+        <div class="space-y-1">
+          <label class="flex items-center justify-between py-2 text-sm text-navy font-medium"><span>Hipertrofia</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Força</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Resistência</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Alongamento</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Mobilidade</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+        </div>
+        <button class="w-full mt-4 bg-lime text-navy font-medium text-sm rounded-lg py-3">Aplicar filtro</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 8 — SELETOR DE FILTRO: NÍVEL (BOTTOM-SHEET) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">seletor de filtro — nível</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
+        <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
+        <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 mb-3">
+          <span class="text-slate-400 text-sm">⌕</span>
+          <input type="text" placeholder="Buscar exercício" class="flex-1 bg-transparent text-sm outline-none placeholder-slate-400" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1">
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Grupo muscular ▾</button>
+          <button class="shrink-0 text-xs font-medium text-slate-600 border border-slate-200 rounded-full px-3 py-1.5">Categoria ▾</button>
+          <button class="shrink-0 text-xs font-medium text-navy bg-track/40 border border-track rounded-full px-3 py-1.5">Nível ▾</button>
+        </div>
+      </div>
+      <div class="phone-scroll px-4 py-3 opacity-40 pointer-events-none">
+        <p class="text-[11px] text-slate-400 mb-2">12 exercícios</p>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-medium text-slate-800">Nível</h3>
+          <button class="text-xs font-medium text-slate-400">Limpar</button>
+        </div>
+        <div class="space-y-1">
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Iniciante</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-navy font-medium"><span>Intermediário</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <label class="flex items-center justify-between py-2 text-sm text-slate-700"><span>Avançado</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+        </div>
+        <button class="w-full mt-4 bg-lime text-navy font-medium text-sm rounded-lg py-3">Aplicar filtro</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
+  <p>Espelha as seções 3–6 do documento <code>lista-exercicios.md</code>. Busca sempre aberta e normalizada · filtros como botões ▾ → bottom-sheet · cards finos (thumbnail+play, nome, grupo muscular primário, ⋮) · lista corrida A→Z · contador de resultados · atalho de vídeo em modal sobre a lista · FAB "+" só para o Treinador.</p>
+  <p>Frame de <strong>modo seleção</strong> (entrada pela montagem de Rotina) será adicionado quando a tela de Rotina for mapeada.</p>
+</div>
+
+</body>
+</html>

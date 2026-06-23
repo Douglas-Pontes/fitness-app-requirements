@@ -10,7 +10,7 @@
 | **Codigo** | VELA-3003 |
 | **Prioridade** | 🔵 MVP |
 | **Status** | 🟢 CONCLUIDO |
-| **Ultima atualizacao** | 2026-06-17 |
+| **Ultima atualizacao** | 2026-06-18 |
 
 ---
 
@@ -27,7 +27,7 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 - **Usuario:** **Treinador** autenticado. O **Aluno** não acessa esta tela (apenas consulta exercícios pela Lista/Visualização).
 - **Pre-condicoes:**
   - Usuário deve estar logado com perfil de Treinador.
-  - **Não existe acervo global de exercícios** — todo exercício pertence ao Treinador que o criou. A única base global do app é a **base de vídeos** (usada para preencher o vídeo do exercício).
+  - **Não existe acervo global de exercícios** — todo exercício pertence ao Treinador que o criou. O app **não** disponibiliza uma base pronta de vídeos: no campo Vídeo, o Treinador escolhe entre **seus próprios vídeos** (que ele já adicionou ao app) ou cola um **link do YouTube**.
 - **Permissoes especiais:** Nenhuma além da role de Treinador.
 
 ---
@@ -51,9 +51,9 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 - Conteudo: Grupo muscular primário, grupos secundários, categoria, equipamentos complementares, nível e trilha Vela.
 
 **Bloco C — Mídia**
-- Componente: Seletor de vídeo (busca na base do app **ou** colar link do YouTube) + uploader de imagem.
-- Conteudo: **Vídeo de execução** (escolhido da **base de vídeos do app** ou via **link do YouTube**) — **obrigatório** — e imagem de capa.
-- Comportamento: Ao escolher um vídeo da base ou colar um link válido do YouTube, exibe **pré-visualização** (thumbnail/player). Se não houver imagem de capa, a thumbnail do vídeo é usada como capa.
+- Componente: Seletor de vídeo (escolher entre **meus vídeos** **ou** colar link do YouTube) + uploader de imagem.
+- Conteudo: **Vídeo de execução** (escolhido entre os **vídeos do próprio Treinador** ou via **link do YouTube**) — **opcional** — e imagem de capa.
+- Comportamento: Ao escolher um dos meus vídeos ou colar um link válido do YouTube, exibe **pré-visualização** (thumbnail/player). Se não houver imagem de capa, a thumbnail do vídeo é usada como capa.
 
 **Bloco D — Orientação ao Aluno**
 - Componente: Campos de texto longo (textarea).
@@ -76,12 +76,12 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 | 5 | Equipamentos complementares | Multi-select (sugere usados + digitar) | Não | "(ex: band, step, entre outros)" | — | N/A |
 | 6 | Nível | Select | Sim | "Selecione o nível" | Deve ser selecionado | "Selecione o nível" |
 | 7 | Trilha Vela | Multi-select | Não | ".track / .performance" | — | N/A |
-| 8 | Vídeo de execução | Seletor de vídeo / URL | **Sim** | "Buscar na base ou colar link do YouTube" | Obrigatório; se for link, URL válida do YouTube (youtube.com / youtu.be) | "Adicione o vídeo de execução" / "Informe um link válido do YouTube" |
+| 8 | Vídeo de execução | Seletor de vídeo / URL | Não | "Meus vídeos ou colar link do YouTube" | Se for link, URL válida do YouTube (youtube.com / youtu.be) | "Informe um link válido do YouTube" |
 | 9 | Imagem de capa | Upload de imagem | Não | "Adicionar imagem" | Formato de imagem (JPG/PNG) | "Formato de imagem inválido" |
 | 10 | Instruções de execução | Textarea | Não | "Descreva o passo a passo da execução" | — | N/A |
 | 11 | Observações gerais | Textarea | Não | "Observações gerais sobre o exercício" | — | N/A |
 
-> *A **Categoria** é **fortemente recomendada** (alimenta o filtro da Lista), mas não bloqueia o salvar. Obrigatórios: **Nome**, **Grupo muscular primário**, **Nível** e **Vídeo de execução**.
+> *A **Categoria** é **fortemente recomendada** (alimenta o filtro da Lista), mas não bloqueia o salvar. Obrigatórios: **Nome**, **Grupo muscular primário** e **Nível**.
 
 ### Opções dos campos de seleção (referência)
 - **Grupo muscular (primário/secundário):** peito, costas, ombro, bíceps, tríceps, antebraço, trapézio, lombar, abdômen, quadríceps, posterior de coxa, glúteo, panturrilha.
@@ -92,7 +92,7 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 
 ### Regras de Preenchimento
 - A partir do **Nome**, o sistema gera automaticamente um **nome normalizado** (sem acentos, em minúsculas) usado apenas para a busca na Lista — não é campo visível nem editável.
-- O **Vídeo de execução** é **obrigatório** e aceita duas fontes: **escolher da base de vídeos do app** ou **colar um link do YouTube** (`youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`); ao validar, gera a pré-visualização.
+- O **Vídeo de execução** é **opcional** e aceita duas fontes: **escolher entre meus vídeos** (os que o Treinador já adicionou ao app) ou **colar um link do YouTube** (`youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`); ao validar, gera a pré-visualização.
 - Se **Imagem de capa** ficar vazia, a thumbnail do vídeo vira a capa padrão (comportamento interno; sem mensagem na tela).
 - **Equipamentos complementares:** campo **único** (multi-seleção, opcional). O Treinador adiciona **apenas o que não fica óbvio no vídeo** (ex: band, step). Ao tocar em "adicionar", o app **sugere os materiais que ele já usou antes** e permite **digitar um novo**.
 - Séries, repetições, carga, descanso e cadência **não** existem nesta tela (são definidos na Rotina).
@@ -155,7 +155,7 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 
 - RN01: Apenas **Treinador** acessa esta tela. O Aluno nunca cria ou edita exercícios.
 - RN02: **Não há acervo global de exercícios** — todo exercício pertence ao Treinador que o criou, que pode editá-lo/excluí-lo.
-- RN03: A única base global do app é a **base de vídeos**: no campo Vídeo, o Treinador pode **escolher um vídeo da base** ou **colar um link do YouTube**.
+- RN03: O app **não** tem base pronta de vídeos. No campo Vídeo, o Treinador pode **escolher entre os seus próprios vídeos** (os que ele já adicionou ao app) ou **colar um link do YouTube**. O vídeo é **opcional**.
 - RN04: O **nome normalizado** (sem acentos, minúsculas) é derivado automaticamente do Nome para alimentar a busca da Lista.
 - RN05: A combinação **nome + nível** deve ser **única dentro do acervo do Treinador** — ou seja, é permitido repetir o mesmo nome **apenas** se o **nível** for diferente (exercícios de outros treinadores não geram conflito). Por isso o **Nível é obrigatório**.
 - RN06: **Séries, repetições, carga, descanso e cadência não pertencem ao exercício** — são definidos na Rotina.
@@ -163,7 +163,7 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 - RN11: O exercício tem estado **Ativo/Inativo** (toggle, só para exercícios do próprio Treinador). **Inativo** = permanece nas rotinas que já o usam, mas **não pode ser adicionado a novas**; ao desativar, exibir a mensagem explicativa. **Desativar não altera nem apaga nenhum dado** — todas as informações preenchidas ficam **salvas** e a tela continua **toda preenchida**. Ao **reativar**, exibir um **alerta pedindo para revisar o exercício** (as informações voltam exatamente como estavam quando foi desativado).
 - RN08: **Não há campo de áudio no exercício.** A gravação de áudio de instrução foi movida para a **aba de Treino** (o Treinador grava no app uma instrução sobre o **treino**, não sobre um exercício específico) — a ser detalhado ao mapear Treino.
 - RN09: O equipamento é um **campo único** ("Equipamentos complementares", multi-seleção, opcional). Registra-se **só o que não é óbvio no vídeo** (ex: band, step). Ao adicionar, o app **sugere os materiais já usados** pelo Treinador e permite **digitar um novo**. Não há "principal vs. adicional".
-- RN10: O formulário é uma **tela única** em fluxo contínuo (os blocos A–D são apenas subtítulos visuais, sem accordion); **Nome**, **Grupo muscular primário**, **Nível** e **Vídeo de execução** bloqueiam o salvar (demais campos são opcionais/recomendados).
+- RN10: O formulário é uma **tela única** em fluxo contínuo (os blocos A–D são apenas subtítulos visuais, sem accordion); **Nome**, **Grupo muscular primário** e **Nível** bloqueiam o salvar (demais campos, inclusive o vídeo, são opcionais/recomendados).
 
 ---
 
@@ -192,3 +192,4 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 |---|---|---|
 | 2026-06-17 | Equipe Vela | Criação inicial do documento (cadastro/edição de exercício — visão do Treinador) |
 | 2026-06-17 | Equipe Vela | Revisão completa + mockup: tela única (sem accordion), sem acervo global, equipamentos complementares, vídeo de execução obrigatório (base/YouTube), áudio movido para Treino, orientação em 2 campos, nível obrigatório (3 fixos) com unicidade nome+nível, ciclo ativar/desativar (dados preservados, alerta de revisão ao reativar). Status → CONCLUIDO |
+| 2026-06-18 | Equipe Vela | Mídia: fonte de vídeo passa de "base do app" para **"meus vídeos"** (vídeos que o próprio Treinador já adicionou — não há base pronta) e o **vídeo deixa de ser obrigatório**. Obrigatórios agora: Nome, Grupo muscular primário e Nível. |

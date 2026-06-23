@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "mockups",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4178", "--directory", "/Users/mariaisabela/Documents/fitness-app-requirements/mockups"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "-l", "4178", "/Users/mariaisabela/Documents/fitness-app-requirements/mockups"],
       "port": 4178
     }
   ]

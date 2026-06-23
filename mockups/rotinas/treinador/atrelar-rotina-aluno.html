@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Atrelar Rotina ao Aluno · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .phone { width: 390px; }
+  .phone-scroll { height: 760px; overflow-y: auto; }
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+  .lowercase-brand { text-transform: lowercase; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+<!-- BANNER DE AVISO -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm py-2 px-4">
+  ⚠️ Mockup visual — não é código de produção. Gerado a partir de <code class="bg-white/15 px-1 rounded">docs/screens/rotinas/atrelar-rotina-aluno.md</code>
+</div>
+
+<header class="text-center py-8 px-4">
+  <div class="text-3xl font-semibold tracking-tight lowercase-brand">
+    <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
+  </div>
+  <h1 class="mt-4 text-xl font-medium text-slate-700">Atrelar Rotina ao Aluno <span class="text-slate-400 text-sm">[VELA-3004]</span></h1>
+  <p class="text-sm text-slate-500 mt-1">Visão do Treinador · 🔵 MVP · tela única em fluxo contínuo — pré-selecionado, seleção de aluno, escolha de origem, rotina selecionada, aviso de prescrição, erro, loading e sucesso</p>
+</header>
+
+<main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
+
+  <!-- ============ FRAME 1 — PRINCIPAL: ALUNO PRÉ-SELECIONADO + ROTINA ESCOLHIDA ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">principal — aluno pré-selecionado</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+
+        <!-- BLOCO A — Aluno (pré-selecionado, bloqueado) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno</h3>
+          <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5">
+            <div class="w-9 h-9 rounded-full bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">MS</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-700 truncate">Marina Souza</p>
+              <p class="text-[11px] text-slate-400">.track · aluna desde mar/2026</p>
+            </div>
+            <span class="text-slate-300 text-sm" title="aluno fixo neste fluxo">🔒</span>
+          </div>
+        </div>
+
+        <!-- BLOCO B — Rotina (selecionada) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina</h3>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-slate-700">Hipertrofia 5x — Iniciante</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Ganho de massa com divisão por grupo muscular</p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span class="text-[10px] bg-navy/10 text-navy rounded px-1.5 py-0.5">3 treinos</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5">A · Peito e Tríceps</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5">B · Costas</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5">C · Pernas</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-3 pt-2 border-t border-slate-100">
+              <button class="text-[11px] font-medium text-navy">Ver detalhes</button>
+              <button class="text-[11px] font-medium text-slate-400">Trocar rotina</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO C — Vigência e objetivo -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Vigência e objetivo</h3>
+          <div class="space-y-3">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Data de início *</label>
+                <input type="text" value="18/06/2026" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Data de fim</label>
+                <input type="text" placeholder="Sem prazo definido" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo da rotina *</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Ex: hipertrofia, fase de adaptação…">Fase de adaptação — foco em técnica e consistência.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO D — Mensagem ao aluno -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Mensagem ao aluno</h3>
+          <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" placeholder="Mensagem opcional para o aluno"></textarea>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">atribuir rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 2 — VAZIO: ENTRADA GERAL (escolher aluno + origem) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-300 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">vazio — entrada geral</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+
+        <!-- Aluno: selecionar -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno *</h3>
+          <button class="w-full flex items-center gap-2 text-sm text-slate-400 border border-dashed border-slate-300 rounded-xl px-3 py-3">
+            <span class="text-base">🔍</span> Selecionar aluno…
+          </button>
+        </div>
+
+        <!-- Rotina: escolha de origem -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina *</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <button class="border border-slate-200 rounded-xl px-3 py-4 text-center hover:border-navy">
+              <div class="text-xl mb-1">📋</div>
+              <p class="text-xs font-medium text-slate-700">Usar rotina da base</p>
+            </button>
+            <button class="border border-slate-200 rounded-xl px-3 py-4 text-center hover:border-navy">
+              <div class="text-xl mb-1">＋</div>
+              <p class="text-xs font-medium text-slate-700">Criar nova rotina</p>
+            </button>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-400 text-center pt-1">Selecione o aluno e a rotina para continuar</p>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-slate-200 text-slate-400 font-medium text-sm rounded-lg py-3 cursor-not-allowed">atribuir rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3 — INTERAÇÃO: BUSCA DE ALUNO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">interação — selecionar aluno</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno *</h3>
+          <div class="border border-dashed border-slate-300 rounded-xl px-3 py-3 text-sm text-slate-400">Selecionar aluno…</div>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-4 pt-4 pb-5 shadow-2xl h-[78%] flex flex-col">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+        <h3 class="text-sm font-medium text-slate-800 mb-2">Selecionar aluno</h3>
+        <input placeholder="Buscar aluno…" value="mar" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 mb-3" />
+        <div class="flex-1 overflow-y-auto space-y-2">
+          <div class="flex items-center gap-3 border-2 border-navy/40 bg-navy/5 rounded-lg p-2">
+            <div class="w-8 h-8 rounded-full bg-navy text-lime text-xs font-semibold flex items-center justify-center shrink-0">MS</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Marina Souza</p>
+              <p class="text-[10px] text-slate-400">.track · sem rotina vigente</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 border border-slate-100 rounded-lg p-2">
+            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 text-xs font-semibold flex items-center justify-center shrink-0">MA</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Marcos Andrade</p>
+              <p class="text-[10px] text-slate-400">.performance · 1 rotina vigente</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 border border-slate-100 rounded-lg p-2">
+            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 text-xs font-semibold flex items-center justify-center shrink-0">MR</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Mariana Reis</p>
+              <p class="text-[10px] text-slate-400">.track · 1 rotina vigente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4 — INTERAÇÃO: USAR ROTINA DA BASE (seleção única) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">interação — rotina da base</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina *</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="border border-slate-200 rounded-xl px-3 py-4 text-center text-xs text-slate-400">Usar rotina da base</div>
+            <div class="border border-slate-200 rounded-xl px-3 py-4 text-center text-xs text-slate-400">Criar nova rotina</div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-4 pt-4 pb-5 shadow-2xl h-[82%] flex flex-col">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+        <h3 class="text-sm font-medium text-slate-800 mb-2">Selecionar rotina da base</h3>
+        <input placeholder="Buscar rotina…" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 mb-3" />
+        <div class="flex-1 overflow-y-auto space-y-2">
+          <div class="flex items-center gap-2 border-2 border-navy/40 bg-navy/5 rounded-lg p-2.5">
+            <div class="w-5 h-5 rounded-full bg-navy text-lime text-[11px] flex items-center justify-center shrink-0">●</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Hipertrofia 5x — Iniciante</p>
+              <p class="text-[10px] text-slate-400">3 treinos · A/B/C</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver rotina">▶</button>
+          </div>
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2.5">
+            <div class="w-5 h-5 rounded-full border border-slate-300 shrink-0"></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Full Body 3x — Adaptação</p>
+              <p class="text-[10px] text-slate-400">3 treinos · A/B/C</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver rotina">▶</button>
+          </div>
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2.5">
+            <div class="w-5 h-5 rounded-full border border-slate-300 shrink-0"></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Força .performance — Bloco 1</p>
+              <p class="text-[10px] text-slate-400">4 treinos · A/B/C/D</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver rotina">▶</button>
+          </div>
+        </div>
+        <button class="w-full mt-3 bg-lime text-navy font-medium text-sm rounded-lg py-3">selecionar rotina</button>
+        <p class="text-[10px] text-slate-400 text-center mt-2">A rotina será copiada para o aluno (snapshot)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 5 — AVISO: PRESCRIÇÃO INCOMPLETA ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">aviso — prescrição incompleta</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno</h3>
+          <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5">
+            <div class="w-9 h-9 rounded-full bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">MS</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-700 truncate">Marina Souza</p>
+              <p class="text-[11px] text-slate-400">.track</p>
+            </div>
+            <span class="text-slate-300 text-sm">🔒</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina</h3>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <p class="text-sm font-medium text-slate-700">Full Body 3x — Adaptação</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">3 treinos · A/B/C</p>
+            <!-- banner de aviso (copy de UI) -->
+            <div class="bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 mt-3 flex items-start gap-2">
+              <span class="text-amber-500 text-sm leading-none pt-0.5">⚠️</span>
+              <div class="flex-1">
+                <p class="text-[11px] text-amber-800 leading-snug">Alguns exercícios estão sem séries ou repetições. Você pode completar antes de entregar.</p>
+                <button class="text-[11px] font-semibold text-navy mt-1">Revisar prescrição</button>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-3 pt-2 border-t border-slate-100">
+              <button class="text-[11px] font-medium text-navy">Ver detalhes</button>
+              <button class="text-[11px] font-medium text-slate-400">Trocar rotina</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Vigência e objetivo</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" value="20/06/2026" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+            <input type="text" placeholder="Sem prazo definido" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" />
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">atribuir rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 6 — ERRO: VALIDAÇÃO + TOAST API ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">erro — validação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="absolute top-16 inset-x-3 z-30 bg-rose-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg text-center">
+        Não foi possível atribuir a rotina. Tente novamente.
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina *</h3>
+          <div class="bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 text-[11px] text-amber-800">
+            ⓘ Selecione ou crie uma rotina
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Vigência e objetivo</h3>
+          <div class="space-y-3">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Data de início *</label>
+                <input type="text" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50" />
+                <p class="text-[11px] text-rose-600 mt-1">Informe a data de início</p>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-1">Data de fim</label>
+                <input type="text" value="10/06/2026" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50" />
+                <p class="text-[11px] text-rose-600 mt-1">A data de fim deve ser depois do início</p>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo da rotina *</label>
+              <textarea rows="2" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50"></textarea>
+              <p class="text-[11px] text-rose-600 mt-1">Informe o objetivo da rotina</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">atribuir rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 7 — DESCARTAR: CONFIRMAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">descartar — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno</h3>
+          <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5">
+            <div class="w-9 h-9 rounded-full bg-navy text-lime text-sm font-semibold flex items-center justify-center">MS</div>
+            <p class="text-sm font-medium text-slate-700">Marina Souza</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Descartar atribuição?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">Os dados preenchidos serão perdidos.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-navy text-white font-medium">Descartar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 8 — SUCESSO + LOADING ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — rotina atribuída</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center gap-3">
+        <button class="text-slate-400 text-xl leading-none">←</button>
+        <h2 class="text-base font-medium lowercase-brand">atribuir rotina</h2>
+      </div>
+      <div class="absolute top-16 inset-x-3 z-30 bg-lime text-navy text-xs font-medium rounded-lg px-3 py-2 shadow-lg text-center">
+        Rotina atribuída!
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Aluno</h3>
+          <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5">
+            <div class="w-9 h-9 rounded-full bg-navy text-lime text-sm font-semibold flex items-center justify-center">MS</div>
+            <p class="text-sm font-medium text-slate-700">Marina Souza</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Rotina</h3>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <p class="text-sm font-medium text-slate-700">Hipertrofia 5x — Iniciante</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">Início 18/06/2026 · sem prazo</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-lime/60 text-navy/60 font-medium text-sm rounded-lg py-3 flex items-center justify-center gap-2 cursor-not-allowed">
+          <span class="w-4 h-4 border-2 border-navy/40 border-t-navy rounded-full animate-spin"></span> atribuindo…
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
+  <p>Tela única em fluxo contínuo — blocos A (Aluno), B (Rotina), C (Vigência e objetivo) e D (Mensagem ao aluno). Espelha as seções 3–6 e 9 do documento.</p>
+  <p>Entrada por ambos os caminhos: pré-selecionado pela tela do aluno (card bloqueado 🔒) ou entrada geral com busca de aluno. Rotina vem da base [VELA-5001] (seleção única) ou criada na hora [VELA-5003] (sempre salva na base) — sempre copiada para o aluno como snapshot · prescrição herdada do treino [VELA-4003] é ajustável mas não obrigatória (aviso "Revisar prescrição" não bloqueia o salvar) · Data de início obrigatória, Data de fim opcional (sem prazo) · rotinas coexistem (sem substituição) · ao salvar, volta para a tela do aluno.</p>
+</div>
+
+</body>
+</html>

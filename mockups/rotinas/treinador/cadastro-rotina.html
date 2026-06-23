@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Cadastro / Edição de Rotina · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .phone { width: 390px; }
+  .phone-scroll { height: 760px; overflow-y: auto; }
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+  .lowercase-brand { text-transform: lowercase; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+<!-- BANNER DE AVISO -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm py-2 px-4">
+  ⚠️ Mockup visual — não é código de produção. Gerado a partir de <code class="bg-white/15 px-1 rounded">docs/screens/rotinas/cadastro-rotina.md</code>
+</div>
+
+<header class="text-center py-8 px-4">
+  <div class="text-3xl font-semibold tracking-tight lowercase-brand">
+    <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
+  </div>
+  <h1 class="mt-4 text-xl font-medium text-slate-700">Cadastro / Edição de Rotina <span class="text-slate-400 text-sm">[VELA-5003]</span></h1>
+  <p class="text-sm text-slate-500 mt-1">Visão do Treinador · tela única em fluxo contínuo · treinos ordenados por letras A/B/C — principal, criação, erro, seletor, desativar, excluir, sucesso e inativo</p>
+</header>
+
+<main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
+
+  <!-- ============ FRAME 1 — PRINCIPAL: EDIÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">principal — edição</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <!-- header -->
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+
+        <!-- Toggle Ativa/Inativa (só edição) -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status da rotina</p>
+            <p class="text-[11px] text-slate-400">Ativa · disponível para uso</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-navy">Ativa</span>
+            <div class="w-10 h-6 bg-lime rounded-full relative">
+              <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO A — Identificação -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Título *</label>
+              <input type="text" value="Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo *</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Descreva o objetivo da rotina">Ganho de massa com divisão por grupo muscular, 5 treinos na semana.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO B — Treinos da rotina -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Treinos da rotina *</h3>
+          <p class="text-[11px] text-slate-400 mb-2">Arraste os cards para reordenar os treinos</p>
+
+          <!-- treino A -->
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">A</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Peito e Tríceps</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white"><option>Segunda</option></select>
+                  <input value="Foco em carga" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descrição curta (opcional)" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+
+          <!-- treino B -->
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">B</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Costas e Bíceps</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white"><option>Terça</option></select>
+                  <input class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descrição curta (opcional)" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+
+          <!-- treino C -->
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">C</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Pernas completo</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white text-slate-400"><option>Sem dia definido</option></select>
+                  <input value="Preparatório" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descrição curta (opcional)" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+
+          <button class="w-full text-xs font-medium text-navy bg-track/40 rounded-lg py-2.5">+ adicionar treino</button>
+        </div>
+
+        <!-- Excluir -->
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir rotina</button>
+      </div>
+
+      <!-- footer fixo -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 2 — VAZIO: CRIAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-300 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">vazio — criação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">nova rotina</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Título *</label>
+              <input type="text" placeholder="Ex: Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo *</label>
+              <textarea rows="2" placeholder="Descreva o objetivo da rotina" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400"></textarea>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Treinos da rotina *</h3>
+          <div class="border border-dashed border-slate-300 rounded-xl px-3 py-6 text-center text-slate-400 text-xs mb-2">
+            Nenhum treino adicionado ainda
+          </div>
+          <button class="w-full text-xs font-medium text-navy bg-track/40 rounded-lg py-2.5">+ adicionar treino</button>
+        </div>
+        <p class="text-[11px] text-slate-400 text-center pt-1">Preencha os campos obrigatórios (*) para salvar</p>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-slate-200 text-slate-400 font-medium text-sm rounded-lg py-3 cursor-not-allowed">salvar rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3 — ERRO: VALIDAÇÃO + SEM TREINOS ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">erro — validação + sem treinos</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">nova rotina</h2>
+        </div>      </div>
+      <!-- toast erro rede/api -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-rose-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg text-center">
+        Não foi possível salvar a rotina. Tente novamente.
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Título *</label>
+              <input type="text" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50" />
+              <p class="text-[11px] text-rose-600 mt-1">Informe o título da rotina</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo *</label>
+              <textarea rows="2" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50"></textarea>
+              <p class="text-[11px] text-rose-600 mt-1">Informe o objetivo da rotina</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Treinos da rotina *</h3>
+          <div class="bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 text-[11px] text-amber-800">
+            ⓘ Adicione ao menos um treino à rotina
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4 — SELETOR DE TREINOS (modo seleção) ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">interação — adicionar treino</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+      <!-- form ao fundo esmaecido -->
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Treinos da rotina</h3>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <div class="flex items-center gap-2"><span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center">A</span><span class="text-xs text-slate-500">Peito e Tríceps</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet seletor (Lista de Treinos em modo seleção) -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-4 pt-4 pb-5 shadow-2xl h-[82%] flex flex-col">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+        <h3 class="text-sm font-medium text-slate-800 mb-2">Selecionar treinos</h3>
+        <input placeholder="Buscar treino…" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 mb-3" />
+        <div class="flex-1 overflow-y-auto space-y-2">
+          <!-- treino selecionável (já na rotina) -->
+          <div class="flex items-center gap-2 border-2 border-navy/40 bg-navy/5 rounded-lg p-2">
+            <div class="w-5 h-5 rounded bg-navy text-lime text-[11px] flex items-center justify-center shrink-0">✓</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Peito e Tríceps</p>
+              <p class="text-[10px] text-slate-400">Força e Potência · 6 exercícios</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver treino">▶</button>
+          </div>
+          <!-- treino selecionável -->
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2">
+            <div class="w-5 h-5 rounded border border-slate-300 shrink-0"></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Costas e Bíceps</p>
+              <p class="text-[10px] text-slate-400">Força e Potência · 5 exercícios</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver treino">▶</button>
+          </div>
+          <div class="flex items-center gap-2 border-2 border-navy/40 bg-navy/5 rounded-lg p-2">
+            <div class="w-5 h-5 rounded bg-navy text-lime text-[11px] flex items-center justify-center shrink-0">✓</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Pernas completo</p>
+              <p class="text-[10px] text-slate-400">Força e Potência · 7 exercícios</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver treino">▶</button>
+          </div>
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2">
+            <div class="w-5 h-5 rounded border border-slate-300 shrink-0"></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Ombro e Abdômen</p>
+              <p class="text-[10px] text-slate-400">Funcional · 4 exercícios</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver treino">▶</button>
+          </div>
+        </div>
+        <button class="w-full mt-3 bg-lime text-navy font-medium text-sm rounded-lg py-3">adicionar selecionados (2)</button>
+        <p class="text-[10px] text-slate-400 text-center mt-2">Somente treinos ativos da sua base</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 5 — DESATIVAR: CONFIRMAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">desativar — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status da rotina</p>
+            <p class="text-[11px] text-slate-400">Desativando…</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativa</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative"><div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Desativar rotina?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">A rotina deixa de ficar disponível para uso, mas seus dados são preservados.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-navy text-white font-medium">Desativar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 6 — EXCLUIR: CONFIRMAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">excluir — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir rotina</button>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Excluir rotina?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">Esta ação não pode ser desfeita.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-rose-600 text-white font-medium">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 7 — SUCESSO + LOADING ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — rotina salva</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+      <!-- toast sucesso -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-lime text-navy text-xs font-medium rounded-lg px-3 py-2 shadow-lg text-center">
+        Rotina salva!
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <!-- footer: estado loading (salvando) -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-lime/60 text-navy/60 font-medium text-sm rounded-lg py-3 flex items-center justify-center gap-2 cursor-not-allowed">
+          <span class="w-4 h-4 border-2 border-navy/40 border-t-navy rounded-full animate-spin"></span> salvando…
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 8 — INATIVO: ROTINA DESATIVADA ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-500 text-white text-xs font-medium px-3 py-1 rounded-full">inativo — rotina desativada</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+          <span class="text-[10px] font-semibold text-slate-600 bg-slate-200 px-2 py-0.5 rounded-full uppercase tracking-wide">Inativa</span>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <!-- Toggle off -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status da rotina</p>
+            <p class="text-[11px] text-slate-400">indisponível para uso</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativa</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative"><div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div></div>
+          </div>
+        </div>
+        <!-- dados preservados -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Título *</label>
+              <input type="text" value="Hipertrofia 5x — Iniciante" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo *</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white">Ganho de massa com divisão por grupo muscular, 5 treinos na semana.</textarea>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Treinos da rotina *</h3>
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">A</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Peito e Tríceps</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white"><option>Segunda</option></select>
+                  <input value="Foco em carga" class="text-xs border border-slate-200 rounded px-2 py-1" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar rotina</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 9 — DUPLICAR: ABRE O CADASTRO DA CÓPIA ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">duplicar — abre o cadastro da cópia</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar rotina</h2>
+        </div>      </div>
+      <!-- toast informando a cópia -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-navy text-white text-xs rounded-lg px-3 py-2 shadow-lg text-center">
+        Cópia criada. Ajuste e salve a nova rotina.
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+
+        <!-- Toggle Ativa (cópia entra ativa) -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status da rotina</p>
+            <p class="text-[11px] text-slate-400">Ativa · disponível para uso</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-navy">Ativa</span>
+            <div class="w-10 h-6 bg-lime rounded-full relative"><div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow"></div></div>
+          </div>
+        </div>
+
+        <!-- BLOCO A — Identificação (título com "(cópia)") -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Título *</label>
+              <input type="text" value="Hipertrofia 5x — Iniciante (cópia)" class="w-full text-sm border-2 border-navy/40 rounded-lg px-3 py-2 bg-white outline-none" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Objetivo *</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white">Ganho de massa com divisão por grupo muscular, 5 treinos na semana.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO B — Treinos copiados -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Treinos da rotina *</h3>
+          <p class="text-[11px] text-slate-400 mb-2">Arraste os cards para reordenar os treinos</p>
+
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">A</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Peito e Tríceps</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white"><option>Segunda</option></select>
+                  <input value="Foco em carga" class="text-xs border border-slate-200 rounded px-2 py-1" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-start gap-2">
+              <span class="text-slate-300 pt-1.5">⠿</span>
+              <span class="w-7 h-7 rounded-md bg-navy text-lime text-sm font-semibold flex items-center justify-center shrink-0">B</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-sm font-medium text-slate-700 truncate">Costas e Bíceps</p>
+                  <button class="text-navy text-xs" title="ver treino">▶</button>
+                </div>
+                <p class="text-[11px] text-slate-400">Força e Potência</p>
+                <div class="grid grid-cols-2 gap-1.5 mt-2">
+                  <select class="text-xs border border-slate-200 rounded px-2 py-1 bg-white"><option>Terça</option></select>
+                  <input class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descrição curta (opcional)" />
+                </div>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+          </div>
+
+          <button class="w-full text-xs font-medium text-navy bg-track/40 rounded-lg py-2.5">+ adicionar treino</button>
+        </div>
+
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir rotina</button>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar rotina</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
+  <p>Tela única em fluxo contínuo — blocos A (Identificação) e B (Treinos da rotina, obrigatório) apenas como subtítulos. Espelha as seções 3–6 e 9 do documento.</p>
+  <p>Rotina = agrupamento ordenado de treinos identificados por letras A/B/C… (letra automática pela posição; reordenar por arraste ⠿). Por treino: dia da semana e descrição curta opcionais (dia pode repetir; sem visão de semana). Seleção de treinos via Lista de Treinos [VELA-4001] em modo seleção (multi-seleção, "adicionar selecionados (N)"); atalho ▶ abre Visualizar Treino [VELA-4002] · mesmo treino não duplica na rotina · só treinos ativos da base aparecem na seleção · prescrição (séries/reps/descanso) já vem do treino [VELA-4003] — a rotina não a reabre · salvar exige Título + Objetivo + ≥1 treino · Ativar/Desativar + excluir (definitivo, com modal).</p>
+</div>
+
+</body>
+</html>

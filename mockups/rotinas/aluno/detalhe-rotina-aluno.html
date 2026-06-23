@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Detalhe da Rotina (Aluno) · VELA-6002</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',
+        navy: '#0E4C86',
+        track: '#A8DAEC',
+        performance: '#4B5F79',
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .frame { width: 390px; }
+  @keyframes pulse-soft { 0%,100% { opacity: 1 } 50% { opacity: .45 } }
+  .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+  <!-- Banner de aviso (fora do device — nota de conferência, não faz parte da tela) -->
+  <div class="w-full bg-navy text-white text-xs sm:text-sm px-4 py-2 text-center">
+    Mockup visual — não é código de produção. Gerado a partir de
+    <code class="bg-white/15 px-1 rounded">docs/screens/rotinas/aluno/detalhe-rotina-aluno.md</code> (mobile).
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold lowercase tracking-tight text-navy mb-1">vela<span class="text-lime drop-shadow">.</span> — detalhe da rotina <span class="text-slate-400 text-base">[VELA-6002]</span></h1>
+    <p class="text-slate-500 text-sm mb-8">visão do aluno · prazo/progresso visível (estado padrão)</p>
+
+    <div class="flex flex-wrap gap-8 items-start">
+
+      <!-- ============ FRAME 1 — PRINCIPAL ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">principal</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden">
+          <!-- status bar device -->
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- Header -->
+          <header class="px-5 pt-4 pb-3 sticky top-0 bg-white border-b border-slate-100">
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <button class="text-navy text-xl leading-none shrink-0">←</button>
+                <h2 class="text-lg font-semibold text-navy leading-tight truncate">Hipertrofia · Fase 2</h2>
+              </div>
+              <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-lime text-navy">Ativa</span>
+            </div>
+          </header>
+
+          <!-- Corpo rolável -->
+          <div class="px-5 pb-6 overflow-y-auto" style="max-height:640px">
+
+            <!-- Bloco A — Identificação -->
+            <section class="mt-4">
+              <p class="text-sm text-slate-600 leading-snug">Ganho de massa — membros superiores</p>
+              <p class="text-xs text-slate-500 mt-2">01/05/2026 – 31/07/2026</p>
+            </section>
+
+            <!-- Bloco B — KPIs / progresso -->
+            <section class="mt-4">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-center">
+                  <p class="text-2xl font-semibold text-navy leading-none">52</p>
+                  <p class="text-[11px] text-slate-500 mt-1">dias percorridos</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-center">
+                  <p class="text-2xl font-semibold text-navy leading-none">39</p>
+                  <p class="text-[11px] text-slate-500 mt-1">dias restantes</p>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="h-2 w-full rounded-full bg-slate-200 overflow-hidden">
+                  <div class="h-full rounded-full bg-navy" style="width:57%"></div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">57% do período decorrido</p>
+              </div>
+            </section>
+
+            <!-- Bloco D — Treinos da rotina -->
+            <section class="mt-6">
+              <h3 class="text-[13px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Treinos</h3>
+
+              <!-- Treino A — dia sugerido = hoje → tag recomendado do dia -->
+              <article class="rounded-2xl border-2 border-lime bg-lime/10 p-4 mb-3 shadow-sm">
+                <div class="flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-lg bg-navy text-white font-semibold flex items-center justify-center">A</div>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <h4 class="font-semibold text-navy leading-tight">Peito e tríceps</h4>
+                      <span class="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-lime text-navy">recomendado do dia</span>
+                    </div>
+                    <p class="text-xs text-performance mt-0.5">Peito · hipertrofia</p>
+                    <div class="flex items-center gap-3 mt-2 text-[11px] text-slate-500">
+                      <span>6 exercícios</span>
+                      <span>·</span>
+                      <span>8 execuções</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Treino B -->
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm">
+                <div class="flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-lg bg-navy text-white font-semibold flex items-center justify-center">B</div>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-semibold text-navy leading-tight">Costas e bíceps</h4>
+                    <p class="text-xs text-performance mt-0.5">Costas · hipertrofia</p>
+                    <div class="flex items-center gap-3 mt-2 text-[11px] text-slate-500">
+                      <span>7 exercícios</span>
+                      <span>·</span>
+                      <span>7 execuções</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Treino C -->
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm">
+                <div class="flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-lg bg-navy text-white font-semibold flex items-center justify-center">C</div>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-semibold text-navy leading-tight">Pernas</h4>
+                    <p class="text-xs text-performance mt-0.5">Inferiores · força</p>
+                    <div class="flex items-center gap-3 mt-2 text-[11px] text-slate-500">
+                      <span>5 exercícios</span>
+                      <span>·</span>
+                      <span>6 execuções</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+
+          </div>
+
+          <!-- Tab bar -->
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 2 — CARREGANDO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">carregando (skeleton)</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-4 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <span class="text-navy text-xl">←</span>
+              <div class="h-4 w-40 rounded bg-slate-200 skel"></div>
+            </div>
+          </header>
+          <div class="px-5 pt-4">
+            <div class="h-3 w-52 rounded bg-slate-100 skel mb-2"></div>
+            <div class="h-3 w-32 rounded bg-slate-100 skel mb-4"></div>
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <div class="h-16 rounded-2xl bg-slate-100 skel"></div>
+              <div class="h-16 rounded-2xl bg-slate-100 skel"></div>
+            </div>
+            <div class="h-2 w-full rounded-full bg-slate-200 skel mb-6"></div>
+            <div class="h-3 w-20 rounded bg-slate-200 skel mb-3"></div>
+            <div class="rounded-2xl border border-slate-200 p-4 mb-3">
+              <div class="h-4 w-40 rounded bg-slate-200 skel mb-2"></div>
+              <div class="h-3 w-28 rounded bg-slate-100 skel"></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-4">
+              <div class="h-4 w-36 rounded bg-slate-200 skel mb-2"></div>
+              <div class="h-3 w-24 rounded bg-slate-100 skel"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 3 — ERRO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">erro</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-4 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <button class="text-navy text-xl">←</button>
+              <h2 class="text-lg font-semibold text-navy">Rotina</h2>
+            </div>
+          </header>
+          <div class="flex flex-col items-center justify-center text-center px-8" style="height:560px">
+            <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-5 text-2xl">⚠️</div>
+            <h3 class="font-semibold text-navy">Não foi possível carregar a rotina.</h3>
+            <button class="mt-5 px-5 py-2.5 rounded-full bg-lime text-navy font-semibold text-sm">Tentar novamente</button>
+          </div>
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 4 — ENCERRADA (Bloco E: considerações) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">encerrada · considerações</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden">
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- Header -->
+          <header class="px-5 pt-4 pb-3 sticky top-0 bg-white border-b border-slate-100">
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <button class="text-navy text-xl leading-none shrink-0">←</button>
+                <h2 class="text-lg font-semibold text-navy leading-tight truncate">Hipertrofia · Fase 1</h2>
+              </div>
+              <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-600">Encerrada</span>
+            </div>
+          </header>
+
+          <div class="px-5 pb-6 overflow-y-auto" style="max-height:640px">
+
+            <!-- Bloco A — Identificação -->
+            <section class="mt-4">
+              <p class="text-sm text-slate-600 leading-snug">Ganho de massa — membros superiores</p>
+              <p class="text-xs text-slate-500 mt-2">01/02/2026 – 30/04/2026</p>
+            </section>
+
+            <!-- Bloco B — KPIs / progresso (100%) -->
+            <section class="mt-4">
+              <div class="h-2 w-full rounded-full bg-slate-200 overflow-hidden">
+                <div class="h-full rounded-full bg-navy" style="width:100%"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">100% do período decorrido</p>
+            </section>
+
+            <!-- Bloco E — Considerações da rotina (só Encerrada) -->
+            <section class="mt-5">
+              <div class="rounded-2xl border-2 border-lime bg-lime/10 p-4">
+                <h3 class="font-semibold text-navy leading-tight">Rotina concluída! Conte como foi.</h3>
+                <p class="text-xs text-slate-500 mt-1">Suas considerações sobre a rotina</p>
+                <div class="mt-2 rounded-xl border border-slate-200 bg-white p-3">
+                  <p class="text-sm text-slate-400">Senti boa evolução no peito, mas o volume de pernas foi pesado nas últimas semanas…</p>
+                </div>
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-[11px] text-slate-400">0/500</span>
+                  <button class="px-4 py-2 rounded-full bg-lime text-navy font-semibold text-sm">Enviar considerações</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bloco D — Treinos da rotina (leitura) -->
+            <section class="mt-6">
+              <h3 class="text-[13px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Treinos</h3>
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm">
+                <div class="flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-lg bg-navy text-white font-semibold flex items-center justify-center">A</div>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-semibold text-navy leading-tight">Peito e tríceps</h4>
+                    <p class="text-xs text-performance mt-0.5">Peito · hipertrofia</p>
+                    <div class="flex items-center gap-3 mt-2 text-[11px] text-slate-500">
+                      <span>6 exercícios</span><span>·</span><span>12 execuções</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="rounded-2xl border border-slate-200 p-4 shadow-sm">
+                <div class="flex items-start gap-3">
+                  <div class="shrink-0 w-8 h-8 rounded-lg bg-navy text-white font-semibold flex items-center justify-center">B</div>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-semibold text-navy leading-tight">Costas e bíceps</h4>
+                    <p class="text-xs text-performance mt-0.5">Costas · hipertrofia</p>
+                    <div class="flex items-center gap-3 mt-2 text-[11px] text-slate-500">
+                      <span>7 exercícios</span><span>·</span><span>11 execuções</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+
+          </div>
+
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-xs text-slate-400 mt-8 max-w-2xl">
+      Observações: tela somente leitura do Aluno. Topo com KPIs de data (dias percorridos/restantes) + barra de
+      vigência — todos respeitam o toggle de visibilidade do Treinador (RN05); sem data de fim, oculta “dias restantes”
+      e mostra “sem prazo” sem barra (RN02). Cada card de treino traz a tag de categoria (RN07) e, ao lado do contador
+      de exercícios, o nº de execuções no período (depende do registro de execução — fora do MVP, RN09). O dia da
+      semana é campo interno do treinador; sua única manifestação visual é a tag “recomendado do dia”, que aparece
+      quando o dia sugerido = hoje (todos os treinos do dia, se houver mais de um — RN03). KPIs de execução e bloco
+      “último treino executado” ficam fora do MVP (RN06). Tocar num treino abre a tela de treino do Aluno (RN08).
+      Quando a rotina está <strong>Encerrada</strong> (vigência terminou), aparece o Bloco E — campo opcional “Suas
+      considerações sobre a rotina” (máx. 500 caracteres) + “Enviar considerações”, feedback privado ao treinador
+      de fim de ciclo (RN10); rotinas sem data de fim não exibem o bloco.
+    </p>
+  </div>
+
+</body>
+</html>

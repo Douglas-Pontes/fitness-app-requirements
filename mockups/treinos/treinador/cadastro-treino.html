@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Cadastro / Edição de Treino · vela.</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',        // verde-limao neon — assinatura / destaque
+        navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+        track: '#A8DAEC',       // azul-claro — categoria .track
+        performance: '#4B5F79', // azul-ardosia — categoria .performance
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] },
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .phone { width: 390px; }
+  .phone-scroll { height: 760px; overflow-y: auto; }
+  .phone-scroll::-webkit-scrollbar { width: 0; }
+  .lowercase-brand { text-transform: lowercase; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+<!-- BANNER DE AVISO -->
+<div class="sticky top-0 z-50 bg-navy text-white text-center text-xs sm:text-sm py-2 px-4">
+  ⚠️ Mockup visual — não é código de produção. Gerado a partir de <code class="bg-white/15 px-1 rounded">docs/screens/treinos/cadastro-treino.md</code>
+</div>
+
+<header class="text-center py-8 px-4">
+  <div class="text-3xl font-semibold tracking-tight lowercase-brand">
+    <span class="bg-lime text-navy px-2 py-0.5 rounded">vela<span class="text-navy">.</span></span>
+  </div>
+  <h1 class="mt-4 text-xl font-medium text-slate-700">Cadastro / Edição de Treino <span class="text-slate-400 text-sm">[VELA-4003]</span></h1>
+  <p class="text-sm text-slate-500 mt-1">Visão do Treinador · tela única em fluxo contínuo · exercícios em blocos A/B/C — principal, criação, erro, seletor, desativar, excluir, sucesso e inativo</p>
+</header>
+
+<main class="flex flex-wrap gap-8 justify-center items-start px-4 pb-20 max-w-[1700px] mx-auto">
+
+  <!-- ============ FRAME 1 — PRINCIPAL: EDIÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-navy text-lime text-xs font-medium px-3 py-1 rounded-full">principal — edição</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <!-- header -->
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+        </div>      </div>
+
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+
+        <!-- Toggle Ativo/Inativo (só edição) -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do treino</p>
+            <p class="text-[11px] text-slate-400">Ativo · disponível para novas rotinas</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-navy">Ativo</span>
+            <div class="w-10 h-6 bg-lime rounded-full relative">
+              <div class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full shadow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO A — Identificação -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Nome do treino *</label>
+              <input type="text" value="Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white outline-none focus:border-navy" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Categoria *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white"><option>Força e Potência</option></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO B — Detalhes (opcional) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Detalhes <span class="normal-case text-slate-300 font-normal">(opcional)</span></h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Descrição</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Descreva o treino (opcional)">Foco em peito com finalização de tríceps.</textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Observações gerais</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Observações gerais sobre o treino (opcional)"></textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Áudio do treino <span class="text-slate-300">· máx. 2 min</span></label>
+              <div class="flex items-center gap-3 border border-slate-200 rounded-lg px-3 py-2.5 bg-white">
+                <button class="w-9 h-9 rounded-full bg-lime flex items-center justify-center text-navy">▶</button>
+                <div class="flex-1">
+                  <div class="h-1.5 bg-slate-100 rounded-full relative"><div class="absolute inset-y-0 left-0 w-1/3 bg-navy rounded-full"></div></div>
+                  <span class="text-[10px] text-slate-400">0:18 / 0:54</span>
+                </div>
+                <button class="text-slate-400 text-sm">🗑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCO C — Exercícios (em grupos numerados) -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Exercícios *</h3>
+          <p class="text-[11px] text-slate-400 mb-2">Arraste os cards para reordenar os exercícios</p>
+
+          <!-- grupo 1 — Normal (limite 1 exercício) -->
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-md bg-navy text-lime text-xs font-semibold flex items-center justify-center">1</span>
+                <select class="text-xs border border-slate-200 rounded-md px-2 py-1 bg-white">
+                  <option>Normal</option><option>Bi-set</option><option>Tri-set</option><option>Superset</option><option>Drop-set</option>
+                </select>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+            <div class="flex items-start gap-2 border border-slate-100 rounded-lg p-2">
+              <span class="text-slate-300 pt-1">⠿</span>
+              <div class="w-12 h-12 rounded-md bg-slate-800 flex items-center justify-center text-lime text-xs shrink-0" title="capa do vídeo do exercício">▶</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-xs font-medium text-slate-700 truncate">Supino reto com barra</p>
+                  <span class="text-navy text-xs">▶</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 mt-1.5">
+                  <input value="3" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Séries*" />
+                  <input value="10-12" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Reps*" />
+                  <input value="60" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descanso*" />
+                </div>
+                <input class="w-full text-xs border border-slate-200 rounded px-2 py-1 mt-1.5" placeholder="Descrição de execução (opcional)" />
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+            <p class="text-[10px] text-slate-400 text-center mt-2">Normal · limite de 1 exercício atingido</p>
+          </div>
+
+          <!-- grupo 2 — Tri-set (2 de 3) -->
+          <div class="border border-slate-200 rounded-xl p-3 mb-3">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-md bg-navy text-lime text-xs font-semibold flex items-center justify-center">2</span>
+                <select class="text-xs border border-slate-200 rounded-md px-2 py-1 bg-white">
+                  <option>Tri-set</option><option>Normal</option><option>Bi-set</option><option>Superset</option><option>Drop-set</option>
+                </select>
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+            <div class="flex items-start gap-2 border border-slate-100 rounded-lg p-2 mb-2">
+              <span class="text-slate-300 pt-1">⠿</span>
+              <div class="w-12 h-12 rounded-md bg-slate-800 flex items-center justify-center text-lime text-xs shrink-0" title="capa do vídeo do exercício">▶</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-xs font-medium text-slate-700 truncate">Tríceps na polia</p>
+                  <span class="text-navy text-xs">▶</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 mt-1.5">
+                  <input value="4" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Séries*" />
+                  <input value="15" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Reps*" />
+                  <input value="0" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descanso*" />
+                </div>
+                <input value="emendar sem descanso" class="w-full text-xs border border-slate-200 rounded px-2 py-1 mt-1.5" placeholder="Descrição de execução (opcional)" />
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+            <div class="flex items-start gap-2 border border-slate-100 rounded-lg p-2">
+              <span class="text-slate-300 pt-1">⠿</span>
+              <div class="w-12 h-12 rounded-md bg-slate-800 flex items-center justify-center text-lime text-xs shrink-0" title="capa do vídeo do exercício">▶</div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium text-slate-700 truncate">Tríceps testa</p>
+                <div class="grid grid-cols-3 gap-1.5 mt-1.5">
+                  <input value="4" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Séries*" />
+                  <input value="12" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Reps*" />
+                  <input value="0" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descanso*" />
+                </div>
+                <input class="w-full text-xs border border-slate-200 rounded px-2 py-1 mt-1.5" placeholder="Descrição de execução (opcional)" />
+              </div>
+              <button class="text-slate-300 text-sm">🗑</button>
+            </div>
+            <button class="w-full mt-2 text-[11px] font-medium text-navy border border-navy/30 rounded-lg py-2">+ adicionar exercício <span class="text-slate-400">(2/3)</span></button>
+          </div>
+
+          <button class="w-full text-xs font-medium text-navy bg-track/40 rounded-lg py-2.5">+ adicionar grupo</button>
+        </div>
+
+        <!-- Excluir -->
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir treino</button>
+      </div>
+
+      <!-- footer fixo -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar treino</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 2 — VAZIO: CRIAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-300 text-slate-700 text-xs font-medium px-3 py-1 rounded-full">vazio — criação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">novo treino</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Nome do treino *</label>
+              <input type="text" placeholder="Ex: Treino A — Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Categoria *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white text-slate-400"><option>Selecione a categoria</option></select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Detalhes <span class="normal-case text-slate-300 font-normal">(opcional)</span></h3>
+          <textarea rows="2" placeholder="Descreva o treino (opcional)" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white placeholder-slate-400"></textarea>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Exercícios *</h3>
+          <!-- bloco A vazio já visível -->
+          <div class="border border-slate-200 rounded-xl p-3">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-6 h-6 rounded-md bg-navy text-lime text-xs font-semibold flex items-center justify-center">1</span>
+              <select class="text-xs border border-slate-200 rounded-md px-2 py-1 bg-white">
+                <option>Normal</option><option>Bi-set</option><option>Tri-set</option><option>Superset</option><option>Drop-set</option>
+              </select>
+            </div>
+            <div class="border border-dashed border-slate-300 rounded-lg px-3 py-5 text-center text-slate-400 text-xs mb-2">
+              Nenhum exercício neste grupo ainda
+            </div>
+            <button class="w-full text-[11px] font-medium text-navy border border-navy/30 rounded-lg py-2">+ adicionar exercício</button>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 text-center pt-1">Preencha os campos obrigatórios (*) para salvar</p>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-slate-200 text-slate-400 font-medium text-sm rounded-lg py-3 cursor-not-allowed">salvar treino</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 3 — ERRO: VALIDAÇÃO + SEM EXERCÍCIOS ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">erro — validação + sem exercícios</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">novo treino</h2>
+        </div>      </div>
+      <!-- toast erro rede/api -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-rose-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg text-center">
+        Não foi possível salvar o treino. Tente novamente.
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Nome do treino *</label>
+              <input type="text" class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50" />
+              <p class="text-[11px] text-rose-600 mt-1">Informe o nome do treino</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Categoria *</label>
+              <select class="w-full text-sm border-2 border-rose-400 rounded-lg px-3 py-2 bg-rose-50 text-slate-400"><option>Selecione a categoria</option></select>
+              <p class="text-[11px] text-rose-600 mt-1">Selecione a categoria do treino</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Exercícios *</h3>
+          <div class="bg-amber-50 border border-amber-300 rounded-lg px-3 py-2 text-[11px] text-amber-800">
+            ⓘ Adicione ao menos um exercício ao treino
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar treino</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 4 — SELETOR DE EXERCÍCIOS ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-track text-navy text-xs font-medium px-3 py-1 rounded-full">interação — adicionar exercício</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+        </div>      </div>
+      <!-- form ao fundo esmaecido -->
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Exercícios</h3>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-md bg-navy text-lime text-xs font-semibold flex items-center justify-center">1</span><span class="text-xs text-slate-500">Normal</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <!-- bottom sheet seletor -->
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-4 pt-4 pb-5 shadow-2xl h-[78%] flex flex-col">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-3"></div>
+        <h3 class="text-sm font-medium text-slate-800 mb-2">Adicionar exercício <span class="text-slate-400 font-normal">· grupo 1</span></h3>
+        <input placeholder="Buscar exercício…" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 mb-3" />
+        <div class="flex-1 overflow-y-auto space-y-2">
+          <!-- item com vídeo -->
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2">
+            <div class="w-11 h-11 rounded-md bg-slate-200 flex items-center justify-center text-slate-400 text-[10px] shrink-0">img</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Supino inclinado com halteres</p>
+              <p class="text-[10px] text-slate-400">Peito · intermediário</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver vídeo">▶</button>
+            <button class="text-[11px] font-medium text-navy border border-navy/30 rounded-lg px-2.5 py-1 shrink-0">adicionar</button>
+          </div>
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2">
+            <div class="w-11 h-11 rounded-md bg-slate-200 flex items-center justify-center text-slate-400 text-[10px] shrink-0">img</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Peck deck</p>
+              <p class="text-[10px] text-slate-400">Peito · iniciante</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 text-xs flex items-center justify-center shrink-0" title="sem vídeo">▶</button>
+            <button class="text-[11px] font-medium text-navy border border-navy/30 rounded-lg px-2.5 py-1 shrink-0">adicionar</button>
+          </div>
+          <div class="flex items-center gap-2 border border-slate-100 rounded-lg p-2">
+            <div class="w-11 h-11 rounded-md bg-slate-200 flex items-center justify-center text-slate-400 text-[10px] shrink-0">img</div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-700 truncate">Flexão de braço</p>
+              <p class="text-[10px] text-slate-400">Peito · iniciante</p>
+            </div>
+            <button class="w-7 h-7 rounded-full bg-navy/10 text-navy text-xs flex items-center justify-center shrink-0" title="ver vídeo">▶</button>
+            <button class="text-[11px] font-medium text-navy border border-navy/30 rounded-lg px-2.5 py-1 shrink-0">adicionar</button>
+          </div>
+        </div>
+        <p class="text-[10px] text-slate-400 text-center mt-2">Somente exercícios ativos da sua base</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 5 — DESATIVAR: CONFIRMAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-amber-100 text-amber-700 text-xs font-medium px-3 py-1 rounded-full">desativar — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do treino</p>
+            <p class="text-[11px] text-slate-400">Desativando…</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativo</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative"><div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Desativar treino?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">Treinos inativos continuam nas rotinas atuais, mas não podem ser adicionados a novas.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-navy text-white font-medium">Desativar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 6 — EXCLUIR: CONFIRMAÇÃO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-rose-100 text-rose-700 text-xs font-medium px-3 py-1 rounded-full">excluir — confirmação</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 opacity-40 pointer-events-none">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+        <button class="w-full text-xs font-medium text-rose-600 border border-rose-200 rounded-lg py-2.5">excluir treino</button>
+      </div>
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+      <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
+        <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Excluir treino?</h3>
+        <p class="text-sm text-slate-500 leading-relaxed mb-5">Esta ação é definitiva e não pode ser desfeita.</p>
+        <div class="flex gap-2">
+          <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-rose-600 text-white font-medium">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 7 — SUCESSO + LOADING ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — treino salvo</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+        </div>      </div>
+      <!-- toast sucesso -->
+      <div class="absolute top-16 inset-x-3 z-30 bg-lime text-navy text-xs font-medium rounded-lg px-3 py-2 shadow-lg text-center">
+        Treino salvo!
+      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28 pt-10">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <input type="text" value="Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+        </div>
+      </div>
+      <!-- footer: estado loading (salvando) -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button disabled class="w-full bg-lime/60 text-navy/60 font-medium text-sm rounded-lg py-3 flex items-center justify-center gap-2 cursor-not-allowed">
+          <span class="w-4 h-4 border-2 border-navy/40 border-t-navy rounded-full animate-spin"></span> salvando…
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAME 8 — INATIVO: TREINO DESATIVADO ============ -->
+  <section>
+    <div class="text-center mb-2"><span class="inline-block bg-slate-500 text-white text-xs font-medium px-3 py-1 rounded-full">inativo — treino desativado</span></div>
+    <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
+      <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button class="text-slate-400 text-xl leading-none">←</button>
+          <h2 class="text-base font-medium lowercase-brand">editar treino</h2>
+          <span class="text-[10px] font-semibold text-slate-600 bg-slate-200 px-2 py-0.5 rounded-full uppercase tracking-wide">Inativo</span>
+        </div>      </div>
+      <div class="phone-scroll px-4 py-4 space-y-5 pb-28">
+        <!-- Toggle off -->
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+          <div>
+            <p class="text-xs font-medium text-slate-700">Status do treino</p>
+            <p class="text-[11px] text-slate-400">Inativo · indisponível para novas rotinas; continua nas atuais</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-medium text-slate-500">Inativo</span>
+            <div class="w-10 h-6 bg-slate-300 rounded-full relative"><div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow"></div></div>
+          </div>
+        </div>
+        <!-- dados preservados -->
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Identificação</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Nome do treino *</label>
+              <input type="text" value="Peito e Tríceps" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Categoria *</label>
+              <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white"><option>Força e Potência</option></select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Detalhes <span class="normal-case text-slate-300 font-normal">(opcional)</span></h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Descrição</label>
+              <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white">Foco em peito com finalização de tríceps.</textarea>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Áudio do treino <span class="text-slate-300">· máx. 2 min</span></label>
+              <div class="flex items-center gap-3 border border-slate-200 rounded-lg px-3 py-2.5 bg-white">
+                <button class="w-9 h-9 rounded-full bg-lime flex items-center justify-center text-navy">▶</button>
+                <div class="flex-1">
+                  <div class="h-1.5 bg-slate-100 rounded-full relative"><div class="absolute inset-y-0 left-0 w-1/3 bg-navy rounded-full"></div></div>
+                  <span class="text-[10px] text-slate-400">0:18 / 0:54</span>
+                </div>
+                <button class="text-slate-400 text-sm">🗑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Exercícios *</h3>
+          <p class="text-[11px] text-slate-400 mb-2">Arraste os cards para reordenar os exercícios</p>
+          <div class="border border-slate-200 rounded-xl p-3">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-6 h-6 rounded-md bg-navy text-lime text-xs font-semibold flex items-center justify-center">1</span>
+              <select class="text-xs border border-slate-200 rounded-md px-2 py-1 bg-white">
+                <option>Normal</option><option>Bi-set</option><option>Tri-set</option><option>Superset</option><option>Drop-set</option>
+              </select>
+            </div>
+            <div class="flex items-start gap-2 border border-slate-100 rounded-lg p-2">
+              <span class="text-slate-300 pt-1">⠿</span>
+              <div class="w-12 h-12 rounded-md bg-slate-800 flex items-center justify-center text-lime text-xs shrink-0" title="capa do vídeo do exercício">▶</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <p class="text-xs font-medium text-slate-700 truncate">Supino reto com barra</p>
+                  <span class="text-navy text-xs">▶</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 mt-1.5">
+                  <input value="3" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Séries*" />
+                  <input value="10-12" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Reps*" />
+                  <input value="60" class="text-xs border border-slate-200 rounded px-2 py-1" placeholder="Descanso*" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+        <button class="w-full bg-lime text-navy font-medium text-sm rounded-lg py-3">salvar treino</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
+  <p>Tela única em fluxo contínuo — blocos A (Identificação), B (Detalhes opcionais) e C (Exercícios, obrigatório) apenas como subtítulos. Espelha as seções 3–6 e 9 do documento.</p>
+  <p>Exercícios agrupados em grupos numerados (1, 2, 3…) com tipo opcional (Normal · Bi-set · Tri-set · Superset · Drop-set) — limite por tipo (Normal/Drop-set 1, Bi-set/Superset 2, Tri-set 3; em branco = Normal/1) · letras A/B/C reservadas para a Rotina · por exercício: Séries*, Reps* e Descanso* obrigatórios + Descrição opcional · reordenar por arraste (⠿) com numeração automática · sem vídeo no treino (vídeo só por exercício; capa do card = capa do vídeo do exercício) · áudio do treino gravado no app (máx. 2 min) · categorias: Aeróbico, Força e Potência, Resistência, Funcional, Mobilidade, Abdômen/Core · salvar exige Nome + Categoria + ≥1 exercício · Ativar/Desativar + excluir (definitivo, com modal).</p>
+</div>
+
+</body>
+</html>

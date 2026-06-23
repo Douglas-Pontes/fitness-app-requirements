@@ -42,19 +42,27 @@ docs/
     auth/
     onboarding/
     dashboard/
-    treinos/
+    treinos/               ← modulo misto: subpastas por publico
+      treinador/           ← telas do Treinador (ex: lista-treinos, cadastro-treino)
+      aluno/               ← telas do Aluno (ex: treino-andamento, historico)
     rotinas/
+      treinador/           ← base de rotinas + atribuicao (ex: lista-rotinas, atrelar-rotina-aluno)
+      aluno/               ← consumo de rotinas (ex: minhas-rotinas)
     exercicios/
     avaliacoes/
     perfil/
+      aluno/               ← meu-perfil, editar-perfil, minhas-metas
+      treinador/           ← perfil-aluno-visao-treinador
     configuracoes/
 ```
+
+> **Separacao por publico:** quando um modulo tem telas de **Aluno** e de **Treinador**, separa-las em subpastas `<modulo>/treinador/` e `<modulo>/aluno/` (espelhado em `mockups/`). O `mockups/` segue a mesma estrutura de `docs/screens/`. Modulos de publico unico nao precisam de subpasta ate ganharem telas do outro publico.
 
 ## Como Trabalhar Neste Projeto
 
 ### Ao criar uma nova tela:
 1. Copiar o template de `docs/00-template-tela.md`
-2. Salvar em `docs/screens/[modulo]/[nome-da-tela].md`
+2. Salvar em `docs/screens/[modulo]/[nome-da-tela].md` — em modulos mistos, dentro da subpasta do publico: `docs/screens/[modulo]/[treinador|aluno]/[nome-da-tela].md`
 3. Preencher TODAS as secoes do template — se algo nao se aplica, escrever "N/A" em vez de deixar vazio
 4. Atualizar o status no indice em `docs/01-visao-geral.md`
 
@@ -71,6 +79,7 @@ docs/
 
 - Nomes de arquivo: `kebab-case.md` (ex: `treino-andamento.md`)
 - Nomes de pasta: `kebab-case` sem acentos (ex: `avaliacoes`, nao `avaliações`)
+- **Publico em modulo misto:** usar subpasta `treinador/` ou `aluno/` em vez de sufixo no nome do arquivo (a subpasta ja indica o publico e resolve colisoes de nome — ex: `treinos/treinador/lista-treinos.md` vs `treinos/aluno/lista-treinos.md`)
 - Regras de negocio: prefixo `RN` + numero sequencial (ex: RN01, RN02)
 - Campos de formulario: usar o nome que aparecera na UI como label
 

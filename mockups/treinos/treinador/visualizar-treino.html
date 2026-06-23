@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vela — Visualizar Treino [VELA-4002] (mockup)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          lime: '#CCF24D',        // verde-limao neon — cor-assinatura / destaque
+          navy: '#0E4C86',        // azul-marinho — texto sobre o verde
+          track: '#A8DAEC',       // azul-claro — categoria .track
+          performance: '#4B5F79', // azul-ardosia — categoria .performance
+        },
+        fontFamily: { sans: ['Poppins', 'system-ui', 'sans-serif'] },
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #eef1f4; }
+    .phone {
+      width: 390px;
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 50px -12px rgba(14,76,134,.35);
+      overflow: hidden;
+      border: 8px solid #11151c;
+      background: #fff;
+    }
+    .phone-scroll { height: 760px; overflow-y: auto; position: relative; }
+    .phone-scroll::-webkit-scrollbar { width: 0; }
+    .notch { height: 26px; background: #11151c; }
+    .skel { background: linear-gradient(90deg,#e8ebef 25%,#f3f5f7 37%,#e8ebef 63%); background-size:400% 100%; animation: sh 1.4s ease infinite; }
+    @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
+  </style>
+</head>
+<body class="font-sans text-slate-800 lowercase">
+
+  <!-- Banner de aviso de mockup -->
+  <div class="sticky top-0 z-50 bg-navy text-white text-xs sm:text-sm px-4 py-2 text-center normal-case">
+    Mockup visual — não é código de produção. Gerado a partir de <code class="text-lime">docs/screens/treinos/visualizar-treino.md</code>
+  </div>
+
+  <header class="text-center pt-8 pb-2 normal-case">
+    <div class="inline-flex items-baseline gap-0 text-3xl font-600 tracking-tight">
+      <span class="text-navy lowercase">vela</span><span class="text-lime text-4xl leading-none">.</span>
+    </div>
+    <p class="text-slate-500 text-sm mt-1">Visualizar Treino · <span class="font-medium">[VELA-4002]</span></p>
+  </header>
+
+  <main class="flex flex-wrap gap-10 justify-center items-start px-6 py-8">
+
+    <!-- ============ FRAME 1 — PRINCIPAL ============ -->
+    <section class="flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold text-navy bg-lime/40 px-3 py-1 rounded-full normal-case">principal</span>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-scroll">
+
+          <!-- Header fixo -->
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+            <button class="text-navy text-xl leading-none">←</button>
+            <h1 class="flex-1 text-base font-600 text-slate-900 truncate normal-case">Peito & Tríceps</h1>
+            <button class="text-slate-400 text-xl leading-none px-1">⋮</button>
+          </div>
+
+          <div class="px-4 pt-4 pb-28 space-y-6">
+
+            <!-- Bloco A — Identificação -->
+            <section>
+              <div class="flex items-center gap-2 flex-wrap normal-case">
+                <h2 class="text-lg font-600 text-slate-900">Peito & Tríceps</h2>
+                <span class="text-[11px] font-semibold text-navy bg-lime px-2 py-0.5 rounded-full">ativo</span>
+              </div>
+              <p class="text-sm text-slate-500 mt-1 normal-case">Categoria: <span class="text-slate-700 font-medium">Hipertrofia</span></p>
+            </section>
+
+            <!-- Bloco B — Detalhes -->
+            <section class="space-y-4 normal-case">
+              <div>
+                <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold mb-1">Descrição</p>
+                <p class="text-sm text-slate-700 leading-relaxed">Treino de empurrar com foco em peito e finalização de tríceps. Manter cadência controlada na fase excêntrica.</p>
+              </div>
+              <div>
+                <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold mb-1">Observações gerais</p>
+                <p class="text-sm text-slate-700 leading-relaxed">Aquecer ombros antes de iniciar. Se sentir dor articular, reduzir carga.</p>
+              </div>
+              <!-- Player de áudio -->
+              <div>
+                <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold mb-1">Áudio do treino</p>
+                <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3">
+                  <button class="w-9 h-9 rounded-full bg-navy text-white flex items-center justify-center text-sm shrink-0">▶</button>
+                  <div class="flex-1 h-1.5 rounded-full bg-slate-200 relative">
+                    <div class="absolute inset-y-0 left-0 w-1/3 bg-lime rounded-full"></div>
+                  </div>
+                  <span class="text-xs text-slate-500 tabular-nums">0:42</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bloco C — Exercícios em grupos -->
+            <section class="space-y-5">
+              <p class="text-[11px] uppercase tracking-wide text-slate-400 font-semibold normal-case">Exercícios</p>
+
+              <!-- Grupo 1 — Normal -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2 normal-case">
+                  <span class="w-6 h-6 rounded-full bg-navy text-white text-xs font-600 flex items-center justify-center">1</span>
+                  <span class="text-xs font-medium text-slate-500">Normal</span>
+                </div>
+                <!-- Card exercício -->
+                <button class="w-full text-left flex gap-3 bg-white border border-slate-200 rounded-2xl p-3 hover:border-navy/40 transition normal-case">
+                  <div class="relative w-20 h-20 rounded-xl bg-slate-200 shrink-0 overflow-hidden flex items-center justify-center">
+                    <span class="text-slate-400 text-2xl">🏋️</span>
+                    <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded-full">▶ vídeo</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-600 text-slate-900 text-sm truncate">Supino reto com barra</p>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4 séries</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">10 reps</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">90s descanso</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2 leading-snug">Descer a barra até a linha do mamilo, sem quicar no peito.</p>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Grupo 2 — Bi-set -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2 normal-case">
+                  <span class="w-6 h-6 rounded-full bg-navy text-white text-xs font-600 flex items-center justify-center">2</span>
+                  <span class="text-xs font-medium text-slate-500">Bi-set</span>
+                </div>
+                <button class="w-full text-left flex gap-3 bg-white border border-slate-200 rounded-2xl p-3 hover:border-navy/40 transition normal-case">
+                  <div class="relative w-20 h-20 rounded-xl bg-slate-200 shrink-0 overflow-hidden flex items-center justify-center">
+                    <span class="text-slate-400 text-2xl">🏋️</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-600 text-slate-900 text-sm truncate">Supino inclinado com halteres</p>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">3 séries</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12 reps</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">60s descanso</span>
+                    </div>
+                  </div>
+                </button>
+                <button class="w-full text-left flex gap-3 bg-white border border-slate-200 rounded-2xl p-3 hover:border-navy/40 transition normal-case">
+                  <div class="relative w-20 h-20 rounded-xl bg-slate-200 shrink-0 overflow-hidden flex items-center justify-center">
+                    <span class="text-slate-400 text-2xl">🏋️</span>
+                    <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded-full">▶ vídeo</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-600 text-slate-900 text-sm truncate">Crucifixo na máquina</p>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">3 séries</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">15 reps</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">60s descanso</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2 leading-snug">Segurar 1s na contração máxima.</p>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Grupo 3 — Drop-set -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2 normal-case">
+                  <span class="w-6 h-6 rounded-full bg-navy text-white text-xs font-600 flex items-center justify-center">3</span>
+                  <span class="text-xs font-medium text-slate-500">Drop-set</span>
+                </div>
+                <button class="w-full text-left flex gap-3 bg-white border border-slate-200 rounded-2xl p-3 hover:border-navy/40 transition normal-case">
+                  <div class="relative w-20 h-20 rounded-xl bg-slate-200 shrink-0 overflow-hidden flex items-center justify-center">
+                    <span class="text-slate-400 text-2xl">🏋️</span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-600 text-slate-900 text-sm truncate">Tríceps na polia</p>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4 séries</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12 reps</span>
+                      <span class="text-[11px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">45s descanso</span>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <!-- Footer fixo -->
+          <div class="sticky bottom-0 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3 normal-case">
+            <button class="w-full bg-lime text-navy font-600 rounded-2xl py-3 text-sm">Editar</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME 2 — MENU ⋮ ABERTO ============ -->
+    <section class="flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold text-navy bg-lime/40 px-3 py-1 rounded-full normal-case">menu de ações (⋮)</span>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-scroll">
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+            <button class="text-navy text-xl leading-none">←</button>
+            <h1 class="flex-1 text-base font-600 text-slate-900 truncate normal-case">Peito & Tríceps</h1>
+            <button class="text-navy text-xl leading-none px-1">⋮</button>
+          </div>
+          <div class="px-4 pt-4 space-y-3 normal-case opacity-40">
+            <h2 class="text-lg font-600 text-slate-900">Peito & Tríceps</h2>
+            <div class="h-20 rounded-2xl bg-slate-100"></div>
+            <div class="h-20 rounded-2xl bg-slate-100"></div>
+          </div>
+
+          <!-- Overlay + dropdown -->
+          <div class="absolute inset-0 bg-black/20"></div>
+          <div class="absolute top-14 right-3 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 py-1 normal-case">
+            <button class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">⧉ Duplicar</button>
+            <button class="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">🗑 Excluir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME 3 — LOADING ============ -->
+    <section class="flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold text-navy bg-lime/40 px-3 py-1 rounded-full normal-case">carregando</span>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-scroll">
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+            <button class="text-navy text-xl leading-none">←</button>
+            <div class="skel h-4 w-32 rounded"></div>
+            <div class="skel h-5 w-5 rounded-full"></div>
+          </div>
+          <div class="px-4 pt-5 space-y-5">
+            <div class="skel h-6 w-40 rounded"></div>
+            <div class="skel h-4 w-28 rounded"></div>
+            <div class="skel h-16 w-full rounded-2xl"></div>
+            <div class="space-y-3">
+              <div class="skel h-24 w-full rounded-2xl"></div>
+              <div class="skel h-24 w-full rounded-2xl"></div>
+              <div class="skel h-24 w-full rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME 4 — ERRO ============ -->
+    <section class="flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold text-navy bg-lime/40 px-3 py-1 rounded-full normal-case">erro de carregamento</span>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-scroll">
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+            <button class="text-navy text-xl leading-none">←</button>
+            <h1 class="flex-1 text-base font-600 text-slate-900 truncate normal-case">Treino</h1>
+            <button class="text-slate-400 text-xl leading-none px-1">⋮</button>
+          </div>
+          <div class="h-full flex flex-col items-center justify-center text-center px-8 py-20 normal-case">
+            <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-2xl mb-4">⚠️</div>
+            <p class="text-slate-800 font-600 text-sm">Não foi possível carregar o treino.</p>
+            <button class="mt-5 bg-navy text-white font-600 rounded-2xl px-6 py-2.5 text-sm">Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FRAME 5 — EXCLUSÃO BLOQUEADA ============ -->
+    <section class="flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold text-navy bg-lime/40 px-3 py-1 rounded-full normal-case">exclusão bloqueada (em uso)</span>
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-scroll">
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+            <button class="text-navy text-xl leading-none">←</button>
+            <h1 class="flex-1 text-base font-600 text-slate-900 truncate normal-case">Peito & Tríceps</h1>
+            <button class="text-slate-400 text-xl leading-none px-1">⋮</button>
+          </div>
+          <div class="px-4 pt-4 space-y-3 normal-case opacity-40">
+            <h2 class="text-lg font-600 text-slate-900">Peito & Tríceps</h2>
+            <div class="h-20 rounded-2xl bg-slate-100"></div>
+            <div class="h-20 rounded-2xl bg-slate-100"></div>
+          </div>
+
+          <!-- Modal de aviso -->
+          <div class="absolute inset-0 bg-black/40 flex items-end">
+            <div class="w-full bg-white rounded-t-3xl p-5 normal-case">
+              <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
+              <h3 class="text-base font-600 text-slate-900">Não é possível excluir</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-relaxed">Este treino está em uso em <span class="font-semibold">2 rotinas</span> e não pode ser excluído.</p>
+              <button class="w-full mt-5 bg-navy text-white font-600 rounded-2xl py-3 text-sm">Entendi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <p class="text-center text-xs text-slate-400 pb-10 normal-case">
+    Estados renderizados conforme seção 6 do doc · Treinos usam grupos numerados (1, 2, 3…) — letras (A, B, C…) são reservadas para a Rotina
+  </p>
+
+</body>
+</html>

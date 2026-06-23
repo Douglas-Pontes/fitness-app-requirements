@@ -84,28 +84,56 @@ Muita gente treina sem saber para onde está indo. O Vela resolve isso oferecend
 | Home / Dashboard | `screens/dashboard/home.md` | 🔴 NÃO INICIADO |
 
 ### 💪 Treinos
+
+**Base de Treinos (visão do Treinador)**
 | Tela | Arquivo | Status |
 |---|---|---|
-| Lista de Treinos | `screens/treinos/lista-treinos.md` | 🔴 NÃO INICIADO |
-| Iniciar Treino | `screens/treinos/iniciar-treino.md` | 🔴 NÃO INICIADO |
-| Treino em Andamento | `screens/treinos/treino-andamento.md` | 🔴 NÃO INICIADO |
-| Finalizar Treino | `screens/treinos/finalizar-treino.md` | 🔴 NÃO INICIADO |
-| Histórico de Treinos | `screens/treinos/historico.md` | 🔴 NÃO INICIADO |
-| Detalhe do Treino | `screens/treinos/detalhe-treino.md` | 🔴 NÃO INICIADO |
+| Lista de Treinos `[VELA-4001]` | `screens/treinos/treinador/lista-treinos.md` | 🟡 EM ANDAMENTO |
+| Visualizar Treino `[VELA-4002]` | `screens/treinos/treinador/visualizar-treino.md` | 🟢 CONCLUIDO |
+| Cadastro / Edição de Treino `[VELA-4003]` | `screens/treinos/treinador/cadastro-treino.md` | 🟢 CONCLUIDO |
+
+**Fluxo do Aluno (treinar)**
+| Tela | Arquivo | Status |
+|---|---|---|
+| Visualizar / Executar Treino (Aluno) `[VELA-6003]` | `screens/treinos/aluno/visualizar-treino.md` | 🟡 EM ANDAMENTO |
+| Lista de Treinos (Aluno) | `screens/treinos/aluno/lista-treinos.md` | 🔴 NÃO INICIADO |
+| Histórico de Treinos | `screens/treinos/aluno/historico.md` | 🔴 NÃO INICIADO |
+
+> **Nota (consolidação):** as telas antes previstas **Iniciar Treino**, **Treino em Andamento** e **Finalizar Treino** foram **consolidadas** numa única tela com estados — **Visualizar / Executar Treino (Aluno) `[VELA-6003]`** (ticket cliente `VELA-5002`, série 6xxx = Aluno): consulta → em execução (iniciar/marcar séries/timer de descanso) → resumo compartilhável (finalizar). É o **par de execução** da Visualizar do Treinador `[VELA-4002]` e o destino de toque do Detalhe da Rotina `[VELA-6002]` (RN08). Aqui se define o **modelo de execução (sessão)** — data, início/fim, duração, exercícios e séries/reps/carga realizados (RN04) — que **destrava** os KPIs e o "último treino executado" adiados em `[VELA-6002]`/`[VELA-6001]` (decisões #41 e #45). A antiga "Detalhe do Treino (histórico)" será reaproveitada pelo Histórico de Treinos (a mapear).
+
+> **Nota:** o trio **VELA-4001/4002/4003** é a **base reutilizável de treinos do Treinador** (cadastro, listagem e visualização), espelhando o padrão de Exercícios e Avaliações. Cada treino agrupa exercícios em **grupos numerados (1, 2, 3…)** com tipo (Normal/Bi-set/Tri-set/Superset/Drop-set) — as **letras (A, B, C…)** ficam reservadas para a **Rotina**; séries/reps/descanso são **obrigatórios** já no treino e a descrição de execução é opcional (a prescrição é feita no próprio treino). Coexiste com o **fluxo do Aluno** (Iniciar/Andamento/Finalizar). A colisão de nome "Lista de Treinos" (Treinador vs Aluno) é resolvida pela **separação em subpastas por público** (`treinos/treinador/` vs `treinos/aluno/`).
 
 ### 📋 Rotinas
+
+**Base de Rotinas (visão do Treinador)**
 | Tela | Arquivo | Status |
 |---|---|---|
-| Lista de Rotinas | `screens/rotinas/lista-rotinas.md` | 🔴 NÃO INICIADO |
-| Criar Rotina | `screens/rotinas/criar-rotina.md` | 🔴 NÃO INICIADO |
-| Editar Rotina | `screens/rotinas/editar-rotina.md` | 🔴 NÃO INICIADO |
-| Detalhe da Rotina | `screens/rotinas/detalhe-rotina.md` | 🔴 NÃO INICIADO |
+| Lista de Rotinas `[VELA-5001]` | `screens/rotinas/treinador/lista-rotinas.md` | 🟢 CONCLUIDO |
+| Visualizar Rotina `[VELA-5002]` | `screens/rotinas/treinador/visualizar-rotina.md` | 🟢 CONCLUIDO |
+| Cadastro / Edição de Rotina `[VELA-5003]` | `screens/rotinas/treinador/cadastro-rotina.md` | 🟢 CONCLUIDO |
+
+**Atribuição ao Aluno** *(ação do Treinador)*
+| Tela | Arquivo | Status |
+|---|---|---|
+| Atrelar Rotina ao Aluno `[VELA-3004]` | `screens/rotinas/treinador/atrelar-rotina-aluno.md` | 🟡 EM ANDAMENTO |
+
+**Fluxo do Aluno (consumir rotinas)**
+| Tela | Arquivo | Status |
+|---|---|---|
+| Minhas Rotinas `[VELA-6001]` | `screens/rotinas/aluno/minhas-rotinas.md` | 🟢 CONCLUIDO |
+| Detalhe da Rotina (Aluno) `[VELA-6002]` | `screens/rotinas/aluno/detalhe-rotina-aluno.md` | 🟢 CONCLUIDO |
+
+> **Nota:** o trio **VELA-5001/5002/5003** é a **base reutilizável de rotinas do Treinador** (cadastro, listagem e visualização), espelhando o padrão de Treinos e Exercícios. Uma rotina é um **agrupamento ordenado de treinos** (`[VELA-4001]`) identificados por **letras A, B, C…** (a numeração 1, 2, 3… fica para os grupos dentro de cada treino). Por treino na rotina há **dia da semana** e **descrição curta** opcionais (dia pode repetir; sem visão de semana por ora). A **prescrição** (séries/reps/descanso) já vem do treino (`[VELA-4003]`, decisão #31) — a rotina não a reabre. As telas antigas "Criar/Editar/Detalhe da Rotina" foram **consolidadas** neste trio (Criar+Editar numa só tela `[VELA-5003]`; Detalhe → Visualizar `[VELA-5002]`).
+>
+> **Atrelar Rotina ao Aluno `[VELA-3004]`** (🔵 MVP) materializa o fluxo antes "futuro" (decisão #38): o Treinador atribui uma rotina a um aluno definindo **vigência** (início obrigatório; fim opcional/sem prazo), **objetivo** e **mensagem**. A rotina vem da **base** (`[VELA-5001]`) ou é **criada na hora** (`[VELA-5003]`, sempre salva na base) e é vinculada como **cópia/snapshot** (edições na base não afetam o que já foi entregue). Prescrição herdada é **ajustável, não obrigatória** (aviso não bloqueia). Rotinas **coexistem** (sem substituição automática).
+>
+> **Fluxo do Aluno — Minhas Rotinas `[VELA-6001]`** (🔵 MVP) é a **visão do Aluno** (nova série **6xxx**), distinta da Lista do Treinador `[VELA-5001]`: lista somente leitura das rotinas **atribuídas ao aluno**, em seções **Ativas · Agendadas · Anteriores** (cada uma some se vazia). O **status é calculado** das datas + data atual (Ativa/Agendada/Encerrada); o aluno **pode ter mais de uma rotina ativa**. Sem data de fim → "Ativa · sem prazo" + tempo decorrido. A **visibilidade de prazo** ao aluno é **controlada pelo Treinador** na atribuição (padrão visível — decisão #40). Card **enxuto**: **sem barra de progresso** e **sem contagem de exercícios** (ambas vivem no Detalhe `[VELA-6002]`); exibe **"X treinos realizados"** (registro de sessão do `[VELA-6003]`, decisões #41/#49). Tocar no card abre o **Detalhe da Rotina (Aluno) `[VELA-6002]`**. Ponto de entrada depende do **dashboard/menu do Aluno** (decisão #39).
 
 ### 🏋️ Exercícios
 | Tela | Arquivo | Status |
 |---|---|---|
 | Lista de Exercícios `[VELA-3001]` | `screens/exercicios/lista-exercicios.md` | 🟠 PENDENTE REVISAO |
-| Visualizar Exercício `[VELA-3002]` | `screens/exercicios/visualizar-exercicio.md` | 🟡 EM ANDAMENTO |
+| Visualizar Exercício `[VELA-3002]` | `screens/exercicios/visualizar-exercicio.md` | 🟢 CONCLUIDO |
 | Cadastro / Edição de Exercício `[VELA-3003]` | `screens/exercicios/cadastro-exercicio.md` | 🟢 CONCLUIDO |
 
 > **Nota:** as telas previstas "Catálogo de Exercícios", "Detalhe do Exercício" e "Busca de Exercícios" (pensadas para o Aluno montar rotina) foram **substituídas** pelo trio na **visão do Treinador**: Lista `[VELA-3001]`, Visualizar `[VELA-3002]` e Cadastro/Edição `[VELA-3003]`. **Não há acervo global de exercícios** — todo exercício é **criado pelo Treinador** (que edita/exclui os seus). A única base global do app é a **base de vídeos** (usada no campo Vídeo do cadastro: escolher da base ou colar link do YouTube). A busca da Lista é normalizada (sem acentos/minúsculas). A consulta do **Aluno** reaproveitará Lista/Visualização e será detalhada depois. Séries/reps/carga **não** ficam no exercício — são prescritas na Rotina.
@@ -125,10 +153,10 @@ Muita gente treina sem saber para onde está indo. O Vela resolve isso oferecend
 ### 👤 Perfil
 | Tela | Arquivo | Status |
 |---|---|---|
-| Meu Perfil | `screens/perfil/meu-perfil.md` | 🟢 CONCLUÍDO |
-| Editar Perfil | `screens/perfil/editar-perfil.md` | 🟢 CONCLUÍDO |
-| Perfil do Aluno (visão do Treinador) | `screens/perfil/perfil-aluno-visao-treinador.md` | 🔴 NÃO INICIADO |
-| Minhas Metas | `screens/perfil/minhas-metas.md` | 🔴 NÃO INICIADO |
+| Meu Perfil | `screens/perfil/aluno/meu-perfil.md` | 🟢 CONCLUÍDO |
+| Editar Perfil | `screens/perfil/aluno/editar-perfil.md` | 🟢 CONCLUÍDO |
+| Minhas Metas | `screens/perfil/aluno/minhas-metas.md` | 🔴 NÃO INICIADO |
+| Perfil do Aluno (visão do Treinador) | `screens/perfil/treinador/perfil-aluno-visao-treinador.md` | 🔴 NÃO INICIADO |
 
 ### 🥗 Dieta *(Pós-MVP)*
 | Tela | Arquivo | Status |
@@ -146,11 +174,11 @@ Muita gente treina sem saber para onde está indo. O Vela resolve isso oferecend
 
 ## Progresso Geral
 
-- Total de telas: 32
-- Concluídas: 4
-- Em andamento: 4
-- Pendente revisão: 0
-- Não iniciadas: 24
+- Total de telas: 33
+- Concluídas: 9
+- Em andamento: 6
+- Pendente revisão: 1
+- Não iniciadas: 16
 
 ---
 
@@ -183,10 +211,32 @@ Muita gente treina sem saber para onde está indo. O Vela resolve isso oferecend
 | 21 | ✅ **RESOLVIDO** — **Exercícios, exclusão e ciclo de vida:** **excluir só é permitido se o exercício não estiver em nenhuma rotina**; para "aposentar" um exercício em uso existe o toggle **Ativar/Desativar** — **inativo** permanece nas rotinas atuais mas **não pode ser adicionado a novas** (com mensagem ao desativar). Propagado para `[VELA-3001]` (RN10/RN11), `[VELA-3002]` (RN05/RN07) e `[VELA-3003]` (RN07/RN11) | Integridade entre Exercícios e Rotinas | Cliente | 2026-06-17 |
 | 22 | ✅ **RESOLVIDO** — **Áudio removido do exercício:** não há campo de áudio no cadastro de exercício. A gravação de áudio passa para a **aba de Treino** — o Treinador grava no app uma instrução sobre o **treino** (não sobre um exercício específico). Detalhar ao mapear Treino | Áudio de instrução (movido para Treino) | Cliente | 2026-06-17 |
 | 24 | ✅ **RESOLVIDO/OBSOLETO** — **Exercícios, equipamento:** o modelo "principal + adicionais" foi descartado. Agora é um **campo único** "Equipamentos/materiais necessários" (só o que não é óbvio no vídeo). Não há filtro por equipamento na Lista (filtros = grupo muscular + categoria) | Modelo do campo equipamento | Cliente | 2026-06-17 |
-| 25 | **Treinos — ordenação da Lista de Treinos:** o Treinador define a sequência (Treino A, B, C...) ao criar; a lista segue **ordem alfabética considerando a sequência definida**. Detalhar ao mapear a Lista de Treinos | Ordenação da Lista de Treinos | ⚠️ A definir (ao mapear Treinos) | ⚠️ |
+| 25 | ✅ **RESOLVIDO (`[VELA-4001]`)** — **Treinos, ordenação da Lista:** a lista segue **ordem alfabética por nome do treino** (RN02) | Ordenação da Lista de Treinos | Cliente | 2026-06-18 |
 | 27 | **Exercícios — base de vídeos global:** definir origem/curadoria/gestão dessa base (quem cadastra os vídeos, busca/categorização, licenciamento) usada no campo Vídeo do `[VELA-3003]` | Conteúdo da base global de vídeos | ⚠️ A definir | ⚠️ |
-| 26 | **Rotinas/Treinos — ordem dos exercícios dentro do treino:** ao montar o treino/rotina, o Treinador **numera cada linha de cards** na ordem que o Aluno deve seguir. Detalhar ao mapear Criar/Editar Rotina | Ordenação de exercícios no treino | ⚠️ A definir (ao mapear Rotinas) | ⚠️ |
+| 26 | ✅ **RESOLVIDO (Treinos `[VELA-4003]`)** — **ordem dos exercícios dentro do treino:** sem campo de número manual; o Treinador **reordena por arraste (handle ⠿)** e a **numeração de execução é automática** pela posição (grupo + ordem dentro do grupo). Os grupos são **numerados (1, 2, 3…)** — as **letras A, B, C…** ficam reservadas para a **Rotina**. Revisitar só se a tela de Rotina exigir comportamento diferente | Ordenação de exercícios no treino | Cliente | 2026-06-18 |
 | 23 | **Exercícios — consulta do Aluno:** detalhar a visão do Aluno (consulta/busca de exercícios, sem edição), reaproveitando Lista/Visualização | Escopo da visão do Aluno em Exercícios | ⚠️ A definir | ⚠️ |
-| 28 | **Exercícios — visual do bottom-sheet "Incluir em rotina" `[VELA-3001]`:** o comportamento está definido (RN13–RN16), mas o **layout final** do seletor de rotinas (como exibir cada rotina: nome, trilha, nº de exercícios, status do rascunho, "Já na rotina") fica para revisar **após mapear as telas de Rotina**, espelhando a estrutura real de uma rotina. Marca tela `[VELA-3001]` como 🟠 PENDENTE REVISAO até lá | Visual do seletor "Incluir em rotina" | ⚠️ A definir (ao mapear Rotinas) | ⚠️ |
-| 29 | **Rotinas — aviso de revisão de exercícios enviados da Lista:** quando uma rotina contiver exercício(s) adicionado(s) pelo atalho "Incluir em rotina" `[VELA-3001]` (entram com **prescrição vazia** — sem séries/reps/carga), a tela de Rotina deve **exibir um aviso obrigando a revisar esses exercícios antes de salvar/enviar a rotina ao aluno**. Definir o gatilho/copy/bloqueio ao mapear Criar/Editar Rotina (relaciona-se a RN13 da `[VELA-3001]`) | Aviso de revisão de exercícios pendentes na Rotina | ⚠️ A definir (ao mapear Rotinas) | ⚠️ |
+| 28 | ⚠️ **A REVISAR (modelo mudou)** — **Exercícios, atalho "Incluir em rotina" `[VELA-3001]`:** o trio de Rotinas (`[VELA-5001/5002/5003]`) definiu que uma rotina agrupa **treinos**, não exercícios soltos. O bottom-sheet "Incluir em rotina" por exercício **não foi implementado** no fluxo de Rotina. **Reavaliar** se o atalho deve ser removido/repensado em `[VELA-3001]` (RN13–RN16) à luz do novo modelo (prescrição já feita no Treino, decisão #31). Mantém `[VELA-3001]` como 🟠 PENDENTE REVISAO | Atalho "Incluir em rotina" vs. modelo rotina=treinos | ⚠️ A definir (revisar `[VELA-3001]`) | ⚠️ |
+| 29 | ⚠️ **A REVISAR (modelo mudou)** — **Rotinas, aviso de exercícios com prescrição vazia:** pressupunha rotina contendo exercícios soltos com prescrição vazia. No modelo atual a rotina agrupa **treinos** (cuja prescrição já vem preenchida em `[VELA-4003]`), então **não há prescrição vazia a revisar na Rotina**. Decisão provavelmente **obsoleta** — confirmar ao revisar `[VELA-3001]`/#28 | Aviso de exercícios pendentes na Rotina (provável obsoleto) | ⚠️ A definir (revisar com #28) | ⚠️ |
+| 36 | ✅ **RESOLVIDO** — **Rotinas, estrutura do trio `[VELA-5001/5002/5003]`:** rotina = **agrupamento ordenado de treinos** (`[VELA-4001]`) por **letras A, B, C…** (arraste, letra automática); campos gerais Título + Objetivo (obrigatórios); por treino, Dia da semana + Descrição curta (opcionais). **Dia pode repetir** entre treinos; **sem visão de semana** por ora. **Mesmo treino não duplica** na rotina. Card da Lista = título + objetivo + nº de treinos + letras/nomes dos treinos. Criar+Editar consolidados em `[VELA-5003]`; Detalhe → Visualizar `[VELA-5002]` | Estrutura e regras do módulo Rotinas | Maria Isabela | 2026-06-18 |
+| 37 | ✅ **RESOLVIDO (abordagem)** — **Rotinas, ponto de entrada `[VELA-5001]`:** acesso pela **aba/menu do Treinador**, espelhando #19 (Exercícios) e #30 (Treinos). ⚠️ Dependência: o **painel/menu do Treinador** ainda não está mapeado — confirmar o item de navegação ao mapeá-lo | Navegação de entrada do módulo Rotinas | Maria Isabela | 2026-06-18 |
+| 38 | ✅ **RESOLVIDO (mapeado em `[VELA-3004]`)** — **Rotinas — atrelar rotina a aluno:** mapeada a tela **Atrelar Rotina ao Aluno `[VELA-3004]`** (🔵 MVP). Entrada por **ambos os caminhos** (pré-selecionado pela tela do aluno / entrada geral com busca; + "Atribuir a aluno" da **Visualizar `[VELA-5002]`**, mantendo o Cadastro `[VELA-5003]` em "modo construção"). Origem: rotina da **base** (`[VELA-5001]`) ou **criada na hora** (`[VELA-5003]`, **sempre salva na base**). Vínculo = **cópia/snapshot** (edições na base não afetam entregas). **Vigência:** início obrigatório, fim **opcional/sem prazo**. Prescrição herdada **ajustável, não obrigatória** (aviso não bloqueia). Rotinas **coexistem** (sem substituição). Pós-salvar volta à **tela do aluno**. ⚠️ Ainda em aberto: notificação ao aluno (push + in-app) e a **trava de exclusão por vínculo** (hoje exclusão de rotina sempre liberada — revisitar `[VELA-5003]`/RN09 agora que existem cópias atreladas) | Atrelamento de rotina a aluno | Maria Isabela | 2026-06-18 |
 | 14 | ✅ **RESOLVIDO** — **Avaliação Concluída:** travada para o **Aluno**; o **Treinador** corrige via **"Revisar"** (edita **no lugar**, continua Concluída, **sem versionamento/histórico** — Q1=A) **ou** **excluir + recriar** (ambas convivem — Q2=B). Ação de alterar = "Editar" (Solicitada/Em andamento) / "Revisar" (Concluída). Propagado para `[VELA-2001]` (RN04/RN06/RN09), `[VELA-2002]` (RN04 + ações) e `[VELA-2003]` (Seção 1/2/3.1, RN05/RN13). Atualiza a decisão #9 | Edição/trava de avaliações Concluídas | Cliente | 2026-06-12 |
+| 30 | ✅ **RESOLVIDO (abordagem)** — **Treinos `[VELA-400x]`, ponto de entrada:** a base de treinos do Treinador é acessada por (1) **aba/menu do Treinador** (modo gestão) e (2) **montagem/edição de Rotina** (modo seleção), espelhando #19. ⚠️ Dependência: o **painel/menu do Treinador** ainda não está mapeado — confirmar o item de navegação ao mapeá-lo | Navegação de entrada do módulo Treinos (Treinador) | Cliente | 2026-06-18 |
+| 31 | ✅ **RESOLVIDO** — **Treinos, salvar/ciclo de vida `[VELA-4003]`:** salvar exige **Nome + Categoria + ≥1 exercício**, e cada exercício deve ter **Séries + Repetições + Descanso** (obrigatórios; descrição de execução opcional) — **a prescrição é feita já no treino** (atualização: antes ficava para a Rotina). Exclusão **definitiva** (sem lixeira, com modal) **só se o treino não estiver em nenhuma rotina**; para aposentar em uso, toggle **Ativar/Desativar** (espelha #21). **Interino:** enquanto **Rotinas** não existir, não há vínculo a checar → exclusão **sempre liberada** (com modal); a trava por rotina passa a valer quando o módulo existir | Regras de salvar e exclusão de treinos | Cliente | 2026-06-18 |
+| 32 | ✅ **RESOLVIDO** — **Treinos, agrupamento de exercícios `[VELA-4003]`:** **grupos numerados** (número automático 1, 2, 3…) com **tipo opcional**. Ordem por grupo e por exercício dentro do grupo (arrastar). **Lista de tipos:** Normal, Bi-set, Tri-set, Superset, Drop-set (Circuito **removido**). **Limite por tipo:** Normal/Drop-set = 1, Bi-set/Superset = 2, Tri-set = 3; **sem tipo = Normal (1)** | Modelo de agrupamento de exercícios no treino | Cliente | 2026-06-18 |
+| 33 | ✅ **RESOLVIDO (`[VELA-4001]`)** — **Treinos, card da Lista:** nome + **categoria e quantidade de exercícios lado a lado** (ex: "Hipertrofia · 6 exercícios") + selo Ativo/Inativo. **Sem chips de grupos musculares** (removidos a pedido do cliente) | Formato do card da Lista de Treinos | Cliente | 2026-06-18 |
+| 34 | ✅ **RESOLVIDO** — **Treinos, colisão de nome "Lista de Treinos":** resolvida pela **separação por público em subpastas** (decisão #42): `treinos/treinador/lista-treinos.md` (`[VELA-4001]`) vs `treinos/aluno/lista-treinos.md` (fluxo treinar). Sem necessidade de renomear | Nomenclatura/colisão de telas no módulo Treinos | Maria Isabela | 2026-06-22 |
+| 35 | **Treinos — revisar Lista de Treinos `[VELA-4001]` após Rotinas:** voltar à tela para fechar o **modo seleção** (multi-seleção, limites, retorno à Rotina) e a **trava de exclusão por vínculo com rotina** (RN04), que hoje estão como dependência/interino | Revisão da Lista de Treinos pós-Rotinas | ⚠️ A definir (após mapear telas de Rotina) | ⚠️ |
+| 39 | ✅ **RESOLVIDO (abordagem)** — **Rotinas, visão do Aluno `[VELA-6001]`:** mapeada **Minhas Rotinas** (🔵 MVP, nova série **6xxx**), leitura das rotinas atribuídas em seções Ativas/Agendadas/Anteriores; status calculado das datas; múltiplas ativas possíveis. ⚠️ **Pendente:** (a) o **ponto de entrada** depende do **dashboard/menu do Aluno**, ainda não mapeado (espelha #37/#30/#19). **(b) ✅ mapeado:** o **Detalhe da Rotina (Aluno) `[VELA-6002]`** (destino ao tocar no card) — tela própria do Aluno, **não** reusa a Visualizar do Treinador `[VELA-5002]` — está 🟡 EM ANDAMENTO. **Novo:** o destino de toque no treino é a **tela de treino do Aluno** (`treinos/aluno/`, ainda sem código), nova dependência rastreada em #44 | Navegação e detalhe da visão do Aluno em Rotinas | Maria Isabela | 2026-06-22 |
+| 40 | **Rotinas — visibilidade de prazo/progresso ao aluno (`[VELA-3004]` + `[VELA-6001]`):** o Treinador decide na atribuição se o Aluno vê **faixa de datas + barra de progresso + tempo decorrido** ou apenas o selo de status. **Padrão: visível.** Cria um **novo campo (toggle) no `[VELA-3004]`** — incluir ao revisar aquela tela (hoje 🟡 EM ANDAMENTO). Reflexo de leitura já está em `[VELA-6001]` (RN05) | Controle de visibilidade da vigência para o aluno | ⚠️ A incluir no `[VELA-3004]` | Maria Isabela |
+| 41 | ✅ **RESOLVIDO (reincorporado ao MVP)** — **Rotinas — contador na visão do Aluno (`[VELA-6001]`):** o card exibe **"X treinos realizados"** (RN06), alimentado pelo **registro de execução (sessão)** do `[VELA-6003]` (decisão #49). A pedido da cliente, o card é **enxuto**: **sem barra de progresso** (RN04) e **sem contagem de exercícios** — ambas ficam no Detalhe `[VELA-6002]`. Agendadas não exibem contador; independe do toggle de visibilidade (#40/RN05) | Contador de execução no card de rotina do aluno | Maria Isabela | 2026-06-22 |
+| 43 | ✅ **RESOLVIDO (aplicado em `[VELA-6002]`)** — **Rotinas — tag de categoria do treino na visão do Aluno:** o **Detalhe da Rotina (Aluno) `[VELA-6002]`** inclui uma **tag de categoria** (core, fortalecimento, hipertrofia…) **em cada card de treino** (ex.: "A · Peito · hipertrofia"), espelhando a Visualizar do Treinador `[VELA-5002]` (RN07). **Não** vai no card da lista `[VELA-6001]` — categoria é atributo do treino (1 treino = 1 categoria); rotina tem treinos de categorias possivelmente distintas, e o card da lista segue o padrão enxuto do `[VELA-5001]` (RN04) | Exibição de categoria do treino na visão do Aluno | Maria Isabela | 2026-06-22 |
+| 44 | **Rotinas — destino do treino na visão do Aluno (`[VELA-6002]`):** ao tocar num card de treino no Detalhe da Rotina, o Aluno vai para a **tela de treino do Aluno** (`treinos/aluno/`, ticket cliente `VELA-5002`), responsável por consulta/execução. Essa tela ainda **não foi mapeada/codificada** — dependência; confirmar qual tela do fluxo do Aluno (visualizar/iniciar) é o destino ao mapeá-la (RN08 do `[VELA-6002]`) | Destino de navegação treino na visão do Aluno | ⚠️ A definir (ao mapear o fluxo de treino do Aluno) | ⚠️ |
+| 45 | **Rotinas — conteúdo de execução no Detalhe (`[VELA-6002]`):** **Treinos executados / Exercícios executados**, o bloco **"último treino executado"** e o **nº de execuções por treino** (no card, ao lado do contador de exercícios — RN09) ficam **fora do MVP** desta tela; dependem do **registro de execução do Aluno** (Treino em Andamento / Histórico), ainda não mapeado. No MVP o topo exibe só **KPIs de data** (dias percorridos/restantes) + barra de vigência. Reavaliar quando a fonte existir (relacionado a #41) | Conteúdo de execução no detalhe da rotina do aluno | ⚠️ A reavaliar (depende do fluxo de execução) | ⚠️ |
+| 46 | **Treino do Aluno — card-resumo compartilhável (`[VELA-6003]`):** ao finalizar o treino, exibir um resumo **estilo story do Instagram** (identidade Vela) para o aluno **compartilhar nas redes** — nome do treino, duração, exercícios/séries, data, marca `vela.`. ⚠️ A definir: design final do card, formatos de export (imagem/story), se vira tela própria e se há variações por trilha `.track`/`.performance` | Compartilhamento social pós-treino | ⚠️ A definir (design) | Maria Isabela |
+| 47 | ✅ **RESOLVIDO** — **Treino do Aluno — formato de execução (`[VELA-6003]`):** **lista vertical estilo MFit** (rolagem com cards por grupo numerado), reaproveitando a estrutura da Visualizar do Treinador `[VELA-4002]`. O **feed vertical / reels** (ideia ZeroUm) foi **descartado** para o MVP por custo de UX/dev | Formato de apresentação dos exercícios na execução | Maria Isabela | 2026-06-22 |
+| 48 | **Treino do Aluno — som de repetição (`[VELA-6003]`):** som configurável estilo box de CrossFit como auxílio durante o exercício — **fora do MVP** (RN09); reavaliar em iteração futura | Recurso de áudio de cadência na execução | ⚠️ A reavaliar (pós-MVP) | Maria Isabela |
+| 49 | ✅ **RESOLVIDO (destrava #41/#45)** — **Modelo de execução (sessão) do Aluno definido em `[VELA-6003]` (RN04):** registro com data, hora início/fim, duração, exercícios concluídos e séries/reps/carga realizadas, gerado ao **Finalizar treino** (Iniciar/Finalizar explícitos + persistência parcial retomável, RN03). É a **fonte** dos KPIs "treinos/exercícios executados", do bloco "último treino executado" e do "nº de execuções por treino" antes adiados em `[VELA-6002]` (#45) e `[VELA-6001]` (#41) — que podem ser **reincorporados ao MVP** dessas telas agora que a fonte existe (revisitar `[VELA-6001]`/`[VELA-6002]`) | Modelo de registro de execução do Aluno | Maria Isabela | 2026-06-22 |
+| 50 | **Carga prescrita no treino (impacto em `[VELA-4003]`/`[VELA-4002]`):** decidido na entrevista da `[VELA-6003]` que o **treinador informa a carga sugerida** por exercício (o aluno sobrescreve na execução se usar diferente — RN06/RN10). Hoje o Cadastro de Treino prescreve **Séries/Reps/Descanso**, **sem carga** — precisa **adicionar campo de carga** ao `[VELA-4003]` (e exibir em leitura no `[VELA-4002]`). ⚠️ A definir: carga por série ou única por exercício, unidade (kg), e se é obrigatória ou opcional na prescrição | Campo de carga na prescrição do treino | ⚠️ A incluir ao revisar `[VELA-4003]`/`[VELA-4002]` | Maria Isabela |
+| 51 | ✅ **RESOLVIDO** — **Feedback do aluno em dois níveis:** (a) **recado por treino** ao finalizar a execução — campo opcional, **máx. 300 caracteres**, **privado** ao treinador, fora do card compartilhável (`[VELA-6003]` RN11); (b) **considerações por rotina** quando a rotina fica **Encerrada** (vigência terminou) — campo opcional, **máx. 500 caracteres**, privado ao treinador (`[VELA-6002]` Bloco E / RN10). Gatilho do (b) = **vigência encerrada** (rotinas sem data de fim não disparam). ⚠️ Dependência (ambos): a **leitura pelo treinador** ocorre na visão do treinador sobre o aluno (ainda a mapear, junto dos KPIs de execução) | Canais de feedback do aluno (treino e rotina) | Maria Isabela | 2026-06-22 |
+| 42 | ✅ **RESOLVIDO** — **Estrutura, separação Aluno × Treinador:** nos módulos que misturam os dois públicos, as telas ficam em **subpastas por público** (`<modulo>/treinador/` e `<modulo>/aluno/`), espelhado em `mockups/`. Aplicado a **rotinas, treinos e perfil**. Módulos de público único ficam sem subpasta até ganharem telas do outro público. Convenção registrada no `CLAUDE.md` | Organização de pastas por público (Aluno/Treinador) | Maria Isabela | 2026-06-22 |

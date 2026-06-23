@@ -262,7 +262,7 @@ E sugere a ordem em que as coisas devem ser implementadas.
 
 **Como usar:**
 ```
-/visualizar-tela docs/screens/perfil/meu-perfil.md
+/visualizar-tela docs/screens/perfil/aluno/meu-perfil.md
 ```
 
 (Informe o caminho do arquivo da tela)

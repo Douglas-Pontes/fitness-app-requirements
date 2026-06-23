@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Minhas Rotinas (Aluno) · VELA-6001</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',
+        navy: '#0E4C86',
+        track: '#A8DAEC',
+        performance: '#4B5F79',
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .frame { width: 390px; }
+  @keyframes pulse-soft { 0%,100% { opacity: 1 } 50% { opacity: .45 } }
+  .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+  <!-- Banner de aviso -->
+  <div class="w-full bg-navy text-white text-xs sm:text-sm px-4 py-2 text-center">
+    Mockup visual — não é código de produção. Gerado a partir de
+    <code class="bg-white/15 px-1 rounded">docs/screens/rotinas/aluno/minhas-rotinas.md</code> (mobile).
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold lowercase tracking-tight text-navy mb-1">vela<span class="text-lime drop-shadow">.</span> — minhas rotinas <span class="text-slate-400 text-base">[VELA-6001]</span></h1>
+    <p class="text-slate-500 text-sm mb-8">visão do aluno · estados lado a lado</p>
+
+    <div class="flex flex-wrap gap-8 items-start">
+
+      <!-- ============ FRAME 1 — PRINCIPAL ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">principal</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden">
+          <!-- status bar device -->
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- Header -->
+          <header class="px-5 pt-5 pb-3 sticky top-0 bg-white">
+            <h2 class="text-xl font-semibold lowercase text-navy">minhas rotinas</h2>
+          </header>
+
+          <!-- Corpo rolável -->
+          <div class="px-5 pb-6 overflow-y-auto" style="max-height:660px">
+
+            <!-- Seção: Ativas -->
+            <section class="mt-2">
+              <h3 class="text-[13px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Ativas</h3>
+
+              <!-- Card 1: progresso visível -->
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Hipertrofia · Fase 2</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Ganho de massa — membros superiores</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-lime text-navy">Ativa</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">01/05/2026 – 31/07/2026</p>
+                <div class="text-[11px] text-slate-500 mt-2">
+                  <span class="font-semibold text-navy">8 treinos</span> realizados
+                </div>
+              </article>
+
+              <!-- Card 2: sem prazo -->
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Pré-temporada</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Força e potência para a modalidade</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-lime text-navy">Ativa</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">Início 20/05/2026 · <span class="text-slate-400">sem prazo</span></p>
+                <p class="text-[11px] text-slate-400 mt-1">Em andamento há 6 semanas</p>
+                <div class="text-[11px] text-slate-500 mt-2">
+                  <span class="font-semibold text-navy">12 treinos</span> realizados
+                </div>
+              </article>
+
+              <!-- Card 3: visibilidade de prazo/progresso desligada pelo treinador (RN05) -->
+              <article class="rounded-2xl border border-slate-200 p-4 mb-4 shadow-sm">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Adaptação</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Retomada de treino</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-lime text-navy">Ativa</span>
+                </div>
+                <div class="text-[11px] text-slate-500 mt-3">
+                  <span class="font-semibold text-navy">3 treinos</span> realizados
+                </div>
+              </article>
+            </section>
+
+            <!-- Seção: Agendadas -->
+            <section>
+              <h3 class="text-[13px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Agendadas</h3>
+              <article class="rounded-2xl border border-slate-200 p-4 mb-4 shadow-sm">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Cutting de verão</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Definição muscular</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-track text-navy">Agendada</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">Começa em 01/08/2026</p>
+              </article>
+            </section>
+
+            <!-- Seção: Anteriores -->
+            <section>
+              <h3 class="text-[13px] font-semibold uppercase tracking-wide text-slate-400 mb-2">Anteriores</h3>
+
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm opacity-60">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Adaptação neuromuscular</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Base de movimento e técnica</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-600">Encerrada</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">01/02/2026 – 30/04/2026</p>
+                <div class="text-[11px] text-slate-500 mt-2">
+                  <span class="font-semibold text-navy">24 treinos</span> realizados
+                </div>
+              </article>
+
+              <article class="rounded-2xl border border-slate-200 p-4 mb-3 shadow-sm opacity-60">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <h4 class="font-semibold text-navy leading-tight">Base inicial</h4>
+                    <p class="text-sm text-slate-500 leading-snug">Condicionamento geral</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-600">Encerrada</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3">01/10/2025 – 31/01/2026</p>
+                <div class="text-[11px] text-slate-500 mt-2">
+                  <span class="font-semibold text-navy">31 treinos</span> realizados
+                </div>
+              </article>
+            </section>
+
+          </div>
+
+          <!-- Tab bar -->
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 2 — VAZIO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">vazio</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-5 pb-3">
+            <h2 class="text-xl font-semibold lowercase text-navy">minhas rotinas</h2>
+          </header>
+          <div class="flex flex-col items-center justify-center text-center px-8" style="height:560px">
+            <div class="w-20 h-20 rounded-full bg-lime/30 flex items-center justify-center mb-5">
+              <div class="w-10 h-10 rounded-lg border-2 border-navy/40"></div>
+            </div>
+            <h3 class="font-semibold text-navy">Você ainda não tem rotinas</h3>
+            <p class="text-sm text-slate-500 mt-2">Quando seu treinador atribuir uma rotina, ela aparece aqui.</p>
+          </div>
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 3 — CARREGANDO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">carregando (skeleton)</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-5 pb-3">
+            <h2 class="text-xl font-semibold lowercase text-navy">minhas rotinas</h2>
+          </header>
+          <div class="px-5 pt-2">
+            <div class="h-3 w-20 rounded bg-slate-200 skel mb-3"></div>
+            <div class="rounded-2xl border border-slate-200 p-4 mb-3">
+              <div class="h-4 w-40 rounded bg-slate-200 skel mb-2"></div>
+              <div class="h-3 w-52 rounded bg-slate-100 skel mb-4"></div>
+              <div class="h-3 w-24 rounded bg-slate-200 skel"></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-4 mb-3">
+              <div class="h-4 w-32 rounded bg-slate-200 skel mb-2"></div>
+              <div class="h-3 w-44 rounded bg-slate-100 skel mb-4"></div>
+              <div class="h-3 w-24 rounded bg-slate-200 skel"></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-4">
+              <div class="h-4 w-36 rounded bg-slate-200 skel mb-2"></div>
+              <div class="h-3 w-40 rounded bg-slate-100 skel"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 4 — ERRO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">erro</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-5 pb-3">
+            <h2 class="text-xl font-semibold lowercase text-navy">minhas rotinas</h2>
+          </header>
+          <div class="flex flex-col items-center justify-center text-center px-8" style="height:560px">
+            <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-5 text-2xl">⚠️</div>
+            <h3 class="font-semibold text-navy">Não foi possível carregar suas rotinas</h3>
+            <button class="mt-5 px-5 py-2.5 rounded-full bg-lime text-navy font-semibold text-sm">Tentar novamente</button>
+          </div>
+          <nav class="border-t border-slate-200 bg-white px-6 py-2 flex justify-between text-[10px] text-slate-400">
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>início</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>treinos</div>
+            <div class="flex flex-col items-center gap-1 text-navy font-medium"><div class="w-5 h-5 rounded bg-lime"></div>rotinas</div>
+            <div class="flex flex-col items-center gap-1"><div class="w-5 h-5 rounded bg-slate-200"></div>perfil</div>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-xs text-slate-400 mt-8 max-w-2xl">
+      Observações: o status (Ativa/Agendada/Encerrada) é calculado das datas + data atual (RN01); o aluno pode ter
+      várias ativas (RN02); rotinas sem fim mostram “sem prazo” + tempo decorrido (RN03). Card enxuto: SEM barra de
+      progresso (RN04) e SEM contagem de exercícios — ambas ficam no Detalhe [VELA-6002]. A faixa de datas e o tempo só
+      aparecem se o treinador permitir (RN05); o contador “X treinos realizados” vem do registro de sessão do
+      [VELA-6003] (RN06) e agendadas não exibem. Tocar num card abre o Detalhe da Rotina (Aluno) [VELA-6002].
+    </p>
+  </div>
+
+</body>
+</html>

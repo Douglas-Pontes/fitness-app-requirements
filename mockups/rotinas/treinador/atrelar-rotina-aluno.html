@@ -111,6 +111,16 @@
               <label class="block text-[11px] text-slate-500 mb-1">Objetivo da rotina *</label>
               <textarea rows="2" class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white" placeholder="Ex: hipertrofia, fase de adaptação…">Fase de adaptação — foco em técnica e consistência.</textarea>
             </div>
+            <div class="flex items-start justify-between gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2.5">
+              <div>
+                <p class="text-sm text-slate-700">Mostrar prazo e progresso ao aluno</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">Quando desligado, o aluno vê apenas o status da rotina.</p>
+              </div>
+              <!-- toggle ligado (padrão) -->
+              <button type="button" aria-pressed="true" class="shrink-0 mt-0.5 w-10 h-6 rounded-full bg-lime-400 relative transition-colors">
+                <span class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-white shadow"></span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -437,7 +447,7 @@
 
 <div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
   <p>Tela única em fluxo contínuo — blocos A (Aluno), B (Rotina), C (Vigência e objetivo) e D (Mensagem ao aluno). Espelha as seções 3–6 e 9 do documento.</p>
-  <p>Entrada por ambos os caminhos: pré-selecionado pela tela do aluno (card bloqueado 🔒) ou entrada geral com busca de aluno. Rotina vem da base [VELA-5001] (seleção única) ou criada na hora [VELA-5003] (sempre salva na base) — sempre copiada para o aluno como snapshot · prescrição herdada do treino [VELA-4003] é ajustável mas não obrigatória (aviso "Revisar prescrição" não bloqueia o salvar) · Data de início obrigatória, Data de fim opcional (sem prazo) · rotinas coexistem (sem substituição) · ao salvar, volta para a tela do aluno.</p>
+  <p>Entrada por ambos os caminhos: pré-selecionado pela tela do aluno (card bloqueado 🔒) ou entrada geral com busca de aluno. Rotina vem da base [VELA-5001] (seleção única) ou criada na hora [VELA-5003] (sempre salva na base) — sempre copiada para o aluno como snapshot · prescrição herdada do treino [VELA-4003] é ajustável mas não obrigatória (aviso "Revisar prescrição" não bloqueia o salvar) · Data de início obrigatória, Data de fim opcional (sem prazo) · toggle "Mostrar prazo e progresso ao aluno" ligado por padrão (RN10 — desligado, o aluno vê só o selo de status) · rotinas coexistem (sem substituição) · ao salvar, volta para a tela do aluno.</p>
 </div>
 
 </body>

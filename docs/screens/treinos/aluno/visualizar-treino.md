@@ -11,8 +11,8 @@
 | **Modulo** | Treinos (fluxo do Aluno) |
 | **Codigo** | VELA-6003 |
 | **Prioridade** | 🔵 MVP |
-| **Status** | 🟡 EM ANDAMENTO |
-| **Ultima atualizacao** | 2026-06-22 |
+| **Status** | 🟢 CONCLUIDO |
+| **Ultima atualizacao** | 2026-06-23 |
 
 ---
 
@@ -41,10 +41,10 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 > **Formato de apresentação (decisão de UX):** **lista vertical estilo MFit** (rolagem vertical com cards por grupo). Reaproveita a estrutura de **grupos numerados** (1, 2, 3…) do treino do Treinador (`[VELA-4002]`). O feed vertical / reels (ideia ZeroUm) foi descartado para o MVP (ver decisão #47).
 
 ### 3.1 Header / Cabecalho
-- Conteudo: Botão voltar (←) + **nome do treino** + selo de **categoria** (ex.: "Peito · hipertrofia").
-- Comportamento: Fixo no topo.
-  - **Antes de iniciar:** o botão voltar (←) retorna ao Detalhe da Rotina (`[VELA-6002]`) sem confirmação.
-  - **Em execução:** o botão voltar (←) **não descarta** a sessão — sai mantendo o treino salvo como "em andamento" (ver RN03/persistência). Quando há sessão ativa, o header também exibe o **cronômetro do treino** correndo.
+- Conteudo: Botão voltar (←) + **nome do treino** + selo de **categoria** (ex.: "Peito · hipertrofia") + **botão Play/Pause** ao lado do **cronômetro geral** do treino.
+- Comportamento: **Fixo no topo** — o botão Play/Pause e o cronômetro permanecem visíveis mesmo ao rolar a página.
+  - O **cronômetro geral** começa em **00:00** e **só passa a contar quando o aluno toca em Play** (não conta sozinho ao abrir a tela). O botão alterna **Play ⇄ Pause**, permitindo **pausar e retomar** a contagem (ex.: pausa para atender o telefone).
+  - O botão voltar (←) **não descarta** a sessão — sai mantendo o treino salvo como "em andamento" e retomável (ver RN03/persistência).
 
 ### 3.2 Corpo Principal
 > Tela única em **rolagem vertical**. O conteúdo é o mesmo nos estados "consulta" e "em execução"; o que muda são os controles de execução que aparecem em cada card quando a sessão está ativa.
@@ -59,26 +59,27 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 - Conteudo de cada card de exercício:
   - **Capa/thumbnail do vídeo** + **nome do exercício** + ícone de vídeo (se houver).
   - Prescrição em leitura: **Séries**, **Repetições**, **Carga sugerida**, **Descanso** e **Descrição de execução** (quando houver). Campos vazios herdados do treino são tratados conforme RN08.
-  - **Controles de execução** (visíveis quando a sessão está ativa):
-    - **Contador de séries** (ex.: "3 / 4") com botão para **concluir a série** atual.
-    - Ao concluir uma série (ou rodada do grupo combinado — RN05), abre o **timer de descanso**.
+  - **Controles de execução** (disponíveis **somente depois que o aluno deu Play** no treino — antes disso o card fica em leitura):
+    - **Contador de séries** (ex.: "3 / 4").
     - Campos para registrar **reps realizadas** e **carga realizada** por série, **pré-preenchidos** com os valores **sugeridos pelo treinador** (reps prescritas + carga sugerida); o aluno só ajusta se usar valor diferente (RN06).
-    - Indicação visual de **exercício concluído** quando todas as séries forem marcadas (ou pelo botão "marcar concluído" nos exercícios sem séries — RN08).
+    - Linha de ação compacta com dois botões lado a lado: **"⏱ Descanso"** (individual de cada exercício — abre a telinha de descanso daquele exercício, ver "Componente — Timer de descanso") e um **botão de check (✓)** que **marca o exercício como concluído**. Ambos ficam **desabilitados enquanto o aluno não der Play** no treino (RN05).
+    - Indicação visual de **exercício concluído** (card destacado em verde) ao tocar no check, ou pelo botão "Marcar como concluído" nos exercícios sem séries (RN08).
 - Comportamento:
   - Tocar no **vídeo/thumbnail** abre o player do exercício (modal/lightbox por cima da lista — mesmo padrão da decisão #20).
   - Tocar no card (fora dos controles) pode expandir os detalhes/execução completa do exercício.
   - Sem botões de adicionar/remover/reordenar — o aluno não altera a estrutura do treino.
 
-**Componente — Timer de descanso entre séries**
-- Componente: Cronômetro regressivo (overlay/área destacada) disparado ao concluir uma série.
-- Conteudo: tempo regressivo iniciando no **valor do campo "Descanso" prescrito** para aquele exercício; ações **Pular** e **+15s** (ajuste rápido).
-- Comportamento: ao zerar, sinaliza (vibração/feedback visual) que pode iniciar a próxima série. O **som de repetição** estilo box de CrossFit fica **fora do MVP** (ver RN09 / decisão #48).
+**Componente — Timer de descanso (por exercício, sob demanda)**
+- Componente: Telinha/overlay **compacta** de **descanso regressivo**, aberta **apenas quando o aluno toca no botão "⏱ Descanso"** de um exercício (não dispara sozinho ao concluir série).
+- Conteudo:
+  - **Textinho de série** (ex.: "Série 1/3") para o aluno se localizar sem fechar a telinha.
+  - **Tempo regressivo** iniciando no **valor do campo "Descanso" prescrito** (ex.: 0:45) e indo até **0:00**.
+  - Ações: **+15s** (soma 15 segundos) e **Play (▶)** (inicia a contagem regressiva).
+- Comportamento: ao zerar (0:00), sinaliza (vibração/feedback visual) e o **Play fica disponível novamente** para a **próxima série** (sem botão separado de "próxima série" — o próprio Play re-arma o descanso e avança a série). Disponível só com o treino em Play (RN05). O **som de repetição** estilo box de CrossFit fica **fora do MVP** (ver RN09 / decisão #48).
 
 ### 3.3 Footer / Rodape
-- Conteudo: **Botão de ação primário** dependente do estado da sessão:
-  - **Sem sessão ativa:** botão **"Iniciar treino"** (largura total).
-  - **Em execução:** botão **"Finalizar treino"** (largura total) + **cronômetro** do treino visível (também no header).
-- Comportamento: Fixo na parte inferior. "Iniciar treino" inicia o cronômetro e habilita os controles de execução nos cards. "Finalizar treino" encerra a sessão e abre o **Resumo da execução** (ver 6.4).
+- Conteudo: botão primário **"Finalizar treino"** (largura total), fixo no rodapé.
+- Comportamento: Fixo na parte inferior. **"Finalizar treino"** encerra a sessão, grava o registro de execução e abre o **Resumo da execução** (ver 6.4). O **início/pausa** do treino é feito pelo **Play/Pause no topo** (não há mais "Iniciar treino" no rodapé).
 
 ---
 
@@ -103,24 +104,26 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 
 | # | Componente | Label / Icone | Posicao | Estado Inicial | Acao ao Clicar |
 |---|---|---|---|---|---|
-| 1 | Botao primario | "Iniciar treino" | Rodapé (largura total) | Ativo (sem sessão) | Inicia a sessão: dispara o cronômetro e habilita os controles de execução nos cards |
-| 2 | Botao primario | "Finalizar treino" | Rodapé (largura total) | Visível só em execução | Encerra a sessão, grava o registro de execução e abre o **Resumo da execução** (6.4) |
-| 3 | Botão concluir série | (✓ / "Concluir série") | Card de exercício | Ativo em execução | Marca a série como feita, incrementa o contador e dispara o **timer de descanso** |
-| 4 | Botão marcar concluído | "Marcar como concluído" | Card de exercício (sem séries) | Ativo em execução | Marca o exercício inteiro como feito (exercícios sem séries prescritas — RN08) |
+| 1 | Botão Play/Pause | ▶ / ⏸ (+ cronômetro) | Header (topo, fixo) | Play (cronômetro 00:00) | Play inicia/retoma o **cronômetro geral** e habilita os controles de execução; Pause congela a contagem |
+| 2 | Botao primario | "Finalizar treino" | Rodapé (largura total) | Ativo | Encerra a sessão, grava o registro de execução e abre o **Resumo da execução** (6.4) |
+| 3 | Botão "⏱ Descanso" | "⏱ Descanso" | Card de exercício (linha de ação) | Desabilitado até dar Play | Abre a telinha de descanso daquele exercício (individual — RN05) |
+| 3b | Botão de check | ✓ | Card de exercício (ao lado do Descanso) | Desabilitado até dar Play | Marca o exercício como **concluído** (card fica verde) |
+| 4 | Botão marcar concluído | "Marcar como concluído" | Card de exercício (sem séries) | Ativo após Play | Marca o exercício inteiro como feito (exercícios sem séries prescritas — RN08) |
 | 5 | Thumbnail / ícone de vídeo | (vídeo) | Card de exercício | Ativo | Abre o player do exercício em modal/lightbox |
-| 6 | Timer — "Pular" | "Pular" | Overlay do timer | Ativo durante descanso | Encerra o descanso imediatamente |
-| 7 | Timer — "+15s" | "+15s" | Overlay do timer | Ativo durante descanso | Soma 15s ao descanso atual |
-| 8 | Botao voltar | ← | Header (esquerda) | Ativo | Sem sessão: volta ao Detalhe da Rotina. Em execução: sai mantendo a sessão salva (retomável) |
-| 9 | Resumo — "Compartilhar" | "Compartilhar" | Tela de Resumo (6.4) | Ativo | Abre o compartilhamento nativo com o card-resumo (estilo story) — ver RN07 |
-| 10 | Resumo — "Concluir" | "Concluir" | Tela de Resumo (6.4) | Ativo | Salva o recado (se houver), fecha o resumo e retorna ao Detalhe da Rotina (`[VELA-6002]`) |
-| 11 | Campo de recado | "Deixar um recado para o treinador" | Tela de Resumo (6.4) | Ativo (opcional) | Textarea com contador 0/300; conteúdo anexado ao registro de execução, fora do card compartilhável (RN11) |
+| 6 | Timer — Play | ▶ | Telinha de descanso | Ativo | Inicia a contagem regressiva (45→0); ao zerar, re-arma para a próxima série |
+| 7 | Timer — "+15s" | "+15s" | Telinha de descanso | Ativo | Soma 15s ao descanso atual |
+| 9 | Botao voltar | ← | Header (esquerda) | Ativo | Sai mantendo a sessão salva (retomável) |
+| 10 | Resumo — "Compartilhar" | "Compartilhar" | Tela de Resumo (6.4) | Ativo | Abre o compartilhamento nativo com o card-resumo (estilo story) — ver RN07 |
+| 11 | Resumo — "Concluir" | "Concluir" | Tela de Resumo (6.4) | Ativo | Salva o recado (se houver), fecha o resumo e retorna ao Detalhe da Rotina (`[VELA-6002]`) |
+| 12 | Campo de recado | "Deixar um recado para o treinador" | Tela de Resumo (6.4) | Ativo (opcional) | Textarea com contador 0/300; conteúdo anexado ao registro de execução, fora do card compartilhável (RN11) |
 
 ---
 
 ## 6. Estados da Tela
 
 ### 6.1 Estado Inicial / Vazio
-- **Sem sessão ativa (consulta):** o treino é exibido em modo leitura (igual à visão do treinador), com o botão **"Iniciar treino"** no rodapé. Não há estado vazio de treino — todo treino tem ≥1 exercício (regra do Cadastro `[VELA-4003]`).
+- **Treino aberto, antes do Play:** o treino é exibido em modo leitura, com o **cronômetro em 00:00** e o botão **Play** no topo; os botões "Descanso" dos cards ficam **desabilitados**. "Finalizar treino" no rodapé. Não há estado vazio de treino — todo treino tem ≥1 exercício (regra do Cadastro `[VELA-4003]`).
+- **Em execução (após Play):** cronômetro correndo (botão vira Pause); cards habilitam contador de séries, campos de reps/carga e o botão "Descanso".
 - **Sessão em andamento salva (retomar):** se houver uma sessão deste treino não finalizada, a tela abre oferecendo **retomar** de onde parou (séries marcadas e tempo decorrido preservados — ver RN03).
 
 ### 6.2 Estado de Carregamento (Loading)
@@ -135,11 +138,21 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 > **Tela própria em tela cheia (full-screen)** exibida ao **finalizar o treino**. Layout de celebração para **incentivar o compartilhamento** nas redes sociais (estilo story do Instagram).
 
 - **Card-resumo (estilo story):** ocupa a tela, com identidade visual Vela (paleta verde-limão + azuis), com:
-  - **Nome do treino** + categoria/trilha (`.track` / `.performance`).
+  - **Primeiro nome do aluno** (ex.: "Ana · treino concluído") — personaliza sem expor foto.
+  - **Nome do treino**.
   - **Duração** do treino (tempo de realização).
-  - **Exercícios concluídos** (ex.: "8 de 8") e **total de séries** realizadas.
-  - **Data** da execução.
-  - Marca **`vela.`** discreta (assinatura da marca).
+  - **Exercícios concluídos** (ex.: "8 de 8") e **treinos na semana** (ex.: "2/5" — treinos executados na semana / total de treinos da base do aluno; ver RN12).
+  - **Data e hora** da execução (ex.: "22 jun 2026 · 18:42").
+  - Marca **`vela.` em destaque** (assinatura da marca, reforçada — esta tela serve de **divulgação**; **sem selo de trilha** — RN13/decisão #53).
+- **Fluxo de compartilhamento (consolidado — decisão #54):** o sub-fluxo tem **uma única tela de edição**, evitando telas intermediárias:
+  1. No **Resumo** (esta tela), o aluno toca em **"Compartilhar"**.
+  2. Abre o **Editor único** — uma só tela onde ele ajusta **fundo + texto juntos** (ver abaixo).
+  3. No Editor, ao tocar em **"Compartilhar"**, sobe a **folha de destinos do sistema** **por cima** (overlay, não é outra tela): **Story do Instagram, WhatsApp, Salvar**.
+- **Editor único (fundo + texto numa só tela):**
+  - **Card editável no topo** (estilo "stats sobre foto", ref. Strava): nome do aluno, nome do treino, métricas e data/hora formam **um só bloco** que o aluno **move e redimensiona junto**; itens internos podem ser **ocultados/readicionados** (bandeja) — ver RN13.
+  - **Faixa de fundo na base:** opção **"Tirar foto"** (câmera) + miniaturas dos **fundos do app** (artes branded). **Galeria = MVP futuro** (não exibida).
+  - **Botão primário "Compartilhar"** abre a folha de destinos.
+  - A imagem gerada do card é o que vai para o destino; o **recado ao treinador não entra** na imagem (RN11).
 - **Recado para o treinador (opcional):** abaixo do card, campo de texto **"Deixar um recado para o treinador"** com contador "0/300". É **privado** — fica anexado ao registro de execução para o treinador ler, e **não** é incluído na imagem compartilhada no story (RN11).
 - **Ações:** botão **"Compartilhar"** (abre o share nativo do dispositivo apenas com a imagem/card — sem o recado) e botão **"Concluir"** (salva o recado, se houver, fecha e volta ao Detalhe da Rotina).
 - **Bastidor (nota interna):** ao chegar neste estado, o **registro de execução** já foi gravado (ver RN04); o recado é anexado a esse registro ao tocar em "Concluir". O compartilhamento é opcional e não afeta o registro.
@@ -172,11 +185,22 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 
 - **RN01 — Somente o Aluno executa:** tela exclusiva do **Aluno**, sobre treinos de rotinas **atribuídas a ele**. O conteúdo do treino (séries/reps/descanso prescritos) é **somente leitura** — o aluno não altera a prescrição, apenas registra o que realizou.
 - **RN02 — Estrutura em grupos:** a execução respeita os **grupos numerados** e o **tipo** de cada grupo (Normal/Bi-set/Tri-set/Superset/Drop-set) definidos no treino (`[VELA-4002]`/`[VELA-4003]`). A ordem de execução é a do treino.
-- **RN03 — Iniciar/Finalizar e persistência parcial:** a duração é medida por um fluxo **explícito**: **"Iniciar treino"** inicia o cronômetro; **"Finalizar treino"** encerra. Se o aluno sair/fechar o app no meio, a sessão fica **salva como "em andamento"** (séries marcadas + tempo decorrido) e é **retomável** ao reabrir o treino. A sessão só é descartada se o aluno finalizar ou (futuro) descartar explicitamente.
+- **RN03 — Play/Pause, Finalizar e persistência parcial:** a duração é medida pelo **cronômetro geral** no topo, que **só conta após o aluno tocar em Play** (começa em 00:00) e pode ser **pausado/retomado** (Play ⇄ Pause). **"Finalizar treino"** (rodapé) encerra a sessão. Se o aluno sair/fechar o app no meio, a sessão fica **salva como "em andamento"** (séries marcadas + tempo decorrido) e é **retomável** ao reabrir o treino. A sessão só é descartada se o aluno finalizar ou (futuro) descartar explicitamente.
 - **RN04 — Registro de execução (modelo de sessão):** ao **finalizar**, grava-se um **registro de execução (sessão)** com: **data**, **hora de início/fim**, **duração**, **exercícios concluídos**, e **séries/reps/carga realizadas** por exercício. É a **fonte de dados** dos KPIs e do "último treino executado" de `[VELA-6002]`/`[VELA-6001]` (destrava #41 e #45) e do futuro Histórico de Treinos.
-- **RN05 — Timer de descanso:** ao concluir uma série, dispara um **timer regressivo** iniciando no **descanso prescrito** do exercício, com ações **Pular** e **+15s**. Em **grupos combinados** (Bi-set/Tri-set/Superset) **não há descanso entre os exercícios do grupo** — o timer dispara apenas ao **completar a rodada** (uma série de todos os exercícios do grupo). Em **Drop-set/Normal** dispara a cada série. Escopo do MVP = **descanso entre séries/rodadas**; há também o **cronômetro do treino** (tempo total correndo), usado para a duração.
+- **RN05 — Descanso sob demanda (por exercício):** o descanso **não dispara sozinho** — cada exercício tem, numa linha de ação compacta, um botão **"⏱ Descanso"** (com ícone de cronômetro) ao lado de um **check (✓)** que marca o exercício como concluído. Tocar em "⏱ Descanso" abre a telinha **compacta** daquele exercício, que mostra o **textinho de série** (ex.: "Série 1/3"), o **tempo regressivo** iniciando no **descanso prescrito** (ex.: 0:45→0:00) e as ações **+15s** e **Play (▶)**. O **Play** inicia a contagem; ao **zerar**, fica disponível novamente para a **próxima série** (re-arma sem botão separado). Ambos os botões do card ficam **desabilitados enquanto o treino não estiver em Play**. Em paralelo corre o **cronômetro geral** do treino (RN03), usado para a duração.
 - **RN06 — Contador e registro por exercício:** cada exercício tem um **contador de séries realizadas** (ex.: 3/4). O aluno marca cada série; o exercício fica **concluído** quando todas as séries são marcadas. Reps e **carga realizada** por série são **pré-preenchidos** com os valores **sugeridos pelo treinador** (carga é prescrita no treino — ver RN10) e o aluno só ajusta se realizou diferente. Não é obrigatório editar para concluir.
-- **RN07 — Resumo compartilhável:** ao finalizar, exibe um **card-resumo estilo story** (identidade Vela) com nome do treino, duração, exercícios/séries concluídos e data, com ação **Compartilhar** (share nativo). O compartilhamento é **opcional** e **não** condiciona a gravação do registro (que já ocorreu na finalização).
+- **RN07 — Resumo compartilhável:** ao finalizar, exibe um **card-resumo estilo story** (identidade Vela) com **primeiro nome do aluno**, nome do treino, duração, exercícios concluídos, **treinos na semana** (RN12) e **data/hora**, com a marca **`vela.` em destaque** (sem selo de trilha — RN13/decisão #53). A ação **Compartilhar** abre o **Editor único** (fundo + texto numa só tela — decisão #54); de lá, o botão Compartilhar sobe a **folha de destinos do sistema** (overlay) com **Story do Instagram, WhatsApp e Salvar**. O compartilhamento é **opcional** e **não** condiciona a gravação do registro (que já ocorreu na finalização). O **recado ao treinador não** entra na imagem (RN11).
+- **RN13 — Card de compartilhamento (composição e edição, bloco único — estilo "stats sobre foto"):**
+  - **Fundo:** **padrão do app** (artes branded, com a marca) ou **foto da câmera do app**; **galeria fica fora do MVP (MVP futuro)** e **não é exibida** (sem placeholder/"em breve"). A troca de fundo é feita **dentro do Editor único**, numa **faixa de fundos** na base ("Tirar foto" + miniaturas dos fundos do app) — sem tela separada (ver 6.4 / decisão #54).
+  - **Único elemento fixo (não move, não redimensiona, não oculta):** a **marca `vela.`**, exibida em **destaque** no rodapé do card. **O selo de trilha (`.track`/`.performance`) NÃO aparece neste card** — esta tela tem foco em **divulgação da marca** (ênfase em `vela.`), decisão #53.
+  - **Bloco único de conteúdo (Opção 1):** **nome do aluno**, **nome do treino**, as **métricas** (duração, exercícios, treinos na semana) e **data/hora** formam **um só bloco**. O aluno pode:
+    - **Mover** o bloco inteiro pelo card (arrastando a alça de mover ✥);
+    - **Redimensionar** o bloco inteiro — aumentar/diminuir — pela alça de redimensionar (⤡), **mantendo a proporção interna** entre os itens;
+    - **Ocultar/readicionar itens internos:** dentro do bloco, cada informação tem um **✕** que a remove; o item vai para uma **bandeja** abaixo do card e pode ser readicionado. (Não há reordenação nem movimento individual dos itens — eles se movem e redimensionam **sempre juntos**.)
+  - **Estilo travado:** **ícones de linha** (não emoji), pequenos; **cor padrão branca** para textos e ícones, com **destaque (verde-limão) apenas para a marca**. **Fonte e cores dos ícones não são editáveis.**
+  - **Data/hora:** o card inclui **data e hora** da execução (ex.: "22 jun 2026 · 18:42").
+  - O **recado ao treinador nunca** entra na imagem (RN11).
+- **RN12 — KPI "treinos na semana" no resumo:** o resumo exibe **treinos executados na semana / total de treinos da base do aluno** (ex.: "1/5") — no lugar do antigo "total de séries". O **numerador** conta as **execuções concluídas do aluno na semana corrente, considerando de segunda a sexta** (sábado e domingo não entram na contagem; zera toda segunda). O **denominador** é o **nº de treinos disponíveis ao aluno = soma dos treinos de todas as rotinas ativas** atribuídas a ele (ex.: rotina A com 3 + rotina B com 2 = 5). Depende do **registro de execução** (RN04), que esta tela passa a gerar. (Decisão #52 resolvida.)
 - **RN08 — Exercício sem detalhe preenchido:** se séries/reps/descanso/execução vierem **vazios** (herdado da pendência de `[VELA-4002]`/`[VELA-3004]`), a tela **exibe apenas o que houver** e nunca quebra: sem séries prescritas, o exercício é concluído por um único botão **"Marcar como concluído"** (sem contador); sem descanso, o timer não dispara automaticamente (pode ser acionado manualmente, se aplicável).
 - **RN09 — Som de repetição (fora do MVP):** o som configurável estilo box de CrossFit como auxílio durante o exercício é **opcional** e fica **fora do MVP** desta tela (ver decisão #48); entra em iteração futura.
 - **RN11 — Recado ao treinador (opcional, privado):** na tela de Resumo, o aluno pode escrever um **recado para o treinador** (opcional, **máx. 300 caracteres**, com contador). É **privado** — fica **anexado ao registro de execução** (RN04) para o treinador ler na sua visão das execuções (dependência futura, junto dos KPIs) e **nunca** aparece no **card compartilhável** (story). Não escrever não bloqueia a conclusão.
@@ -216,6 +240,13 @@ Tela do **Aluno** onde ele **consulta e executa** um treino atribuído a ele (de
 
 | Data | Autor | Descricao |
 |---|---|---|
+| 2026-06-23 | Maria Isabela | **Tela finalizada → 🟢 CONCLUIDO.** Resolvida a **decisão #52** (RN12): "semana" do KPI = **segunda a sexta** da semana corrente (sáb/dom não contam; zera toda segunda); **denominador = soma dos treinos de todas as rotinas ativas** do aluno. Sem mais ⚠️ PENDENTE na tela. **Dependência cruzada em aberto (não trava esta tela):** RN10/decisão #50 — incluir campo de **carga sugerida** no Cadastro/Visualizar Treino do Treinador (`[VELA-4003]`/`[VELA-4002]`); e o **Histórico de Treinos do Aluno** (a mapear) que consumirá o registro de execução (RN04). |
+| 2026-06-23 | Maria Isabela | **Fluxo de compartilhamento consolidado (rodada 8 — decisão #54):** o sub-fluxo passou de **3 telas** (escolher fundo + pré-visualização + modo edição) para **1 só** — **Editor único** com **fundo + texto na mesma tela** (card editável no topo; faixa de fundo "Tirar foto" + fundos do app na base; botão Compartilhar). Os **destinos** (Story Instagram/WhatsApp/Salvar) viram **folha do sistema em overlay** sobre o editor, não uma tela nova. **Resumo** segue como porta de entrada (celebração + recado + Compartilhar/Concluir). Mockup: removidos os frames "escolher fundo" e "modo edição"; agora "editor (fundo+texto)" + "escolher destino". 6.4/RN07/RN13 atualizados. |
+| 2026-06-23 | Maria Isabela | **Card de compartilhamento (rodada 7):** (a) **Opção 1 confirmada** — conteúdo vira **bloco único** que move/redimensiona junto, com **ocultar/readicionar itens** internos (bandeja); removidos as zonas/snap e o movimento por bloco independente (RN13). (b) **Selo de trilha removido** do card e **marca `vela.` em destaque** — foco em divulgação (decisão #53; RN07/RN13/6.4). (c) Card passa a incluir **data e hora** (ex.: "22 jun 2026 · 18:42"). (d) Novo **frame de seleção de fundo** (fundos do app + "Tirar foto"; **galeria fora do MVP**, não exibida) (6.4). (e) Destinos de compartilhamento fixados em **Story do Instagram, WhatsApp e Salvar** (RN07). Mockup atualizado (frames resumo, seleção de fundo, pré-visualização e modo edição). |
+| 2026-06-22 | Maria Isabela | **Editor do card de compartilhamento (rodada 6):** novo **RN13** — card estilo "stats sobre foto" (ref. Strava). **Fundo:** padrão do app ou **foto da câmera** (galeria futura). **Fixos:** selo (topo) e `vela.` (rodapé). **Móveis/ocultáveis:** nome do aluno, nome do treino, métricas e data, com **encaixe em zonas** numa área segura central (3 linhas de baixo p/ cima, colunas conforme nº de blocos; padrão centralizado) e **bandeja** de blocos ocultos. **Ícones de linha (não emoji), brancos**, destaque só na marca; **fonte/cores de ícone não editáveis**. Mockup atualizado (card de story e resumo). |
+| 2026-06-22 | Maria Isabela | **Card de compartilhamento (story) definido (rodada 5):** composição do card = **primeiro nome do aluno** ("Ana · treino concluído") + nome do treino + **selo de trilha** (`.track`/`.performance`) + **duração, exercícios e treinos na semana** + data + marca `vela.` (sem foto do aluno; recado fora da imagem — RN11). A ação Compartilhar mostra **pré-visualização no app + folha de destinos do sistema** (antes de escolher Instagram). RN07 atualizada; decisão #46 resolvida (restam só formatos de export). |
+| 2026-06-22 | Maria Isabela | **Refino dos controles de descanso (rodada 4):** (a) botão de descanso ganha **ícone de cronômetro** ("⏱ Descanso"), fica **menor** e passa a dividir uma linha compacta com um **botão de check (✓)** que marca o exercício concluído (RN05). (b) telinha de descanso **compacta**: textinho **"Série 1/3"**, contagem **45→0** e apenas **+15s** e **Play (▶)**; ao zerar, o Play re-arma para a próxima série (removidos "Iniciar descanso" e "Próxima série" como botões separados). |
+| 2026-06-22 | Maria Isabela | **Refino de execução (pré-mockup, rodada 3):** (a) **Play/Pause + cronômetro geral fixos no topo** — o cronômetro só conta após o Play e pode pausar/retomar; "Iniciar treino" no rodapé foi **removido** e "Finalizar treino" permanece no rodapé (RN03). (b) **Descanso sob demanda por exercício** — botão "Descanso" individual em cada card (habilita só após Play); a telinha de descanso traz **+15s**, **Iniciar descanso** (substitui "Pular") e **Próxima série** (avança o contador); não dispara mais automático (RN05). (c) **Resumo:** "total de séries" substituído por **"treinos na semana" (ex.: 2/5)** = execuções na semana / nº de treinos da base do aluno (RN12, decisão #52). |
 | 2026-06-22 | Maria Isabela | **Recado ao treinador (RN11):** adicionado campo **opcional** "Deixar um recado para o treinador" na tela de Resumo (máx. **300 caracteres**, contador). É **privado** (anexado ao registro de execução, lido pelo treinador) e **não** entra no card compartilhável do story. Feedback de **conclusão de rotina** ficou no Detalhe da Rotina `[VELA-6002]` (decisão #51), fora desta tela. |
 | 2026-06-22 | Maria Isabela | **Rodada 2 de decisões (pré-mockup):** (a) **carga** passa a ser **prescrita pelo treinador** (carga sugerida) e o aluno sobrescreve se usar diferente — novo campo no treino, exige revisar `[VELA-4003]`/`[VELA-4002]` (RN10, decisão #50); (b) lista com **todos os exercícios visíveis** e controles em cada card; (c) timer de descanso em **grupos combinados** dispara só ao **completar a rodada** do grupo (RN05); (d) Resumo de finalização = **tela própria em tela cheia** (6.4). |
 | 2026-06-22 | Maria Isabela | Criação inicial do documento (entrevista `/mapear-tela`), a partir do ticket do cliente `VELA-5002`. **Visualizar / Executar Treino (Aluno)** `[VELA-6003]` (🔵 MVP), destino de toque do Detalhe da Rotina `[VELA-6002]` (RN08) e par de execução da Visualizar do Treinador `[VELA-4002]`. **Decisões da entrevista:** (a) MVP com **execução completa** (consulta + registro); (b) respeita a **estrutura de grupos numerados** (RN02); (c) formato **lista vertical estilo MFit** (decisão #47); (d) **Iniciar/Finalizar explícitos** com cronômetro + persistência parcial retomável (RN03); (e) **timer de descanso** entre séries usando o descanso prescrito (RN05); (f) **contador de séries** no MVP, reps/carga opcionais (RN06), **som de repetição fora do MVP** (RN09/#48); (g) exercício sem detalhe **não quebra** a tela (RN08); (h) ao finalizar, **resumo compartilhável estilo story** para incentivar redes sociais (RN07/#46). **Modelo de execução (sessão)** definido (RN04) — **destrava** os KPIs/"último treino" adiados em `[VELA-6002]`/`[VELA-6001]` (#41 e #45). Consolida os placeholders Iniciar/Andamento/Finalizar do fluxo do Aluno. Status → EM ANDAMENTO |

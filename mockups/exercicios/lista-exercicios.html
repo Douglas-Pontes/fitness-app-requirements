@@ -290,7 +290,7 @@
       <!-- menu de ações (popover sobre o card) -->
       <div class="absolute top-44 right-4 w-44 bg-white rounded-xl shadow-2xl border border-slate-100 py-1 z-30">
         <p class="px-3 pt-1.5 pb-1 text-[10px] uppercase tracking-wide text-slate-400">Agachamento livre</p>
-        <button class="w-full text-left text-sm text-navy font-medium px-3 py-2 hover:bg-slate-50">Incluir em rotina</button>
+        <button class="w-full text-left text-sm text-navy font-medium px-3 py-2 hover:bg-slate-50">Incluir em treino</button>
         <button class="w-full text-left text-sm text-slate-700 px-3 py-2 hover:bg-slate-50">Editar</button>
         <button class="w-full text-left text-sm text-slate-700 px-3 py-2 hover:bg-slate-50">Desativar</button>
         <button class="w-full text-left text-sm text-rose-600 px-3 py-2 hover:bg-rose-50">Excluir</button>
@@ -298,9 +298,9 @@
     </div>
   </section>
 
-  <!-- ============ FRAME 4B — INCLUIR EM ROTINA (BOTTOM-SHEET) ============ -->
+  <!-- ============ FRAME 4B — INCLUIR EM TREINO (BOTTOM-SHEET) ============ -->
   <section>
-    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">incluir em rotina — bottom-sheet</span></div>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">incluir em treino — bottom-sheet</span></div>
     <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
       <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
         <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
@@ -322,22 +322,22 @@
       <!-- bottom sheet -->
       <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-2xl px-5 pt-5 pb-6 shadow-2xl">
         <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-4"></div>
-        <h3 class="text-base font-medium text-slate-800 mb-1">Incluir em rotina</h3>
-        <p class="text-[11px] text-slate-400 mb-4">Agachamento livre · escolha uma ou mais rotinas em construção</p>
+        <h3 class="text-base font-medium text-slate-800 mb-1">Incluir em treino</h3>
+        <p class="text-[11px] text-slate-400 mb-4">Agachamento livre · escolha um ou mais treinos em construção</p>
         <div class="space-y-1">
-          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Hipertrofia · Semana A</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
-          <label class="flex items-center justify-between py-2.5 text-sm text-slate-700 border-b border-slate-50"><span>Full body · iniciante</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
-          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Inferiores · força</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
-          <!-- já contém o exercício: desabilitada -->
+          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Treino A · Inferiores</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <label class="flex items-center justify-between py-2.5 text-sm text-slate-700 border-b border-slate-50"><span>Treino B · Full body</span><span class="w-5 h-5 rounded border border-slate-300"></span></label>
+          <label class="flex items-center justify-between py-2.5 text-sm text-navy font-medium border-b border-slate-50"><span>Treino C · Força</span><span class="w-5 h-5 rounded bg-lime flex items-center justify-center text-navy text-xs">✓</span></label>
+          <!-- já contém o exercício: desabilitado -->
           <label class="flex items-center justify-between py-2.5 text-sm text-slate-300 cursor-not-allowed">
-            <span>Push/Pull · avançado</span>
-            <span class="text-[10px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">Já na rotina</span>
+            <span>Treino D · Pernas</span>
+            <span class="text-[10px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">Já no treino</span>
           </label>
         </div>
-        <p class="text-[11px] text-slate-400 mt-3 text-center">Entre na rotina para finalizar.</p>
+        <p class="text-[11px] text-slate-400 mt-3 text-center">Entre no treino para finalizar.</p>
         <div class="flex gap-2 mt-3">
           <button class="flex-1 text-sm py-3 rounded-lg border border-slate-200 text-slate-600 font-medium">Cancelar</button>
-          <button class="flex-1 text-sm py-3 rounded-lg bg-lime text-navy font-medium">Adicionar a 2 rotinas</button>
+          <button class="flex-1 text-sm py-3 rounded-lg bg-lime text-navy font-medium">Adicionar a 2 treinos</button>
         </div>
       </div>
     </div>
@@ -345,7 +345,7 @@
 
   <!-- ============ FRAME 4C — SUCESSO: ADICIONADO (TOAST) ============ -->
   <section>
-    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — adicionado à rotina</span></div>
+    <div class="text-center mb-2"><span class="inline-block bg-lime text-navy text-xs font-medium px-3 py-1 rounded-full">sucesso — adicionado ao treino</span></div>
     <div class="phone bg-white rounded-[2.2rem] shadow-2xl border-8 border-slate-900 overflow-hidden relative">
       <div class="bg-white border-b border-slate-100 px-4 pt-4 pb-3 sticky top-0 z-10">
         <h2 class="text-base font-medium lowercase-brand mb-3">exercícios</h2>
@@ -374,7 +374,7 @@
       <!-- toast de sucesso -->
       <div class="absolute bottom-24 inset-x-4 z-30 bg-navy text-white text-xs rounded-lg px-3 py-2.5 shadow-lg flex items-center gap-2">
         <span class="text-lime">✓</span>
-        <span>Adicionado a 2 rotinas — entre na rotina para finalizar</span>
+        <span>Adicionado a 2 treinos — entre no treino para finalizar</span>
       </div>
       <button class="absolute bottom-5 right-5 w-14 h-14 rounded-full bg-lime text-navy text-3xl font-light shadow-lg flex items-center justify-center">+</button>
     </div>
@@ -544,7 +544,7 @@
 
 <div class="max-w-3xl mx-auto px-4 pb-16 text-[11px] text-slate-400 text-center leading-relaxed">
   <p>Espelha as seções 3–6 do documento <code>lista-exercicios.md</code>. Busca sempre aberta e normalizada · filtros como botões ▾ → bottom-sheet · cards finos (thumbnail+play, nome, grupo muscular primário, ⋮) · lista corrida A→Z · contador de resultados · atalho de vídeo em modal sobre a lista · FAB "+" só para o Treinador.</p>
-  <p>Frame de <strong>modo seleção</strong> (entrada pela montagem de Rotina) será adicionado quando a tela de Rotina for mapeada.</p>
+  <p>Frame de <strong>modo seleção</strong> (entrada pela montagem de Treino) será adicionado ao detalhar o seletor de exercícios do Cadastro de Treino.</p>
 </div>
 
 </body>

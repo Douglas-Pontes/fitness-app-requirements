@@ -10,7 +10,7 @@
 | **Codigo** | VELA-2003 |
 | **Prioridade** | 🔵 MVP |
 | **Status** | 🟢 CONCLUIDO |
-| **Ultima atualizacao** | 2026-06-12 |
+| **Ultima atualizacao** | 2026-06-24 |
 
 ---
 
@@ -100,7 +100,7 @@ Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma 
 - **Prazo:** so existe quando "quem vai preencher = Aluno" e "Vai ter prazo? = Sim"; quando presente, deve ser uma data **futura** (a partir de hoje).
 - **Data da avaliacao:** obrigatoria; nao pode ser futura.
 - Campos numericos aceitam **decimais com virgula** (ex: 84,5) e unidade fixa exibida (cm, kg, mm, %, kcal).
-- Campos **calculados** (IMC, RCQ, soma de dobras, densidade, % de gordura, massa gorda/magra) sao preenchidos automaticamente e **nao** sao editaveis.
+- Campos **calculados** (IMC, RCQ, soma de dobras) sao preenchidos automaticamente e **nao** sao editaveis. Densidade, % de gordura e massa gorda/magra (Dobras/Bioimpedancia) sao **digitados manualmente**.
 - **Peso / Altura / Idade (RN12):** **nao** ha rotulo "Sugerido" separado. Como qualquer outro campo, exibem o apoio padrao **`Ultima: XXXXX`** (ultima avaliacao do mesmo tipo) ou **"Sem dados anterior"** (RN03). O input **nao** e preenchido automaticamente — o usuario **digita/confirma** o valor desta avaliacao.
 - Validacao de faixa plausivel por campo (ex: peso 20–300 kg; perimetros 0–200 cm; dobras 1–80 mm; % de gordura 1–70%) com **aviso suave** quando fora da faixa. O aviso **nao bloqueia** o salvamento — apenas chama a atencao; o avaliador pode confirmar e salvar um valor fora da faixa (caso real/raro). O bloqueio de salvar fica restrito aos campos **obrigatorios** e a **Data** (nao futura).
 - A acao primaria (**"Concluir"** / **"Enviar"**) so habilita com a **Data** preenchida e ao menos um campo de medida do tipo informado (Anamnese: obrigatorios o PAR-Q completo + Objetivo principal). **"Salvar rascunho"** nao exige validacao completa.
@@ -201,39 +201,31 @@ Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma 
 ---
 
 ### 4.C — Campos: DOBRAS CUTANEAS
-> Estimativa de composicao corporal por adipometro. Protocolo padrao **Jackson & Pollock** (3 ou 7 dobras). Cada dobra em **mm** com "ultima medicao".
+> Estimativa de composicao corporal por adipometro. A tela exibe **todas as dobras possiveis** (9 pontos), **todas opcionais**; cada dobra em **mm** com "ultima medicao". **Sem seletor de protocolo:** o app **nao** calcula a composicao corporal automaticamente — apenas a **Soma das dobras** e automatica; **densidade, % de gordura, massa gorda e massa magra** sao **campos manuais e opcionais**, preenchidos pelo Treinador (ele calcula por fora ou registra de outra fonte). Ver RN09.
 
-**Grupo 1 — Configuracao**
+**Grupo 1 — Dobras (mm)** — todas opcionais; cada uma com "ultima medicao"
+| # | Nome do Campo | Obrigatorio |
+|---|---|---|
+| 1 | Tricipital | Nao |
+| 2 | Bicipital | Nao |
+| 3 | Subescapular | Nao |
+| 4 | Peitoral | Nao |
+| 5 | Axilar Media | Nao |
+| 6 | Suprailiaca | Nao |
+| 7 | Abdominal | Nao |
+| 8 | Coxa | Nao |
+| 9 | Panturrilha | Nao |
+
+**Grupo 2 — Resultados e registro**
 | # | Nome do Campo | Tipo | Obrigatorio | Observacao |
 |---|---|---|---|---|
-| 1 | Protocolo | Select | Sim | Pollock 3 dobras / Pollock 7 dobras / Outro |
-| 2 | Idade (na avaliacao) | Number | Sim | Usada na formula (pode herdar do perfil) |
-| 3 | Sexo | Somente leitura | — | Herdado do perfil (formula difere por sexo) |
-
-**Grupo 2 — Dobras (mm)** — exibir conforme protocolo; cada uma com "ultima medicao"
-| # | Nome do Campo | Pollock 7 | Pollock 3 (H) | Pollock 3 (M) |
-|---|---|---|---|---|
-| 4 | Peitoral / Torax | ✔ | ✔ | — |
-| 5 | Axilar media | ✔ | — | — |
-| 6 | Triceps | ✔ | — | ✔ |
-| 7 | Subescapular | ✔ | — | — |
-| 8 | Abdominal | ✔ | ✔ | — |
-| 9 | Suprailiaca | ✔ | — | ✔ |
-| 10 | Coxa | ✔ | ✔ | ✔ |
-
-> Para "Outro" protocolo, permitir tambem **Biceps** e **Panturrilha** (9 dobras) — campos adicionais opcionais.
-> **Calculo no protocolo "Outro":** como nao ha equacao padrao definida, os resultados de composicao (**% de gordura**, **densidade corporal**, **massa gorda**, **massa magra**) **nao sao calculados automaticamente** — ficam **em branco e editaveis** para o Treinador **preencher manualmente** (a "Soma das dobras" continua sendo somada automaticamente). Em Pollock 3/7 esses campos permanecem **calculados e somente leitura**.
-
-**Grupo 3 — Resultados (calculados, somente leitura)**
-| # | Nome do Campo | Tipo | Observacao |
-|---|---|---|---|
-| 11 | Soma das dobras | Calculado | Soma (mm) das dobras do protocolo |
-| 12 | Densidade corporal | Calculado | Equacao de Pollock conforme sexo/idade |
-| 13 | % de gordura | Calculado | Equacao de Siri a partir da densidade |
-| 14 | Massa gorda | Calculado | kg (peso × %G) |
-| 15 | Massa magra | Calculado | kg (peso − massa gorda) |
-| 16 | Peso (para os calculos) | Number | kg — pode herdar da ultima antropometrica |
-| 17 | Observacoes | Textarea | — |
+| 10 | Soma das dobras | Calculado | Auto | Soma (mm) das dobras preenchidas — somente leitura, atualiza em tempo real |
+| 11 | Densidade corporal | Number | Nao | **Manual** — opcional |
+| 12 | % de gordura | Number (%) | Nao | **Manual** — opcional |
+| 13 | Massa gorda | Number (kg) | Nao | **Manual** — opcional |
+| 14 | Massa magra | Number (kg) | Nao | **Manual** — opcional |
+| 15 | Peso | Number (kg) | Nao | Pode herdar da ultima antropometrica |
+| 16 | Observacoes | Textarea | Nao | — |
 
 ---
 
@@ -344,7 +336,7 @@ Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma 
 - **RN01:** O **mesmo** formulario serve para **criar/editar** (Treinador) e **preencher** (Aluno); em editar/preencher abre **preenchido** com o que ja existir.
 - **RN02:** O conjunto de campos e **dinamico por tipo** (Secoes 4.A–4.D). O **tipo** e definido na criacao e nao muda depois.
 - **RN03 (Ultima medicao):** Abaixo de **todos** os campos numericos — **inclusive os calculados** (IMC, soma de dobras, % de gordura, etc.) —, exibir **apenas** `Ultima: XXXXX` — o ultimo valor registrado daquele campo (com unidade), considerando **apenas avaliacoes do mesmo tipo** (campos iguais em tipos diferentes — ex: Peso, % de gordura — nao se misturam). **Sem data e sem variacao/delta.** Em edicao/revisao/preenchimento, considerar a avaliacao **anterior** a atual; sem registro anterior, exibir **"Sem dados anterior"**.
-- **RN04:** Campos **calculados** (IMC, RCQ, soma de dobras, densidade, % de gordura, massa gorda/magra) sao automaticos e somente leitura, recalculando em tempo real.
+- **RN04:** Campos **calculados** (IMC, RCQ, soma de dobras) sao automaticos e somente leitura, recalculando em tempo real. Os demais valores de composicao corporal (**densidade, % de gordura, massa gorda/magra**) **nao** sao calculados pelo app — sao **preenchidos manualmente** (Dobras Cutaneas — RN09; Bioimpedancia — Secao 4.D).
 - **RN05 (Permissoes):** **Criar/editar/revisar** = somente **Treinador**. Em **Solicitada/Em andamento** a acao e **"Editar"**; em **Concluida** e **"Revisar"** (edita no lugar). **Preencher** = somente o **Aluno** destinatario, em avaliacao **Solicitada**. Apos a avaliacao virar **Concluida**, ela **trava para o Aluno** (so o Treinador revisa/exclui — ver RN13). Acessos indevidos sao redirecionados a Visualizar `[VELA-2002]`.
 - **RN05b (Liberar):** Ao criar, o Treinador pode **concluir** (status Concluida), **salvar rascunho** (Em andamento) ou **liberar** (Solicitada) para o Aluno preencher. A acao **"Liberar para o aluno preencher" existe somente no modo criacao** — um rascunho ja salvo como **Em andamento** pelo Treinador **nao** pode ser liberado depois (so pode ser concluido ou continuado por ele).
 - **RN05c (Rascunho / Em andamento):** Tanto o Treinador quanto o Aluno podem **salvar rascunho** de um preenchimento incompleto. O rascunho fica com status **Em andamento** (sem validacao final) e pode ser retomado depois pela acao **"Continuar"** na lista `[VELA-2001]`. So o **envio/conclusao** aplica a validacao completa.
@@ -354,7 +346,7 @@ Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma 
 - **RN06:** A **Data** e obrigatoria e nao pode ser futura.
 - **RN07:** Valores numericos aceitam decimais com virgula; validacao de faixa plausivel por campo com **aviso suave** quando fora da faixa, que **nao bloqueia** o salvamento (o avaliador pode confirmar e salvar). So bloqueiam o salvamento os campos **obrigatorios** e a **Data** (nao futura).
 - **RN08 (Anamnese):** Se qualquer resposta do **PAR-Q** for "Sim", exibir alerta recomendando liberacao medica antes de iniciar o treino (informativo; nao bloqueia o salvamento).
-- **RN09 (Dobras):** Em **Pollock 3/7**, a formula de % de gordura segue **Jackson & Pollock** + **Siri**, variando por **sexo** e **idade**, e os resultados sao **calculados/somente leitura**; o conjunto de dobras exibido depende do **protocolo** escolhido. No protocolo **"Outro"** nao ha equacao padrao: % de gordura, densidade, massa gorda e massa magra ficam **em branco e editaveis** para preenchimento **manual** do Treinador (apenas a soma das dobras e automatica).
+- **RN09 (Dobras — sem protocolo):** A tela de Dobras Cutaneas **nao tem seletor de protocolo**: exibe **todas as dobras possiveis** (9 pontos), **todas opcionais**. O app **nao** calcula a composicao corporal (sem protocolo/formula): **densidade, % de gordura, massa gorda e massa magra** sao **campos manuais e opcionais**, preenchidos pelo Treinador. Apenas a **Soma das dobras** e automatica (somente leitura, recalcula em tempo real conforme as dobras preenchidas). Idade e Sexo **nao** aparecem nesta tela (so existiam para alimentar a formula).
 - **RN10:** Fotos sao opcionais; o anexo de **laudo** da Bioimpedancia tambem e opcional.
 - **RN11:** Ao voltar com alteracoes nao salvas, exigir confirmacao ("Descartar alteracoes?").
 - **RN12 (Peso/Altura/Idade):** Esses campos seguem o mesmo padrao dos demais: o apoio sob o campo e **`Ultima: XXXXX`** (ultima avaliacao do mesmo tipo) ou **"Sem dados anterior"** — **nao** ha rotulo "Sugerido" separado. O input **nao** e preenchido automaticamente; o usuario digita/confirma o valor desta avaliacao.
@@ -406,4 +398,5 @@ Aparece em **TODOS os campos numericos — inclusive os calculados** (IMC, soma 
 | 2026-06-12 | Equipe Vela | Uniformizacao da "ultima medicao": (1) aparece em **TODOS os campos numericos, inclusive os calculados** (IMC, soma, % de gordura); (2) **fim do rotulo "Sugerido"** — Peso/Altura/Idade passam a usar o mesmo "Ultima: XXXXX" (RN12 reescrita); (3) mensagem de ausencia padronizada para **"Sem dados anterior"** (antes "Sem medicao anterior"). Atualizados Secao 1, 3.2, 4 (regra global), 6.1, RN03/RN12. Aplicado no mockup |
 | 2026-06-12 | Equipe Vela | Definido (opcao a): **Anamnese nao exibe "Anterior"** no formulario — campos qualitativos respondidos do zero (PAR-Q sem inducao); comparacao historica fica na Visualizar `[VELA-2002]`. Atualizadas Regra global (Secao 4) e Secao 4.A. "Ultima"/"Sem dados anterior" segue valendo so para campos **numericos** |
 | 2026-06-12 | Equipe Vela | **Inicio da criacao** redesenhado (Secao 0): primeiros campos = **Aluno** (travado se aberto pelo perfil; **busca** entre cadastrados se entrada global, traz o @) + **Quem vai preencher** (Treinador/Aluno) e, se Aluno, **"Vai ter prazo?"** → data. A escolha define a acao primaria do rodape: **Treinador → "Concluir"**, **Aluno → "Liberar para o aluno preencher"**. Atualizadas Secoes 3.1, 3.2, 4, 5, 6.1, 7; novas **RN16**, ajustes em RN05d/RN15. Entrada global registrada como decisao #16 do indice |
+| 2026-06-24 | Equipe Vela | **Dobras Cutaneas sem protocolo:** removido o seletor de Protocolo (Pollock 3/7/Outro) e os campos **Idade/Sexo**. A tela passa a exibir **todas as 9 dobras possiveis, todas opcionais** (Tricipital, Bicipital, Subescapular, Peitoral, Axilar Media, Suprailiaca, Abdominal, Coxa, Panturrilha). O app deixa de calcular composicao corporal automaticamente — **densidade, % de gordura, massa gorda e massa magra** viram **campos manuais e opcionais**; apenas a **Soma das dobras** continua automatica. Atualizadas Secao 4.C, RN04, RN09 e Regras de Preenchimento |
 | 2026-06-12 | Equipe Vela | (1) **Anamnese/registros sao independentes e datados** (refazer cria novo registro, nao sobrescreve) — nova RN14; (2) **protocolo "Outro" das Dobras**: sem equacao padrao, % de gordura/densidade/massa gorda/magra ficam **em branco e editaveis** para preenchimento manual do Treinador (so a soma das dobras e automatica) — Secao 4.C e RN09; (3) **acao final do Treinador renomeada de "Salvar" para "Concluir"** (mantendo "Enviar" do Aluno e "Salvar rascunho" para ambos) — modelo de 2 botoes distintos em vez de modal; atualizadas Secoes 3.1, 3.3, 4, 5, 6.2, 6.4, 9 e RN05b |

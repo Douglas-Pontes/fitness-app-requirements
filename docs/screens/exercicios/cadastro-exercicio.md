@@ -10,14 +10,14 @@
 | **Codigo** | VELA-3003 |
 | **Prioridade** | 🔵 MVP |
 | **Status** | 🟢 CONCLUIDO |
-| **Ultima atualizacao** | 2026-06-18 |
+| **Ultima atualizacao** | 2026-06-23 |
 
 ---
 
 ## 1. Objetivo da Tela
 > O que o usuario consegue fazer nesta tela? Qual problema ela resolve?
 
-Formulário onde o **Treinador** cria um novo exercício ou edita um exercício do **seu** acervo. Define o exercício de forma **reutilizável** (nome, classificação, mídia e orientações), para depois ser adicionado a uma **Rotina**. **Não** define séries/repetições/carga/descanso — esses parâmetros são prescritos por aluno na Rotina, pois o mesmo exercício é usado com prescrições diferentes. A mesma tela serve para **criar** e **editar** (modo dinâmico: vem em branco ou pré-preenchida).
+Formulário onde o **Treinador** cria um novo exercício ou edita um exercício do **seu** acervo. Define o exercício de forma **reutilizável** (nome, classificação, mídia e orientações), para depois ser adicionado a um **Treino** (o exercício **não** vai direto para a Rotina — a Rotina é formada por Treinos). **Não** define séries/repetições/descanso — esses parâmetros são prescritos **no Treino** (`[VELA-4003]`), pois o mesmo exercício é usado com prescrições diferentes em treinos distintos. A mesma tela serve para **criar** e **editar** (modo dinâmico: vem em branco ou pré-preenchida).
 
 ---
 
@@ -95,7 +95,7 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 - O **Vídeo de execução** é **opcional** e aceita duas fontes: **escolher entre meus vídeos** (os que o Treinador já adicionou ao app) ou **colar um link do YouTube** (`youtube.com/watch?v=...`, `youtu.be/...`, `youtube.com/shorts/...`); ao validar, gera a pré-visualização.
 - Se **Imagem de capa** ficar vazia, a thumbnail do vídeo vira a capa padrão (comportamento interno; sem mensagem na tela).
 - **Equipamentos complementares:** campo **único** (multi-seleção, opcional). O Treinador adiciona **apenas o que não fica óbvio no vídeo** (ex: band, step). Ao tocar em "adicionar", o app **sugere os materiais que ele já usou antes** e permite **digitar um novo**.
-- Séries, repetições, carga, descanso e cadência **não** existem nesta tela (são definidos na Rotina).
+- Séries, repetições, carga, descanso e cadência **não** existem nesta tela (séries/repetições/descanso são definidos no **Treino**, `[VELA-4003]`).
 
 ---
 
@@ -105,8 +105,8 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 |---|---|---|---|---|---|
 | 1 | Botão primário | "Salvar exercício" | Rodapé | Desabilitado até obrigatórios válidos | Valida → salva no acervo do Treinador → volta para a Lista `[VELA-3001]` com toast de sucesso |
 | 2 | Botão voltar | ← | Header (esq.) | Ativo | Se houver alterações não salvas, abre modal "Descartar alterações?"; senão, volta |
-| 3 | Toggle | "Ativo / Inativo" | Topo do form (só edição) | Reflete o estado atual | Alterna disponibilidade. Ao **desativar**, exibe: "Exercícios inativos continuam nas rotinas atuais, mas não podem ser adicionados a novas." Ao **reativar**, exibe alerta pedindo para **revisar o exercício antes de reativar** (as informações voltam como estavam). |
-| 4 | Botão | "Excluir exercício" | Rodapé / menu (só edição) | Visível apenas em edição de exercício próprio; **desabilitado se estiver em uso** | Abre modal de confirmação → exclui definitivamente (só se não estiver em nenhuma rotina) |
+| 3 | Toggle | "Ativo / Inativo" | Topo do form (só edição) | Reflete o estado atual | Alterna disponibilidade. Ao **desativar**, exibe: "Exercícios inativos continuam nos treinos atuais, mas não podem ser adicionados a novos." Ao **reativar**, exibe alerta pedindo para **revisar o exercício antes de reativar** (as informações voltam como estavam). |
+| 4 | Botão | "Excluir exercício" | Rodapé / menu (só edição) | Visível apenas em edição de exercício próprio; **desabilitado se estiver em uso** | Abre modal de confirmação → exclui definitivamente (só se não estiver em nenhum treino) |
 
 ---
 
@@ -158,9 +158,9 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 - RN03: O app **não** tem base pronta de vídeos. No campo Vídeo, o Treinador pode **escolher entre os seus próprios vídeos** (os que ele já adicionou ao app) ou **colar um link do YouTube**. O vídeo é **opcional**.
 - RN04: O **nome normalizado** (sem acentos, minúsculas) é derivado automaticamente do Nome para alimentar a busca da Lista.
 - RN05: A combinação **nome + nível** deve ser **única dentro do acervo do Treinador** — ou seja, é permitido repetir o mesmo nome **apenas** se o **nível** for diferente (exercícios de outros treinadores não geram conflito). Por isso o **Nível é obrigatório**.
-- RN06: **Séries, repetições, carga, descanso e cadência não pertencem ao exercício** — são definidos na Rotina.
-- RN07: Exclusão é **definitiva** (sem lixeira), sempre confirmada por modal e **só permitida se o exercício não estiver em uso por nenhuma rotina**. Se estiver em uso, a exclusão fica indisponível e o caminho é **Desativar** (RN11).
-- RN11: O exercício tem estado **Ativo/Inativo** (toggle, só para exercícios do próprio Treinador). **Inativo** = permanece nas rotinas que já o usam, mas **não pode ser adicionado a novas**; ao desativar, exibir a mensagem explicativa. **Desativar não altera nem apaga nenhum dado** — todas as informações preenchidas ficam **salvas** e a tela continua **toda preenchida**. Ao **reativar**, exibir um **alerta pedindo para revisar o exercício** (as informações voltam exatamente como estavam quando foi desativado).
+- RN06: **Séries, repetições, descanso (e carga/cadência) não pertencem ao exercício** — séries/repetições/descanso são definidos no **Treino** (`[VELA-4003]`). O exercício é a peça reutilizável; a prescrição vive no Treino que o usa.
+- RN07: Exclusão é **definitiva** (sem lixeira), sempre confirmada por modal e **só permitida se o exercício não estiver em uso por nenhum treino**. Se estiver em uso, a exclusão fica indisponível e o caminho é **Desativar** (RN11).
+- RN11: O exercício tem estado **Ativo/Inativo** (toggle, só para exercícios do próprio Treinador). **Inativo** = permanece nos treinos que já o usam, mas **não pode ser adicionado a novos**; ao desativar, exibir a mensagem explicativa. **Desativar não altera nem apaga nenhum dado** — todas as informações preenchidas ficam **salvas** e a tela continua **toda preenchida**. Ao **reativar**, exibir um **alerta pedindo para revisar o exercício** (as informações voltam exatamente como estavam quando foi desativado).
 - RN08: **Não há campo de áudio no exercício.** A gravação de áudio de instrução foi movida para a **aba de Treino** (o Treinador grava no app uma instrução sobre o **treino**, não sobre um exercício específico) — a ser detalhado ao mapear Treino.
 - RN09: O equipamento é um **campo único** ("Equipamentos complementares", multi-seleção, opcional). Registra-se **só o que não é óbvio no vídeo** (ex: band, step). Ao adicionar, o app **sugere os materiais já usados** pelo Treinador e permite **digitar um novo**. Não há "principal vs. adicional".
 - RN10: O formulário é uma **tela única** em fluxo contínuo (os blocos A–D são apenas subtítulos visuais, sem accordion); **Nome**, **Grupo muscular primário** e **Nível** bloqueiam o salvar (demais campos, inclusive o vídeo, são opcionais/recomendados).
@@ -193,3 +193,4 @@ Formulário onde o **Treinador** cria um novo exercício ou edita um exercício 
 | 2026-06-17 | Equipe Vela | Criação inicial do documento (cadastro/edição de exercício — visão do Treinador) |
 | 2026-06-17 | Equipe Vela | Revisão completa + mockup: tela única (sem accordion), sem acervo global, equipamentos complementares, vídeo de execução obrigatório (base/YouTube), áudio movido para Treino, orientação em 2 campos, nível obrigatório (3 fixos) com unicidade nome+nível, ciclo ativar/desativar (dados preservados, alerta de revisão ao reativar). Status → CONCLUIDO |
 | 2026-06-18 | Equipe Vela | Mídia: fonte de vídeo passa de "base do app" para **"meus vídeos"** (vídeos que o próprio Treinador já adicionou — não há base pronta) e o **vídeo deixa de ser obrigatório**. Obrigatórios agora: Nome, Grupo muscular primário e Nível. |
+| 2026-06-23 | Maria Isabela | **Realinhamento da hierarquia Exercício → Treino → Rotina:** exercício é adicionado a um **Treino** (não vai direto para a Rotina); prescrição (séries/repetições/descanso) vive no **Treino** (`[VELA-4003]`), não na Rotina (objetivo, regras de preenchimento, RN06). Trava de exclusão e mensagens de inativo passam a referir **treino** em vez de rotina (RN07, RN11, toggle, ação Excluir). |

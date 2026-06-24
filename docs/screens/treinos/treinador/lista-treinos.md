@@ -9,15 +9,15 @@
 | **Modulo** | Treinos |
 | **Codigo** | VELA-4001 |
 | **Prioridade** | 🔵 MVP |
-| **Status** | 🟡 EM ANDAMENTO |
-| **Ultima atualizacao** | 2026-06-18 |
+| **Status** | 🟢 CONCLUIDO |
+| **Ultima atualizacao** | 2026-06-24 |
 
 ---
 
 ## 1. Objetivo da Tela
 > O que o usuario consegue fazer nesta tela? Qual problema ela resolve?
 
-Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da **sua** base reutilizável, de onde ele cria um novo, abre para visualizar/editar e dispara as ações de gestão (Duplicar, Ativar/Desativar, Excluir). É o ponto de partida do trio **VELA-4001/4002/4003** (Lista, Visualizar, Cadastro), espelhando o padrão de Exercícios (`[VELA-3001]`) e Avaliações (`[VELA-2001]`). A mesma tela também serve em **modo seleção** quando aberta a partir da montagem/edição de uma Rotina, para escolher quais treinos compõem a rotina.
+Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da **sua** base reutilizável, de onde ele cria um novo, abre para visualizar/editar e dispara as ações de gestão (Duplicar, Ativar/Desativar, Excluir). É o ponto de partida do trio **VELA-4001/4002/4003** (Lista, Visualizar, Cadastro), espelhando o padrão de Exercícios (`[VELA-3001]`) e Avaliações (`[VELA-2001]`). _(A escolha de treinos para compor uma Rotina é feita pelo **seletor de treinos** da própria montagem de Rotina, `[VELA-5003]` — não é responsabilidade desta tela.)_
 
 ---
 
@@ -36,7 +36,7 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 > Descreva a estrutura visual da tela de cima para baixo.
 
 ### 3.1 Header / Cabecalho
-- Conteudo: Título "Treinos" + campo de **busca** (por nome). Em **modo seleção** (vindo da Rotina), o header mostra Botão voltar (←) + título "Selecionar treinos" + contador de selecionados.
+- Conteudo: Título "Treinos" + campo de **busca** (por nome).
 - Comportamento: Fixo no topo. A busca é **normalizada** (ignora acentos e maiúsculas/minúsculas), espelhando `[VELA-3001]`.
 
 ### 3.2 Corpo Principal
@@ -53,15 +53,19 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
   - **Nome do treino**
   - **Categoria** + **quantidade de exercícios** (lado a lado, ex: "Hipertrofia · 6 exercícios")
   - **Selo de status** (Ativo / Inativo)
-  - Menu **"⋮"** (kebab) com ações rápidas: **Duplicar**, **Ativar/Desativar**, **Excluir**
+  - Menu **"⋮"** (kebab) com ações rápidas: **Incluir em rotina**, **Duplicar**, **Ativar/Desativar**, **Excluir**
 - Comportamento:
   - **Toque no card** → abre **Visualizar Treino** (`[VELA-4002]`).
   - Treinos **inativos** aparecem **atenuados** com selo "Inativo" (podem ser ocultados pelo filtro de status).
   - **Ordenação:** alfabética por nome do treino (resolve decisão #25).
-  - Em **modo seleção** (vindo da Rotina): o toque no card **alterna a seleção** (checkbox/estado selecionado) em vez de abrir a Visualização; o menu "⋮" fica oculto. _(O multi-seleção e o botão "Adicionar selecionados" serão detalhados ao mapear a tela de Rotina — dependência.)_
+
+**Bloco C — Bottom-sheet "Incluir em rotina"** (acionado pelo menu "⋮")
+- Componente: Overlay inferior (bottom-sheet) com a **lista de rotinas em rascunho/em construção** do Treinador, cada uma com **checkbox** (seleção múltipla), e botão **"Adicionar"**.
+- Conteudo: Nome de cada rotina; rotinas que **já contêm** o treino aparecem **marcadas e desabilitadas** com o rótulo **"Já na rotina"**.
+- Comportamento: Treinador marca uma ou mais rotinas e confirma; o treino entra em cada rotina (o **agrupamento por letra** A/B/C e a ordem são definidos depois na própria Rotina). O bottom-sheet exibe a mensagem de apoio **"Entre na rotina para finalizar."**. Ao concluir, toast **"Adicionado a N rotina(s) — entre na rotina para finalizar"**. Se não houver rotina em rascunho, exibir estado vazio orientando a criar uma rotina primeiro. Espelha o atalho "Incluir em treino" de `[VELA-3001]`.
 
 ### 3.3 Footer / Rodape
-- Conteudo: **FAB "+"** fixo no canto inferior (modo gestão) → abre o **Cadastro de Treino** (`[VELA-4003]`) em branco. Em **modo seleção**, o rodapé exibe o botão **"Adicionar selecionados (N)"** no lugar do FAB.
+- Conteudo: **FAB "+"** fixo no canto inferior → abre o **Cadastro de Treino** (`[VELA-4003]`) em branco.
 - Comportamento: Fixo na parte inferior. Na web, a ação de criar aparece como botão "Novo treino" na barra superior (ver Seção 9).
 
 ---
@@ -88,11 +92,12 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 |---|---|---|---|---|---|
 | 1 | FAB | "+" | Canto inferior (mobile) | Ativo | Abre Cadastro de Treino `[VELA-4003]` em branco |
 | 2 | Botão (web) | "Novo treino" | Barra superior | Ativo | Abre Cadastro de Treino `[VELA-4003]` em branco |
-| 3 | Card | (treino) | Lista | Ativo | Modo gestão: abre Visualizar Treino `[VELA-4002]` / Modo seleção: alterna seleção |
-| 4 | Menu "⋮" → Duplicar | "Duplicar" | No card | Ativo | Cria cópia do treino na base do Treinador (in-place na lista) |
-| 5 | Menu "⋮" → Ativar/Desativar | "Ativar" / "Desativar" | No card | Ativo | Alterna status do treino (in-place, atualiza selo) |
-| 6 | Menu "⋮" → Excluir | "Excluir" | No card | Ativo | Abre modal de confirmação → exclusão definitiva |
-| 7 | Botão (modo seleção) | "Adicionar selecionados (N)" | Rodapé | Desabilitado até ≥1 selecionado | Retorna à Rotina com os treinos escolhidos |
+| 3 | Card | (treino) | Lista | Ativo | Abre Visualizar Treino `[VELA-4002]` |
+| 4 | Menu "⋮" → Incluir em rotina | "Incluir em rotina" | No card | Ativo (oculto p/ treino Inativo) | Abre bottom-sheet de rotinas em rascunho (ver #8) |
+| 5 | Menu "⋮" → Duplicar | "Duplicar" | No card | Ativo | Cria cópia do treino na base do Treinador (in-place na lista) |
+| 6 | Menu "⋮" → Ativar/Desativar | "Ativar" / "Desativar" | No card | Ativo | Alterna status do treino (in-place, atualiza selo) |
+| 7 | Menu "⋮" → Excluir | "Excluir" | No card | Ativo | Abre modal de confirmação → exclusão definitiva |
+| 8 | Bottom-sheet "Incluir em rotina" | Lista de rotinas (rascunho) com checkbox + botão "Adicionar" | Overlay inferior | — | Treinador marca **uma ou mais** rotinas e confirma; o treino é adicionado a cada uma (agrupamento por letra/ordem definidos depois na Rotina). Toast "Adicionado a N rotina(s) — entre na rotina para finalizar" |
 
 ---
 
@@ -101,6 +106,7 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 ### 6.1 Estado Inicial / Vazio
 - Treinador sem nenhum treino cadastrado: ilustração + mensagem **"Você ainda não tem treinos. Crie o primeiro!"** + CTA que abre o Cadastro `[VELA-4003]`.
 - Lista com filtro/busca sem resultados: mensagem **"Nenhum treino encontrado"**.
+- **Bottom-sheet "Incluir em rotina" sem rotinas em rascunho:** estado vazio **"Você não tem rotinas em construção"** + orientação para criar uma rotina antes.
 
 ### 6.2 Estado de Carregamento (Loading)
 - **Skeleton loader** dos cards enquanto a lista carrega.
@@ -113,6 +119,7 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 - Após Duplicar: toast **"Treino duplicado"** + novo card aparece na lista.
 - Após Ativar/Desativar: selo do card atualiza (sem sair da tela).
 - Após Excluir: toast **"Treino excluído"** + card some da lista.
+- Após **incluir em rotina(s)**: toast **"Adicionado a N rotina(s) — entre na rotina para finalizar"** + fechamento do bottom-sheet.
 
 ### 6.5 Estado Desabilitado / Bloqueado *(se aplicavel)*
 - N/A.
@@ -127,14 +134,12 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 | Aba/menu do Treinador (modo gestão) | Acessa o módulo Treinos _(item de navegação pendente — depende do painel/menu do Treinador, decisão #30)_ |
 | Visualizar Treino `[VELA-4002]` | Botão voltar (←) |
 | Cadastro / Edição de Treino `[VELA-4003]` | Após salvar ou voltar |
-| Montagem / Edição de Rotina | Abre em **modo seleção** para escolher treinos _(dependência: tela de Rotina)_ |
 
 ### Para onde o usuario pode ir desta tela
 | Destino | Gatilho |
 |---|---|
-| Visualizar Treino `[VELA-4002]` | Toque no card (modo gestão) |
+| Visualizar Treino `[VELA-4002]` | Toque no card |
 | Cadastro / Edição de Treino `[VELA-4003]` | FAB "+" / botão "Novo treino" |
-| Montagem / Edição de Rotina | Botão "Adicionar selecionados" (modo seleção) |
 
 ---
 
@@ -144,12 +149,13 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 - **RN01:** A lista exibe **apenas os treinos do próprio Treinador**. Não há base global de treinos.
 - **RN02:** Ordenação **alfabética por nome do treino** (resolve decisão #25).
 - **RN03:** Busca **normalizada** — ignora acentos e diferença de maiúsculas/minúsculas (espelha `[VELA-3001]`).
-- **RN04:** **Exclusão definitiva** (app sem lixeira), sempre com **modal de confirmação**. O treino só pode ser excluído se **não estiver em nenhuma rotina**; nesse caso, oferecer **Desativar** como alternativa para aposentar em uso (espelha decisão #31). **Interino:** enquanto o módulo de Rotinas não existir, não há vínculo a checar → exclusão **sempre liberada** (com modal). A trava por rotina passa a valer quando o módulo de Rotinas existir.
+- **RN04:** **Exclusão definitiva** (app sem lixeira), sempre com **modal de confirmação**. O treino só pode ser excluído se **não estiver em nenhuma rotina** (`[VELA-5003]`). Se estiver vinculado a ao menos uma rotina, a exclusão fica **indisponível** e o caminho é **Desativar** (aposenta o treino sem quebrar as rotinas que já o usam — espelha decisão #31 e a RN08 de `[VELA-3001]`).
 - **RN05:** Treinos **inativos** continuam visíveis na lista (atenuados, com selo "Inativo") e podem ser ocultados pelo filtro de status. O toggle Ativar/Desativar espelha o ciclo de vida de `[VELA-4003]`/decisão #31.
 - **RN06:** **Duplicar** cria uma cópia do treino na base do próprio Treinador (novo treino editável independente do original).
-- **RN07:** Em **modo seleção** (vindo da Rotina), o card não abre a Visualização nem mostra "⋮"; o toque alterna a seleção e o rodapé confirma com "Adicionar selecionados (N)".
-
-> ⚠️ PENDENTE: **Revisar esta tela após mapear as telas de Rotina.** O **modo seleção** (multi-seleção, limites, retorno à Rotina) e a **trava de exclusão por vínculo com rotina** (RN04) dependem do módulo de Rotinas e só poderão ser fechados quando ele existir.
+- **RN07:** **Incluir em rotina** (atalho do menu "⋮"): permite ao Treinador adicionar o treino a **uma ou mais rotinas** sem sair da lista nem abrir a tela de Rotina (`[VELA-5003]`). Espelha "Incluir em treino" de `[VELA-3001]`, respeitando a hierarquia **Treino → Rotina** (treino entra na rotina; agrupamento por letra A/B/C e ordem definidos depois na Rotina).
+- **RN08:** Só aparecem no seletor as **rotinas em rascunho/em construção** do Treinador — rotinas já finalizadas não são elegíveis.
+- **RN09:** Rotina que **já contém** o treino aparece **desabilitada** no seletor ("Já na rotina") — não é possível duplicar o mesmo treino na mesma rotina por este atalho (coerente com a RN05 de `[VELA-5003]`).
+- **RN10:** A ação **"Incluir em rotina" não fica disponível para treinos Inativos** (coerente com RN05 desta tela e com a RN07 de `[VELA-5003]` — inativo não entra em novas rotinas).
 
 ---
 
@@ -183,3 +189,6 @@ Hub do módulo de Treinos na **visão do Treinador**: lista todos os treinos da 
 |---|---|---|
 | 2026-06-18 | Maria Isabela | Criação inicial do documento (entrevista `/mapear-tela`). Resolve decisões #25 (ordenação alfabética) e #33 (card: qtd de exercícios). |
 | 2026-06-18 | Maria Isabela | Ajuste no card: quantidade de exercícios ao lado da categoria; **removidos os chips de grupos musculares**. |
+| 2026-06-24 | Maria Isabela | Novo atalho **"Incluir em rotina"** no menu "⋮" (RN08–RN11), espelhando "Incluir em treino" de `[VELA-3001]`: bottom-sheet com rotinas em rascunho, "Já na rotina", "Entre na rotina para finalizar", oculto para treinos Inativos. Mockup atualizado (item no menu + frame do bottom-sheet). |
+| 2026-06-24 | Maria Isabela | **Reconciliação com o módulo de Rotinas (já concluído, `[VELA-5003]`)** e fechamento da tela. RN04: removida a cláusula interina — **trava de exclusão por vínculo com rotina** passa a valer (treino em rotina não exclui → Desativar). Atalho "Incluir em rotina" referenciando `[VELA-5003]`; "Já na rotina" respaldado pela RN05 da Rotina. **Pendência da Seção 8 encerrada.** Status → 🟢 CONCLUIDO. |
+| 2026-06-24 | Maria Isabela | **Removido o "modo seleção" desta tela:** a escolha de treinos para uma Rotina passa a ser descrita como **seletor de treinos** da própria montagem de Rotina (`[VELA-5003]`), evitando duplicar a mesma tela em dois módulos. Removidos: menções no objetivo/header/corpo/rodapé, a antiga RN07 (RNs do atalho renumeradas RN07–RN10), as linhas de navegação relacionadas e o frame "modo seleção" do mockup. |

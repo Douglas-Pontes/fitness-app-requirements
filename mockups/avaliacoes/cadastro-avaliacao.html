@@ -343,22 +343,51 @@
           </div>
         </div>
 
+        <!-- Dobras — todas opcionais, sem protocolo -->
         <div>
-          <label class="block text-[11px] text-slate-500 mb-1">Protocolo</label>
-          <select class="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 bg-white">
-            <option>Pollock 7 dobras</option><option>Pollock 3 dobras</option><option selected>Outro</option>
-          </select>
-        </div>
-
-        <div>
-          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Dobras (mm)</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Dobras (mm) — todas opcionais</h3>
           <div class="space-y-3">
             <div>
-              <label class="block text-[11px] text-slate-500 mb-1">Tríceps</label>
+              <label class="block text-[11px] text-slate-500 mb-1">Tricipital</label>
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
                 <input type="text" value="12,0" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
               </div>
               <p class="text-[11px] text-slate-400 mt-1">Última: 13,5 mm</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Bicipital</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 6,0 mm</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Subescapular</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 14,0 mm</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Peitoral</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Axilar Média</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Suprailíaca</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Última: 19,0 mm</p>
             </div>
             <div>
               <label class="block text-[11px] text-slate-500 mb-1">Abdominal</label>
@@ -367,10 +396,24 @@
               </div>
               <p class="text-[11px] text-slate-400 mt-1">Última: 17,0 mm</p>
             </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Coxa</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Panturrilha</label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">mm</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
+            </div>
           </div>
         </div>
 
-        <!-- Resultados — protocolo Outro: manuais -->
+        <!-- Resultados — soma auto; composição manual -->
         <div>
           <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Resultados</h3>
           <div class="space-y-3">
@@ -382,11 +425,18 @@
               <p class="text-[11px] text-slate-400 mt-1">Última: 31,5 mm</p>
             </div>
             <div>
-              <label class="block text-[11px] text-slate-500 mb-1">% de gordura</label>
+              <label class="block text-[11px] text-slate-500 mb-1">% de gordura <span class="text-slate-300">(manual)</span></label>
               <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
-                <input type="text" placeholder="preencher" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">%</span>
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">%</span>
               </div>
               <p class="text-[11px] text-slate-400 mt-1">Última: 16,2 %</p>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">Massa magra <span class="text-slate-300">(manual)</span></label>
+              <div class="flex items-center border border-slate-200 rounded-lg px-3 py-2 bg-white">
+                <input type="text" placeholder="—" class="flex-1 text-sm outline-none" /><span class="text-xs text-slate-400">kg</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">Sem dados anterior</p>
             </div>
           </div>
         </div>

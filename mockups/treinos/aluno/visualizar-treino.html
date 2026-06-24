@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup — Visualizar / Executar Treino (Aluno) · VELA-6003</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        lime: '#CCF24D',
+        navy: '#0E4C86',
+        track: '#A8DAEC',
+        performance: '#4B5F79',
+      },
+      fontFamily: { sans: ['Poppins', 'sans-serif'] }
+    } }
+  }
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .frame { width: 390px; }
+  @keyframes pulse-soft { 0%,100% { opacity: 1 } 50% { opacity: .45 } }
+  .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
+</style>
+</head>
+<body class="bg-slate-200 text-slate-800">
+
+  <!-- Banner de aviso (fora do device — nota de conferência, não faz parte da tela) -->
+  <div class="w-full bg-navy text-white text-xs sm:text-sm px-4 py-2 text-center">
+    Mockup visual — não é código de produção. Gerado a partir de
+    <code class="bg-white/15 px-1 rounded">docs/screens/treinos/aluno/visualizar-treino.md</code> (mobile).
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold lowercase tracking-tight text-navy mb-1">vela<span class="text-lime drop-shadow">.</span> — visualizar / executar treino <span class="text-slate-400 text-base">[VELA-6003]</span></h1>
+    <p class="text-slate-500 text-sm mb-8">visão do aluno · consulta → em execução → resumo</p>
+
+    <div class="flex flex-wrap gap-8 items-start">
+
+      <!-- ============ FRAME 1 — PRINCIPAL (treino aberto, antes do Play) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">principal · antes do play (cronômetro 0:00)</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden relative">
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- Header fixo: voltar + nome + Play/Pause + cronômetro geral -->
+          <header class="px-4 pt-4 pb-3 sticky top-0 bg-white border-b border-slate-100 z-10">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <button class="text-navy text-xl leading-none shrink-0">←</button>
+                <div class="min-w-0">
+                  <h2 class="text-base font-semibold text-navy leading-tight truncate">Peito e tríceps</h2>
+                  <p class="text-[11px] text-performance">Peito · hipertrofia</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="text-lg font-semibold text-navy tabular-nums">0:00</span>
+                <button class="w-10 h-10 rounded-full bg-lime text-navy flex items-center justify-center text-base shadow-sm">▶</button>
+              </div>
+            </div>
+          </header>
+
+          <!-- Corpo rolável -->
+          <div class="px-5 pb-24 overflow-y-auto" style="max-height:620px">
+
+            <!-- Bloco A — Identificação -->
+            <section class="mt-4">
+              <p class="text-sm text-slate-600 leading-snug">Foco em volume para peitoral; controle a fase excêntrica.</p>
+              <!-- Áudio do treino -->
+              <div class="mt-3 flex items-center gap-3 rounded-2xl bg-slate-50 border border-slate-200 px-3 py-2">
+                <div class="w-9 h-9 rounded-full bg-lime text-navy flex items-center justify-center text-base shrink-0">▶</div>
+                <div class="flex-1">
+                  <div class="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden"><div class="h-full w-1/4 bg-navy rounded-full"></div></div>
+                  <p class="text-[11px] text-slate-400 mt-1">Áudio do treinador · 0:48</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bloco B — Exercícios em grupos -->
+            <section class="mt-6 space-y-5">
+
+              <!-- Grupo 1 — Normal -->
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">1</span>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Normal</span>
+                </div>
+                <article class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                  <div class="flex gap-3 p-3">
+                    <div class="relative w-24 h-20 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                      <span class="text-slate-500 text-2xl">▶</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-semibold text-navy leading-tight">Supino reto com barra</h4>
+                      <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11px] text-slate-500">
+                        <span><strong class="text-slate-700">4</strong> séries</span>
+                        <span><strong class="text-slate-700">10</strong> reps</span>
+                        <span><strong class="text-slate-700">20</strong> kg</span>
+                        <span><strong class="text-slate-700">60s</strong> descanso</span>
+                      </div>
+                      <p class="text-[11px] text-slate-400 mt-1 leading-snug">Desça até o peito, cotovelos a ~45°.</p>
+                    </div>
+                  </div>
+                  <div class="px-3 pb-3 flex items-center gap-2">
+                    <button disabled class="flex-1 py-2 rounded-full border border-slate-200 text-slate-300 text-sm font-semibold cursor-not-allowed inline-flex items-center justify-center gap-1.5">⏱ Descanso</button>
+                    <button disabled class="w-10 h-10 shrink-0 rounded-full border border-slate-200 text-slate-300 flex items-center justify-center text-base cursor-not-allowed">✓</button>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Grupo 2 — Bi-set -->
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">2</span>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Bi-set</span>
+                </div>
+                <article class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm divide-y divide-slate-100">
+                  <div class="p-3">
+                    <div class="flex gap-3">
+                      <div class="relative w-24 h-20 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                        <span class="text-slate-500 text-2xl">▶</span>
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <h4 class="font-semibold text-navy leading-tight">Crucifixo inclinado</h4>
+                        <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11px] text-slate-500">
+                          <span><strong class="text-slate-700">3</strong> séries</span>
+                          <span><strong class="text-slate-700">12</strong> reps</span>
+                          <span><strong class="text-slate-700">10</strong> kg</span>
+                          <span><strong class="text-slate-700">0s</strong> descanso</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-2">
+                      <button disabled class="flex-1 py-2 rounded-full border border-slate-200 text-slate-300 text-sm font-semibold cursor-not-allowed inline-flex items-center justify-center gap-1.5">⏱ Descanso</button>
+                      <button disabled class="w-10 h-10 shrink-0 rounded-full border border-slate-200 text-slate-300 flex items-center justify-center text-base cursor-not-allowed">✓</button>
+                    </div>
+                  </div>
+                  <div class="p-3">
+                    <div class="flex gap-3">
+                      <div class="relative w-24 h-20 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                        <span class="text-slate-500 text-2xl">▶</span>
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <h4 class="font-semibold text-navy leading-tight">Tríceps na polia</h4>
+                        <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11px] text-slate-500">
+                          <span><strong class="text-slate-700">3</strong> séries</span>
+                          <span><strong class="text-slate-700">12</strong> reps</span>
+                          <span><strong class="text-slate-700">25</strong> kg</span>
+                          <span><strong class="text-slate-700">75s</strong> descanso</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-2">
+                      <button disabled class="flex-1 py-2 rounded-full border border-slate-200 text-slate-300 text-sm font-semibold cursor-not-allowed inline-flex items-center justify-center gap-1.5">⏱ Descanso</button>
+                      <button disabled class="w-10 h-10 shrink-0 rounded-full border border-slate-200 text-slate-300 flex items-center justify-center text-base cursor-not-allowed">✓</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Grupo 3 — Normal, exercício sem detalhe (RN08) -->
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">3</span>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Normal</span>
+                </div>
+                <article class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                  <div class="flex gap-3 p-3">
+                    <div class="relative w-24 h-20 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                      <span class="text-slate-500 text-2xl">▶</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-semibold text-navy leading-tight">Flexão de braço</h4>
+                      <p class="text-[11px] text-slate-400 mt-1 leading-snug">Sem prescrição definida — executar a critério.</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 2 — EM EXECUÇÃO (sessão ativa + timer) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">em execução · sessão ativa</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden relative">
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- Header fixo: voltar + nome + Pause + cronômetro geral (correndo) -->
+          <header class="px-4 pt-4 pb-3 sticky top-0 bg-white border-b border-slate-100 z-10">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <button class="text-navy text-xl leading-none shrink-0">←</button>
+                <div class="min-w-0">
+                  <h2 class="text-base font-semibold text-navy leading-tight truncate">Peito e tríceps</h2>
+                  <p class="text-[11px] text-performance">Peito · hipertrofia</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="text-lg font-semibold text-navy tabular-nums">12:34</span>
+                <button class="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center text-base shadow-sm">⏸</button>
+              </div>
+            </div>
+          </header>
+
+          <div class="px-5 pb-24 overflow-y-auto" style="max-height:620px">
+
+            <!-- Grupo 1 — Normal — exercício concluído -->
+            <section class="mt-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">1</span>
+                <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Normal</span>
+              </div>
+              <article class="rounded-2xl border-2 border-lime bg-lime/10 overflow-hidden shadow-sm">
+                <div class="flex gap-3 p-3">
+                  <div class="relative w-20 h-16 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                    <span class="text-slate-500 text-xl">▶</span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <h4 class="font-semibold text-navy leading-tight">Supino reto com barra</h4>
+                      <span class="w-7 h-7 shrink-0 rounded-full bg-lime text-navy flex items-center justify-center text-sm font-bold">✓</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Séries <strong class="text-navy">4 / 4</strong> · concluído</p>
+                  </div>
+                </div>
+              </article>
+            </section>
+
+            <!-- Grupo 2 — Bi-set — em andamento, com controles -->
+            <section class="mt-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">2</span>
+                <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Bi-set</span>
+              </div>
+              <article class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm divide-y divide-slate-100">
+                <!-- Exercício 1 do bi-set -->
+                <div class="p-3">
+                  <div class="flex gap-3">
+                    <div class="relative w-20 h-16 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                      <span class="text-slate-500 text-xl">▶</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-semibold text-navy leading-tight">Crucifixo inclinado</h4>
+                      <p class="text-[11px] text-slate-500 mt-0.5">Séries <strong class="text-navy">1 / 3</strong></p>
+                    </div>
+                  </div>
+                  <!-- registro reps/carga -->
+                  <div class="flex items-end gap-2 mt-2">
+                    <label class="flex-1">
+                      <span class="block text-[10px] text-slate-400 mb-1">reps</span>
+                      <input type="text" value="12" class="w-full rounded-lg border border-slate-200 px-2 py-1.5 text-sm text-slate-700" />
+                    </label>
+                    <label class="flex-1">
+                      <span class="block text-[10px] text-slate-400 mb-1">carga (kg)</span>
+                      <input type="text" value="10" class="w-full rounded-lg border border-slate-200 px-2 py-1.5 text-sm text-slate-700" />
+                    </label>
+                  </div>
+                  <div class="flex items-center gap-2 mt-2">
+                    <button class="flex-1 py-2 rounded-full border border-navy text-navy text-sm font-semibold inline-flex items-center justify-center gap-1.5">⏱ Descanso</button>
+                    <button class="w-10 h-10 shrink-0 rounded-full border-2 border-navy text-navy flex items-center justify-center text-base font-bold">✓</button>
+                  </div>
+                </div>
+                <!-- Exercício 2 do bi-set -->
+                <div class="p-3">
+                  <div class="flex gap-3">
+                    <div class="relative w-20 h-16 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                      <span class="text-slate-500 text-xl">▶</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-semibold text-navy leading-tight">Tríceps na polia</h4>
+                      <p class="text-[11px] text-slate-500 mt-0.5">Séries <strong class="text-navy">1 / 3</strong></p>
+                    </div>
+                  </div>
+                  <div class="flex items-end gap-2 mt-2">
+                    <label class="flex-1">
+                      <span class="block text-[10px] text-slate-400 mb-1">reps</span>
+                      <input type="text" value="12" class="w-full rounded-lg border border-slate-200 px-2 py-1.5 text-sm text-slate-700" />
+                    </label>
+                    <label class="flex-1">
+                      <span class="block text-[10px] text-slate-400 mb-1">carga (kg)</span>
+                      <input type="text" value="25" class="w-full rounded-lg border border-slate-200 px-2 py-1.5 text-sm text-slate-700" />
+                    </label>
+                  </div>
+                  <div class="flex items-center gap-2 mt-2">
+                    <button class="flex-1 py-2 rounded-full border border-navy text-navy text-sm font-semibold inline-flex items-center justify-center gap-1.5">⏱ Descanso</button>
+                    <button class="w-10 h-10 shrink-0 rounded-full border-2 border-navy text-navy flex items-center justify-center text-base font-bold">✓</button>
+                  </div>
+                </div>
+              </article>
+            </section>
+
+            <!-- Grupo 3 — Normal sem detalhe (RN08) -->
+            <section class="mt-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-md bg-navy text-white text-xs font-semibold flex items-center justify-center">3</span>
+                <span class="text-[11px] font-medium uppercase tracking-wide text-slate-400">Normal</span>
+              </div>
+              <article class="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <div class="p-3">
+                  <div class="flex gap-3">
+                    <div class="relative w-20 h-16 rounded-xl bg-slate-300 shrink-0 overflow-hidden flex items-center justify-center">
+                      <span class="text-slate-500 text-xl">▶</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <h4 class="font-semibold text-navy leading-tight">Flexão de braço</h4>
+                      <p class="text-[11px] text-slate-400 mt-0.5">Sem séries definidas</p>
+                    </div>
+                  </div>
+                  <button class="w-full mt-2 py-2.5 rounded-full border border-navy text-navy text-sm font-semibold">Marcar como concluído</button>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <!-- Footer fixo — Finalizar treino -->
+          <div class="absolute bottom-0 inset-x-0 px-5 py-3 bg-white border-t border-slate-100">
+            <button class="w-full py-3 rounded-full bg-navy text-white font-semibold">Finalizar treino</button>
+          </div>
+
+          <!-- Overlay — Telinha de descanso compacta (sob demanda pelo botão ⏱ Descanso) -->
+          <div class="absolute inset-0 bg-slate-900/40 flex items-end justify-center pb-24">
+            <div class="w-[72%] rounded-2xl bg-white shadow-2xl px-4 py-4 text-center">
+              <p class="text-[11px] text-slate-400">Crucifixo inclinado · Série 1/3</p>
+              <p class="text-4xl font-semibold text-navy tabular-nums mt-1">0:45</p>
+              <div class="flex gap-2 mt-3">
+                <button class="flex-1 py-2 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold">+15s</button>
+                <button class="flex-1 py-2 rounded-full bg-lime text-navy text-sm font-semibold inline-flex items-center justify-center gap-1.5">▶ Play</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 3 — SUCESSO / RESUMO (story + recado) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">sucesso · resumo compartilhável</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden">
+          <div class="h-6 bg-slate-900"></div>
+
+          <div class="px-5 pb-6 overflow-y-auto" style="max-height:700px">
+
+            <!-- Card-resumo estilo story (clean) -->
+            <div class="mt-5 rounded-3xl text-white px-6 pt-9 pb-7 relative overflow-hidden" style="background:radial-gradient(125% 85% at 0% 0%, #12568f 0%, #0E4C86 40%, #082a4c 100%)">
+              <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full border-[10px] border-lime/10"></div>
+
+              <!-- BLOCO ÚNICO de conteúdo (move/redimensiona junto; itens ocultáveis dentro) -->
+              <div class="relative text-center">
+                <p class="text-white/80 text-sm font-medium lowercase">Ana · treino concluído</p>
+                <h3 class="text-2xl font-semibold mt-1 leading-tight">Peito e tríceps</h3>
+
+                <div class="flex flex-col items-center gap-2.5 mt-6 text-white">
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    <span class="text-lg font-semibold tabular-nums">42 min</span>
+                  </div>
+                  <div class="h-px w-8 bg-white/25"></div>
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M7 8v8M17 8v8M20 9v6M7 12h10"/></svg>
+                    <span class="text-lg font-semibold tabular-nums">8/8 exercícios</span>
+                  </div>
+                  <div class="h-px w-8 bg-white/25"></div>
+                  <div class="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+                    <span class="text-lg font-semibold tabular-nums">2/5 na semana</span>
+                  </div>
+                </div>
+
+                <p class="text-xs text-white/55 mt-5">22 jun 2026 · 18:42</p>
+              </div>
+
+              <!-- marca vela. fixa e em destaque (assinatura — divulgação do app) -->
+              <div class="relative mt-8 pt-5 border-t border-white/10 text-center">
+                <span class="text-2xl font-semibold lowercase tracking-tight">vela<span class="text-lime">.</span></span>
+              </div>
+            </div>
+
+            <!-- Recado para o treinador (privado, fora do card compartilhável) -->
+            <div class="mt-5">
+              <label class="block text-sm font-medium text-navy mb-1">Deixar um recado para o treinador</label>
+              <textarea rows="3" placeholder="Como foi o treino? (opcional)" class="w-full rounded-2xl border border-slate-200 p-3 text-sm text-slate-700 resize-none"></textarea>
+              <p class="text-[11px] text-slate-400 text-right mt-1">0/300</p>
+            </div>
+
+          </div>
+
+          <!-- Footer — ações -->
+          <div class="px-5 py-3 bg-white border-t border-slate-100 space-y-2">
+            <button class="w-full py-3 rounded-full bg-lime text-navy font-semibold">Compartilhar</button>
+            <button class="w-full py-3 rounded-full border border-slate-300 text-slate-600 font-semibold">Concluir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 3A — EDITOR ÚNICO (fundo + texto numa só tela) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">compartilhar · editor (fundo + texto)</div>
+        <div class="frame bg-slate-900 rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden relative" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- header -->
+          <div class="flex items-center justify-between px-5 py-3" style="background:#0b1220">
+            <button class="text-white text-xl leading-none">←</button>
+            <span class="text-white text-sm font-medium">Compartilhar treino</span>
+            <span class="w-5"></span>
+          </div>
+
+          <!-- corpo -->
+          <div class="flex flex-col px-5 pt-2 pb-4" style="background:#0b1220; height:706px">
+
+            <!-- CARD editável (mover/redimensionar bloco; ✕ por item) -->
+            <div class="mx-auto rounded-3xl overflow-hidden relative shadow-2xl text-white" style="width:182px; aspect-ratio:9/16; background:#1f2937 url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=70') center/cover">
+              <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(8,16,28,.55) 0%, rgba(8,16,28,.1) 30%, rgba(8,16,28,.25) 62%, rgba(8,16,28,.78) 100%)"></div>
+
+              <!-- MARCA fixa em destaque, centralizada no rodapé (não move) -->
+              <span class="absolute bottom-2.5 inset-x-0 z-10 text-center text-sm font-semibold lowercase tracking-tight">vela<span class="text-lime">.</span></span>
+
+              <!-- BLOCO ÚNICO selecionado: borda tracejada envolve TUDO; alças mover/redimensionar; ✕ por item -->
+              <div class="absolute z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-dashed border-lime rounded-xl px-3 py-2 text-center">
+                <div class="relative inline-block">
+                  <p class="text-white/80 text-[9px] font-medium lowercase">Ana · treino concluído</p>
+                  <h3 class="text-base font-semibold leading-tight">Peito e tríceps</h3>
+                  <span class="absolute -top-2 -right-3 w-4 h-4 rounded-full bg-white/90 text-slate-700 text-[9px] flex items-center justify-center shadow">✕</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 mt-1.5">
+                  <div class="relative flex items-center gap-1.5">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    <span class="text-xs font-semibold tabular-nums">42 min</span>
+                    <span class="absolute -top-1.5 -right-3 w-4 h-4 rounded-full bg-white/90 text-slate-700 text-[9px] flex items-center justify-center shadow">✕</span>
+                  </div>
+                  <div class="relative flex items-center gap-1.5">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M7 8v8M17 8v8M20 9v6M7 12h10"/></svg>
+                    <span class="text-xs font-semibold tabular-nums">8/8 exercícios</span>
+                    <span class="absolute -top-1.5 -right-3 w-4 h-4 rounded-full bg-white/90 text-slate-700 text-[9px] flex items-center justify-center shadow">✕</span>
+                  </div>
+                  <div class="relative flex items-center gap-1.5">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+                    <span class="text-xs font-semibold tabular-nums">2/5 na semana</span>
+                    <span class="absolute -top-1.5 -right-3 w-4 h-4 rounded-full bg-white/90 text-slate-700 text-[9px] flex items-center justify-center shadow">✕</span>
+                  </div>
+                  <p class="text-[9px] text-white/70 mt-0.5">22 jun 2026 · 18:42</p>
+                </div>
+                <!-- alça mover (centro-topo) -->
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-lime text-navy text-xs flex items-center justify-center shadow">✥</span>
+                <!-- alça redimensionar (canto inferior-direito) -->
+                <span class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-lime text-navy text-xs flex items-center justify-center shadow">⤡</span>
+              </div>
+            </div>
+
+            <!-- CONTROLES na base: itens ocultos + fundo + botão -->
+            <div class="mt-auto">
+              <!-- itens ocultos -->
+              <div class="mb-3">
+                <p class="text-white/55 text-[10px] font-medium uppercase tracking-wide mb-1.5">Itens ocultos · toque p/ readicionar</p>
+                <button class="text-[11px] px-3 py-1.5 rounded-full border border-white/20 text-white/80 inline-flex items-center gap-1">+ Data e hora</button>
+              </div>
+
+              <!-- fundo (faixa horizontal: tirar foto + fundos do app) -->
+              <p class="text-white/55 text-[10px] font-medium uppercase tracking-wide mb-1.5">Fundo</p>
+              <div class="flex gap-2 overflow-x-auto pb-1">
+                <!-- tirar foto -->
+                <div class="shrink-0 flex flex-col items-center gap-1" style="width:48px">
+                  <div class="w-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-lg" style="aspect-ratio:9/16">📷</div>
+                  <span class="text-[9px] text-white/60 leading-none">Foto</span>
+                </div>
+                <!-- fundo atual (foto) selecionado -->
+                <div class="shrink-0 w-12 rounded-xl overflow-hidden ring-2 ring-lime relative" style="aspect-ratio:9/16; background:#1f2937 url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&q=60') center/cover"></div>
+                <!-- fundos do app (branded) -->
+                <div class="shrink-0 w-12 rounded-xl overflow-hidden relative" style="aspect-ratio:9/16; background:radial-gradient(125% 85% at 0% 0%, #12568f 0%, #0E4C86 45%, #082a4c 100%)"><span class="absolute bottom-1 inset-x-0 text-center text-[8px] font-semibold lowercase text-white">vela<span class="text-lime">.</span></span></div>
+                <div class="shrink-0 w-12 rounded-xl overflow-hidden relative" style="aspect-ratio:9/16; background:linear-gradient(160deg,#1f2937,#0b1220)"><span class="absolute bottom-1 inset-x-0 text-center text-[8px] font-semibold lowercase text-white">vela<span class="text-lime">.</span></span></div>
+                <div class="shrink-0 w-12 rounded-xl overflow-hidden relative" style="aspect-ratio:9/16; background:linear-gradient(160deg,#CCF24D,#9bbf2e)"><span class="absolute bottom-1 inset-x-0 text-center text-[8px] font-semibold lowercase text-navy">vela<span class="text-navy">.</span></span></div>
+                <div class="shrink-0 w-12 rounded-xl overflow-hidden relative" style="aspect-ratio:9/16; background:linear-gradient(160deg,#4B5F79,#0E4C86)"><span class="absolute bottom-1 inset-x-0 text-center text-[8px] font-semibold lowercase text-white">vela<span class="text-lime">.</span></span></div>
+              </div>
+
+              <!-- botão primário -->
+              <button class="w-full mt-3 py-3 rounded-full bg-lime text-navy font-semibold">Compartilhar</button>
+            </div>
+
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-2 w-[390px]"><strong>Editor único</strong> (fundo + texto numa só tela): o card editável fica no topo (bloco que <strong>move ✥ / redimensiona ⤡ junto</strong>, com <strong>✕</strong> por item e bandeja de ocultos); na base, a faixa de <strong>Fundo</strong> (📷 Tirar foto + fundos do app — galeria fora do MVP) e o botão <strong>Compartilhar</strong>. Marca <em>vela.</em> fixa em destaque. Foto/ícones ilustrativos.</p>
+      </div>
+
+      <!-- ============ FRAME 3B — EDITOR + FOLHA DE DESTINOS (overlay) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">compartilhar · escolher destino</div>
+        <div class="frame bg-slate-900 rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden relative" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+
+          <!-- header -->
+          <div class="flex items-center justify-between px-5 py-3" style="background:#0b1220">
+            <button class="text-white text-xl leading-none">←</button>
+            <span class="text-white text-sm font-medium">Compartilhar treino</span>
+            <span class="w-5"></span>
+          </div>
+
+          <!-- corpo (card em pré-visualização, sem alças, levemente escurecido sob o overlay) -->
+          <div class="px-6 pt-3 pb-4" style="background:#0b1220">
+            <div class="mx-auto rounded-3xl overflow-hidden relative shadow-2xl text-white" style="width:182px; aspect-ratio:9/16; background:#1f2937 url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=70') center/cover">
+              <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(8,16,28,.55) 0%, rgba(8,16,28,.1) 30%, rgba(8,16,28,.25) 62%, rgba(8,16,28,.78) 100%)"></div>
+              <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 px-3 text-center text-white">
+                <div>
+                  <p class="text-white/80 text-[9px] font-medium lowercase">Ana · treino concluído</p>
+                  <h3 class="text-base font-semibold leading-tight mt-0.5">Peito e tríceps</h3>
+                </div>
+                <div class="flex flex-col items-center gap-1 mt-0.5">
+                  <div class="flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="text-xs font-semibold tabular-nums">42 min</span></div>
+                  <div class="flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6M7 8v8M17 8v8M20 9v6M7 12h10"/></svg><span class="text-xs font-semibold tabular-nums">8/8 exercícios</span></div>
+                  <div class="flex items-center gap-1.5"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span class="text-xs font-semibold tabular-nums">2/5 na semana</span></div>
+                </div>
+                <p class="text-[9px] text-white/70 mt-0.5">22 jun 2026 · 18:42</p>
+              </div>
+              <span class="absolute bottom-2.5 inset-x-0 z-10 text-center text-sm font-semibold lowercase tracking-tight">vela<span class="text-lime">.</span></span>
+            </div>
+          </div>
+
+          <!-- escurecimento + folha de destinos do sistema -->
+          <div class="absolute inset-0 bg-slate-900/40"></div>
+          <div class="absolute bottom-0 inset-x-0 bg-white rounded-t-3xl px-5 pt-3 pb-5 shadow-2xl">
+            <div class="w-10 h-1 rounded-full bg-slate-300 mx-auto mb-3"></div>
+            <p class="text-xs font-medium text-slate-500 mb-3">Compartilhar via</p>
+            <div class="flex justify-center gap-6 text-center">
+              <div class="flex flex-col items-center gap-1" style="width:72px">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white text-[10px] font-bold" style="background:linear-gradient(45deg,#feda75,#d62976,#962fbf)">Stories</div>
+                <span class="text-[10px] text-slate-500 leading-tight">Story Instagram</span>
+              </div>
+              <div class="flex flex-col items-center gap-1" style="width:72px">
+                <div class="w-12 h-12 rounded-2xl bg-green-500 flex items-center justify-center text-white text-[11px] font-bold">WA</div>
+                <span class="text-[10px] text-slate-500 leading-tight">WhatsApp</span>
+              </div>
+              <div class="flex flex-col items-center gap-1" style="width:72px">
+                <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-navy text-lg">⤓</div>
+                <span class="text-[10px] text-slate-500 leading-tight">Salvar</span>
+              </div>
+            </div>
+            <button class="w-full mt-4 py-2.5 rounded-full border border-slate-300 text-slate-600 text-sm font-semibold">Cancelar</button>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-2 w-[390px]">Ao tocar em <strong>Compartilhar</strong> no editor, a <strong>folha de destinos do sistema</strong> sobe <strong>por cima</strong> (não é outra tela): <strong>Story Instagram, WhatsApp, Salvar</strong>. O <strong>recado fica fora da imagem</strong> (RN11). Ícones de apps ilustrativos.</p>
+      </div>
+
+      <!-- ============ FRAME 4 — CARREGANDO (skeleton) ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">carregando (skeleton)</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-4 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <span class="text-navy text-xl">←</span>
+              <div class="h-4 w-40 rounded bg-slate-200 skel"></div>
+            </div>
+          </header>
+          <div class="px-5 pt-4">
+            <div class="h-3 w-56 rounded bg-slate-100 skel mb-2"></div>
+            <div class="h-12 w-full rounded-2xl bg-slate-100 skel mb-5"></div>
+            <div class="h-3 w-16 rounded bg-slate-200 skel mb-2"></div>
+            <div class="rounded-2xl border border-slate-200 p-3 mb-3 flex gap-3">
+              <div class="w-24 h-20 rounded-xl bg-slate-200 skel"></div>
+              <div class="flex-1 space-y-2 pt-1">
+                <div class="h-4 w-40 rounded bg-slate-200 skel"></div>
+                <div class="h-3 w-32 rounded bg-slate-100 skel"></div>
+                <div class="h-3 w-24 rounded bg-slate-100 skel"></div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-3 flex gap-3">
+              <div class="w-24 h-20 rounded-xl bg-slate-200 skel"></div>
+              <div class="flex-1 space-y-2 pt-1">
+                <div class="h-4 w-36 rounded bg-slate-200 skel"></div>
+                <div class="h-3 w-28 rounded bg-slate-100 skel"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FRAME 5 — ERRO ============ -->
+      <div>
+        <div class="text-xs font-medium uppercase tracking-wide text-slate-500 mb-2">erro</div>
+        <div class="frame bg-white rounded-[2.2rem] shadow-xl border-[6px] border-slate-900 overflow-hidden" style="height:760px">
+          <div class="h-6 bg-slate-900"></div>
+          <header class="px-5 pt-4 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <button class="text-navy text-xl">←</button>
+              <h2 class="text-lg font-semibold text-navy">Treino</h2>
+            </div>
+          </header>
+          <div class="flex flex-col items-center justify-center text-center px-8" style="height:620px">
+            <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-5 text-2xl">⚠️</div>
+            <h3 class="font-semibold text-navy">Não foi possível carregar o treino.</h3>
+            <button class="mt-5 px-5 py-2.5 rounded-full bg-lime text-navy font-semibold text-sm">Tentar novamente</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-xs text-slate-400 mt-8 max-w-3xl">
+      Observações: tela do Aluno que consolida consulta → execução → resumo (VELA-6003). O header é fixo e traz o botão
+      Play/Pause + o cronômetro geral, que só conta após o Play (começa em 0:00, pausa/retoma — RN03); “Finalizar treino”
+      fica no rodapé. Antes do Play, o treino aparece em leitura (grupos numerados, prescrição séries/reps/carga
+      sugerida/descanso) e os botões “Descanso” ficam desabilitados. Em execução, cada card ganha contador de séries e
+      campos de reps/carga (pré-preenchidos com o sugerido pelo treinador — RN06) e uma linha compacta com “⏱ Descanso”
+      + check (✓) para concluir o exercício; a telinha de descanso só abre sob demanda (RN05), compacta, com “Série 1/3”,
+      contagem 45→0 e os botões +15s e Play (que re-arma para a próxima série ao zerar). Exercício sem prescrição
+      usa “Marcar como concluído” (RN08). Ao finalizar, o Resumo full-screen traz o card estilo story (compartilhável,
+      agora com “treinos na semana” no lugar de séries — RN12) + o campo de recado ao treinador (privado, fora do card
+      compartilhado — RN11) e as ações Compartilhar / Concluir. Som de repetição fica fora do MVP (RN09).
+    </p>
+  </div>
+
+</body>
+</html>

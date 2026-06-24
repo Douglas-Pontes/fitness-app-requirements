@@ -9,8 +9,8 @@
 | **Modulo** | Rotinas |
 | **Codigo** | VELA-3004 |
 | **Prioridade** | 🔵 MVP |
-| **Status** | 🟡 EM ANDAMENTO |
-| **Ultima atualizacao** | 2026-06-18 |
+| **Status** | 🟢 CONCLUIDO |
+| **Ultima atualizacao** | 2026-06-24 |
 
 ---
 
@@ -61,8 +61,9 @@ Tela onde o **Treinador** atribui uma **rotina** a um **aluno** específico, def
   - **Aviso de prescrição incompleta** (quando houver): se algum exercício dos treinos estiver **sem séries/reps**, exibir banner informativo **"Alguns exercícios estão sem séries ou repetições. Você pode completar antes de entregar."** com atalho **"Revisar prescrição"** → abre o ajuste por aluno (ver RN03). O aviso **não bloqueia** o salvar.
 
 **Bloco C — Vigência e objetivo** *(obrigatório, exceto onde indicado)*
-- Componente: Campos de data + textarea.
+- Componente: Campos de data + textarea + toggle.
 - Conteudo: **Data de início** (obrigatória), **Data de fim** (opcional — "Sem prazo definido"), **Objetivo da rotina para este aluno** (obrigatório).
+- **Mostrar prazo e progresso ao aluno** (toggle, **ligado por padrão**): quando ligado, o aluno vê a **faixa de datas**, a **barra de progresso de vigência** e o **tempo decorrido** nas telas do Aluno (`[VELA-6001]` / `[VELA-6002]`); quando desligado, vê **apenas o selo de status** (Ativa / Agendada / Encerrada). Texto de apoio: *"Quando desligado, o aluno vê apenas o status da rotina."* Não afeta o contador de **treinos realizados** (ver RN10).
 
 **Bloco D — Mensagem ao aluno** *(opcional)*
 - Componente: Textarea.
@@ -84,7 +85,8 @@ Tela onde o **Treinador** atribui uma **rotina** a um **aluno** específico, def
 | 3 | Data de início | Date | Sim | "dd/mm/aaaa" | Data válida; não anterior a hoje | "Informe a data de início" |
 | 4 | Data de fim | Date | Não | "Sem prazo definido" | Se preenchida, deve ser **posterior** à data de início | "A data de fim deve ser depois do início" |
 | 5 | Objetivo da rotina | Textarea | Sim | "Ex: hipertrofia, fase de adaptação…" | Não pode ficar em branco | "Informe o objetivo da rotina" |
-| 6 | Mensagem ao aluno | Textarea | Não | "Mensagem opcional para o aluno" | — | N/A |
+| 6 | Mostrar prazo e progresso ao aluno | Toggle | Não | — | Padrão **ligado** | N/A |
+| 7 | Mensagem ao aluno | Textarea | Não | "Mensagem opcional para o aluno" | — | N/A |
 
 ### Regras de Preenchimento
 - **Data de fim** é **opcional**: em branco significa **rotina sem prazo** (vigente até ser trocada/encerrada manualmente).
@@ -142,7 +144,7 @@ Tela onde o **Treinador** atribui uma **rotina** a um **aluno** específico, def
 | Origem | Gatilho |
 |---|---|
 | Tela do Aluno (perfil/detalhe do aluno) | Treinador toca em "Atribuir rotina" (aluno já pré-selecionado) |
-| Entrada geral do Treinador (aba/menu — ⚠️ PENDENTE: confirmar item ao mapear o painel do Treinador) | Treinador escolhe atribuir rotina e seleciona o aluno aqui |
+| Entrada geral do Treinador (aba/menu) | Treinador escolhe atribuir rotina e seleciona o aluno aqui (item de navegação a confirmar ao mapear o painel do Treinador — ver Nota de escopo) |
 | Visualizar Rotina `[VELA-5002]` | Treinador toca em "Atribuir a aluno" (entrada reservada na decisão #38) |
 
 ### Para onde o usuario pode ir desta tela
@@ -167,6 +169,12 @@ Tela onde o **Treinador** atribui uma **rotina** a um **aluno** específico, def
 - **RN07 — Rotinas coexistem:** o aluno **pode ter mais de uma rotina vigente** ao mesmo tempo (ex.: `.track` + `.performance`). Não há bloqueio nem substituição automática ao atribuir uma nova rotina no mesmo período.
 - **RN08 — Obrigatórios para salvar:** Aluno + Rotina + Data de início + Objetivo. Mensagem ao aluno e Data de fim são opcionais.
 - **RN09:** Ao salvar com sucesso, o Treinador retorna à **tela do aluno**, com a rotina recém-atribuída visível como vigente.
+- **RN10 — Visibilidade de prazo/progresso:** o toggle **"Mostrar prazo e progresso ao aluno"** (padrão **ligado**) controla se o Aluno enxerga **faixa de datas + barra de progresso de vigência + tempo decorrido** nas telas `[VELA-6001]` / `[VELA-6002]`. Quando **desligado**, o Aluno vê **apenas o selo de status** (Ativa / Agendada / Encerrada). O **contador de treinos realizados** (`[VELA-6001]` RN06 / decisão #41) **independe** deste controle e continua visível. Reflexo de leitura já definido em `[VELA-6001]` RN05.
+- **RN11 — Exclusão da rotina-base não afeta a atribuição:** como o vínculo é **cópia/snapshot** (RN04), excluir a rotina da base (`[VELA-5003]`) **não remove nem altera** a rotina já entregue ao aluno. Por isso **não há trava de exclusão por vínculo** na base — a integridade da entrega é garantida pela cópia (decisão #38 encerrada).
+
+> **Nota de escopo — dependências externas (não bloqueiam esta tela):**
+> - **Entrada geral pelo painel/menu do Treinador:** o item de navegação que leva a esta tela (com seleção de aluno por busca) será confirmado ao mapear o **painel/menu do Treinador**, ainda não mapeado (mesma dependência das decisões #10/#37/#30/#19).
+> - **Notificação ao aluno ao atribuir:** ao salvar, o Aluno deve receber **push + in-app** avisando da nova rotina; o copy e o comportamento (deep link, opt-out) serão definidos ao mapear a **tela Notificações** (`screens/configuracoes/notificacoes.md`), ainda não mapeada (mesma dependência da decisão #13).
 
 ---
 
@@ -198,3 +206,4 @@ Tela onde o **Treinador** atribui uma **rotina** a um **aluno** específico, def
 | Data | Autor | Descricao |
 |---|---|---|
 | 2026-06-18 | Maria Isabela | Criação inicial do documento (entrevista `/mapear-tela`). **Atrelar Rotina ao Aluno** `[VELA-3004]`, 🔵 MVP. Entrada por **ambos os caminhos** (pré-selecionado pela tela do aluno / entrada geral com busca; + "Atribuir a aluno" da Visualizar `[VELA-5002]`, decisão #38). Origem da rotina: usar da base (`[VELA-5001]`) ou criar nova (`[VELA-5003]`, **sempre salva na base**). Vínculo = **cópia/snapshot** (RN04). Prescrição herdada **ajustável mas não obrigatória**, com aviso que não bloqueia (RN03). **Data de fim opcional** (sem prazo, RN06). Rotinas **coexistem** (sem substituição, RN07). Pós-salvar volta à **tela do aluno** (RN09). Status → EM ANDAMENTO |
+| 2026-06-24 | Maria Isabela | Revisão de finalização (`/revisar-tela`): (1) adicionado o toggle **"Mostrar prazo e progresso ao aluno"** no Bloco C, **ligado por padrão** — campo #6, RN10 (decisão #40 encerrada); (2) confirmada a **ausência de trava de exclusão por vínculo** na base, pois a atribuição é cópia/snapshot — RN11 (cauda da decisão #38 encerrada, sem reabrir `[VELA-5003]`); (3) pendência **bloqueante** da entrada geral convertida em **Nota de escopo** + adicionada nota da **notificação ao aluno** — ambas dependem de telas ainda não mapeadas (painel do Treinador / Notificações) e **não bloqueiam** esta tela. Mockup sincronizado (toggle). Status → 🟢 CONCLUIDO |

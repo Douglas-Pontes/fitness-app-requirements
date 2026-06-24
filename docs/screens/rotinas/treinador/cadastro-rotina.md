@@ -54,7 +54,7 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
   - **Ícone de vídeo / atalho de visualização**: abre **Visualizar Treino** (`[VELA-4002]`) para conferir o conteúdo do treino sem sair da montagem.
   - Handle de arraste (⠿) para reordenar e ícone de remover (🗑).
 - Comportamento:
-  - Botão **"Adicionar treino"** ao final da lista → abre a **Lista de Treinos** (`[VELA-4001]`) em **modo seleção** (multi-seleção), retornando os treinos escolhidos para a rotina.
+  - Botão **"Adicionar treino"** ao final da lista → abre um **seletor de treinos** (multi-seleção) sobre a **base de treinos do Treinador** (`[VELA-4001]`), retornando os treinos escolhidos para a rotina. Só lista treinos **ativos** (ver RN07).
   - **Ordenação:** os treinos seguem a ordem A → B → C…; a **letra é automática** pela posição e **não é editável**. Reordenar por **arrastar** (handle ⠿) atualiza as letras.
   - Exibe a mensagem de ajuda **"Arraste os cards para reordenar os treinos"**.
   - O **mesmo treino** pode aparecer **uma única vez** por rotina (sem duplicar o mesmo treino na mesma rotina — ver RN05).
@@ -100,7 +100,7 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
 |---|---|---|---|---|---|
 | 1 | Botão primário | "Salvar rotina" | Rodapé | Desabilitado até obrigatórios válidos | Valida → salva na base do Treinador → volta para a Lista `[VELA-5001]` com toast de sucesso |
 | 2 | Botão voltar | ← | Header (esq.) | Ativo | Se houver alterações não salvas, abre modal "Descartar alterações?"; senão, volta |
-| 3 | Botão | "Adicionar treino" | Fim da lista de treinos | Ativo | Abre a Lista de Treinos `[VELA-4001]` em **modo seleção** (multi-seleção) |
+| 3 | Botão | "Adicionar treino" | Fim da lista de treinos | Ativo | Abre o **seletor de treinos** (multi-seleção) sobre a base do Treinador `[VELA-4001]` |
 | 4 | Ícone | ⠿ (arrastar) | Em cada card de treino | Ativo | Reordena o treino na rotina (atualiza as letras A/B/C…) |
 | 5 | Ícone | 🗑 / "Remover" | Card de treino | Ativo | Remove o treino da rotina |
 | 6 | Ícone / atalho | ▶ / "Ver treino" | Card de treino | Ativo | Abre **Visualizar Treino** `[VELA-4002]` daquele treino (conferência) |
@@ -117,7 +117,7 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
 
 ### 6.2 Estado de Carregamento (Loading)
 - Ao salvar: spinner sobre o botão "Salvar rotina", botão desabilitado durante a requisição.
-- Ao abrir a seleção de treinos: indicador de carregamento na Lista de Treinos.
+- Ao abrir a seleção de treinos: indicador de carregamento no seletor de treinos.
 
 ### 6.3 Estado de Erro
 - **Erro de campo:** borda vermelha + mensagem abaixo do campo (ver tabelas da Seção 4).
@@ -152,7 +152,7 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
 | Destino | Gatilho |
 |---|---|
 | Lista de Rotinas `[VELA-5001]` | Salvar com sucesso, ou voltar/descartar |
-| Lista de Treinos `[VELA-4001]` (modo seleção) | Toca em "Adicionar treino" |
+| Seletor de treinos (base `[VELA-4001]`) | Toca em "Adicionar treino" |
 | Visualizar Treino `[VELA-4002]` | Toca no atalho "Ver treino" de um card |
 
 ---
@@ -181,7 +181,7 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
 |---|---|---|
 | Layout do formulário | Coluna única, scroll vertical; botão "Salvar" fixo no rodapé | Formulário centralizado (max-width ~720px); dados gerais podem usar 2 colunas |
 | Reordenar treinos | Arrastar pelo handle (toque longo) | Arrastar pelo handle (drag-and-drop com mouse) |
-| Seleção de treinos | Lista de Treinos em modo seleção (tela cheia) | Lista de Treinos em modo seleção (modal/painel ou tela) |
+| Seleção de treinos | Seletor de treinos em tela cheia | Seletor de treinos em modal/painel ou tela |
 | Atalho "Ver treino" (▶) | Abre Visualizar Treino | Abre Visualizar Treino |
 
 ---
@@ -201,3 +201,4 @@ Formulário onde o **Treinador** cria uma nova rotina ou edita uma rotina da **s
 |---|---|---|
 | 2026-06-18 | Maria Isabela | Criação inicial do documento (entrevista `/mapear-tela`). Rotina = agrupamento ordenado de **treinos** identificados por **letras A/B/C** (arraste, letra automática). Campos gerais: Título + Objetivo (obrigatórios). Por treino: Dia da semana + Descrição curta (opcionais); dia pode repetir, sem visão de semana. Seleção de treinos via Lista `[VELA-4001]` em modo seleção; atalho de visualização `[VELA-4002]`. Salvar exige Título + Objetivo + ≥1 treino. Atrelar a aluno fora de escopo. Status → EM ANDAMENTO |
 | 2026-06-18 | Maria Isabela | Revisão (`/revisar-tela`): **Excluir** = botão de texto vermelho ao fim do formulário (espelha `[VELA-4003]`); **sem limite** de treinos por rotina (RN11); **desativar** abre modal de confirmação (Seção 6.6); fixadas as copies dos modais "Descartar alterações?", "Desativar rotina?" e "Excluir rotina?"; adicionada a origem **Duplicar** (Cadastro como destino da cópia "(cópia)", RN12). Status → CONCLUIDO |
+| 2026-06-24 | Maria Isabela | A seleção de treinos passa a ser descrita como **seletor de treinos** próprio da montagem de Rotina (multi-seleção sobre a base ativa do Treinador, `[VELA-4001]`), em vez de "Lista de Treinos em modo seleção". Ajuste de consistência: o "modo seleção" foi removido da tela de Treinos (`[VELA-4001]`), que não duplica mais essa responsabilidade. Sem mudança de comportamento. |

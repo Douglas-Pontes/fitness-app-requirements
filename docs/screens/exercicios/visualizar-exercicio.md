@@ -10,7 +10,7 @@
 | **Codigo** | VELA-3002 |
 | **Prioridade** | 🔵 MVP |
 | **Status** | 🟢 CONCLUIDO |
-| **Ultima atualizacao** | 2026-06-18 |
+| **Ultima atualizacao** | 2026-06-23 |
 
 ---
 
@@ -40,7 +40,7 @@ Tela de **leitura** que mostra todas as informações de um exercício de forma 
 ### 3.1 Header / Cabecalho
 - Conteudo: Botão voltar (←) + Nome do exercício (com **badge "Inativo"** ao lado do nome quando aplicável) + menu de ações ⋯ (Ativar-Desativar / Excluir). No web, "Editar" também aparece no topo/lateral.
 - Comportamento: Fixo no topo. Nome longo é truncado com reticências.
-- **Faixa de estado inativo:** quando o exercício está inativo, exibir uma faixa/banner discreta logo abaixo do header: "Exercício inativo — não pode ser adicionado a novas rotinas."
+- **Faixa de estado inativo:** quando o exercício está inativo, exibir uma faixa/banner discreta logo abaixo do header: "Exercício inativo — não pode ser adicionado a novos treinos."
 
 ### 3.2 Corpo Principal
 > Scroll vertical, com a mídia no topo e as informações em seções.
@@ -85,8 +85,8 @@ N/A — Tela sem formularios (somente leitura).
 | 1 | Botão voltar | ← | Header (esq.) | Ativo | Volta para a Lista `[VELA-3001]` |
 | 2 | Player de vídeo | ▶ | Seção de mídia | Ativo (se houver vídeo) | Reproduz o vídeo embutido |
 | 3 | Botão | "Editar" | Rodapé (mobile) / topo-lateral (web) | Visível só p/ Treinador dono | Abre Cadastro `[VELA-3003]` em modo edição |
-| 4 | Menu | "Ativar / Desativar" | Header (⋯) | Visível só p/ Treinador dono | Abre **modal de confirmação** explicando o efeito ("continua nas rotinas atuais, mas não pode ser adicionado a novas") → confirma → alterna disponibilidade |
-| 5 | Menu | "Excluir" | Header (⋯) | Visível só p/ Treinador dono; **desabilitado se estiver em uso** | Abre modal de confirmação → exclui definitivamente (só se não estiver em nenhuma rotina) → volta à Lista |
+| 4 | Menu | "Ativar / Desativar" | Header (⋯) | Visível só p/ Treinador dono | Abre **modal de confirmação** explicando o efeito ("continua nos treinos atuais, mas não pode ser adicionado a novos") → confirma → alterna disponibilidade |
+| 5 | Menu | "Excluir" | Header (⋯) | Visível só p/ Treinador dono; **desabilitado se estiver em uso** | Abre modal de confirmação → exclui definitivamente (só se não estiver em nenhum treino) → volta à Lista |
 
 ---
 
@@ -107,7 +107,7 @@ N/A — Tela sem formularios (somente leitura).
 
 ### 6.5 Estado Desabilitado / Bloqueado
 - Para o **Aluno** (futuro), nenhuma ação de edição aparece.
-- **Exercício inativo:** badge "Inativo" ao lado do nome + faixa/banner abaixo do header ("Exercício inativo — não pode ser adicionado a novas rotinas"). As ações de Editar/Excluir continuam disponíveis ao Treinador dono; "Ativar/Desativar" passa a oferecer **Reativar**.
+- **Exercício inativo:** badge "Inativo" ao lado do nome + faixa/banner abaixo do header ("Exercício inativo — não pode ser adicionado a novos treinos"). As ações de Editar/Excluir continuam disponíveis ao Treinador dono; "Ativar/Desativar" passa a oferecer **Reativar**.
 
 ---
 
@@ -132,12 +132,12 @@ N/A — Tela sem formularios (somente leitura).
 
 - RN01: A visualização é a tela **única de leitura** para um exercício do acervo do Treinador.
 - RN02: Seções de texto **e atributos de classificação vazios são omitidos** — a tela mostra só o que foi preenchido.
-- RN08: **Desativar exige modal de confirmação** (assim como Excluir), explicando que o exercício continua nas rotinas atuais mas não pode ser adicionado a novas.
+- RN08: **Desativar exige modal de confirmação** (assim como Excluir), explicando que o exercício continua nos treinos atuais mas não pode ser adicionado a novos.
 - RN03: Todo exercício é do próprio Treinador, que vê **"Editar"/"Excluir"**. Não há acervo global nem ação "Duplicar".
-- RN04: Séries/repetições/carga **não** aparecem aqui (são da Rotina); a tela mostra apenas a definição do exercício.
-- RN05: Exclusão é **definitiva**, sempre confirmada por modal e **só permitida se o exercício não estiver em uso por nenhuma rotina**; caso contrário, usar **Desativar** (ver `[VELA-3003]` RN07/RN11).
+- RN04: Séries/repetições/descanso **não** aparecem aqui (são do **Treino**, `[VELA-4003]`); a tela mostra apenas a definição do exercício.
+- RN05: Exclusão é **definitiva**, sempre confirmada por modal e **só permitida se o exercício não estiver em uso por nenhum treino**; caso contrário, usar **Desativar** (ver `[VELA-3003]` RN07/RN11).
 - RN06: O **vídeo de execução** está sempre presente (obrigatório no cadastro). Não há áudio no exercício.
-- RN07: Exercício **inativo** é sinalizado com etiqueta "Inativo"; permanece visível e abrível, mas não pode ser adicionado a novas rotinas. **Os dados são preservados** ao desativar e voltam ao reativar. Ao **reativar**, exibir alerta pedindo para **revisar o exercício**.
+- RN07: Exercício **inativo** é sinalizado com etiqueta "Inativo"; permanece visível e abrível, mas não pode ser adicionado a novos treinos. **Os dados são preservados** ao desativar e voltam ao reativar. Ao **reativar**, exibir alerta pedindo para **revisar o exercício**.
 
 ---
 
@@ -166,3 +166,4 @@ N/A — Tela sem formularios (somente leitura).
 | 2026-06-17 | Equipe Vela | Criação inicial do documento (visualização de exercício — visão do Treinador); substitui o antigo "Detalhe do Exercício" |
 | 2026-06-18 | Equipe Vela | Revisão: classificação omite atributos vazios; "Desativar" exige modal de confirmação (RN08); "Editar" único por plataforma (sai do menu ⋯); acessibilidade do vídeo corrigida. Status → CONCLUIDO |
 | 2026-06-18 | Equipe Vela | Decisões de layout (pré-mockup): classificação híbrida (rótulo + chips); trilha e grupo primário na cor-assinatura; vídeo em thumbnail+play 16:9 (sem autoplay); estado inativo com badge + faixa explicativa; web em 2 colunas (vídeo esq./infos dir., max-width ~960px); nível como chip de texto; rodapé mobile só "Editar" |
+| 2026-06-23 | Maria Isabela | **Realinhamento da hierarquia Exercício → Treino → Rotina:** banners de inativo, modal de desativar e trava de exclusão passam a referir **treino** em vez de rotina (faixa, ação Excluir, RN05, RN07, RN08); prescrição (séries/reps/descanso) é do **Treino** (RN04). |

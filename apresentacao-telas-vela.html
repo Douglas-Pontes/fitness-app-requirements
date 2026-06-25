@@ -21,7 +21,7 @@
     background: #fff;
     line-height: 1.55;
   }
-  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
   /* Capa */
   header.capa {
@@ -36,24 +36,22 @@
   header.capa p { color: #cbd5e1; margin: 4px 0; max-width: 640px; }
   .meta-capa { margin-top: 22px; font-size: 13px; color: #94a3b8; }
 
-  /* Indice — compacto, numerado, discreto */
-  nav.indice { background: var(--fundo); border-bottom: 1px solid var(--linha); padding: 24px 0; }
-  nav.indice h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--suave); margin: 0 0 14px; }
-  .idx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 26px; }
+  /* Indice — limpo e simples */
+  nav.indice { border-bottom: 1px solid var(--linha); padding: 30px 0 34px; }
+  nav.indice h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--suave); margin: 0 0 22px; }
+  .idx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px 40px; }
   .idx-cat { break-inside: avoid; }
   .idx-cat-link {
-    display: block; font-weight: 700; color: var(--navy); text-decoration: none;
-    font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
-    padding-bottom: 4px; margin-bottom: 4px; border-bottom: 2px solid var(--lime);
+    display: block; font-weight: 600; color: var(--navy); text-decoration: none;
+    font-size: 14px; margin-bottom: 10px;
   }
   .idx-cat ul { list-style: none; margin: 0; padding: 0; }
   .idx-cat li a {
-    display: flex; align-items: baseline; gap: 7px;
-    color: var(--tinta); text-decoration: none; font-size: 12.5px; padding: 1.5px 0;
+    display: flex; align-items: baseline; gap: 10px;
+    color: #475569; text-decoration: none; font-size: 13px; padding: 3px 0;
   }
   .idx-cat li a:hover { color: var(--navy); }
-  .idx-num { color: var(--suave); font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 600; min-width: 17px; }
-  .idx-pub { margin-left: auto; color: var(--suave); font-size: 10.5px; white-space: nowrap; }
+  .idx-num { color: #94a3b8; font-variant-numeric: tabular-nums; font-size: 12px; min-width: 18px; }
 
   /* Categoria — inicio de bloco bem evidente */
   .categoria { padding: 8px 0 0; }
@@ -85,9 +83,10 @@
   .o-que-faz { margin: 10px 0 18px; font-size: 14.5px; color: #334155; }
 
   /* Corpo: mockup + campos lado a lado */
-  .tela-body { display: flex; gap: 26px; align-items: flex-start; }
+  .tela-body { display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; }
   .mockup-wrap {
-    flex: 1 1 0; min-width: 0;
+    flex: none;
+    width: 880px;          /* largura fixa: a altura do iframe e medida nessa largura */
     background: var(--fundo);
     border: 1px solid var(--linha);
     border-radius: 12px;
@@ -97,22 +96,28 @@
     width: 100%;
     border: 0;
     display: block;
-    height: 820px; /* fallback ate o auto-ajuste rodar */
+    height: 1500px;        /* fallback; a altura real vem inline (medida no build) */
   }
 
-  /* Coluna de campos (ao lado da tela) */
-  .campos-col { flex: 0 0 340px; }
+  /* Coluna de campos — fixa ao rolar (acompanha mockups altos) */
+  .campos-col {
+    flex: 1 1 320px;
+    min-width: 300px;
+    position: sticky;
+    top: 18px;
+    align-self: flex-start;
+  }
   .campos-titulo {
     font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--suave);
-    margin: 2px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--linha);
+    margin: 2px 0 14px; padding-bottom: 9px; border-bottom: 2px solid var(--lime);
   }
-  .campo-item { margin-bottom: 13px; }
-  .campo-nome { font-weight: 600; color: var(--navy); font-size: 13.5px; margin-bottom: 1px; }
-  .campo-logica { color: #334155; font-size: 12.8px; line-height: 1.5; }
+  .campo-item { margin-bottom: 15px; }
+  .campo-nome { font-weight: 600; color: var(--navy); font-size: 13.5px; margin-bottom: 2px; }
+  .campo-logica { color: #334155; font-size: 12.8px; line-height: 1.52; }
 
-  @media (max-width: 820px) {
+  @media (max-width: 900px) {
     .tela-body { flex-direction: column; }
-    .campos-col { flex: 1 1 auto; width: 100%; }
+    .campos-col { flex: 1 1 auto; width: 100%; position: static; }
   }
 
   footer.rodape { padding: 36px 0 60px; color: var(--suave); font-size: 12.5px; text-align: center; }
@@ -124,9 +129,9 @@
     nav.indice { page-break-after: always; }
     .categoria { page-break-before: always; }
     .cat-head { margin-top: 0; }
-    .tela { page-break-inside: avoid; }
-    .tela-body { break-inside: avoid; }
-    .mockup-wrap { break-inside: avoid; }
+    .campos-col { position: static; }
+    .tela-head { break-after: avoid; }
+    /* mockups altos podem ocupar mais de uma pagina — nao forcamos avoid neles */
   }
 </style>
 </head>
@@ -146,11 +151,11 @@
   <div class="container">
     <h2>Índice</h2>
     <div class="idx-grid">
-      <div class="idx-cat"><a class="idx-cat-link" href="#cat-exercicios">Exercícios</a><ul><li><a href="#tela-1"><span class="idx-num">01</span>Lista de Exercícios<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-2"><span class="idx-num">02</span>Cadastro / Edição de Exercício<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-3"><span class="idx-num">03</span>Visualizar Exercício<span class="idx-pub">Treinador</span></a></li></ul></div>
-<div class="idx-cat"><a class="idx-cat-link" href="#cat-treinos">Treinos</a><ul><li><a href="#tela-4"><span class="idx-num">04</span>Lista de Treinos<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-5"><span class="idx-num">05</span>Cadastro / Edição de Treino<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-6"><span class="idx-num">06</span>Visualizar Treino<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-7"><span class="idx-num">07</span>Visualizar / Executar Treino (Aluno)<span class="idx-pub">Aluno</span></a></li></ul></div>
-<div class="idx-cat"><a class="idx-cat-link" href="#cat-rotinas">Rotinas</a><ul><li><a href="#tela-8"><span class="idx-num">08</span>Lista de Rotinas<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-9"><span class="idx-num">09</span>Cadastro / Edição de Rotina<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-10"><span class="idx-num">10</span>Visualizar Rotina<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-11"><span class="idx-num">11</span>Atrelar Rotina ao Aluno<span class="idx-pub">Treinador</span></a></li><li><a href="#tela-12"><span class="idx-num">12</span>Minhas Rotinas (Aluno)<span class="idx-pub">Aluno</span></a></li><li><a href="#tela-13"><span class="idx-num">13</span>Detalhe da Rotina (Aluno)<span class="idx-pub">Aluno</span></a></li></ul></div>
-<div class="idx-cat"><a class="idx-cat-link" href="#cat-avaliacoes">Avaliações</a><ul><li><a href="#tela-14"><span class="idx-num">14</span>Lista de Avaliações<span class="idx-pub">Aluno e Treinador</span></a></li><li><a href="#tela-15"><span class="idx-num">15</span>Cadastro / Edição / Preenchimento de Avaliação<span class="idx-pub">Aluno e Treinador</span></a></li><li><a href="#tela-16"><span class="idx-num">16</span>Visualizar Avaliação<span class="idx-pub">Aluno e Treinador</span></a></li><li><a href="#tela-17"><span class="idx-num">17</span>Análise das Avaliações<span class="idx-pub">Aluno e Treinador</span></a></li></ul></div>
-<div class="idx-cat"><a class="idx-cat-link" href="#cat-perfil">Perfil</a><ul><li><a href="#tela-18"><span class="idx-num">18</span>Meu Perfil<span class="idx-pub">Aluno</span></a></li><li><a href="#tela-19"><span class="idx-num">19</span>Editar Perfil<span class="idx-pub">Aluno</span></a></li></ul></div>
+      <div class="idx-cat"><a class="idx-cat-link" href="#cat-exercicios">Exercícios</a><ul><li><a href="#tela-1"><span class="idx-num">01</span>Lista de Exercícios</a></li><li><a href="#tela-2"><span class="idx-num">02</span>Cadastro / Edição de Exercício</a></li><li><a href="#tela-3"><span class="idx-num">03</span>Visualizar Exercício</a></li></ul></div>
+<div class="idx-cat"><a class="idx-cat-link" href="#cat-treinos">Treinos</a><ul><li><a href="#tela-4"><span class="idx-num">04</span>Lista de Treinos</a></li><li><a href="#tela-5"><span class="idx-num">05</span>Cadastro / Edição de Treino</a></li><li><a href="#tela-6"><span class="idx-num">06</span>Visualizar Treino</a></li><li><a href="#tela-7"><span class="idx-num">07</span>Visualizar / Executar Treino (Aluno)</a></li></ul></div>
+<div class="idx-cat"><a class="idx-cat-link" href="#cat-rotinas">Rotinas</a><ul><li><a href="#tela-8"><span class="idx-num">08</span>Lista de Rotinas</a></li><li><a href="#tela-9"><span class="idx-num">09</span>Cadastro / Edição de Rotina</a></li><li><a href="#tela-10"><span class="idx-num">10</span>Visualizar Rotina</a></li><li><a href="#tela-11"><span class="idx-num">11</span>Atrelar Rotina ao Aluno</a></li><li><a href="#tela-12"><span class="idx-num">12</span>Minhas Rotinas (Aluno)</a></li><li><a href="#tela-13"><span class="idx-num">13</span>Detalhe da Rotina (Aluno)</a></li></ul></div>
+<div class="idx-cat"><a class="idx-cat-link" href="#cat-avaliacoes">Avaliações</a><ul><li><a href="#tela-14"><span class="idx-num">14</span>Lista de Avaliações</a></li><li><a href="#tela-15"><span class="idx-num">15</span>Cadastro / Edição / Preenchimento de Avaliação</a></li><li><a href="#tela-16"><span class="idx-num">16</span>Visualizar Avaliação</a></li><li><a href="#tela-17"><span class="idx-num">17</span>Análise das Avaliações</a></li></ul></div>
+<div class="idx-cat"><a class="idx-cat-link" href="#cat-perfil">Perfil</a><ul><li><a href="#tela-18"><span class="idx-num">18</span>Meu Perfil</a></li><li><a href="#tela-19"><span class="idx-num">19</span>Editar Perfil</a></li></ul></div>
     </div>
   </div>
 </nav>
@@ -207,10 +212,26 @@
   .lowercase-brand { text-transform: lowercase; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -731,9 +752,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Lista de Exercícios"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 5766px"
+                  title="Mockup — Lista de Exercícios"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -743,11 +764,15 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Filtros (Grupo muscular / Categoria / Nível)</div>
-            <div class="campo-logica">Três filtros combináveis entre si e com a busca. As opções saem da própria classificação cadastrada nos exercícios.</div>
+            <div class="campo-logica">Tocar em cada botão abre uma folha inferior com as opções. São combináveis entre si e com a busca; o botão fica destacado quando há filtro ativo.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Contador de resultados</div>
             <div class="campo-logica">Mostra o total atual da lista (ex.: "12 exercícios") e acompanha os filtros aplicados.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Card do exercício (ao tocar)</div>
+            <div class="campo-logica">Abre a tela nº 03 (Visualizar Exercício), com vídeo, classificação e instruções.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Linha de metadados do card</div>
@@ -755,15 +780,31 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Atalho de vídeo (▶)</div>
-            <div class="campo-logica">Abre o vídeo de execução num modal por cima da lista, sem perder a posição.</div>
+            <div class="campo-logica">Abre o vídeo de execução num modal por cima da lista, sem perder a posição; ao fechar, volta ao mesmo ponto.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Menu ⋮ → Incluir em treino</div>
-            <div class="campo-logica">Adiciona o exercício a um ou mais treinos em rascunho de uma vez. Ele entra no treino sem séries/repetições — a prescrição é completada depois, dentro do treino.</div>
+            <div class="campo-logica">Abre uma folha inferior com os treinos em rascunho do treinador. Marca um ou vários e o exercício entra em cada um sem séries/reps — a prescrição é completada depois, dentro do treino. Não aparece para exercícios inativos.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Editar</div>
+            <div class="campo-logica">Abre o Cadastro (nº 02) já preenchido com os dados do exercício.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Ativar/Desativar</div>
+            <div class="campo-logica">Alterna a disponibilidade. Desativado, o exercício continua nos treinos atuais, mas não entra em novos.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Excluir</div>
+            <div class="campo-logica">Pede confirmação e exclui em definitivo — só é permitido se o exercício não estiver em nenhum treino.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Botão &quot;+&quot; (novo exercício)</div>
+            <div class="campo-logica">Botão flutuante no rodapé que abre o Cadastro (nº 02) em branco.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Etiqueta &quot;Inativo&quot;</div>
-            <div class="campo-logica">Exercício desativado continua nos treinos que já o usam, mas não pode ser adicionado a novos.</div>
+            <div class="campo-logica">Marca exercícios desativados; eles continuam visíveis e abríveis, só não entram em novos treinos.</div>
           </div>
         </div>
       </div>
@@ -811,10 +852,26 @@
   .lowercase-brand { text-transform: lowercase; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -1267,9 +1324,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Cadastro / Edição de Exercício"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2643px"
+                  title="Mockup — Cadastro / Edição de Exercício"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -1303,15 +1360,23 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Vídeo de execução</div>
-            <div class="campo-logica">Opcional. Duas fontes: escolher entre os vídeos do próprio treinador ou colar um link do YouTube. Ao informar, mostra uma pré-visualização.</div>
+            <div class="campo-logica">Opcional. Duas fontes: escolher entre os vídeos do próprio treinador ou colar um link do YouTube. Ao informar, mostra uma pré-visualização do player.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Imagem de capa</div>
             <div class="campo-logica">Opcional. Se ficar vazia, o app usa a miniatura do vídeo como capa.</div>
           </div>
           <div class="campo-item">
+            <div class="campo-nome">Instruções de execução / Observações</div>
+            <div class="campo-logica">Campos de texto longo, opcionais — passo a passo e notas que aparecem na visualização do exercício.</div>
+          </div>
+          <div class="campo-item">
             <div class="campo-nome">Ativo / Inativo (só na edição)</div>
             <div class="campo-logica">Desativar não apaga nada — todos os dados ficam salvos. Ao reativar, o app pede para revisar o exercício.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Salvar exercício</div>
+            <div class="campo-logica">Fica desabilitado até preencher os obrigatórios. Ao salvar, volta para a Lista (nº 01) com o exercício em destaque.</div>
           </div>
         </div>
       </div>
@@ -1368,10 +1433,26 @@
     @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;font-sans text-slate-800 lowercase&quot;&gt;
@@ -1732,15 +1813,15 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Visualizar Exercício"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 1720px"
+                  title="Mockup — Visualizar Exercício"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">Player de vídeo</div>
-            <div class="campo-logica">Mostra capa com botão ▶; só toca ao clicar (sem autoplay).</div>
+            <div class="campo-logica">Mostra capa com botão ▶; só reproduz ao clicar (sem autoplay).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Bloco de classificação</div>
@@ -1749,6 +1830,14 @@
           <div class="campo-item">
             <div class="campo-nome">Faixa &quot;Exercício inativo&quot;</div>
             <div class="campo-logica">Aparece quando o exercício está desativado, avisando que ele não pode entrar em novos treinos.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Editar</div>
+            <div class="campo-logica">Abre o Cadastro (nº 02) já preenchido para alterar o exercício.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋯ → Ativar/Desativar</div>
+            <div class="campo-logica">Abre um modal de confirmação explicando o efeito antes de alternar a disponibilidade.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Excluir</div>
@@ -1817,10 +1906,26 @@
     @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;font-sans text-slate-800 lowercase&quot;&gt;
@@ -2174,9 +2279,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Lista de Treinos"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3404px"
+                  title="Mockup — Lista de Treinos"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -2189,20 +2294,32 @@
             <div class="campo-logica">Status filtra entre Ativos / Inativos / Todos; combinam com a busca.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Card do treino</div>
-            <div class="campo-logica">Mostra nome, categoria e quantidade de exercícios (ex.: "Hipertrofia · 6 exercícios") + selo de status.</div>
+            <div class="campo-nome">Card do treino (ao tocar)</div>
+            <div class="campo-logica">Abre a tela nº 06 (Visualizar Treino), com os grupos, exercícios e a prescrição.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Conteúdo do card</div>
+            <div class="campo-logica">Nome, categoria e quantidade de exercícios (ex.: "Hipertrofia · 6 exercícios") + selo de status (Ativo/Inativo).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Menu ⋮ → Incluir em rotina</div>
-            <div class="campo-logica">Adiciona o treino a uma ou mais rotinas em rascunho. A ordem (letras A, B, C…) é definida depois, dentro da rotina.</div>
+            <div class="campo-logica">Abre uma folha inferior com as rotinas em rascunho; adiciona o treino a uma ou mais. A ordem (letras A, B, C…) é definida depois, dentro da rotina. Não aparece para treinos inativos.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Duplicar</div>
-            <div class="campo-logica">Cria uma cópia editável do treino, independente do original.</div>
+            <div class="campo-nome">Menu ⋮ → Duplicar</div>
+            <div class="campo-logica">Cria uma cópia editável do treino na própria lista, independente do original ("Treino duplicado").</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Excluir</div>
-            <div class="campo-logica">Só é permitido se o treino não estiver em nenhuma rotina; caso contrário, o caminho é desativar.</div>
+            <div class="campo-nome">Menu ⋮ → Ativar/Desativar</div>
+            <div class="campo-logica">Alterna o status ali mesmo; inativo continua nas rotinas atuais, mas não entra em novas.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Excluir</div>
+            <div class="campo-logica">Pede confirmação e exclui em definitivo — só se o treino não estiver em nenhuma rotina; senão, o caminho é desativar.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Botão &quot;+&quot; (novo treino)</div>
+            <div class="campo-logica">Botão flutuante que abre o Cadastro de Treino (nº 05) em branco.</div>
           </div>
         </div>
       </div>
@@ -2250,10 +2367,26 @@
   .lowercase-brand { text-transform: lowercase; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -2783,9 +2916,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Cadastro / Edição de Treino"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3504px"
+                  title="Mockup — Cadastro / Edição de Treino"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -2807,7 +2940,11 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Tipo do grupo</div>
-            <div class="campo-logica">Opcional: Normal, Bi-set, Tri-set, Superset ou Drop-set. O tipo define quantos exercícios o grupo aceita (Normal/Drop-set = 1; Bi-set/Superset = 2; Tri-set = 3). Sem tipo = Normal.</div>
+            <div class="campo-logica">Opcional: Normal, Bi-set, Tri-set, Superset ou Drop-set. O tipo define quantos exercícios o grupo aceita (Normal/Drop-set = 1; Bi-set/Superset = 2; Tri-set = 3). Sem tipo = Normal. Ao atingir o limite, o botão de adicionar fica indisponível.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Adicionar exercício</div>
+            <div class="campo-logica">Abre o seletor sobre o acervo do treinador (só exercícios ativos). No seletor, o ícone de vídeo abre a execução num modal e tocar no exercício abre a tela nº 03 (Visualizar Exercício).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Séries</div>
@@ -2828,6 +2965,10 @@
           <div class="campo-item">
             <div class="campo-nome">Arrastar (⠿) para reordenar</div>
             <div class="campo-logica">Reordena exercícios dentro do grupo; a ordem de execução segue os grupos e a posição.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Salvar treino</div>
+            <div class="campo-logica">Desabilitado até ter nome, categoria e ao menos 1 exercício com séries/reps/descanso. Ao salvar, volta para a Lista (nº 04).</div>
           </div>
         </div>
       </div>
@@ -2884,10 +3025,26 @@
     @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;font-sans text-slate-800 lowercase&quot;&gt;
@@ -3160,23 +3317,27 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Visualizar Treino"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2562px"
+                  title="Mockup — Visualizar Treino"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
-            <div class="campo-nome">Cards de exercício</div>
-            <div class="campo-logica">Mostram a prescrição em leitura (séries, repetições, descanso). Tocar no card abre o exercício completo.</div>
+            <div class="campo-nome">Cards de exercício (ao tocar)</div>
+            <div class="campo-logica">Mostram a prescrição em leitura (séries, repetições, descanso). Tocar no card abre a tela nº 03 (Visualizar Exercício), com vídeo e execução completa.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Duplicar</div>
-            <div class="campo-logica">Cria a cópia "Nome (cópia)" e já abre a edição para ajustar.</div>
+            <div class="campo-nome">Editar</div>
+            <div class="campo-logica">Botão no rodapé que abre o Cadastro de Treino (nº 05) já preenchido.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Excluir</div>
-            <div class="campo-logica">Bloqueado se o treino estiver em uso em alguma rotina (mostra aviso).</div>
+            <div class="campo-nome">Menu ⋮ → Duplicar</div>
+            <div class="campo-logica">Cria a cópia "Nome (cópia)" e já abre a edição (nº 05) para ajustar.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Excluir</div>
+            <div class="campo-logica">Pede confirmação; bloqueado se o treino estiver em uso em alguma rotina (mostra aviso).</div>
           </div>
         </div>
       </div>
@@ -3223,10 +3384,26 @@
   .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -3818,15 +3995,19 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Visualizar / Executar Treino (Aluno)"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3177px"
+                  title="Mockup — Visualizar / Executar Treino (Aluno)"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">Play/Pause + cronômetro geral (topo)</div>
-            <div class="campo-logica">O cronômetro começa em 00:00 e só conta depois que o aluno toca em Play; pode pausar e retomar. É ele que mede a duração do treino.</div>
+            <div class="campo-logica">O cronômetro começa em 00:00 e só conta depois que o aluno toca em Play; pode pausar e retomar. É ele que mede a duração do treino e habilita os controles de execução nos cards.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Vídeo / thumbnail do exercício</div>
+            <div class="campo-logica">Ao tocar, abre o player do exercício num modal por cima da lista.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Contador de séries</div>
@@ -3834,11 +4015,11 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Reps realizadas / Carga realizada</div>
-            <div class="campo-logica">Pré-preenchidos com o que o treinador sugeriu; o aluno só ajusta se fez diferente. Não é obrigatório editar.</div>
+            <div class="campo-logica">Pré-preenchidos com o que o treinador sugeriu; o aluno só ajusta se fez diferente. Não é obrigatório editar para concluir.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Botão &quot;⏱ Descanso&quot;</div>
-            <div class="campo-logica">Abre um timer regressivo iniciando no descanso prescrito (ex.: 0:45→0:00), com +15s e Play. Não dispara sozinho.</div>
+            <div class="campo-logica">Abre um timer regressivo iniciando no descanso prescrito (ex.: 0:45→0:00), com +15s e Play. Não dispara sozinho; ao zerar, re-arma para a próxima série.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Check (✓) / &quot;Marcar como concluído&quot;</div>
@@ -3849,8 +4030,16 @@
             <div class="campo-logica">Não descarta nada: a sessão fica salva como "em andamento" e pode ser retomada de onde parou.</div>
           </div>
           <div class="campo-item">
+            <div class="campo-nome">Finalizar treino</div>
+            <div class="campo-logica">Encerra a sessão, grava o registro de execução (alimenta os contadores das telas 12 e 13) e abre o resumo.</div>
+          </div>
+          <div class="campo-item">
             <div class="campo-nome">Resumo / card compartilhável</div>
-            <div class="campo-logica">Ao finalizar, mostra duração, exercícios concluídos e "treinos na semana" (execuções de seg–sex ÷ total de treinos das rotinas ativas). Pode editar e compartilhar no story, com a marca vela. em destaque.</div>
+            <div class="campo-logica">Mostra duração, exercícios concluídos e "treinos na semana" (execuções de seg–sex ÷ total de treinos das rotinas ativas). Pode editar (mover/ocultar itens, trocar o fundo) e compartilhar no story, com a marca vela. em destaque.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Compartilhar</div>
+            <div class="campo-logica">Abre o editor do card e, em seguida, a folha do sistema com os destinos: Story do Instagram, WhatsApp e Salvar.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Recado para o treinador</div>
@@ -3919,10 +4108,26 @@
     @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;font-sans text-slate-800 lowercase&quot;&gt;
@@ -4172,9 +4377,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Lista de Rotinas"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2562px"
+                  title="Mockup — Lista de Rotinas"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -4187,12 +4392,28 @@
             <div class="campo-logica">Permitem achar rotinas que contêm um determinado treino ou categoria, e filtrar por Ativas/Inativas/Todas.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Card da rotina</div>
-            <div class="campo-logica">Mostra título, objetivo resumido e os treinos de forma compacta (ex.: "4 treinos · A Peito · B Costas…").</div>
+            <div class="campo-nome">Card da rotina (ao tocar)</div>
+            <div class="campo-logica">Abre a tela nº 10 (Visualizar Rotina), com a lista ordenada de treinos.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Duplicar</div>
+            <div class="campo-nome">Conteúdo do card</div>
+            <div class="campo-logica">Título, objetivo resumido e os treinos de forma compacta (ex.: "4 treinos · A Peito · B Costas…") + selo de status.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Duplicar</div>
             <div class="campo-logica">Cria uma cópia da rotina ali mesmo na lista ("Rotina duplicada").</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Ativar/Desativar</div>
+            <div class="campo-logica">Alterna o status (abre confirmação ao desativar); inativar não apaga os dados.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Excluir</div>
+            <div class="campo-logica">Pede confirmação e exclui em definitivo.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Botão &quot;+&quot; (nova rotina)</div>
+            <div class="campo-logica">Botão flutuante que abre o Cadastro de Rotina (nº 09) em branco.</div>
           </div>
         </div>
       </div>
@@ -4240,10 +4461,26 @@
   .lowercase-brand { text-transform: lowercase; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -4795,9 +5032,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Cadastro / Edição de Rotina"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 4365px"
+                  title="Mockup — Cadastro / Edição de Rotina"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -4811,11 +5048,11 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Letras A, B, C…</div>
-            <div class="campo-logica">Geradas automaticamente pela ordem dos treinos; reordenar por arrastar atualiza as letras. Não são editáveis.</div>
+            <div class="campo-logica">Geradas automaticamente pela ordem dos treinos; reordenar por arrastar (⠿) atualiza as letras. Não são editáveis.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Adicionar treino</div>
-            <div class="campo-logica">Abre um seletor sobre a base de treinos do treinador (só treinos ativos). O mesmo treino não pode entrar duas vezes.</div>
+            <div class="campo-logica">Abre um seletor sobre a base de treinos do treinador (só treinos ativos). O mesmo treino não pode entrar duas vezes na mesma rotina.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Dia da semana (por treino)</div>
@@ -4827,7 +5064,15 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Ver treino (▶)</div>
-            <div class="campo-logica">Atalho que abre a visualização do treino para conferir o conteúdo sem sair da montagem.</div>
+            <div class="campo-logica">Atalho no card que abre a tela nº 06 (Visualizar Treino) para conferir o conteúdo sem sair da montagem.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Excluir rotina (só edição)</div>
+            <div class="campo-logica">Botão de texto vermelho ao fim do formulário; pede confirmação e exclui em definitivo.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Salvar rotina</div>
+            <div class="campo-logica">Desabilitado até ter título, objetivo e ao menos 1 treino. Ao salvar, volta para a Lista (nº 08).</div>
           </div>
         </div>
       </div>
@@ -4884,10 +5129,26 @@
     @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;font-sans text-slate-800 lowercase&quot;&gt;
@@ -5130,19 +5391,23 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Visualizar Rotina"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2562px"
+                  title="Mockup — Visualizar Rotina"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
-            <div class="campo-nome">Cards de treino</div>
-            <div class="campo-logica">Mostram letra + nome + categoria e um resumo (qtd de exercícios e grupos musculares). Tocar abre o treino completo.</div>
+            <div class="campo-nome">Cards de treino (ao tocar)</div>
+            <div class="campo-logica">Mostram letra + nome + categoria e um resumo (qtd de exercícios e grupos musculares). Tocar abre a tela nº 06 (Visualizar Treino), com o conteúdo completo.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Menu ⋮</div>
-            <div class="campo-logica">Reúne Duplicar, Ativar/Desativar e Excluir. (No futuro, é também o lugar do "Atribuir a aluno".)</div>
+            <div class="campo-nome">Editar</div>
+            <div class="campo-logica">Botão no rodapé que abre o Cadastro de Rotina (nº 09) já preenchido.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Duplicar / Ativar-Desativar / Excluir</div>
+            <div class="campo-logica">Duplicar abre a edição da cópia; Ativar/Desativar alterna o status na hora; Excluir pede confirmação. (É também o lugar reservado para o "Atribuir a aluno" — ver tela nº 11.)</div>
           </div>
         </div>
       </div>
@@ -5190,10 +5455,26 @@
   .lowercase-brand { text-transform: lowercase; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -5619,9 +5900,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Atrelar Rotina ao Aluno"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3504px"
+                  title="Mockup — Atrelar Rotina ao Aluno"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -5630,8 +5911,16 @@
             <div class="campo-logica">Obrigatório. Vem travado quando o treinador chega pela tela do aluno; ou é escolhido por busca na entrada geral.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Rotina</div>
-            <div class="campo-logica">Obrigatório. Dois caminhos: "Usar rotina da base" (escolhe uma existente) ou "Criar nova rotina" (cria e salva na base, voltando já selecionada).</div>
+            <div class="campo-nome">Usar rotina da base</div>
+            <div class="campo-logica">Abre a Lista de Rotinas (nº 08) em modo seleção; o treinador escolhe uma rotina existente, que volta selecionada aqui.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Criar nova rotina</div>
+            <div class="campo-logica">Abre o Cadastro de Rotina (nº 09); ao concluir, a rotina é salva na base e o fluxo volta a esta tela já com ela selecionada.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Card-resumo da rotina</div>
+            <div class="campo-logica">Depois de escolhida, mostra título, objetivo e treinos. Tem atalhos "Ver detalhes" (abre a nº 10) e "Trocar rotina".</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Aviso de prescrição incompleta</div>
@@ -5651,11 +5940,15 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Mostrar prazo e progresso ao aluno</div>
-            <div class="campo-logica">Liga/desliga (ligado por padrão). Controla se o aluno vê as datas, a barra de progresso e o tempo decorrido. Desligado, ele vê só o status (Ativa/Agendada/Encerrada). Não afeta a contagem de treinos realizados.</div>
+            <div class="campo-logica">Liga/desliga (ligado por padrão). Controla se o aluno vê as datas, a barra de progresso e o tempo decorrido nas telas 12 e 13. Desligado, ele vê só o status (Ativa/Agendada/Encerrada). Não afeta a contagem de treinos realizados.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Mensagem ao aluno</div>
             <div class="campo-logica">Opcional — texto livre que o aluno vê ao receber a rotina.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Atribuir rotina</div>
+            <div class="campo-logica">Cria a cópia (snapshot) vinculada ao aluno e volta para a tela do aluno. O aluno recebe uma notificação da nova rotina.</div>
           </div>
         </div>
       </div>
@@ -5702,10 +5995,26 @@
   .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -5934,15 +6243,19 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Minhas Rotinas (Aluno)"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 1680px"
+                  title="Mockup — Minhas Rotinas (Aluno)"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">Seções Ativas / Agendadas / Anteriores</div>
             <div class="campo-logica">Cada seção só aparece se tiver pelo menos uma rotina. O status é calculado automaticamente pelas datas + dia de hoje.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Card da rotina (ao tocar)</div>
+            <div class="campo-logica">Abre a tela nº 13 (Detalhe da Rotina), com o progresso e a lista de treinos para executar.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Selo de status</div>
@@ -6001,10 +6314,26 @@
   .skel { animation: pulse-soft 1.4s ease-in-out infinite; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -6299,19 +6628,19 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Detalhe da Rotina (Aluno)"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 1632px"
+                  title="Mockup — Detalhe da Rotina (Aluno)"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">KPIs / progresso de vigência</div>
-            <div class="campo-logica">Dias percorridos, dias restantes (quando há data de fim) e barra de % do período decorrido. Respeitam o controle de visibilidade do treinador.</div>
+            <div class="campo-logica">Dias percorridos, dias restantes (quando há data de fim) e barra de % do período decorrido. Respeitam o controle de visibilidade do treinador (somem se ele desligou).</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Cards de treino</div>
-            <div class="campo-logica">Letra + nome + categoria, com contador de exercícios. Tocar abre a tela de treino do aluno.</div>
+            <div class="campo-nome">Cards de treino (ao tocar)</div>
+            <div class="campo-logica">Letra + nome + categoria, com contador de exercícios. Tocar abre a tela nº 07 (Visualizar/Executar Treino) para executar.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Tag &quot;recomendado do dia&quot;</div>
@@ -6375,10 +6704,26 @@
   .notch { width: 130px; height: 26px; border-radius: 0 0 1rem 1rem; }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-100 text-slate-800&quot;&gt;
@@ -6883,9 +7228,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Lista de Avaliações"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 4168px"
+                  title="Mockup — Lista de Avaliações"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -6894,8 +7239,24 @@
             <div class="campo-logica">Card enxuto e neutro: tipo e status são reconhecidos pelo ícone colorido. Não mostra métricas (peso, % de gordura) — isso fica ao abrir a avaliação.</div>
           </div>
           <div class="campo-item">
+            <div class="campo-nome">Visualizar (no card)</div>
+            <div class="campo-logica">Disponível para os dois papéis; abre a tela nº 16 (Visualizar Avaliação).</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Preencher / Continuar (aluno)</div>
+            <div class="campo-logica">Aparece para o aluno nas pendentes (Solicitada ou Em andamento iniciada por ele); abre o formulário nº 15 em modo preenchimento.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Editar / Revisar (treinador)</div>
+            <div class="campo-logica">Abre o formulário nº 15 já preenchido. "Editar" em Solicitada/Em andamento; "Revisar" em Concluída (edita no lugar).</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Reabrir / Solicitar reabertura (expirada)</div>
+            <div class="campo-logica">Treinador vê "Reabrir" (volta a Solicitada com novo prazo). Aluno vê "Solicitar reabertura", que só avisa o treinador.</div>
+          </div>
+          <div class="campo-item">
             <div class="campo-nome">Filtros (Período / Status / Tipo)</div>
-            <div class="campo-logica">Cada um abre um painel; combinam entre si. A tela abre sem filtro aplicado.</div>
+            <div class="campo-logica">Cada botão abre um painel; combinam entre si (E). A tela abre sem filtro aplicado.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Status</div>
@@ -6906,16 +7267,16 @@
             <div class="campo-logica">Contador de pendências do aluno (Solicitadas + Em andamento). Não conta Expiradas nem Concluídas.</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Ações por papel</div>
-            <div class="campo-logica">Treinador: Editar/Revisar, Reabrir (expirada), Excluir. Aluno: Visualizar sempre; Preencher/Continuar nas pendentes; "Solicitar reabertura" nas expiradas.</div>
+            <div class="campo-nome">Menu ⋮ (treinador)</div>
+            <div class="campo-logica">Reúne "Excluir" (confirmação, definitivo) e, quando aplicável, "Liberar para o aluno preencher".</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">FAB &quot;Nova avaliação&quot;</div>
-            <div class="campo-logica">Só para o treinador. Abre o seletor de tipo e leva ao formulário, onde ele escolhe o aluno por busca.</div>
+            <div class="campo-logica">Só para o treinador. Abre o seletor de tipo e leva ao formulário nº 15, onde ele escolhe o aluno por busca.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Toggle Lista | Análise</div>
-            <div class="campo-logica">Alterna entre esta lista e a tela de Análise (gráficos/comparação).</div>
+            <div class="campo-logica">Alterna entre esta lista e a tela nº 17 (Análise: gráficos e comparação).</div>
           </div>
         </div>
       </div>
@@ -6965,10 +7326,26 @@
   @keyframes sk { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-200 text-slate-800&quot;&gt;
@@ -7504,15 +7881,19 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Cadastro / Edição / Preenchimento de Avaliação"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3275px"
+                  title="Mockup — Cadastro / Edição / Preenchimento de Avaliação"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">Aluno (na criação)</div>
-            <div class="campo-logica">Travado quando aberto pelo perfil do aluno; campo de busca quando aberto pela entrada global.</div>
+            <div class="campo-logica">Travado quando aberto pelo perfil do aluno; campo de busca quando aberto pela entrada global (busca entre os alunos vinculados).</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Tipo da avaliação</div>
+            <div class="campo-logica">Definido na criação e não muda depois. É o que decide quais campos o formulário mostra (Anamnese, Antropométrica, Dobras, Bioimpedância).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Quem vai preencher (Treinador / Aluno)</div>
@@ -7532,7 +7913,7 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Campos calculados (IMC, RCQ, Soma das dobras)</div>
-            <div class="campo-logica">Preenchidos automaticamente e somente leitura; recalculam em tempo real.</div>
+            <div class="campo-logica">Preenchidos automaticamente e somente leitura; recalculam em tempo real conforme o preenchimento.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Campos manuais de composição (% gordura, densidade, massa gorda/magra)</div>
@@ -7543,12 +7924,16 @@
             <div class="campo-logica">Sete perguntas Sim/Não. Qualquer "Sim" mostra um alerta recomendando liberação médica (informativo, não bloqueia).</div>
           </div>
           <div class="campo-item">
+            <div class="campo-nome">Fotos / laudo</div>
+            <div class="campo-logica">Slots de foto por ângulo (frente, costas, perfis) e, na Bioimpedância, anexo do laudo. Todos opcionais.</div>
+          </div>
+          <div class="campo-item">
             <div class="campo-nome">Aviso de faixa fora do esperado</div>
             <div class="campo-logica">Valores muito fora do plausível mostram um aviso suave, mas não bloqueiam salvar (caso real/raro pode ser confirmado).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Salvar rascunho / Concluir / Enviar / Liberar</div>
-            <div class="campo-logica">Rascunho = status Em andamento (retoma depois). Concluir/Enviar = Concluída. Liberar = Solicitada (com notificação ao aluno).</div>
+            <div class="campo-logica">Rascunho = Em andamento (retoma depois). Concluir/Enviar = Concluída. Liberar = Solicitada (notifica o aluno). Em todos, ao salvar volta para a Lista (nº 14).</div>
           </div>
         </div>
       </div>
@@ -7598,10 +7983,26 @@
   @keyframes sk { 0%{background-position:100% 50%} 100%{background-position:0 50%} }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-100 text-slate-800&quot;&gt;
@@ -7993,9 +8394,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Visualizar Avaliação"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2572px"
+                  title="Mockup — Visualizar Avaliação"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -8008,12 +8409,24 @@
             <div class="campo-logica">Quando concluída, destaca as métricas principais (ex.: % de gordura, peso).</div>
           </div>
           <div class="campo-item">
-            <div class="campo-nome">Ações contextuais</div>
-            <div class="campo-logica">Treinador: Editar/Revisar, Reabrir (expirada), Excluir. Aluno: Preencher (se Solicitada) ou Solicitar reabertura (se Expirada).</div>
+            <div class="campo-nome">Fotos / laudo</div>
+            <div class="campo-logica">Quando existirem, aparecem em galeria; tocar abre a visualização ampliada.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Editar / Revisar (treinador)</div>
+            <div class="campo-logica">Abre o formulário nº 15 já preenchido.</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Preencher / Solicitar reabertura (aluno)</div>
+            <div class="campo-logica">"Preencher" se a avaliação está Solicitada (abre a nº 15); "Solicitar reabertura" se Expirada (avisa o treinador).</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Menu ⋮ → Excluir (treinador)</div>
+            <div class="campo-logica">Pede confirmação e exclui em definitivo; ao concluir, volta para a Lista (nº 14).</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Ver evolução</div>
-            <div class="campo-logica">Atalho para a tela de Análise, abrindo na métrica/tipo correspondente.</div>
+            <div class="campo-logica">Atalho para a tela nº 17 (Análise), abrindo na métrica/tipo correspondente.</div>
           </div>
         </div>
       </div>
@@ -8063,10 +8476,26 @@
   @keyframes sk { 0%{background-position:100% 50%} 100%{background-position:0 50%} }
 &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-100 text-slate-800&quot;&gt;
@@ -8563,12 +8992,16 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Análise das Avaliações"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3420px"
+                  title="Mockup — Análise das Avaliações"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
+          <div class="campo-item">
+            <div class="campo-nome">Toggle Gráficos | Comparar</div>
+            <div class="campo-logica">Alterna entre as duas visões. Gráficos abre por padrão.</div>
+          </div>
           <div class="campo-item">
             <div class="campo-nome">Seletor de métrica (Gráficos)</div>
             <div class="campo-logica">Lista só métricas que têm ao menos uma medição (Peso, % gordura, IMC, Cintura etc.). Uma por vez.</div>
@@ -8579,7 +9012,7 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Gráfico de linha</div>
-            <div class="campo-logica">Eixo X = datas, eixo Y = valor. Tocar num ponto mostra valor + data e leva à avaliação daquela medição.</div>
+            <div class="campo-logica">Eixo X = datas, eixo Y = valor. Tocar num ponto mostra valor + data e leva à tela nº 16 (Visualizar Avaliação) daquela medição.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Seletor de período</div>
@@ -8587,11 +9020,11 @@
           </div>
           <div class="campo-item">
             <div class="campo-nome">Comparar (tipo + avaliações)</div>
-            <div class="campo-logica">Só compara avaliações do mesmo tipo, no máximo as 5 mais recentes, exigindo pelo menos 2.</div>
+            <div class="campo-logica">Botão "Selecionar avaliações" abre um painel; só compara avaliações do mesmo tipo, no máximo as 5 mais recentes, exigindo pelo menos 2.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">Tabela comparativa</div>
-            <div class="campo-logica">Cada avaliação vira uma coluna; cada campo, uma linha, com a variação entre colunas. Tocar no cabeçalho abre a avaliação.</div>
+            <div class="campo-logica">Cada avaliação vira uma coluna; cada campo, uma linha, com a variação entre colunas. Tocar no cabeçalho (data) abre a avaliação (nº 16).</div>
           </div>
         </div>
       </div>
@@ -8651,10 +9084,26 @@
     .sel { display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-100 text-navy&quot;&gt;
@@ -8884,9 +9333,9 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Meu Perfil"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 2512px"
+                  title="Mockup — Meu Perfil"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
@@ -8907,8 +9356,16 @@
             <div class="campo-logica">Mostra só a bandeira ao lado do @ (sem o nome do país).</div>
           </div>
           <div class="campo-item">
+            <div class="campo-nome">Editar perfil</div>
+            <div class="campo-logica">Botão no topo que abre a tela nº 19 (Editar Perfil).</div>
+          </div>
+          <div class="campo-item">
+            <div class="campo-nome">Engrenagem (⚙)</div>
+            <div class="campo-logica">Abre as Configurações (onde fica, por ex., a alteração de e-mail).</div>
+          </div>
+          <div class="campo-item">
             <div class="campo-nome">Sair</div>
-            <div class="campo-logica">Logout com confirmação ("Deseja sair?").</div>
+            <div class="campo-logica">Logout com confirmação ("Deseja sair?"); ao confirmar, volta para a tela de login.</div>
           </div>
         </div>
       </div>
@@ -8960,10 +9417,26 @@
     .sel { display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
   &lt;/style&gt;
 &lt;style&gt;
-  /* faixa de aviso &quot;mockup visual&quot; — filho direto do body, fixa no topo */
-  body &gt; div.sticky.top-0 { display: none !important; }
-  /* notas/legendas de conferencia no rodape, fora dos celulares */
-  body &gt; footer, body &gt; .nota-mockup, body &gt; .mockup-notes { display: none !important; }
+  /* 1. Faixa de aviso &quot;mockup visual&quot; — sempre um div bg-navy no topo do body
+        (em alguns mockups e sticky, em outros w-full; bg-navy cobre os dois). */
+  body &gt; div.bg-navy { display: none !important; }
+
+  /* 2. Padrao com &lt;header&gt;/&lt;main&gt;: esconde o cabecalho interno (marca + codigo
+        [VELA-xxxx]) e qualquer nota de rodape que venha depois do &lt;main&gt;. */
+  body &gt; header { display: none !important; }
+  body &gt; main ~ footer, body &gt; main ~ section,
+  body &gt; main ~ p, body &gt; main ~ div { display: none !important; }
+
+  /* 3. Mockups sem &lt;main&gt; (device .frame): o titulo/subtitulo e a nota ficam
+        como &lt;h1&gt;/&lt;p&gt; dentro do wrapper unico — o grid de frames e um &lt;div&gt;. */
+  body &gt; div:not(.bg-navy) &gt; h1,
+  body &gt; div:not(.bg-navy) &gt; p { display: none !important; }
+
+  /* 4. Rotulos/anotacoes internas que acompanham cada frame (irmaos do device):
+        so atingem irmaos da moldura — nunca o conteudo dentro da tela. */
+  *:has(&gt; .phone)  &gt; :not(.phone),
+  *:has(&gt; .device) &gt; :not(.device),
+  *:has(&gt; .frame)  &gt; :not(.frame) { display: none !important; }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body class=&quot;bg-slate-100 text-navy&quot;&gt;
@@ -9263,15 +9736,15 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-"
-                  title="Mockup — Editar Perfil"
-                  onload="ajustarAltura(this)"></iframe>
+" scrolling="no"
+                  style="height: 3340px"
+                  title="Mockup — Editar Perfil"></iframe>
         </div>
         <div class="campos-col">
           <h4 class="campos-titulo">Campos e lógica</h4>
           <div class="campo-item">
             <div class="campo-nome">Foto de perfil</div>
-            <div class="campo-logica">Obrigatória. É o único lugar onde a foto é gerenciada (Tirar foto / Escolher foto).</div>
+            <div class="campo-logica">Obrigatória. É o único lugar onde a foto é gerenciada — o ícone de lápis abre as opções Tirar foto / Escolher foto.</div>
           </div>
           <div class="campo-item">
             <div class="campo-nome">@ aluno.vela</div>
@@ -9301,6 +9774,10 @@
             <div class="campo-nome">Somente leitura (E-mail, @ treinador.vela, Objetivo)</div>
             <div class="campo-logica">E-mail muda só nas Configurações (com confirmação por e-mail); o treinador é automático; o objetivo vem da Anamnese.</div>
           </div>
+          <div class="campo-item">
+            <div class="campo-nome">Salvar</div>
+            <div class="campo-logica">Fica desabilitado até haver alguma alteração válida. Ao salvar, mostra confirmação e volta para o Meu Perfil (nº 18). Ao voltar sem salvar com mudanças pendentes, pergunta se quer descartar.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -9315,23 +9792,6 @@
   </div>
 </footer>
 
-<script>
-  // Ajusta a altura de cada iframe ao conteudo real do mockup (sem scroll interno).
-  function ajustarAltura(frame) {
-    try {
-      var doc = frame.contentDocument || frame.contentWindow.document;
-      var h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
-      frame.style.height = (h + 4) + 'px';
-    } catch (e) { /* mantem a altura fallback */ }
-  }
-  function ajustarTodos() {
-    document.querySelectorAll('iframe.mockup').forEach(ajustarAltura);
-  }
-  // Reajuste apos carregar fontes/imagens.
-  window.addEventListener('load', function () { setTimeout(ajustarTodos, 450); });
-  // Garante alturas corretas ao gerar PDF / imprimir.
-  window.addEventListener('beforeprint', ajustarTodos);
-</script>
 
 </body>
 </html>

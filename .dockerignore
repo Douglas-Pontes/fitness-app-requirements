@@ -1,0 +1,4 @@
+# So a pasta apresentacoes/ vai para a imagem; ignora o resto do repo.
+*
+!apresentacoes
+!nginx.conf
